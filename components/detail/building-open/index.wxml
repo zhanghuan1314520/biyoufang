@@ -1,0 +1,46 @@
+<block wx:if="{{building.BuildingProjectList.length}}">
+    <view class="current-opening-info" wx:if="{{building.buildingStatusText!=='即将预售'}}">
+        <view class="current-opening-title">
+            <text>开盘信息</text>
+        </view>
+        <view class="current-opening-content">
+            <view class="project-tab-info" wx:if="{{building&&building.BuildingProjectList&&building.BuildingProjectList.length>1}}">
+                <scroll-view class="project-tab-list" scrollIntoView="{{tab.tabId}}" scrollWithAnimation="{{true}}" scrollX="{{true}}">
+                    <view bindtap="toggleProjectTab" class="project-tab-item {{index!==0?'ml60':''}}" data-id="{{tab.tabId}}" data-index="{{index}}" id="{{tab.tabId}}" wx:if="{{tab.BuildingNo}}" wx:for="{{building.BuildingProjectList}}" wx:for-item="tab" wx:key="index">
+                        <text class="project-tab-item__text {{tab.isActived?'project-tab-item__text_active':''}}">{{tab.BuildingNo}}</text>
+                        <view class="project-tab-item__bar" wx:if="{{tab.isActived}}"></view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="progress-bar" wx:if="{{_activeBuilding.progressBarList&&_activeBuilding.progressBarList.length}}">
+                <view class="progress-info-list">
+                    <view class="progress-bar-item {{'progress-bar-item_'+item.type}}" style="color:{{item.doneStatus=='full'?'#333':'#999'}}; width: {{100/_activeBuilding.progressBarList.length+'%'}};" wx:for="{{_activeBuilding.progressBarList}}" wx:key="index">
+                        <block wx:if="{{item.type==='top'}}">
+                            <view class="progress-bar-item-title">
+                                <text class="progress-bar-item-title__text">{{item.dateTime}}</text>
+                            </view>
+                            <view class="progress-bar-item-content">
+                                <text class="progress-bar-item-content__text">{{item.name}}</text>
+                            </view>
+                        </block>
+                        <block wx:elif="{{item.type==='bottom'}}">
+                            <view class="progress-bar-item-content">
+                                <text class="progress-bar-item-content__text">{{item.name}}</text>
+                            </view>
+                            <view class="progress-bar-item-title">
+                                <text class="{{index===1?'nowrap':''}}">{{item.dateTime}}</text>
+                            </view>
+                        </block>
+                        <view class="circle {{'circle_'+item.type}} {{'circle_'+item.doneStatus}}"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="building-info">
+                <building-info project="{{_activeBuilding}}" projectStatusName="{{_activeBuilding.buildingStatusText}}" versionType="{{versionType}}"></building-info>
+            </view>
+        </view>
+        <view class="current-opening-footer">
+            <btn-group bind:operateBtnGroupList="operateBtnGroupList" btnGroupList="{{_activeBuilding.btnGroupList}}"></btn-group>
+        </view>
+    </view>
+</block>

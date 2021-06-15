@@ -1,0 +1,28 @@
+<view class="article__webview">
+    <web-view class="web-view" src="{{url}}"></web-view>
+    <block wx:if="{{showShare}}">
+        <cover-view class="btn-share">
+            <button class="btn-share_wrap reset-btn" openType="share">
+                <cover-image class="btn-icon" src="/h5_webview/images/articleWebview/article_icon_wechat.png"></cover-image>
+            </button>
+        </cover-view>
+        <navigator class="btn-poster" openType="navigate" url="{{'/pck_poster/article_poster/index?articleId='+id}}" wx:if="{{type!=='purchasearticle'}}">
+            <cover-image class="btn-icon" src="/h5_webview/images/articleWebview/article_icon_pyq.png"></cover-image>
+        </navigator>
+    </block>
+    <button>
+        <cover-view class="broker-info-box {{isIpx?'is-ipx':'no-ipx'}}" wx:if="{{broker&&isShare&&brokerImage}}">
+            <cover-image class="broker-image" src="{{broker.PersonalImageUrl}}"></cover-image>
+            <cover-view class="broker-info">
+                <cover-image class="" src="{{brokerImage[0]}}"></cover-image>
+            </cover-view>
+            <cover-view bindtap="toChat" class="chat" data-unionid="{{broker.UnionId}}">
+                <cover-image src="{{brokerImage[1]}}"></cover-image>
+            </cover-view>
+            <cover-view bindtap="toBuilding" class="watch-building" data-id="{{broker.BuildingId}}">
+                <cover-image src="{{brokerImage[2]}}"></cover-image>
+            </cover-view>
+        </cover-view>
+    </button>
+    <canvas canvasId="hidden"></canvas>
+</view>

@@ -1,0 +1,8 @@
+<view class="ad-mask">
+    <view class="main">
+        <image bindtap="close" class="close-btn" src="/resource/index/icon_close@3x.png"></image>
+        <view class="title">邀请回答</view>
+        <view class="main-txt">今天一共有 <text class="num">{{count}}</text> 条问题未回答，等你来回答！</view>
+        <view bindtap="jump" class="jump-btn">赶紧去回答，增加我的曝光量</view>
+    </view>
+</view>

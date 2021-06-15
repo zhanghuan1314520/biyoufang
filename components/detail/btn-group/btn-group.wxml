@@ -1,0 +1,7 @@
+<view class="btn-group-wrapper">
+    <view class="btn-list">
+        <view bind:tap="operateBtn" class="btn-item {{item.isActived?'btn-item_actived':'btn-item_unactived'}} {{index!==0?'ml30':''}}" data-id="{{item.id}}" data-type="{{item.type}}" wx:for="{{btnGroupList}}" wx:key="index">
+            <text>{{item.name}}</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,3 @@
+<view catchtouchmove="handleTouchMove" class="modal-wrap modal-root">
+    <slot></slot>
+</view>

@@ -1,0 +1,99 @@
+<view class="base-info-wrapper">
+    <view class="base-info-list">
+        <view class="base-info-item">
+            <view class="base-info-item_mini">
+                <view class="base-info-item__label">
+                    <text>物业类型:</text>
+                </view>
+                <view class="base-info-item__content">
+                    <text>{{project.BaseInfo.PropertyTypeList||'--'}}</text>
+                </view>
+            </view>
+            <view class="base-info-item_mini">
+                <view class="base-info-item__label">
+                    <text>户型面积：</text>
+                </view>
+                <view class="base-info-item__content">
+          {{project.BaseInfo.MainHouseType||'--'}}
+        </view>
+            </view>
+        </view>
+        <view class="base-info-item">
+            <view class="base-info-item_mini">
+                <view class="base-info-item__label">
+                    <text>产权:</text>
+                </view>
+                <view class="base-info-item__content">
+                    <text>{{project.BaseInfo.PropertyYearList||'--'}}</text>
+                </view>
+            </view>
+            <view class="base-info-item_mini">
+                <view class="base-info-item__label">
+                    <text>车位比:</text>
+                </view>
+                <view class="base-info-item__content">
+                    <text>{{project.BaseInfo.ParkingSpaceRatio||'--'}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="base-info-item">
+            <view class="base-info-item_mini">
+                <view class="base-info-item__label">
+                    <text>绿化率:</text>
+                </view>
+                <view class="base-info-item__content">
+                    <text>{{project.BaseInfo.GreeningRate?project.BaseInfo.GreeningRate+'%':'--'}}</text>
+                </view>
+            </view>
+            <view class="base-info-item_mini">
+                <view class="base-info-item__label">
+                    <text>占地面积:</text>
+                </view>
+                <view class="base-info-item__content">
+                    <text>{{project.BaseInfo.CoveredArea?project.BaseInfo.CoveredArea+'㎡':'--'}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="base-info-item">
+            <view class="base-info-item__label">
+                <text>规划楼栋：</text>
+            </view>
+            <view class="base-info-item__content">
+                <text>{{project.BaseInfo.BuildingInstruction||'--'}}</text>
+            </view>
+        </view>
+        <view class="base-info-item">
+            <view class="base-info-item__label">
+                <text>物业公司：</text>
+            </view>
+            <view class="base-info-item__content">
+                <text>{{project.BaseInfo.PropertyCompanyName||'--'}}</text>
+            </view>
+        </view>
+        <view class="base-info-item">
+            <view class="base-info-item__label">
+                <text>开发商：</text>
+            </view>
+            <view class="base-info-item__content">
+                <text>{{project.BaseInfo.DeveloperName||'--'}}</text>
+            </view>
+        </view>
+        <view class="base-info-item" wx:if="{{!project.BuildingProjectList.length}}">
+            <view class="base-info-item__label">
+                <text>交房时间：</text>
+            </view>
+            <view class="base-info-item__content">
+                <text>{{project.BaseInfo.DeliveryDay||'--'}}</text>
+            </view>
+        </view>
+        <view class="base-info-item align-top" wx:if="{{project.BaseInfo.Introduction}}">
+            <view class="base-info-item__label">
+                <text>项目简介：</text>
+            </view>
+            <view class="content-area">
+                <text>{{formate.formateByLength(project.BaseInfo.Introduction,50)}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="formate" src="base-info.wxs" />

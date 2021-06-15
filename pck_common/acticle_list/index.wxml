@@ -1,0 +1,9 @@
+<nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%);" isTransparent="{{true}}" navBarTitle="{{navBarTitle}}" needBackBtn="{{true}}" showShare="{{false}}"></nav-bar>
+<view class="container" style="padding-top: {{navH}}px" wx:if="{{initStatus}}">
+    <view class="card-wrap" wx:for="{{articleList}}" wx:key="index">
+        <article-card newsInfo="{{item}}"></article-card>
+    </view>
+    <load-more loadFlag="{{pagination.canLoadMore}}" noMoreFlag="{{!pagination.canLoadMore}}" screenShow="{{articleList.length>0}}"></load-more>
+    <empty-view isReveal="{{!articleList.length&&initStatus}}" wx:if="{{initStatus}}"></empty-view>
+</view>
+<skeleton active row="{{[ {width:'100vw',height:' 100vh'} ]}}" wx:else></skeleton>

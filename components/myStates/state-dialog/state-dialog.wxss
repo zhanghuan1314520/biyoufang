@@ -1,0 +1,93 @@
+.container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 50;
+}
+
+.content-box {
+    width: 650rpx;
+    min-height: 437rpx;
+    background: #fff;
+    border-radius: 8rpx;
+    margin: 390rpx auto 0;
+}
+
+.title {
+    text-align: center;
+    height: 120rpx;
+    line-height: 120rpx;
+    font-size: 38rpx;
+    font-weight: 500;
+    color: #333;
+    border-bottom: 1px solid #ededed;
+    overflow: hidden;
+}
+
+.content {
+    width: 525rpx;
+    margin: 57rpx auto 0;
+    font-size: 32rpx;
+    line-height: 45rpx;
+    color: #333;
+}
+
+.op-btn {
+    margin-top: 62rpx;
+    margin-bottom: 76rpx;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.cancle-btn,.sure-btn {
+    width: 260rpx;
+    height: 76rpx;
+    background: #f8f8f8;
+    border-radius: 4rpx;
+    font-size: 34rpx;
+    color: #666;
+    line-height: 76rpx;
+    text-align: center;
+}
+
+.sure-btn {
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+    color: #fff;
+    margin-left: 26rpx;
+}
+
+.dialog2 {
+    width: 260rpx;
+    height: 180rpx;
+    background: rgba(51,51,51,.95);
+    border-radius: 8rpx;
+    line-height: 90rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: 500;
+    position: relative;
+}
+
+.dialog2::before {
+    width: 0;
+    height: 0;
+    content: "";
+    border: 12rpx solid transparent;
+    border-bottom-color: rgba(51,51,51,.95);
+    position: absolute;
+    top: -22rpx;
+    right: 20rpx;
+}
+
+.dialog2-cancle,.dialog2-sure {
+    height: 90rpx;
+}
+
+.dialog2-sure {
+    border-bottom: 1px solid #4c4c4c;
+}

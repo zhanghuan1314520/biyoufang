@@ -1,0 +1,19 @@
+<view animation="{{slideInOrOut}}" bind:tap="goFollowPage" class="bar-wrap" style="top: {{navH}}px">
+    <swiper autoplay vertical circular="{{bannerOptions.circular}}" class="swiper-layout swiper-class" interval="{{bannerOptions.interval}}">
+        <swiper-item class="swiper-item" wx:if="{{buildInfo.NickNames.length===0}}">
+            <open-data type="userNickName"></open-data>关注了本楼盘
+            </swiper-item>
+        <swiper-item class="swiper-item" wx:if="{{item}}" wx:for="{{buildInfo.NickNames}}" wx:key="index">
+                {{formate.ciphertext(item)}}关注了本楼盘
+            </swiper-item>
+    </swiper>
+    <view class="visit-list">
+        <view class="my-avatar">
+            <image webp class="avatar" mode="aspectFill" src="{{buildInfo.AvatarUrls[0]}}" wx:if="{{buildInfo.IsTheFirstAvatar}}"></image>
+            <open-data type="userAvatarUrl" wx:else></open-data>
+        </view>
+        <image webp class="avatar" mode="aspectFill" src="{{item}}" wx:if="{{index>0}}" wx:for="{{buildInfo.AvatarUrls}}" wx:key="index"></image>
+        <view class="visit-number">{{buildInfo.FollowNumber}}人</view>
+    </view>
+</view>
+<wxs module="formate" src="index.wxs" />

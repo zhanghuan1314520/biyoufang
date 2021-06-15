@@ -1,0 +1,15 @@
+<view catchtouchmove="touchmove" class="container" wx:if="{{type==='1'}}">
+    <view class="content-box">
+        <view class="title">{{title}}</view>
+        <view class="content" wx:if="{{content}}">{{content}}</view>
+        <slot wx:else></slot>
+        <view class="op-btn">
+            <view bindtap="userOperate" class="cancle-btn" data-o="cancle">取消</view>
+            <view bindtap="userOperate" class="sure-btn" data-o="sure">确认</view>
+        </view>
+    </view>
+</view>
+<view class="dialog2" wx:if="{{type==='2'}}">
+    <view bindtap="userOperate" class="dialog2-sure" data-o="sure">删除</view>
+    <view bindtap="userOperate" class="dialog2-cancle" data-o="cancle">取消</view>
+</view>

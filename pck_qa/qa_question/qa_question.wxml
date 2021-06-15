@@ -1,0 +1,79 @@
+<view class="qa-question-wrapper" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="{{title}}" needBackBtn="{{true}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="question" wx:if="{{pageStatus===0}}">
+        <view class="list-item">
+            <view class="content">
+                <textarea bindblur="validateInput" bindinput="getInputValue" class="textarea" data-type="content" maxlength="300" placeholder="描述你的问题（5-300个字）" placeholderClass="content-placeholder" value="{{questionInfo.content}}"></textarea>
+                <view class="limit">
+                    <text class="input-length">{{questionInfo.content.length}}</text>
+                    <text class="separator">/</text>
+                    <text class="max-length">300</text>
+                </view>
+            </view>
+        </view>
+        <view class="list-item">
+            <view class="label">
+                <text class="title">上传图片</text>
+                <text class="word-limit">（最多添加6张）</text>
+            </view>
+            <view class="upload-imgs-list">
+                <view bind:tap="chooseImage" class="upload-imgs-item" wx:if="{{uploadImgs&&uploadImgs.length<9}}">
+                    <view class="img-container">
+                        <image class="plus" src="/resource/register_add.png"></image>
+                    </view>
+                </view>
+                <view bind:tap="previewImage" class="upload-imgs-item" data-id="{{item.id}}" wx:for="{{uploadImgs}}" wx:key="index">
+                    <view class="img-container">
+                        <image class="img" mode="aspectFill" src="{{item.imgUrl}}"></image>
+                    </view>
+                    <view catch:tap="deleteImage" class="delete" data-id="{{item.id}}" wx:if="{{item.canDelete}}">
+                        <view class="icon iconfont icon-guanbi"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="list-item list-item_type">
+            <view class="label2">
+                <text class="title">问题类型</text>
+                <text class="word-limit">（最多选3个，再次点击取消）</text>
+            </view>
+            <view class="type-list" wx:if="{{questionTypeList&&questionTypeList.length}}">
+                <view bind:tap="selectQuestionType" class="type-item {{index%4!==3?'mr20':''}} {{item.isActived?'type-item_actived':''}}" data-id="{{item.id}}" wx:for="{{questionTypeList}}" wx:key="index">
+                    <text>{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="footer {{isIpx?'add-btn':''}}">
+            <view>
+                <view class="form_submit">
+                    <UserAuthorize authUserInfo bindproxySuccess="submitQuestionInfo" userInfo="{{userInfo}}">
+                        <button class="btn_reset submit-btn" loading="{{showLoading}}">
+                            <text>提交问题</text>
+                        </button>
+                    </UserAuthorize>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="question-success" wx:if="{{pageStatus===1}}">
+        <view class="question-success-tip">
+            <image class="icon_success" src="/resource/qa/ask_img_suss@3x.png"></image>
+            <view class="question-success-tip__text">提问成功</view>
+        </view>
+        <view class="answer-tip">
+            <view class="answer-tip__text">已邀请房产专业人士，快马加鞭赶来回答</view>
+        </view>
+        <view class="question-success-footer">
+            <view class="btn">
+                <view class="form_submit">
+                    <button bind:tap="subscribeAnswer" class="btn_submit btn_reset" loading="{{showLoading}}">
+                        <text>有回答通知我</text>
+                    </button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <canvas canvasId="canvas" class="canvas-position"></canvas>
+</view>

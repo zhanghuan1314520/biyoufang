@@ -1,0 +1,19 @@
+<view class="qa-invite-answer-wrapper" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar bgColor="#FE6C08" isTransparent="{{true}}" navBarTitle="{{title}}" needBackBtn="{{true}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="qa-search">
+        <view bindtap="goQaQueryPage" class="qa-input">
+            <image class="qa-input__prepend" src="/resource/search_i.png"></image>
+            <input disabled class="qa-input__inner" placeholder="搜索问题或标签" placeholderClass="input-placeholder"></input>
+            <view bind:tap="clearInputValue" class="qa-input__suffix" wx:if="{{inputValue&&inputValue.length}}">
+                <image class="qa-input__suffix-inner" src="/resource/search_close@3x.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="query-list" wx:if="{{questionList&&questionList.length}}">
+        <view class="query-item" wx:for="{{questionList}}" wx:key="{{ index}}">
+            <question-card bind:operateQuestionCardInfo="operateQuestionCardInfo" questionCardInfo="{{item}}" userInfo="{{userInfo}}"></question-card>
+        </view>
+    </view>
+</view>

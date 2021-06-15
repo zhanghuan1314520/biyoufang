@@ -1,0 +1,32 @@
+<view class="detail_imgs" style="padding-top: {{navH}}px;" wx:if="{{pageState}}">
+    <nav-bar bgColor="#F5F5F5" navBarTitle="楼盘相册" showBackHome="{{isShare?true:false}}" showShare="{{false}}" type="album"></nav-bar>
+    <block wx:if="{{imgs&&imgs.length}}">
+        <view class="tab-bar-container" style="top: {{navH}}px">
+            <scroll-view scrollWithAnimation scrollX class="scroll-container" scrollIntoView="{{scrollIntoViewTab}}">
+                <view bindtap="toggleTab" class="scroll-view-item tab {{item.isActived?'tab-active':''}}" data-id="{{item.id}}" data-index="{{index}}" duration="300" id="{{'tab-'+item.id}}" wx:for="{{imgs}}" wx:key="index">
+          {{item.PhotoTypeName}}({{(item.PhotoUrlList&&item.PhotoUrlList.length)+(item.Videos&&item.Videos.length)}})
+        </view>
+            </scroll-view>
+        </view>
+        <view id="imgs">
+            <scroll-view scrollWithAnimation scrollY bindscroll="handleScroll" bindscrolltolower="scrolltolower" bindscrolltoupper="scrolltoupper" class="imgs-container" scrollIntoView="{{scrollIntoView}}" style="height: calc(100vh - {{navH}}px - 90rpx)">
+                <view class="category-item" id="{{item.id}}" wx:for="{{imgs}}" wx:key="index">
+                    <view class="category-name">
+                        <text> {{item.PhotoTypeName}}({{(item.PhotoUrlList&&item.PhotoUrlList.length)+(item.Videos&&item.Videos.length)}})</text>
+                    </view>
+                    <view class="category-url-wrap">
+                        <view class="category-url video-wrap" wx:for="{{item.Videos}}" wx:for-index="videoIndex" wx:for-item="videoItem" wx:key="videoIndex">
+                            <image catch:tap="previewVideo" class="play-icon" data-selector="albumVideo-{{item.photoType}}-{{videoIndex}}" src="/resource/comment/lpxq_icon_video@3x.png"></image>
+                            <video autoPauseIfNavigate autoPauseIfOpenNative showMuteBtn vslideGesture bindfullscreenchange="fullScreenChange" class="url-item" controls="{{showControls}}" id="albumVideo-{{item.photoType}}-{{videoIndex}}" objectFit="fit" poster="{{videoItem.PhotoUrl}}" showCenterPlayBtn="{{false}}" src="{{videoItem.VideoUrl}}"></video>
+                        </view>
+                        <view class="category-url" wx:for="{{item.PhotoUrlList}}" wx:for-index="urlIndex" wx:for-item="url" wx:key="urlIndex">
+                            <image webp catch:tap="previewImage" class="url-item" data-index="{{index}}" data-url="{{url}}" mode="aspectFill" src="{{url+'?x-oss-process=image/format,webp/resize,w_375'}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </block>
+    <empty-view isReveal="{{imgs.length<=0}}" tipsText="暂无图片" wx:else></empty-view>
+</view>
+<skeleton active row="{{[ {width:'100vw',height:' 100vh'} ]}}" wx:else></skeleton>

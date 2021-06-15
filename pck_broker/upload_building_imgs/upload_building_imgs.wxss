@@ -1,0 +1,147 @@
+.img-type {
+    display: flex;
+    align-items: center;
+    margin: 0 30rpx;
+    padding: 31rpx 0 22rpx;
+    border-bottom: 2rpx solid #ededed;
+    font-size: 30rpx;
+}
+
+.img-type-left {
+    flex: 1;
+    line-height: 42rpx;
+    font-weight: 500;
+    color: #333;
+}
+
+.img-type-right {
+    display: flex;
+    align-items: center;
+    color: #333;
+}
+
+.arrow {
+    margin-left: 17rpx;
+    width: 11rpx;
+    height: 20rpx;
+}
+
+.type {
+    padding-left: 30rpx;
+}
+
+.upload-img-container {
+    padding: 0 30rpx;
+}
+
+.label {
+    display: table;
+    margin: 34rpx 0 33rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.asterisk,.limit,.title {
+    display: table-cell;
+}
+
+.asterisk {
+    color: #ed5432;
+}
+
+.limit {
+    margin-left: 8rpx;
+    font-size: 22rpx;
+    color: #8a969e;
+    vertical-align: bottom;
+}
+
+.upload-imgs-list {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.upload-imgs-item {
+    position: relative;
+    box-sizing: border-box;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+    width: 140rpx;
+    height: 140rpx;
+    border: 2rpx solid #f0f0f0;
+    border-radius: 4rpx;
+    background-color: #f9f9f9;
+    color: #d4d4d4;
+    font-size: 70rpx;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.img {
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.plus {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40rpx;
+    height: 40rpx;
+    transform: translate(50%,-50%);
+    border-radius: 50%;
+    background-color: #f25643;
+    color: #fff;
+}
+
+.line {
+    width: 22rpx;
+    border: 2rpx solid #fff;
+}
+
+.rule-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15rpx;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    font-family: PingFang-SC-Regular,PingFang-SC;
+    color: #16374d;
+}
+
+.rule-item-tip {
+    color: #fe5e10;
+}
+
+.footer {
+    position: fixed;
+    bottom: 60rpx;
+    margin: 0 30rpx;
+    width: calc(100% - 60rpx);
+    height: 90rpx;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90rpx;
+    background-color: #fe5e10;
+    border-radius: 4rpx;
+    font-size: 34rpx;
+    color: #fff;
+}

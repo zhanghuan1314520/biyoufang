@@ -1,0 +1,8 @@
+<view class="skeleton-wrapper">
+    <view class="skeleton">
+        <view class="avatar {{'avatar_'+avatarShape}} {{active?'active':''}}" style="width:{{avatarSize}}" wx:if="{{avatar}}"></view>
+        <view class="skeleton-list" wx:if="{{row&&row.length}}">
+            <view class="skeleton-item {{active?'active':''}}" style="width:{{item.width}};height:{{item.height}};margin:{{item.margin}}" wx:for="{{row}}" wx:key="idx"></view>
+        </view>
+    </view>
+</view>

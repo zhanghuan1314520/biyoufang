@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "back-home": "/components/back_home/back_home",
+        "lottery-status-card": "/components/lottery/lottery-status-card/lottery-status-card",
+        "building-card": "/components/base/building-card/building-card",
+        "lottery-register-dialog": "/components/lottery/lottery-register-dialog/lottery-register-dialog",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

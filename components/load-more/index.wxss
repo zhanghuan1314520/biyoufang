@@ -1,0 +1,45 @@
+.loadmore-wrap {
+    min-height: 1px;
+}
+
+.load-more {
+    height: 80rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+}
+
+.icon {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.no-more {
+    color: #666;
+}
+
+.active {
+    animation: weuiLoading .6s steps(12) infinite;
+}
+
+@-webkit-keyframes weuiLoading {
+    0% {
+        transform: rotate3d(0,0,1,0deg);
+    }
+
+    100% {
+        transform: rotate3d(0,0,1,1turn);
+    }
+}
+
+@keyframes weuiLoading {
+    0% {
+        transform: rotate3d(0,0,1,0deg);
+    }
+
+    100% {
+        transform: rotate3d(0,0,1,1turn);
+    }
+}

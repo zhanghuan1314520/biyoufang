@@ -1,0 +1,106 @@
+<view class="market" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="必有房" needBackBtn="{{false}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="nav-menu-pos">
+        <view class="nav-menu" style="top:{{navH}}px;">
+            <nav-menu bind:toggleNavMenu="toggleNavMenu" navMenuList="{{navMenuList}}"></nav-menu>
+        </view>
+    </view>
+    <block wx:if="{{navMenuList[0].isActived}}">
+        <view class="banner__wrap" wx:if="{{bannerList&&bannerList.length>0}}">
+            <market_swiper bannerList="{{bannerList}}" id="bannerList"></market_swiper>
+        </view>
+        <category-card bind:cardOperate="cardOperate" cardInfo="{{item}}" wx:for="{{hotCardinfo}}" wx:key="index"></category-card>
+        <view class="module__head">最新文章</view>
+        <article-list home="{{true}}" id="articleList" wx:if="{{hasCheckedAudit}}"></article-list>
+    </block>
+    <block wx:if="{{navMenuList[1].isActived}}">
+        <view class="question-search-outbox">
+            <view class="question-search-box" style="top:{{navH+40}}px;">
+                <view class="question-search">
+                    <view bind:tap="goQaQueryPage" class="question-input">
+                        <image class="question-input__prepend" mode="aspectFill" src="/resource/search_i.png"></image>
+                        <view class="question-input__inner">
+                            <text>搜索问题或标签</text>
+                        </view>
+                    </view>
+                    <view bind:tap="goQaQueryPage" class="question-input__tip">
+                        <text>搜索</text>
+                    </view>
+                </view>
+                <view class="menu-list">
+                    <view bind:tap="toggelDropdownMenu" class="menu-item {{item.isActived?'menu-item_active':''}}" data-id="{{item.id}}" data-type="openDropdownMenu" wx:for="{{dropdownMenuInfo.dropdownMenuList}}" wx:key="index">
+                        <view class="menu-item-tab">{{item.statusName?item.statusName:item.name}}</view>
+                        <view class="arrow-down"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view animation="{{dropdownMenuAnimation}}" class="dropdown-menu {{dropdownMenuInfo.dropdownMenuList[0].isSelected||dropdownMenuInfo.dropdownMenuList[1].isSelected?'dropdown-menu_show':'dropdown-menu_hide'}}">
+            <view class="dropdown-menu-title">
+                <view class="menu-type-list">
+                    <view bind:tap="toggelDropdownMenu" class="menu-type-item {{dropdownMenuType.isActived?'menu-type-item_active':''}}" data-id="{{dropdownMenuType.id}}" data-type="selectDropdownMenu" wx:for="{{dropdownMenuInfo.dropdownMenuList}}" wx:for-index="pos" wx:for-item="dropdownMenuType" wx:key="id">
+                        <view class="menu-type-item-tab">{{!dropdownMenuType.canMultiple&&dropdownMenuType.statusName?dropdownMenuType.statusName:dropdownMenuType.name}}</view>
+                        <view class="arrow-down"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="dropdown-menu-content">
+                <view class="dropdown-menu-list {{dropdownMenuInfo.dropdownMenuList[1].isSelected?'dropdown-menu-list_full':''}}">
+                    <view catch:tap="changeDropdownMenuItemStatus" class="dropdown-menu-item {{'dropdown-menu-item_'+dropdownMenu.size}} {{dropdownMenu.isActived?'dropdown-menu-item_'+dropdownMenu.size+'_actived':''}} {{idx%4!==3?'mr20':''}}" data-category="{{dropdownMenu.category}}" data-id="{{dropdownMenu.id}}" wx:for="{{dropdownMenuInfo[dropdownMenuInfo.dropdownMenuList[0].isSelected?dropdownMenuInfo.dropdownMenuList[0].type:dropdownMenuInfo.dropdownMenuList[1].type]}}" wx:for-index="idx" wx:for-item="dropdownMenu" wx:key="idx">
+                        <view class="">{{dropdownMenu.name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="dropdown-menu-footer">
+                <view class="btn-list">
+                    <view bind:tap="operateBtn" class="btn-item btn-item_reset" data-type="cancel">
+                        <text>重置</text>
+                    </view>
+                    <view bind:tap="operateBtn" class="btn-item btn-item_confirm" data-type="confirm">
+                        <view>确定</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="qa-list" wx:if="{{questionList&&questionList.length}}">
+            <view class="qa-item" wx:for="{{questionList}}" wx:key="index">
+                <question-card bind:operateQuestionCardInfo="operateQuestionCardInfo" questionCardInfo="{{item}}" showBottomLine="{{false}}" userInfo="{{userInfo}}"></question-card>
+            </view>
+            <load-more id="loadMore" loadFlag="{{qaInfo.canLoadMore}}" loadText="{{'加载中...'}}" noMoreFlag="{{!qaInfo.canLoadMore}}" screenShow="{{questionList.length}}"></load-more>
+        </view>
+        <block wx:else>
+            <view class="no-qa" wx:if="{{showQaListNormal}}">
+                <block wx:if="{{userInfo.UserType===0}}">
+                    <image class="no-qa-image-type1" mode="aspectFill" src="{{imageRoot}}/images_wx/default_graph/qa_user_null_quiz.png"></image>
+                    <view class="no-qa-txt-type1">我们为你安排了百位专业人士待命</view>
+                    <view class="no-qa-txt-type1">只为解决你的买房难题</view>
+                    <view class="no-qa-txt-type2">点击右下角，马上提问</view>
+                </block>
+                <block wx:else>
+                    <image class="no-qa-image-type1" mode="aspectFill" src="{{imageRoot}}/images_wx/default_graph/myqa_answer_null@2x.png"></image>
+                    <view class="no-qa-txt-type1">坐等客户提问</view>
+                    <view class="no-qa-txt-type1">第一时间把你懂的买房知识</view>
+                    <view class="no-qa-txt-type1">告诉想知道的人吧</view>
+                </block>
+            </view>
+            <view class="no-qa" wx:else>
+                <image class="no-qa-image-type1" mode="aspectFill" src="{{imageRoot}}/images_wx/default_graph/null@3x.png"></image>
+                <view class="no-qa-txt-type1">暂无你想要的结果</view>
+            </view>
+        </block>
+        <UserAuthorize authPhoneNumber authUserInfo bind:proxySuccess="goQuestionPage" userInfo="{{userInfo}}" wx:if="{{userInfo.UserType===0||!consultantBelongCurrentCity}}">
+            <view class="btn_goQuestion">
+                <image class="icon_question" mode="aspectFill" src="/resource/qa/youliao_icon_ask@3x.png"></image>
+          提问
+        </view>
+        </UserAuthorize>
+    </block>
+    <block wx:elif="{{navMenuList[2].isActived}}">
+        <view class="blank"></view>
+        <moment bindcanPublish="canPublish" bindnomoment="childNomoment" bindpublish="addNews" comptype="2" id="momentsNode"></moment>
+        <image bindtap="addNews" class="add-news" mode="aspectFill" src="/resource/my_states/youliao_icon_adddynamic@3x.png" wx:if="{{consultantStatus&&showAddMomentBtn}}"></image>
+    </block>
+    <view bindtap="closeMask" class="mask" wx:if="{{showMask}}"></view>
+</view>

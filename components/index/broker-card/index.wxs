@@ -1,0 +1,7 @@
+function strToFixed(name) {
+    if (!name) return;;
+    return (name.slice(0, 3))
+};
+module.exports = ({
+    strToFixed: strToFixed,
+});

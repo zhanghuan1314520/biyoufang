@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "moment_item": "/components/myStates/moment_item/moment_item",
+        "dialog": "/components/myStates/state-dialog/state-dialog",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

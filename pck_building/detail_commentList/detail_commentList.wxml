@@ -1,0 +1,19 @@
+<view class="detail" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="楼盘点评"></nav-bar>
+    </view>
+    <view class="comment-list" wx:if="{{true}}">
+        <view bindtap="goToDetail" class="comment-item" data-item="{{item}}" wx:for="{{list}}" wx:key="index">
+            <comment-card bind:operateCommentCardInfo="operateCommentCardInfo" commentCardInfo="{{item}}"></comment-card>
+        </view>
+    </view>
+    <view class="footer {{showCommentDialog?'footer_hidden':'footer_show'}}">
+        <view bind:tap="goCommentPage" class="btn_comment">
+            <text>写评论</text>
+        </view>
+    </view>
+    <ReplyComment bind:replySuccess="handleReplySuccess" commentId="{{replayCommentParams.commentId}}" id="ReplyComment" parentId="{{replayCommentParams.parentId}}" placeholder="{{replayCommentParams.placeholder}}" unionId="{{replayCommentParams.unionId}}" userInfo="{{userInfo}}"></ReplyComment>
+    <view class="data__empty" wx:if="{{list.length===0&&!loading}}">
+        <image class="data__empty-img" src="/resource/null.png"></image>
+    </view>
+</view>

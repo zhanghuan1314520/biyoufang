@@ -1,0 +1,145 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.container,page {
+    min-height: 100%;
+    transition: padding-top .5s;
+    background-color: #f2f2f2;
+}
+
+.container {
+    box-sizing: border-box;
+}
+
+.preview-view {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navigation {
+    width: 100%;
+    height: 396rpx;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    background-color: #e6e6e6;
+}
+
+.brand-info {
+    position: relative;
+    padding: 46rpx 46rpx 70rpx;
+    box-sizing: border-box;
+    top: -36rpx;
+    background-color: #fff;
+    border-radius: 40rpx 40rpx 0 0;
+}
+
+.brand-info .brand-focus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 59rpx;
+    transform: translateY(-50%);
+    width: 84rpx;
+    height: 84rpx;
+    background-color: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.brand-info .brand-focus .focus-btn {
+    width: 78rpx;
+    height: 78rpx;
+}
+
+.brand-info .brand-focus .focus-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.brand-info .brand-name {
+    font-size: 48rpx;
+    color: #333;
+    padding-bottom: 30rpx;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.brand-info .fixed-height {
+    height: 138rpx;
+}
+
+.brand-info .fixed-height::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 46rpx;
+    background: linear-gradient(180deg,hsla(0,0%,100%,.7),#fff);
+    width: 100%;
+}
+
+.brand-info .brand-introduc {
+    font-size: 28rpx;
+    color: #666;
+    line-height: 50rpx;
+    position: relative;
+    overflow: hidden;
+    transition: height .5s;
+}
+
+.brand-info .ppg-more {
+    text-align: center;
+    padding-top: 15rpx;
+}
+
+.brand-info .ppg-more .ppg-more_icon {
+    width: 30rpx;
+    height: 30rpx;
+    transition: transform .5s;
+    transition: transform .5s,-webkit-transform .5s;
+    transform-origin: center;
+}
+
+.brand-info .ppg-more .expansion {
+    transform: rotate(-180deg);
+}
+
+.brand-info::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: 40rpx;
+    border-radius: 40rpx 40rpx 0 0;
+    background-color: #f2f2f2;
+}
+
+.building-wrap {
+    padding: 0 28rpx;
+    background-color: #f2f2f2;
+    transform: translateY(-30rpx);
+}
+
+.none-more {
+    font-size: 28rpx;
+    color: #666;
+    text-align: center;
+    padding: 20rpx;
+}
+
+.data__empty-img {
+    padding-top: 50rpx;
+}

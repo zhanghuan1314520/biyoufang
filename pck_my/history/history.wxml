@@ -1,0 +1,16 @@
+<view class="contener" style="padding-top:{{navH}}px">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="浏览历史" showBackHome="{{true}}" showShare="{{false}}"></nav-bar>
+    <view class="main" wx:if="{{pageStatus===1}}">
+        <view class="main-list" wx:for="{{recentViewList}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="operateBuildingCardInfo" buildingCardInfo="{{item.buildingInfo}}"></building-card>
+        </view>
+        <view class="main-bottom">已经到底了</view>
+    </view>
+    <view class="none flex1" wx:if="{{pageStatus===2}}">
+        <view class="none-img flex-cont">
+            <image lazyLoad="true" src="{{nullImg}}"></image>
+        </view>
+        <view class="none-text">还没有心仪的楼盘？</view>
+        <view bindtap="checkBuilding" class="none-but">去看看有没有值得买的楼盘 ></view>
+    </view>
+</view>

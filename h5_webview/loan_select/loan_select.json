@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "loanToast": "/h5_webview/loan_toast/loan_toast",
+        "pickView": "/h5_webview/pick_view/pick_view",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

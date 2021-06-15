@@ -1,0 +1,69 @@
+<view class="building-intro-wrapper">
+    <view class="building-info">
+        <view class="detail-intro-info">
+            <view class="bulding-name">
+                <view class="main-name">
+                    <text>{{project.buildingName}}</text>
+                </view>
+                <view class="alias" wx:if="{{project.OtherName}}">
+                    <text>别名：{{project.OtherName}}</text>
+                </view>
+            </view>
+            <view class="building-features">
+                <view class="building-tags">
+                    <view class="building-tags-box">
+                        <view class="building-status">
+                            <text>{{project.buildingStatusText}}</text>
+                        </view>
+                        <view class="building-type" wx:if="{{project.propertyTypeText}}">
+                            <text>{{project.propertyTypeText}}</text>
+                        </view>
+                        <block wx:if="{{project.BuildingTags&&project.BuildingTags.length}}">
+                            <view class="buildingt-tag ml10" wx:for="{{project.BuildingTags}}" wx:key="index">
+                                <text>{{item}}</text>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class="building-price">
+                <view class="total-price">
+                    <text>{{tools.formatePrice(project.totalPriceText)}}</text>
+                </view>
+                <view class="past" wx:if="{{project.showPastText}}">
+                    <text>（参考价格）</text>
+                </view>
+                <view class="average-price">
+                    <text>{{project.averagePriceText}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="btn-list" wx:if="{{project.subscribtBtnInfo}}">
+            <UserAuthorize authPhoneNumber authUserInfo bindproxySuccess="openSubscribedDialog" userInfo="{{userInfo}}">
+                <view class="btn-item">
+                    <view class="subscribed-btn {{project.subscribtBtnInfo.isSubscribed?'active-remind':''}}">
+                        <image class="icon_remind" src="{{project.subscribtBtnInfo.isSubscribed?subscribedIcon['reminded']:subscribedIcon['unremind']}}" style="{{project.subscribtBtnInfo.isSubscribed?'left: 45rpx':'left: 3rpx'}}"></image>
+                    </view>
+                    <text class="btn-item__text {{project.subscribtBtnInfo.isSubscribed?'btn-item__text_untap':''}}">{{project.subscribtBtnInfo.subscribtStatusText}}</text>
+                </view>
+            </UserAuthorize>
+        </view>
+    </view>
+    <view class="info-layout">
+        <view class="info-content">
+            <view class="coupon-info" wx:if="{{project.PreferentialInfo}}">
+                <image class="icon_coupon" src="/resource/base/loupan_icon_hui@3x.png"></image>
+                <view class="coupon-list">
+                    <view class="coupon-item">
+                        <text>{{project.PreferentialInfo}}</text>
+                    </view>
+                </view>
+            </view>
+            <view bind:tap="operateBtn" class="building-addresss" data-type="goMapPage" wx:if="{{project.DistrictName||project.Address}}">
+                <view class="addresss">【{{project.DistrictName}}】{{project.Address}}</view>
+                <image class="icon_arrow-right" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../../utils/wxs/formatData.wxs" />

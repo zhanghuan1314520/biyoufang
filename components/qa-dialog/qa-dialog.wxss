@@ -1,0 +1,61 @@
+.ad-mask {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(65,65,65,.9);
+}
+
+.main {
+    width: 650rpx;
+    min-height: 200rpx;
+    margin: 390rpx auto 0;
+    background: #fff;
+    border-radius: 8rpx;
+    padding: 34rpx 30rpx 112rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.main,.title {
+    text-align: center;
+}
+
+.title {
+    font-size: 38rpx;
+    font-weight: 500;
+    color: #062941;
+    line-height: 53rpx;
+}
+
+.main-txt {
+    font-size: 28rpx;
+    font-family: PingFang-SC-Regular,PingFang-SC;
+    font-weight: 400;
+    color: #333;
+    line-height: 40rpx;
+    text-align: center;
+    margin: 95rpx auto 61rpx;
+}
+
+.jump-btn,.num {
+    color: #fe5e10;
+}
+
+.jump-btn {
+    display: inline-block;
+    font-size: 32rpx;
+    line-height: 45rpx;
+    text-align: center;
+    border-bottom: 2rpx solid #fe5e10;
+}
+
+.close-btn {
+    position: absolute;
+    right: 21rpx;
+    top: 15rpx;
+    width: 40rpx;
+    height: 40rpx;
+}

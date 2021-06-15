@@ -1,0 +1,117 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.news-card {
+    display: flex;
+    padding: 28rpx 0;
+}
+
+.news-card .card-left {
+    width: 148rpx;
+    padding: 32rpx 0 0 32rpx;
+    box-sizing: border-box;
+}
+
+.news-card .card-left .day {
+    font-size: 38rpx;
+    color: #333;
+    font-weight: 500;
+    font-family: PingFangSC-Medium,PingFang SC;
+    line-height: 1;
+    padding-bottom: 14rpx;
+}
+
+.news-card .card-left .date {
+    font-size: 24rpx;
+    color: #999;
+    font-family: PingFangSC-Regular,PingFang SC;
+    line-height: 1;
+}
+
+.news-card .card-right {
+    flex: 1;
+    margin-right: 32rpx;
+    background: #f5f5f5;
+    border-radius: 14rpx;
+    padding: 32rpx;
+}
+
+.news-card .card-right .title {
+    font-size: 32rpx;
+    color: #333;
+    font-family: PingFangSC-Medium,PingFang SC;
+    line-height: 38rpx;
+    font-weight: 500;
+    padding-bottom: 12rpx;
+}
+
+.news-card .card-right .content {
+    font-size: 24rpx;
+    color: #666;
+    position: relative;
+    font-family: PingFangSC-Regular,PingFang SC;
+    line-height: 40rpx;
+    max-height: 200rpx;
+    min-height: 40rpx;
+    transition: max-height .4s ease-out;
+    overflow: hidden;
+    text-align: justify;
+}
+
+.news-card .card-right .content .unfold-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #ef7001;
+}
+
+.news-card .card-right .content::after {
+    content: " ";
+    display: inline-block;
+    width: 48rpx;
+}
+
+.news-card .card-right .new-imgs {
+    padding-top: 22rpx;
+}
+
+.news-card .card-right .new-imgs .new-img {
+    width: 158rpx;
+    height: 158rpx;
+    margin-right: 16rpx;
+    margin-bottom: 10rpx;
+    border-radius: 8rpx;
+    background-color: #e6e6e6;
+    vertical-align: top;
+}
+
+.news-card .card-right .new-imgs .new-img:nth-of-type(3n) {
+    margin-right: 0;
+}
+
+.news-card .card-right .unfolded-btn {
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    color: #ef7001;
+    justify-content: flex-end;
+    font-family: PingFangSC-Regular,PingFang SC;
+    height: 0;
+    opacity: 0;
+    transition: height .4s ease-out;
+    overflow: hidden;
+}
+
+.news-card .card-right .unfolded-btn-show {
+    opacity: 1;
+    height: 40rpx;
+}
+
+.news-card .card-right .transition-height {
+    max-height: 600rpx;
+}

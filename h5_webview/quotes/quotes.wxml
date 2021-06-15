@@ -1,0 +1,9 @@
+<view class="quotes" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="行情数据"></nav-bar>
+    <view class="online__tip">
+        <image class="online__tip-image" src="/h5_webview/images/quotes/hqsj_img@3x.png"></image>
+        <view class="online__tip-title">即将上线</view>
+        <view class="online__tip-description">如有特别想了解的数据，可以在此<text bind:tap="feedback" class="online__tip-description-feedback">反馈需求</text>
+        </view>
+    </view>
+</view>

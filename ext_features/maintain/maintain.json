@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

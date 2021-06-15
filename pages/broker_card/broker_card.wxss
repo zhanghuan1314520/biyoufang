@@ -1,0 +1,637 @@
+page {
+    width: 750rpx;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+.customer {
+    padding-bottom: 28rpx;
+}
+
+.customer__card {
+    position: relative;
+    background: #fff;
+    box-shadow: 0 2rpx 28rpx 0 hsla(0,0%,78%,.5);
+    border-radius: 12rpx;
+    margin: -60rpx 30rpx 0;
+    overflow: hidden;
+}
+
+.customer-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180rpx;
+    background: linear-gradient(180deg,rgba(0,0,0,.5),hsla(0,0%,64.3%,0));
+}
+
+.customer__card-name-handler {
+    position: absolute;
+    right: 30rpx;
+    top: 170rpx;
+    z-index: 5;
+    display: block;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.customer__card-wrap {
+    position: relative;
+    z-index: 1;
+    padding: 30rpx;
+    background: #e1c48d;
+}
+
+.customer__card-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customer__card-image-container {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 500rpx;
+    overflow: hidden;
+}
+
+.customer__card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.customer__card-phone {
+    display: flex;
+    align-items: center;
+    margin-top: 21rpx;
+}
+
+.customer__card-cells {
+    padding: 0 50rpx;
+}
+
+.customer__card-cell {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.customer__card-cell>view {
+    padding: 30rpx 0;
+}
+
+.customer__card-cell>view:nth-of-type(2) {
+    flex: 1;
+    border-bottom: 1rpx solid #f0f0ea;
+    position: relative;
+}
+
+.customer__card-cell-name {
+    width: 140rpx;
+    font-size: 28rpx;
+    height: 34rpx;
+    line-height: 34rpx;
+    color: #888;
+    padding: 0 28rpx 0 0;
+}
+
+.customer__card-cell-name::after {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    content: "";
+    vertical-align: top;
+}
+
+.customer__card-cell-content {
+    flex: 1;
+    font-size: 28rpx;
+    min-height: 34rpx;
+    line-height: 34rpx;
+    color: #353a40;
+    overflow: hidden;
+}
+
+.content-wrap {
+    text-overflow: none;
+    white-space: normal;
+    line-height: 42rpx;
+}
+
+.customer__card-cell-link {
+    font-size: 28rpx;
+    line-height: 32rpx;
+    color: #fe5e10;
+}
+
+.customer__card-cell-link.inline {
+    display: inline-block;
+}
+
+.customer__card-cell-local {
+    margin-left: 14rpx;
+    width: 25rpx;
+    height: 32rpx;
+}
+
+.card__handlers {
+    position: relative;
+    display: flex;
+    background: #ecd5a4;
+}
+
+.card__handler {
+    flex: 1;
+    box-sizing: border-box;
+    padding-top: 32rpx;
+    position: relative;
+}
+
+.card__handler-icon {
+    display: block;
+    width: 60rpx;
+    height: 60rpx;
+    margin: 0 auto;
+}
+
+.card__handler-name {
+    text-align: center;
+    margin-top: 12rpx;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: #693308;
+    padding-bottom: 20rpx;
+}
+
+.card__handler button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+}
+
+.broker-info {
+    background: #f8f8f8;
+    text-align: center;
+    padding: 17rpx 0 31rpx;
+}
+
+.broker-name {
+    font-size: 50rpx;
+    line-height: 64rpx;
+    font-weight: 700;
+    color: #333;
+}
+
+.icon_broker {
+    margin-left: 8rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.consult-wave {
+    display: block;
+    width: 100%;
+    height: 82rpx;
+}
+
+.broker-info_intro {
+    z-index: 2;
+    margin: 40rpx 30rpx 0;
+    padding-top: 20rpx;
+    padding-bottom: 26rpx;
+    width: 690rpx;
+    background-color: #fff;
+    border-radius: 4px;
+    transition: height .3s ease;
+}
+
+.brokder-info__header {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    height: 230rpx;
+    text-align: left;
+}
+
+.brokder-info__header-box {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    box-sizing: border-box;
+    padding: 20rpx 20rpx 30rpx 30rpx;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.broker-info_intro-cardImg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 4rpx 4rpx 0 0;
+}
+
+.broker-info_intro-cardImg>image {
+    width: 100%;
+    height: 100%;
+    border-radius: 4rpx 4rpx 0 0;
+}
+
+.avator_icon {
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 50%;
+}
+
+.broker-detail {
+    flex: 1;
+    margin-left: 25rpx;
+}
+
+.broker-brief-detail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60rpx;
+}
+
+.broker-name {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #90470d;
+}
+
+.broker-info_share {
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    padding: 0;
+    background: #eaeef8;
+    opacity: .7;
+}
+
+.broker-info_share,.broker-info_share-icon {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.broker-wx {
+    display: flex;
+    margin: 13rpx 0 0;
+    font-size: 24rpx;
+    font-weight: 500;
+    color: #90470d;
+}
+
+.broker-wx_content {
+    margin-left: 10rpx;
+}
+
+.copy-wx {
+    margin-right: 20rpx;
+    padding: 0 10rpx;
+    color: #c38402;
+}
+
+.broker-building {
+    display: flex;
+    margin-top: 20rpx;
+    font-size: 24rpx;
+    font-weight: 500;
+    color: #336895;
+}
+
+.broker-building-box {
+    width: 100%;
+}
+
+.building-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.building-building_content {
+    padding: 0 10rpx;
+    background: #faf2e2;
+    color: #c38402;
+    font-size: 20rpx;
+    line-height: 32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10rpx 10rpx 0;
+    width: 156rpx;
+    border-radius: 2rpx;
+}
+
+.building-building_content text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.broker-info__content {
+    padding: 20rpx 20rpx 25rpx 30rpx;
+    font-size: 28rpx;
+    color: #90470d;
+    background: #ecd5a4;
+}
+
+.broker-intro_text {
+    display: flex;
+    align-items: center;
+    min-height: 48rpx;
+    line-height: 48rpx;
+    font-size: 28rpx;
+    color: #90470d;
+    text-align: left;
+}
+
+.arrow_right {
+    margin-left: 10rpx;
+    width: 24rpx;
+    height: 30rpx;
+    opacity: .5;
+}
+
+.broker-intro_text_ellipsis {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.broker-intro_text_hidden {
+    position: fixed;
+    left: 0;
+    bottom: -1000rpx;
+    padding: 0 43rpx;
+    line-height: 48rpx;
+    font-size: 28rpx;
+    text-align: left;
+    color: #333;
+}
+
+.look-more {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin: 0 auto;
+    font-size: 20rpx;
+    line-height: 28rpx;
+    color: #c38402;
+}
+
+.look-more__text {
+    padding: 10rpx 20rpx;
+}
+
+.building-card {
+    margin-top: 20rpx;
+}
+
+.building-card-title {
+    padding: 30rpx 30rpx 20rpx;
+    font-size: 38rpx;
+    font-weight: 500;
+    color: #333;
+}
+
+.line {
+    margin: 0 30rpx;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.moments {
+    padding: 0 30rpx;
+}
+
+.moments__header {
+    margin: 30rpx 0 10rpx;
+    line-height: 53rpx;
+    font-size: 38rpx;
+    color: #333;
+    font-weight: 500;
+    font-family: PingFangSC-Medium,PingFang SC;
+}
+
+.moments__list {
+    padding-bottom: 150rpx;
+}
+
+.no-monent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-moment-tip {
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+    font-size: 24rpx;
+    color: #95a5ae;
+}
+
+.btn-share-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-share-item {
+    font-size: 24rpx;
+    color: #fe5e10;
+    text-decoration: underline;
+}
+
+.btn_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 80rpx;
+    z-index: 3;
+    padding: 9rpx;
+    background: #fff;
+    box-shadow: 0 -6rpx 4rpx rgba(226,229,231,.24);
+}
+
+.is-ipx {
+    padding-bottom: 30rpx;
+}
+
+.no-ipx {
+    padding-bottom: 9rpx;
+}
+
+.btn_fav {
+    position: relative;
+    display: flex;
+    flex: 1;
+}
+
+.btn_left,.form_submit {
+    width: 100%;
+    height: 100%;
+}
+
+.btn_left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_submit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    padding: 0;
+    background: transparent;
+    z-index: 1;
+}
+
+.fav-icon {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.follow_tip {
+    width: 70rpx;
+    font-size: 22rpx;
+    color: #042842;
+    text-align: center;
+}
+
+.btn-list {
+    display: flex;
+}
+
+.btn-item_left {
+    background: linear-gradient(270deg,#fcae51,#ffbc00);
+}
+
+.btn-item_left,.btn-item_right {
+    position: relative;
+    display: flex;
+    flex: 1;
+    margin-right: 20rpx;
+    width: 260rpx;
+    border-radius: 4rpx;
+}
+
+.btn-item_right {
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+}
+
+.btn_title {
+    background: transparent;
+    width: 100%;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: 500;
+    line-height: 42rpx;
+    margin: 0;
+    padding: 6rpx 0 0;
+}
+
+.btn_sub-title {
+    font-size: 20rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.customer__Tmain-name {
+    font-size: 60rpx;
+    font-weight: 500;
+    color: #90470d;
+    line-height: 60rpx;
+    margin-right: 16rpx;
+}
+
+.customer__Tmain-icon {
+    background: linear-gradient(90deg,#ffd48a,#ffedb8);
+    border-radius: 0 100rpx 100rpx 0;
+    position: relative;
+    font-size: 20rpx;
+    color: #c18102;
+    line-height: 30rpx;
+    text-align: center;
+    width: 110rpx;
+    margin-left: 10rpx;
+}
+
+.customer__Tmain-icon>image {
+    position: absolute;
+    width: 34rpx;
+    height: 34rpx;
+    left: -17rpx;
+    top: -2rpx;
+}
+
+.customer__card-close {
+    width: 123rpx;
+    background: #faf2e2;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+    color: #90470d;
+    line-height: 50rpx;
+    text-align: center;
+}
+
+.customer__card-phone {
+    font-size: 32rpx;
+    color: #90470d;
+    line-height: 65rpx;
+    text-align: left;
+}
+
+.customer__card-buildname {
+    border-radius: 2rpx;
+    font-size: 20rpx;
+    color: #c38402;
+    line-height: 30rpx;
+    margin-bottom: 10rpx;
+    margin-right: 10rpx;
+    padding: 0 10rpx;
+    background: hsla(0,0%,98%,.68);
+    width: 160rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.customer__card-buildname text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.my-building-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ellipse,.my-ellipse {
+    color: #c38402;
+}
+
+.my-ellipse {
+    line-height: 28rpx;
+}

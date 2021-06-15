@@ -1,0 +1,22 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "project-list": "/components/project_list/project_list",
+        "ad": "/components/index/ad/ad",
+        "qaToast": "/components/qa-dialog/qa-dialog",
+        "article-card": "/components/index/article-card/article-card",
+        "building-stats": "/components/index/building-stats/building-stats",
+        "broker-card": "/components/index/broker-card/index",
+        "lottery-status-card": "/components/lottery/lottery-status-card/lottery-status-card",
+        "lottery-register-dialog": "/components/lottery/lottery-register-dialog/lottery-register-dialog",
+        "skeleton": "/components/base/skeleton/skeleton",
+        "advert-banner": "/components/advert-banner/index",
+        "nouse-statistics": "/components/index/nouse-statistics/index",
+        "building-card": "/components/index/building-card/index",
+        "venue-category": "/components/index/venue-category/index",
+        "building-tab": "/components/index/building-tab/index",
+        "articleCategory": "/components/index/articleCategory/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

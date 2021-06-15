@@ -1,0 +1,24 @@
+<view class="maintain" style="padding-top: {{navH}}px;">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%);" isTransparent="{{true}}" navBarTitle="必有房" needBackBtn="{{false}}" showBackHome="{{false}}" showShare="{{false}}"></nav-bar>
+    <view class="upgrade-dialog-mask"></view>
+    <view class="upgrade-dialog">
+        <view class="upgrade-dialog-header" style="background-image:url({{bgImgUrl}});">
+            <text>维护升级公告</text>
+        </view>
+        <view class="upgrade-dialog-content">
+            <text class="{{index===1?'acticed':''}}" wx:for="{{tipList}}" wx:key="index">{{item}}</text>
+        </view>
+        <view class="upgrade-dialog-footer">
+            <view class="contact">
+                <div class="line line_left"></div>
+                <text class="contact__text">更多问题可咨询必有房客服</text>
+                <div class="line line_right"></div>
+            </view>
+            <view class="wx">
+                <button class="btn_getUserInfo btn_reset" openType="contact">
+                    <text class="wx__text">微信号:biyf001</text>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>

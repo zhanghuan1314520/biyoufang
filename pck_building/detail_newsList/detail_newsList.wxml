@@ -1,0 +1,10 @@
+<view class="detail" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="楼盘快讯" type="album"></nav-bar>
+    <view class="news__list-wrap">
+        <news-card info="{{item}}" wx:for="{{list}}" wx:key="index"></news-card>
+    </view>
+    <view class="data__empty" wx:if="{{list.length===0&&!loading}}">
+        <image class="data__empty-img" src="{{imgsPathInfo&&imgsPathInfo.rootPath+'/images_wx/default_graph/null.png'}}"></image>
+    </view>
+    <load-more id="loadMore" loadFlag="{{canLoadMore}}" noMoreFlag="{{!canLoadMore}}" screenShow="{{list.length}}"></load-more>
+</view>

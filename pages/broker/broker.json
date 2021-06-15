@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "project-list-item": "/components/project_list_item/project_list_item",
+        "project-basic-info": "/components/project_basic_info/project_basic_info",
+        "broker_item": "/components/broker_module/broker_item/broker_item",
+        "building-card": "/components/base/building-card/building-card",
+        "ShareButton": "/components/common/Buttons/ShareButton/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

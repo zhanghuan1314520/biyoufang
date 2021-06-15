@@ -1,0 +1,59 @@
+<view class="lottery-register-dialog">
+    <view class="dialog-header">
+        <view class="title">
+            <text class="title__text">订阅摇号结果</text>
+            <text class="sub-title__text">摇号时间和结果，我们将短信通知您</text>
+        </view>
+    </view>
+    <view class="dialog-body">
+        <form class="boc-form">
+            <view class="boc-form-item">
+                <view class="boc-form-item__label">
+                    <text>登记编号</text>
+                </view>
+                <view class="boc-form-item__content">
+                    <view class="boc-input">
+                        <input bindblur="validateInput" bindinput="getInputValue" class="boc-input__inner" data-type="registerNo" disabled="{{false}}" placeholder="请输入完整的登记编号" placeholderClass=""></input>
+                    </view>
+                </view>
+            </view>
+            <view class="boc-form-item">
+                <view class="boc-form-item__label">
+                    <text>登记人姓名</text>
+                </view>
+                <view class="boc-form-item__content">
+                    <view class="boc-input">
+                        <input bindblur="validateInput" bindinput="getInputValue" class="boc-input__inner" data-type="registerName" disabled="{{false}}" placeholder="请输入购房登记姓名" placeholderClass=""></input>
+                    </view>
+                </view>
+            </view>
+            <view class="boc-form-item">
+                <view class="boc-form-item__label">
+                    <text>接收手机号</text>
+                </view>
+                <view class="boc-form-item__content">
+                    <view class="boc-input">
+                        <input bindblur="validateInput" bindinput="getInputValue" class="boc-input__inner" data-type="{{formData.usingPhoneType===1?'otherPhone':'wxPhone'}}" disabled="{{formData.usingPhoneType===2?true:false}}" maxlength="20" placeholder="请输入接收手机号" placeholderClass="" type="number" value="{{formData.usingPhoneType===2?formData.wxPhone:formData.otherPhone}}"></input>
+                    </view>
+                    <view catch:tap="toggleBindPhoneType" class="boc-input_tip {{formData.usingPhoneType===1?'boc-input_tip_wx':''}}" wx:if="{{formData.usingPhoneType}}">
+                        <block wx:if="{{formData.usingPhoneType===1}}">
+                            <text>使用微信绑定手机号</text>
+                            <button catchgetphonenumber="getPhoneNumber" class="wx__btn-transparent" openType="getPhoneNumber" wx:if="{{!userInfo.PhoneNumber}}"></button>
+                        </block>
+                        <text wx:elif="{{formData.usingPhoneType===2}}">使用其他手机号</text>
+                    </view>
+                </view>
+            </view>
+        </form>
+    </view>
+    <view class="dialog-footer">
+        <view class="btn-list">
+            <view bind:tap="operateBtn" class="btn-item btn_cancel" data-type="cancel">
+                <text>取消</text>
+            </view>
+            <view bind:tap="operateBtn" class="btn-item btn_confirm" data-type="confirm">
+                <text>确定</text>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,48 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.reserve {
+    padding: 50rpx 60rpx 120rpx;
+}
+
+.reserve .form-input {
+    height: 98rpx;
+    line-height: 98rpx;
+    background: #f1f1f1;
+    border-radius: 8rpx;
+    font-size: 32rpx;
+    margin-bottom: 20rpx;
+    text-align: center;
+    color: #333;
+}
+
+.reserve .placeholder-reset {
+    font-size: 32rpx;
+    color: #999;
+    text-align: center;
+}
+
+.reserve .reserve-btn {
+    font-size: 28rpx;
+    color: #fff;
+    height: 102rpx;
+    border-radius: 8rpx;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(270deg,#fcae51,#ffbc00);
+}
+
+.reserve .attach-mes {
+    font-size: 20rpx;
+    color: #fff;
+    font-weight: 400;
+    padding-top: 8rpx;
+}

@@ -1,0 +1,33 @@
+<view class="my__interest" style="padding-top:{{navH}}px">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="我的关注" showShare="{{false}}"></nav-bar>
+    <view class="nav" style="top:{{navH}}px">
+        <view bind:tap="changeTab" class="nav__item {{index===curTab?'nav-active':''}}" data-index="{{index}}" wx:for="{{tabList}}" wx:key="index">
+            <view class="nav__text">{{item.name}}</view>
+            <view class="nav__bar"></view>
+        </view>
+    </view>
+    <view class="interest__list" wx:if="{{curTab===0}}">
+        <view class="interest__item" wx:for="{{interests}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="operateBuildingCardInfo" buildingCardInfo="{{item.buildingInfo}}"></building-card>
+        </view>
+        <view class="data__empty" wx:if="{{interests&&interests.length===0}}">
+            <image class="data__empty-img" src="{{nullImg}}"></image>
+        </view>
+    </view>
+    <view wx:if="{{curTab===1}}">
+        <view class="broker__list-main" wx:for="{{brandList}}" wx:key="index">
+            <brand-card brandInfo="{{item}}"></brand-card>
+        </view>
+        <view class="data__empty" wx:if="{{brandList&&brandList.length===0}}">
+            <image class="data__empty-img" src="{{nullImg}}"></image>
+        </view>
+    </view>
+    <view class="broker__list" wx:if="{{curTab===2}}">
+        <view class="broker__list-main" wx:for="{{brokers}}" wx:key="index">
+            <broker_item bind:operateBrokerItemInfo="operateBrokerItemInfo" brokerItemInfo="{{item}}" chatSourceType="{{6}}" quoteType="{{0}}"></broker_item>
+        </view>
+        <view class="data__empty" wx:if="{{brokers&&brokers.length===0}}">
+            <image class="data__empty-img" src="{{nullImg}}"></image>
+        </view>
+    </view>
+</view>

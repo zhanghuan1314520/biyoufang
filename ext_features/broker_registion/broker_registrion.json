@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "pop_up": "/components/pop_up/pop_up",
+        "authorize-dialog": "/components/authorize-dialog/index",
+        "join-building-tab": "/components/my/join-building-tab/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

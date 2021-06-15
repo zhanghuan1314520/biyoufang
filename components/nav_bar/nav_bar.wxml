@@ -1,0 +1,17 @@
+<view class="nav {{type==='center'?'nav-center':''}} {{type==='album'?'nav-album':''}} {{type==='lottery'?'nav-lottery':''}} {{isTransparent?'isTransparent':''}}" style="height:{{type==='center'?navH+centerH:navH}}px;{{bgColor?'background:'+bgColor:''}}">
+    <block wx:if="{{type==='normal'||type==='album'||type==='lottery'}}">
+        <view class="nav-title">{{navBarTitle}}</view>
+        <view class="nav-handler">
+            <navigator bind:tap="backPreventPage" class="nav-btn" delta="{{1}}" openType="navigateBack" wx:if="{{needBackBtn}}">
+                <image class="nav-back" mode="aspectFit" src="/resource/return{{isTransparent?'_w':''}}.png"></image>
+            </navigator>
+            <navigator class="nav-btn" openType="switchTab" url="/pages/index/index" wx:if="{{showBackHome}}">
+                <image class="nav-home" src="/resource/_home{{isTransparent?'_w':''}}.png"></image>
+            </navigator>
+            <view class="nav-btn" wx:if="{{showShare}}">
+                <image class="nav-icon-share" src="/resource/base/{{isTransparent?'base_icon_share@3x':'nav_icon_share_black@3x'}}.png"></image>
+                <button bindtap="share" class="nav-button-share" openType="{{multiShare?'':'share'}}"></button>
+            </view>
+        </view>
+    </block>
+</view>

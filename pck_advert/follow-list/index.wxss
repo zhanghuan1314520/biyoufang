@@ -1,0 +1,52 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.effect {
+    padding: 55rpx 30rpx 30rpx;
+}
+
+.effect .effect-img {
+    width: 100%;
+    height: 386rpx;
+    border-radius: 10rpx;
+    background-color: #e6e6e6;
+}
+
+.follow-num {
+    font-size: 28rpx;
+    color: #666;
+    text-align: center;
+    padding-bottom: 20rpx;
+}
+
+.follow-num .number-sto {
+    color: #ff7d19;
+}
+
+.avator-list {
+    padding-left: 45rpx;
+    padding-right: 35rpx;
+    text-align: center;
+}
+
+.avator-list .avator-item {
+    width: 62rpx;
+    height: 62rpx;
+    margin: 0 10rpx 10rpx 0;
+    background-color: #d8d8d8;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.load-more {
+    font-size: 26rpx;
+    color: #666;
+    padding-top: 56rpx;
+    padding-bottom: 30rpx;
+    text-align: center;
+}

@@ -1,0 +1,278 @@
+.qa-question-wrapper {
+    font-family: PingFang-SC-Regular,PingFang-SC;
+}
+
+.list-item {
+    padding: 0 30rpx;
+}
+
+.content {
+    position: relative;
+    margin-top: 30rpx;
+    width: 100%;
+    border: 2rpx solid #f0f0f0;
+    border-radius: 4rpx;
+    background-color: #f9f9f9;
+}
+
+.textarea {
+    width: 650rpx;
+    min-height: 470rpx;
+    line-height: 37rpx;
+    padding: 14rpx 20rpx 70rpx;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.content-placeholder {
+    font-size: 26rpx;
+    line-height: 37rpx;
+    color: #ccc;
+}
+
+.input-length,.separator {
+    color: #999;
+}
+
+.max-length {
+    color: #333;
+}
+
+.limit {
+    position: absolute;
+    right: 20rpx;
+    bottom: 14rpx;
+    font-size: 28rpx;
+    color: #8a969e;
+}
+
+.label {
+    margin-top: 29rpx;
+    margin-bottom: 32rpx;
+}
+
+.label2 {
+    margin-top: 9rpx;
+    margin-bottom: 29rpx;
+}
+
+.asterisk {
+    color: #ed5432;
+}
+
+.title {
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #333;
+}
+
+.word-limit {
+    font-size: 22rpx;
+    color: #999;
+    vertical-align: bottom;
+}
+
+.upload-imgs-list {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.upload-imgs-item {
+    position: relative;
+    box-sizing: border-box;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+    width: 140rpx;
+    height: 140rpx;
+    border: 2rpx solid #f0f0f0;
+    border-radius: 4rpx;
+    background-color: #f9f9f9;
+    color: #d4d4d4;
+    font-size: 70rpx;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30rpx;
+    width: 100%;
+    height: 100%;
+}
+
+.img {
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.plus {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36rpx;
+    height: 36rpx;
+    transform: translate(50%,-50%);
+    border-radius: 50%;
+    background-color: #999;
+    color: #fff;
+}
+
+.icon-guanbi {
+    font-size: 16rpx;
+}
+
+.list-item_type {
+    padding: 0 20rpx 0 30rpx;
+}
+
+.type-list {
+    flex-wrap: wrap;
+}
+
+.type-item,.type-list {
+    display: flex;
+}
+
+.type-item {
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 30rpx;
+    border-radius: 4rpx;
+    width: 160rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 26rpx;
+    background-color: #f8f8f8;
+    color: #666;
+}
+
+.type-item_actived {
+    box-sizing: border-box;
+    color: #fe610e;
+    background-color: #fff4ee;
+    border: 1px solid #fe610e;
+}
+
+.mr20 {
+    margin-right: 20rpx;
+}
+
+.footer {
+    position: relative;
+    margin-top: 70rpx;
+    margin-bottom: 30rpx;
+    padding-bottom: 9rpx;
+}
+
+.add-btn {
+    padding-bottom: 30rpx;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 690rpx;
+    height: 80rpx;
+    border-radius: 8rpx;
+    font-size: 34rpx;
+    color: #fff;
+    background: linear-gradient(90deg,#ffb841,#ffac5f);
+}
+
+.question-success {
+    font-family: PingFang-SC-Regular,PingFang-SC;
+}
+
+.question-success-tip {
+    padding-top: 100rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_success {
+    display: block;
+    width: 100rpx;
+    height: 118rpx;
+}
+
+.question-success-tip__text {
+    margin-top: 34rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.answer-tip {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 27rpx;
+    margin-bottom: 65rpx;
+}
+
+.answer-tip__text {
+    font-size: 26rpx;
+    color: #777;
+}
+
+.answer-num {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #ff7304;
+}
+
+.btn,.question-success-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    align-items: center;
+}
+
+.form_submit {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn_reset {
+    padding: 0;
+}
+
+.btn_reset::after {
+    border-radius: 2rpx;
+}
+
+.btn_submit {
+    width: 400rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 45rpx;
+    background-color: #fe5e10;
+    background-image: linear-gradient(#fe5e10,#ff7603);
+    font-size: 34rpx;
+    color: #fff;
+}
+
+.btn_getUserInfo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    opacity: 0;
+}

@@ -1,0 +1,8 @@
+<view class="join-us">
+    <navigator class="placeholder-picture see-hourse" openType="navigate" url="{{seeHourseUrl}}" wx:if="{{longpageAdvertId}}">
+        <image class="placeholder_img" src="/resource/tempH5/lpxq_img_yykf.png"></image>
+    </navigator>
+    <view bind:tap="copyServiceWx" class="placeholder-picture {{!longpageAdvertId?'placeholder-picture_one':''}}">
+        <image class="placeholder_img" src="{{longpageAdvertId?'/resource/tempH5/lpxq_img_tgrq_small.png':'/resource/tempH5/lpxq_img_tgrq_big.png'}}"></image>
+    </view>
+</view>

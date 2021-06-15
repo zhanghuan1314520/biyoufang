@@ -1,0 +1,66 @@
+<view catch:tap="navigatiorDetail" class="comment-card-wrapper">
+    <view class="comment-info">
+        <view class="avator">
+            <image webp class="avator__inner" mode="aspectFill" src="{{commentCardInfo.UserAvatarUrl||'/resource/agent_default@3x.png'}}"></image>
+        </view>
+        <view class="comment-content">
+            <view class="user-info">
+                <view class="user-name {{commentCardInfo.UserType===1&&commentCardInfo.UnionId?'user-name_broker':''}} {{commentCardInfo.UserType===2?'user-name_offical':''}}">
+                    <text>{{commentCardInfo.UserName||'游客'}}</text>
+                </view>
+                <image class="icon_offical" src="/resource/byf_icon.jpg" wx:if="{{commentCardInfo.UserType===2}}"></image>
+                <UserAuthorize authUserInfo bindproxySuccess="operateCommentCardInfo" recordParams="{{[ {type:'goChatPage'} ]}}" userInfo="{{userInfo}}" wx:if="{{commentCardInfo.UserType===1&&commentCardInfo.UnionId}}">
+                    <view class="contact-me">
+                        <image class="icon_broker" src="/resource/detail/detail_icon_contact@3x.png"></image>
+                        <text class="contact-me__text">联系TA</text>
+                    </view>
+                </UserAuthorize>
+                <view style="margin-left: auto;">
+                    <UserAuthorize authUserInfo bindproxySuccess="operateCommentCardInfo" recordParams="{{[ {type:'replyComment'} ]}}" userInfo="{{userInfo}}">
+                        <view class="reply">
+                            <image class="icon_reply" src="/resource/detail/detail_icon_comment@3x.png"></image>
+                            <text>回复</text>
+                        </view>
+                    </UserAuthorize>
+                </view>
+            </view>
+            <view class="reply-time">
+                <text>{{commentCardInfo.CreateTime}}</text>
+            </view>
+            <view class="comment-msg">
+        {{commentCardInfo.Content}}
+      </view>
+            <view class="sub-comment-list" wx:if="{{commentCardInfo.Replies&&commentCardInfo.Replies.length}}">
+                <view catch:tap="{{!userInfo||userInfo&&!userInfo.WeixinAuthorized?'':'operateCommentCardInfo'}}" class="sub-comment-item" data-id="{{item.UnionId}}" data-idx="{{index}}" data-type="replyComment" wx:for="{{isFold?commentCardInfo.replies:commentCardInfo.Replies}}" wx:key="index">
+                    <text class="nickname {{item.UserType===1&&item.UnionId?'nickname_broker':''}}  {{commentCardInfo.UserType===2?'nickname_offical':''}}">{{item.UserName||'游客'}}</text>
+                    <image class="icon_offical" src="/resource/byf_icon.jpg" wx:if="{{item.UserType===2}}"></image>
+                    <view style="display: inline-block;" wx:if="{{item.UserType===1&&item.UnionId}}">
+                        <UserAuthorize authUserInfo bindproxySuccess="operateCommentCardInfo" recordParams="{{[ {idx:index,type:'goChatPage'} ]}}" userInfo="{{userInfo}}">
+                            <view class="sub-contact-me">
+                                <image class="icon_broker icon_sub-broker" src="/resource/detail/detail_icon_contact@3x.png"></image>
+                                <text class="contact-me__text contact-me__sub-text">联系TA</text>
+                            </view>
+                        </UserAuthorize>
+                    </view>
+                    <block wx:if="{{commentCardInfo.Id!=item.ParentId}}">
+                        <text class="reply__text">回复</text>
+                        <text class="nickname {{item.UserType===1&&item.UnionId?'nickname_broker':''}}  {{commentCardInfo.UserType===2?'nickname_offical':''}}">{{item.ParentUserName||'游客'}}</text>
+                        <view style="display: inline-block;" wx:if="{{item.ParentUserType===1}}">
+                            <UserAuthorize authUserInfo bindproxySuccess="operateCommentCardInfo" recordParams="{{[ {idx:index,type:'goChatPage'} ]}}" userInfo="{{userInfo}}">
+                                <view class="sub-contact-me">
+                                    <image class="icon_broker icon_sub-broker" src="/resource/detail/detail_icon_contact@3x.png"></image>
+                                    <text class="contact-me__text contact-me__sub-text">联系TA</text>
+                                </view>
+                            </UserAuthorize>
+                        </view>
+                        <image class="icon_offical" src="/resource/byf_icon.jpg" wx:if="{{item.ParentUserType===2}}"></image>
+                    </block>
+                    <text class="sub-comment-msg">: {{item.Content}}</text>
+                </view>
+                <view catch:tap="toggleFold" class="look-all" data-type="lookAllSubComments" wx:if="{{commentCardInfo.ReplyNumber>3&&isFold}}">
+                    <text>查看全部{{commentCardInfo.ReplyNumber}}条评论</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

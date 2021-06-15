@@ -1,0 +1,71 @@
+<view class="detail__history" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="历史开盘" showBackHome="{{true}}" showShare="{{false}}"></nav-bar>
+    <view class="building__info">
+        <view class="building__name">{{buildingName}}</view>
+        <view class="building__address">
+            <image class="address__icon" src="/resource/detail/detail_icon_location@3x.png"></image>
+            <text class="address__name">{{districtName}}</text>
+        </view>
+    </view>
+    <view class="charts">
+        <view class="chart chart__winning" wx:if="{{winning}}">
+            <view class="chart__title" style="padding-bottom:32rpx">中签趋势</view>
+            <view class="chart__wrap">
+                <ec-canvas canvasId="winning" ec="{{winning}}" id="winning__column"></ec-canvas>
+            </view>
+            <view class="chart__tip">说明：流摇视为中签率100%</view>
+        </view>
+        <view class="chart chart__price" wx:if="{{price}}">
+            <view class="chart__title">价格趋势</view>
+            <view class="chart__wrap">
+                <ec-canvas canvasId="price" ec="{{price}}" id="price__column"></ec-canvas>
+            </view>
+        </view>
+    </view>
+    <view class="openings">
+        <view class="openings__title">历史开盘</view>
+        <view class="opening" wx:for="{{historyProject}}" wx:key="index">
+            <view class="opening__card">
+                <view class="opening__time">
+                    <view class="opening__month">{{item.month}}月{{item.date}}日</view>
+                    <view class="opening__day">{{item.year}}年</view>
+                </view>
+                <view class="opening__info">
+                    <view class="info__cell">
+                        <view class="info__cell-left">推盘楼栋</view>
+                        <view class="info__cell-right">{{item.BuildingNo||'--'}}</view>
+                    </view>
+                    <view class="info__cell">
+                        <view class="info__cell-left">房源套数</view>
+                        <view class="info__cell-right">{{item.HouseNumber?item.HouseNumber+'套':'未知'}}</view>
+                    </view>
+                    <view class="info__cell">
+                        <view class="info__cell-left">户型面积</view>
+                        <view class="info__cell-right">{{item.HouseArea||'--'}}</view>
+                    </view>
+                    <view class="info__cell">
+                        <view class="info__cell-left">房源均价</view>
+                        <view class="info__cell-right">{{item.AveragePrice?item.AveragePrice+'元/m²':'--'}}<text class="compare" wx:if="{{item.AveragePriceFloat&&item.AveragePrice}}">，比上次<text class="compare__rate {{item.PriceIsUp?'':'compare__rate-down'}}">{{item.PriceIsUp?'↑':'↓'}}{{item.AveragePriceFloat+'%'}}</text>
+                            </text>
+                        </view>
+                    </view>
+                    <view class="info__cell">
+                        <view class="info__cell-left">验资要求</view>
+                        <view class="info__cell-right">{{item.CapitalVerification||'--'}}</view>
+                    </view>
+                    <view class="info__cell">
+                        <view class="info__cell-left">登记人数</view>
+                        <view class="info__cell-right">{{item.RegistrationNumber+'人'}}</view>
+                    </view>
+                    <view class="info__cell">
+                        <view class="info__cell-left">中签率</view>
+                        <view class="info__cell-right">{{item.SuccessRate+'%'}} <text class="compare" wx:if="{{item.SuccessRateFloat}}">，比上次<text class="compare__rate {{item.RateIsUp?'':'compare__rate-down'}}">{{item.RateIsUp?'↑':'↓'}}{{item.SuccessRateFloat+'%'}}</text>
+                            </text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <ShareButton></ShareButton>
+</view>

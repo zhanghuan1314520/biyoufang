@@ -1,0 +1,11 @@
+.empty-wrap {
+    width: 278rpx;
+    height: 311rpx;
+    margin: 280rpx auto 0;
+}
+
+.empty-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}

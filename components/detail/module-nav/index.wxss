@@ -1,0 +1,47 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.module-nav-wrapper {
+    padding: 30rpx 0;
+    border-bottom: 1px solid #ededed;
+    background-color: #fff;
+}
+
+.scroll-wrap {
+    white-space: nowrap;
+    width: 100vw;
+}
+
+.nav-wrap {
+    display: inline-block;
+    padding: 0 26rpx;
+}
+
+.nav-item {
+    font-size: 26rpx;
+    color: #999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-item .nav-icon {
+    width: 50rpx;
+    height: 50rpx;
+    padding-bottom: 20rpx;
+}
+
+.active {
+    color: #020202;
+}
+
+.tab-list-fixed {
+    position: sticky;
+    background: #fff;
+    z-index: 10;
+}

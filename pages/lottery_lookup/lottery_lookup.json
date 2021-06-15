@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "back-home": "/components/back_home/back_home",
+        "lottery-dialog": "/components/lottery/lottery-dialog/lottery-dialog",
+        "lottery-status-card": "/components/lottery/lottery-status-card/lottery-status-card",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    },
+    "enablePullDownRefresh": false
+}

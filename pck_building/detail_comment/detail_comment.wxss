@@ -1,0 +1,81 @@
+.tip {
+    background: #d8d8b9;
+    color: #ff955f;
+    font-size: 28rpx;
+    padding: 20rpx 29rpx;
+    word-break: break-all;
+    white-space: normal;
+    background: #fff4e5;
+}
+
+.main__wrap {
+    padding: 0 30rpx;
+}
+
+.text-area-wrap {
+    background: #f9f9f9;
+    border-radius: 4rpx;
+    border: 2rpx solid #d4d4d4;
+    margin-top: 24rpx;
+    padding: 14rpx 20rpx;
+    height: 409rpx;
+}
+
+.comment__area {
+    width: 100%;
+    font-size: 30rpx;
+}
+
+.text-count {
+    text-align: right;
+    color: grey;
+    font-size: 24rpx;
+}
+
+.comment__imgs {
+    margin-top: 28rpx;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.comment__img {
+    position: relative;
+    width: 210rpx;
+    height: 210rpx;
+    border-radius: 4rpx;
+    border: 1px solid #d8d5d5;
+    background: #f3f3f3;
+    margin: 0 20rpx 20rpx 0;
+}
+
+.add-icon {
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    top: 25%;
+    z-index: 2;
+}
+
+.add-icon,.img {
+    position: absolute;
+}
+
+.img {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+
+.submit {
+    position: fixed;
+    width: 92%;
+    left: 4%;
+    bottom: 36rpx;
+    border-radius: 4rpx;
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+    color: #fff;
+    letter-spacing: 4rpx;
+}

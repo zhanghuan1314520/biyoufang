@@ -1,0 +1,17 @@
+<view class="upload-imgs-type">
+    <view animation="{{slideInOrOut}}" class="upload-type-dialog">
+        <view class="content">
+            <view class="upload-type-list">
+                <view bind:tap="chooseUploadType" class="upload-type-item" data-id="{{item.id}}" wx:for="{{uploadTypeList}}" wx:key="{{ index }}">
+                    <text class="upload-type-item__name">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="footer">
+            <view bind:tap="closeDialog" class="btn_cancel">
+                <text>取消</text>
+            </view>
+        </view>
+    </view>
+    <view animation="{{fadeInOrOut}}" bind:tap="closeDialog" class="mask" hidden="{{!showUploadTypeDialog}}" wx:if="{{showMask}}"></view>
+</view>

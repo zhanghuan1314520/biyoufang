@@ -1,0 +1,160 @@
+.switch {
+    color: #333;
+    box-sizing: border-box;
+    padding: 40rpx 0 22rpx 30rpx;
+    white-space: nowrap;
+    border-bottom: 14rpx solid #f7f7f7;
+}
+
+.switch__item {
+    position: relative;
+    display: inline-block;
+    margin-right: 20rpx;
+    font-size: 26rpx;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+    border-radius: 4rpx;
+    padding: 12rpx 30rpx;
+    line-height: 37rpx;
+}
+
+.switch__item-active {
+    border: 1px solid #fe610e;
+    border-radius: 4rpx;
+    background-color: #fff4ee;
+    color: #fe610e;
+}
+
+.icon_selected {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18rpx;
+    height: 18rpx;
+}
+
+.building-house-type__item {
+    display: flex;
+    padding: 25rpx 0 0;
+}
+
+.building-house-type__img {
+    display: block;
+    width: 230rpx;
+    height: 167rpx;
+}
+
+.building-house-type__content {
+    flex: 1;
+    margin-left: 14rpx;
+    border-bottom: 1px solid #ededed;
+    box-sizing: content-box;
+    height: 167rpx;
+    padding-bottom: 25rpx;
+}
+
+.building-house-type__main {
+    display: flex;
+    align-items: center;
+}
+
+.building-house-type__name {
+    margin-right: 14rpx;
+    font-size: 30rpx;
+    font-weight: 700;
+    line-height: 42rpx;
+    color: #333;
+}
+
+.building-house-type__status {
+    display: inline-block;
+    width: 72rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+    border-radius: 4rpx;
+    font-size: 26rpx;
+    font-weight: 500;
+    text-align: center;
+    background: linear-gradient(90deg,#ff9000,#ff7300);
+    opacity: .92;
+    color: #fff;
+}
+
+.building-house-type__soldout {
+    background: none;
+    background-color: #f6f7f8;
+    color: silver;
+}
+
+.building-house-type__cell-row {
+    display: flex;
+    margin-top: 8rpx;
+    align-items: center;
+}
+
+.building-house-type__cell {
+    display: flex;
+    font-size: 26rpx;
+    line-height: 37rpx;
+}
+
+.building-house-type__cell-title {
+    width: 65rpx;
+    font-size: 22rpx;
+    color: #666;
+}
+
+.building-house-type__cell-content {
+    color: #333;
+    font-size: 22rpx;
+}
+
+.building-house-type__price.price-total {
+    color: red;
+    font-size: 24rpx;
+    font-weight: 400;
+}
+
+.building-house-type__item {
+    box-sizing: border-box;
+    padding: 25rpx 30rpx;
+}
+
+.building-house-type__item:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.scale-fc {
+    color: #666;
+}
+
+.line {
+    margin: 0 10rpx;
+    display: inline-block;
+    height: 25rpx;
+    width: 2rpx;
+    background-color: #e7e7e7;
+    vertical-align: middle;
+}
+
+.line-lg {
+    margin: 0 19rpx;
+}
+
+.no-qa {
+    text-align: center;
+}
+
+.no-qa-list {
+    width: 195rpx;
+    height: 264rpx;
+    margin-top: 222rpx;
+    margin-bottom: 64rpx;
+}
+
+.no-qa-list-tip {
+    font-size: 28rpx;
+    color: #999;
+    line-height: 42rpx;
+    text-align: center;
+}

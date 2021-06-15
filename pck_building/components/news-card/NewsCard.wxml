@@ -1,0 +1,20 @@
+<view class="news-card">
+    <view class="card-left">
+        <view class="day">{{info.time.day}}</view>
+        <view class="date">{{info.time.yearMonth}}</view>
+    </view>
+    <view class="card-right">
+        <view class="title">{{info.Title}}</view>
+        <view class="content {{unfoldFlag?'transition-height':''}}">
+            <text class="text">{{tools.textEllipsis(info.Content||'',maxLength,splitFlag)}}</text>
+            <text bind:tap="handleUnfold" class="unfold-btn" wx:if="{{splitFlag&&info.Content&&info.Content.length>maxLength}}">展开</text>
+        </view>
+        <view class="unfolded-btn {{unfoldFlag?'unfolded-btn-show':''}}">
+            <text bind:tap="handleUnfoldBtn">收起</text>
+        </view>
+        <view class="new-imgs" wx:if="{{info.Images.length}}">
+            <image lazyLoad webp bind:tap="previewImages" class="new-img" data-index="{{index}}" mode="aspectFill" src="{{item}}" wx:for="{{info.Images}}" wx:key="index"></image>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../../utils/wxs/textEllipsis.wxs" />

@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "building-card": "/pck_advert/components/brand/building-card/index",
+        "empty-view": "/components/empty-view/index",
+        "skeleton": "/components/base/skeleton/skeleton",
+        "load-more": "/components/load-more/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

@@ -1,0 +1,8 @@
+<view class="webview" wx:if="{{url}}">
+    <web-view src="{{url}}"></web-view>
+    <cover-view class="goHome__wrap" wx:if="{{showGoHome&&status==1&&(template||isShare)}}">
+        <button bindtap="goHome" class="goHome__btn">
+            <cover-image class="goHome__image" src="/resource/yh_icon_return@2x.png"></cover-image>
+        </button>
+    </cover-view>
+</view>

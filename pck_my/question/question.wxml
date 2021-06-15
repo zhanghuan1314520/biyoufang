@@ -1,0 +1,13 @@
+<view class="question" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="常见问题" showBackHome="{{true}}" showShare="{{false}}"></nav-bar>
+    <view class="question__list">
+        <view bind:tap="checkDetail" class="question__item" data-id="{{item.Id}}" wx:for="{{questions}}" wx:key="index">
+            <view class="question__text">
+                <image class="hot__icon" src="/resource/comproblem_icon_hot@3x.png" wx:if="{{index<3}}"></image>{{item.Title}}</view>
+            <image class="question__arrow" src="/resource/arrow_right.png"></image>
+        </view>
+    </view>
+    <view class="data__empty" wx:if="{{questions&&questions.length===0}}">
+        <image class="data__empty-img" src="{{nullImg}}"></image>
+    </view>
+</view>

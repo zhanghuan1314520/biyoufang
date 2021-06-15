@@ -1,0 +1,32 @@
+<view class="popup-mask">
+    <view class="popup-subscribe">
+        <form bindsubmit="confirmSubscription">
+            <view class="popup-head">
+                <view class="popup-title">订阅摇号结果</view>
+            </view>
+            <view class="popup-body">
+                <view class="submask__title">接收手机号</view>
+                <view class="submask__item-wrap">
+                    <view class="phone" wx:if="{{!useOtherPhone&&userInfo.PhoneNumber}}">
+                        {{userInfo.PhoneNumber}}
+                    </view>
+                    <input bindinput="otherPhoneInputing" class="phone-input" placeholder="请输入手机号" wx:if="{{useOtherPhone}}"></input>
+                    <button bindgetphonenumber="getPhoneNumber" class="btn-other" openType="getPhoneNumber" style="padding-left:0" wx:if="{{!userInfo.PhoneNumber}}">
+                        使用微信绑定手机号
+                    </button>
+                    <button bindtap="useOtherPhoneToRecive" class="btn-other" wx:if="{{!useOtherPhone}}">
+                        使用其他手机号
+                    </button>
+                </view>
+                <view class="submask__title">登记编号</view>
+                <input class="register__no-input" name="registerNo" placeholder="请输入您的登记编号" type="text" value="{{registerNo}}"></input>
+            </view>
+            <view class="popup-footer">
+                <view class="popup-handler">
+                    <button bindtap="closeMask" class="popup-btn popup-btn-default">取消</button>
+                    <button class="popup-btn" formType="submit">确定</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>

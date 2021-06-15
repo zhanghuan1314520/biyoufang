@@ -1,0 +1,13 @@
+<view class="question__detail" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="问题详情" showShare="{{false}}" type="album"></nav-bar>
+    <view class="title">{{question.Title}}</view>
+    <view class="main">
+        <rich-text class="content" nodes="{{question.Content}}"></rich-text>
+    </view>
+    <view class="feedback__wrap">
+        <view class="feedback__text">没有解决问题？</view>
+        <button bindgetuserinfo="getUserInfo" bindtap="{{userInfo.WeixinAuthorized?'toFeedback':''}}" class="feedback__btn wx__btn" openType="{{userInfo.WeixinAuthorized?'':'getUserInfo'}}">
+            <image class="feedback__icon" src="/resource/wtxq_icon_feedback@3x.png"></image>
+        </button>
+    </view>
+</view>

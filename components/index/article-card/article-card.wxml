@@ -1,0 +1,31 @@
+<view class="article-card-wrapper">
+    <view bind:tap="goArticleDetailPage" class="article-card-info {{articleCardInfo.coverStyle===1?'article-card-info_horizontal':''}}">
+        <view class="article-card-cover_default" wx:if="{{articleCardInfo.coverStyle===2}}">
+            <image webp class="article-cover_default" mode="aspectFill" src="{{articleCardInfo.coverFileUrl}}"></image>
+        </view>
+        <view class="article-card-intro">
+            <view class="article-card-title">
+                <text class="article-card-title__text">{{articleCardInfo.title}}</text>
+            </view>
+            <view class="article-card-cover_small" wx:if="{{articleCardInfo.coverStyle===3&&articleCardInfo.covers&&articleCardInfo.covers.length===3}}">
+                <image webp class="article-cover_small {{index!=0?'ml10':''}}" mode="aspectFill" src="{{item}}" wx:for="{{articleCardInfo.covers}}" wx:key="index"></image>
+            </view>
+            <view class="article-source {{articleCardInfo.coverStyle===2?'mt20':''}}">
+                <view class="source-info">
+                    <view class="source-logo">
+                        <image webp class="source-logo__img" src="{{articleCardInfo.logoUrl}}"></image>
+                    </view>
+                    <view class="source-name">
+                        <text>{{articleCardInfo.mediumName}}</text>
+                    </view>
+                </view>
+                <view class="article-time">
+                    <text>{{articleCardInfo.publishTime}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="article-card-cover_mini" wx:if="{{articleCardInfo.coverStyle===1}}">
+            <image webp class="article-cover_mini" mode="aspectFill" src="{{articleCardInfo.coverFileUrl}}"></image>
+        </view>
+    </view>
+</view>

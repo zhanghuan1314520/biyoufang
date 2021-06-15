@@ -1,0 +1,3 @@
+<view>
+    <text class="{{item==keyword?'highlight':''}} {{position==0?'like':'title'}}" wx:for="{{strArr}}" wx:key="index">{{item}}</text>
+</view>

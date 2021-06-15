@@ -1,0 +1,64 @@
+<view class="qa-detail-wrapper" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="{{title}}" showBackHome="{{true}}" showShare="{{false}}" wx:if="{{pageStatus!==2}}"></nav-bar>
+        <nav-bar navBarTitle="{{title}}" wx:elif="{{pageStatus===2}}"></nav-bar>
+    </view>
+    <view class="qa-detail" wx:if="{{pageStatus===0}}">
+        <view class="question-info">
+            <question-card bind:operateQuestionCardInfo="operateQuestionCardInfo" questionCardInfo="{{questionCardInfo}}"></question-card>
+        </view>
+        <view class="answer">
+            <view class="answer-title flex_space">
+                <text>全部回答</text>
+                <text wx:if="{{userInfo.UnionId==questionCardInfo.UnionId&&!questionCardInfo.IsAdopted&&questionList.length}}">可采纳1条你最满意的回答</text>
+            </view>
+            <view class="answer-content">
+                <view class="answer-list">
+                    <block wx:if="{{questionList.length}}">
+                        <view class="answer-item" wx:for="{{questionList}}" wx:key="index">
+                            <answer-card answerCardInfo="{{item}}" bind:operateAnswerCardInfo="operateAnswerCardInfo" userInfo="{{userInfo}}"></answer-card>
+                        </view>
+                    </block>
+                    <view class="no-answer" wx:else>
+                        <image class="no-anwer-image" src="{{imageRoot}}/images_wx/default_graph/null@3x.png"></image>
+                        <view class="no-answer-tip">这个问题困扰TA很久了，帮TA解答吧~</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="footer {{isIpx?'is-ipx':'no-ipx'}}">
+            <view class="share" wx:if="{{userInfo.UserType===0||userInfo.UnionId!==questionCardInfo.UnionId}}">
+                <button class="share-btn" openType="share"></button>
+                <image class="icon_share" src="/resource/base/nav_icon_share_black@3x.png"></image>
+                <text class="share__text">分享</text>
+            </view>
+            <view class="btn-list">
+                <view class="btn-item" wx:if="{{userInfo.UserType===0}}">
+                    <view class="form_submit">
+                        <UserAuthorize authUserInfo bindproxySuccess="goQaQuestion" userInfo="{{userInfo}}">
+                            <button class="btn_submit btn_question">我要提问</button>
+                        </UserAuthorize>
+                    </view>
+                </view>
+                <view class="btn-item btn-item-answer" wx:if="{{userInfo.UnionId!==questionCardInfo.UnionId}}">
+                    <view class="form_submit">
+                        <UserAuthorize authUserInfo bindproxySuccess="goQaAnswer" userInfo="{{userInfo}}">
+                            <button class="btn_submit btn_answer">我要回答</button>
+                        </UserAuthorize>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="qa-detail_remove" wx:elif="{{pageStatus===2}}">
+        <view class="remove-info">
+            <image class="icon_null" src="{{imageRoot}}/images_wx/default_graph/null@3x.png"></image>
+            <text class="remove__text">遭啦~~问题被删除了问答板块还有更多</text>
+        </view>
+        <view bindtap="toOtherQuestion" class="footer_remove">
+            <view class="btn_lookMore">
+                <text>去看看其他问题</text>
+            </view>
+        </view>
+    </view>
+</view>

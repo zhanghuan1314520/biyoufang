@@ -1,0 +1,16 @@
+<view class="menu-nav-list" wx:if="{{statsNavList&&statsNavList.length}}">
+    <view class="menu-nav-item" wx:for="{{statsNavList}}" wx:key="index">
+        <form bind:submit="getFollowFormid" class="form_submit">
+            <button bind:tap="goListPage" class="btn_reset btn_submit" data-id="{{index}}">
+                <view class="menu-nav-info">
+                    <view class="menu-nav-icon" style="color: {{fontColor[index]}}; background-color: {{bgColor[index]}}">
+                        <text>{{item.iconText}}</text>
+                    </view>
+                    <view class="menu-nav-name">
+                        <text>{{item.name}}</text>
+                    </view>
+                </view>
+            </button>
+        </form>
+    </view>
+</view>

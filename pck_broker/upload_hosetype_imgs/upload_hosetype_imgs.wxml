@@ -1,0 +1,120 @@
+<view class="upload-building-imgs-wrapper" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="{{title}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <blocK wx:if="{{!buildingId}}">
+        <consultant-buildings buildings="{{userInfo.RealtyConsultantInfo.Buildings}}" id="buildingTab"></consultant-buildings>
+    </blocK>
+    <view class="house-type-form">
+        <view class="house-type-form-item">
+            <view class="house-type-form-item__label">
+                <text class="asterisk">*</text>
+                <text class="title">户型名称</text>
+            </view>
+            <view class="house-type-form-item__content">
+                <input bindblur="validateInputeValue" bindinput="getInputValue" class="house-type-form-item__input" data-type="name" maxlength="10" placeholder="例：A" placeholderClass="input-placeholder" type="text" value="{{houseTypeInfo.name}}"></input>
+                <view class="house-type-input__suffix">
+                    <text>户型</text>
+                </view>
+            </view>
+        </view>
+        <view class="house-type-form-item">
+            <view class="house-type-form-item__label">
+                <text class="asterisk">*</text>
+                <text class="title">户型面积</text>
+            </view>
+            <view class="house-type-form-item__content">
+                <input bindblur="validateInputeValue" bindinput="getInputValue" class="house-type-form-item__input" data-type="area" maxlength="10" placeholder="例：89" placeholderClass="input-placeholder" type="digit" value="{{houseTypeInfo.arae}}"></input>
+                <view class="house-type-input__suffix">
+                    <text>㎡</text>
+                </view>
+            </view>
+        </view>
+        <view class="house-type-form-item">
+            <view class="house-type-form-item__label">
+                <text class="asterisk">*</text>
+                <text class="title">居室</text>
+            </view>
+            <view class="house-type-form-item__content house-type-form-item__content_multi">
+                <view class="house-type-form-item__content-item">
+                    <input bindblur="validateInputeValue" bindinput="getInputValue" class="house-type-form-item__input house-type-form-item__input_multi" data-type="house" maxlength="2" placeholder="例：1" placeholderClass="input-placeholder" type="number" value="{{houseTypeInfo.house}}"></input>
+                    <view class="house-type-input__suffix house-type-input__suffix_multi">
+                        <text>室</text>
+                    </view>
+                </view>
+                <view class="house-type-form-item__content-item">
+                    <input bindblur="validateInputeValue" bindinput="getInputValue" class="house-type-form-item__input house-type-form-item__input-multi" data-type="hall" maxlength="2" placeholder="例：1" placeholderClass="input-placeholder" type="number" value="{{houseTypeInfo.hall}}"></input>
+                    <view class=" house-type-input__suffix house-type-input__suffix_multi">
+                        <text>厅</text>
+                    </view>
+                </view>
+                <view class="house-type-form-item__content-item">
+                    <input bindblur="validateInputeValue" bindinput="getInputValue" class="house-type-form-item__input house-type-form-item__input-multi" data-type="toilet" maxlength="2" placeholder="例：1" placeholderClass="input-placeholder" type="number" value="{{houseTypeInfo.toilet}}"></input>
+                    <view class=" house-type-input__suffix">
+                        <text>卫</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="house-type-form-item">
+            <view class="house-type-form-item_left">
+                <text class="asterisk">*</text>
+                <text class="title">朝向</text>
+            </view>
+            <view class="house-type-form-item_right">
+                <picker bindcancel="cancelSelectDirection" bindchange="selectDirection" mode="selector" range="{{orientationInfo.orientationList}}" value="{{orientationInfo.index}}">
+                    <view class="direction {{orientationInfo.orientationList[orientationInfo.index]?'direction_active':''}}">{{orientationInfo.orientationList[orientationInfo.index]?orientationInfo.orientationList[orientationInfo.index]:'请选择'}}</view>
+                </picker>
+                <image class="arrow" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="upload-imgs">
+        <view class="upload-imgs__title">
+            <text class="asterisk">*</text>
+            <text class="title">上传{{houseTypeInfo.name}}户型图</text>
+            <text class="limit">(单个户型最多可上传5张)</text>
+        </view>
+        <view class="upload-imgs__list">
+            <view bindtap="chooseImage" class="upload-imgs__item" wx:if="{{uploadImgs&&uploadImgs.length<5}}">
+                <view class="upload-imgs__img">
+                    <image class="plus" src="/resource/register_add.png"></image>
+                </view>
+            </view>
+            <view bindtap="previewImage" class="upload-imgs__item" data-id="{{item.id}}" wx:for="{{uploadImgs}}" wx:key="index">
+                <view class="upload-imgs__img">
+                    <image class="img" src="{{item.imgUrl}}"></image>
+                </view>
+                <view catch:tap="deleteImage" class="delete" data-id="{{item.id}}" wx:if="{{item.canDelete}}">
+                    <view class="line"></view>
+                </view>
+            </view>
+        </view>
+        <view class="house-type__title">
+            <text>户型描述</text>
+        </view>
+        <view class="house-type__intro">
+            <textarea bindblur="validateInputeValue" bindinput="getInputValue" class="desc" data-type="desc" maxlength="100" placeholder="请描述该户型特点及优势（100个字以内）" placeholderClass="input-placeholder" type="text"></textarea>
+            <view class="word-limit">
+                <text class="input-length">{{houseTypeInfo.desc.length}}</text>
+                <text class="separator">/</text>
+                <text class="max-length">100</text>
+            </view>
+        </view>
+        <view class="rule__list">
+            <view class="rule__item rule__item_first">提示：户型图上传建议</view>
+            <viws class="rule__item">1、不要上传其他平台水印的户型图</viws>
+            <viws class="rule__item">2、不要上传楼盘已有户型图</viws>
+            <viws class="rule__item">3、不要上传与本楼盘无关的户型图</viws>
+        </view>
+    </view>
+    <view class="footer">
+        <button bindtap="submitNewsInfo" class="submit-btn" loading="{{showLoading}}">
+            <text>确认上传</text>
+        </button>
+    </view>
+    <view>
+        <canvas id="canvas"></canvas>
+    </view>
+    <canvas canvasId="canvas" class="canvas-position"></canvas>
+</view>

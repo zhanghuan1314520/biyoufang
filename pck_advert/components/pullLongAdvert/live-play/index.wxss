@@ -1,0 +1,23 @@
+.live-play {
+    position: fixed;
+    bottom: 348rpx;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90rpx;
+    height: 130rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    opacity: .9;
+    border: 1rpx solid #979797;
+    font-size: 22rpx;
+    color: #666;
+}
+
+.play-icon {
+    width: 46rpx;
+    height: 46rpx;
+    margin-bottom: 16rpx;
+}

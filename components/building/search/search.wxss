@@ -1,0 +1,58 @@
+.building-search {
+    display: flex;
+    height: 50px;
+    padding: 0 25rpx 9px 20rpx;
+    box-sizing: border-box;
+    background: linear-gradient(270deg,#fe5e10,#ff7603);
+}
+
+.building-search-location,.building-search-share {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_location {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.city-info {
+    margin-top: 10rpx;
+    font-size: 22rpx;
+    color: #fff;
+}
+
+.building-search-input {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin: 0 20rpx;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 8rpx;
+    background-color: #fff;
+}
+
+.icon_search {
+    margin: 0 18rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.building-search-input__inner {
+    font-size: 30rpx;
+    color: #ccc;
+}
+
+.icon_share {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.share-info {
+    margin-top: 10rpx;
+    font-size: 22rpx;
+    color: #fff;
+}

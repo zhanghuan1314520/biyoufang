@@ -1,0 +1,24 @@
+<view class="building" style="padding-top: {{navH}}px;">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%);" isTransparent="{{true}}" navBarTitle="必有房" needBackBtn="{{false}}" showShare="{{false}}"></nav-bar>
+    <view class="search-box-pos">
+        <view class="search-box" style="top: {{navH}}px">
+            <search bindselectOperate="selectOperate"></search>
+        </view>
+    </view>
+    <view class="swiper" wx:if="{{bannerList.length}}">
+        <advert-banner _bannerList="{{bannerList}}" browserPoint="{{true}}" id="swiperBanner" imageClass="slide-image" swiperClass="swiper-layout"></advert-banner>
+    </view>
+    <view class="building__filter-wrap" style="top: {{navH+50}}px">
+        <select binditemClick="selectItemClick" id="select" wx:if="{{!autoDestroy}}"></select>
+    </view>
+    <view class="list" wx:if="{{projectList&&projectList.length>0}}">
+        <view class="building-card" data-i="{{item.idx}}" wx:for="{{projectList}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="buildCardOperate" buildingCardInfo="{{item.info}}"></building-card>
+        </view>
+    </view>
+    <load-more bind:reload="getBuildingList" id="loadMore" loadFlag="{{canLoadMore}}" noMoreFlag="{{!canLoadMore}}" screenShow="{{projectList.length}}"></load-more>
+    <view class="empty" style="position:relative" wx:if="{{projectList&&projectList.length===0}}">
+        <image src="{{imageRoot}}/images_wx/default_graph/img_nohouse.png"></image>
+        <view class="empty-word">暂无符合条件的楼盘喔</view>
+    </view>
+</view>

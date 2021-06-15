@@ -1,0 +1,11 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "article-card": "/pck_common/components/article-card/index",
+        "load-more": "/components/load-more/index",
+        "empty-view": "/components/empty-view/index",
+        "skeleton": "/components/base/skeleton/skeleton",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

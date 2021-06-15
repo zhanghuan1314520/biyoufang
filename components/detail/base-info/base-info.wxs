@@ -1,0 +1,11 @@
+var formateByLength = (function(content, maxLength) {
+    content = content || '';
+    maxLength = maxLength || 200;
+    if (content.length < maxLength) {
+        return (content)
+    };
+    return (content.slice(0, maxLength) + '...')
+});
+module.exports = ({
+    formateByLength: formateByLength,
+});

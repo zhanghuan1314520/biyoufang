@@ -1,0 +1,83 @@
+<view class="container {{userInfo.RealtyConsultantInfo?'pdb-170':''}}" style="padding-top: {{navH}}px; background-color: {{!currentInfoDetail.Id?'#fff':'#F7F7F7'}}">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="顾问入驻" showShare="{{false}}"></nav-bar>
+    <view class="float-top" style="top: {{navH}}px">
+        <tabs bindchange="handleTabsChange" tabsList="{{tabsList}}"></tabs>
+        <join-building-tab bindchange="changeSelectBuilding" lineShow="{{false}}" sourceBuildings="{{filterBuildings}}"></join-building-tab>
+    </view>
+    <view class="container-inner" wx:if="{{currentInfoDetail.Id}}">
+        <view class="audit-tips" wx:if="{{consultantStatus===0||consultantStatus===1}}">
+            <image class="audit-icon" src="{{consultantStatus===1?auditIcon[1]:auditIcon[0]}}"></image>
+            <text class="audit-title">{{consultantStatus===1?'未通过':'待审核'}}</text>
+            <text class="audit-remark" wx:if="{{consultantStatus===1&&currentInfoDetail.AuditRemark||consultantStatus===0}}">{{consultantStatus===1?currentInfoDetail.AuditRemark:'我们将尽快完成审核'}}</text>
+        </view>
+        <view class="content">
+            <image class="pass-icon" src="/resource/kx_icon_pass@3x.png" wx:if="{{consultantStatus===2}}"></image>
+            <view class="group">
+                <view class="group-label">
+            姓名
+          </view>
+                <view class="group-value">
+            {{currentInfoDetail.Name}}
+          </view>
+            </view>
+            <view class="group">
+                <view class="group-label">
+            手机号码
+          </view>
+                <view class="group-value">
+            {{currentInfoDetail.PhoneNumber}}
+          </view>
+            </view>
+            <view class="group">
+                <view class="group-label">
+            入驻楼盘
+          </view>
+                <view class="group-value">
+            {{currentInfoDetail.BuildingName}}
+          </view>
+            </view>
+            <view class="group">
+                <view class="group-label">
+            微信号
+          </view>
+                <view class="group-value">
+            {{currentInfoDetail.WechatNumber}}
+          </view>
+            </view>
+            <view class="group des-bd">
+                <view class="group-label">
+            自我介绍
+          </view>
+                <view class="group-value">
+            {{currentInfoDetail.Introduction}}
+          </view>
+            </view>
+            <view class="group">
+                <view class="group-label">
+            工作证
+          </view>
+                <view class="group-value">
+                    <image catch:tap="previewImage" class="picture" data-url="{{currentInfoDetail.WorkPermitUrl}}" mode="aspectFill" src="{{currentInfoDetail.WorkPermitUrl}}"></image>
+                </view>
+            </view>
+            <view class="group">
+                <view class="group-label">
+            形象照
+          </view>
+                <view class="group-value">
+                    <image catch:tap="previewImage" class="picture" data-url="{{currentInfoDetail.PersonalImageUrl}}" mode="aspectFill" src="{{currentInfoDetail.PersonalImageUrl}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="btn-list" wx:if="{{consultantStatus===1}}">
+            <button catch:tap="handleClickBtn" class="reset-btn modify-btn" data-type="modify">
+          修改提交
+        </button>
+        </view>
+    </view>
+    <empty-view imgIcon="{{imageRoot}}/images_wx/default_graph/img_nohouse.png" isReveal="{{!currentInfoDetail.Id}}" tipsText="暂无数据"></empty-view>
+    <view catch:tap="handleClickBtn" class="operate-btn" data-type="add" wx:if="{{userInfo.RealtyConsultantInfo}}">
+        <image class="add-icon" src="/ext_features/image/registrion/wdkx_icon_add.png"></image>
+    追加入驻
+  </view>
+</view>

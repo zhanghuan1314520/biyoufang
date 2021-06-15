@@ -1,0 +1,17 @@
+<view class="category-card">
+    <view class="category-title">{{cardInfo.ArticleCategoryName}}</view>
+    <view class="card-container">
+        <scroll-view scrollX class="card-list">
+            <view class="card-item-wrap" wx:for="{{cardInfo.AdvertList}}" wx:key="index">
+                <view bindtap="cardOperate" class="card-item" data-index="{{index}}">
+                    <view class="cover">
+                        <image webp class="cover-image" mode="aspectFill" src="{{item.ImageUrl}}"></image>
+                    </view>
+                    <view class="news-name">
+                        <text class="title">{{item.Title}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

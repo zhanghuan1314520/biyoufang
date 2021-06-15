@@ -1,0 +1,49 @@
+<block wx:for="{{recentList}}" wx:key="index">
+    <view class="opening-item">
+        <view class="opening-item__title">
+            <text class="opening-name">{{item.ProjectName}}</text>
+            <text class="opeing-price">{{item.AveragePrice}}元/㎡</text>
+        </view>
+        <view class="opening-item__content">
+            <view class="opening-intro">
+                <view class="opening-intro__label">
+                    <text>开盘时间：</text>
+                </view>
+                <view class="opening-intro__content">
+                    <text>{{item.OpenTime||'--'}}</text>
+                </view>
+            </view>
+            <view class="opening-intro">
+                <view class="opening-intro__label">
+                    <text>户型面积：</text>
+                </view>
+                <view class="opening-intro__content">
+                    <text>{{item.HouseArea||'--'}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="opening-info-footer" wx:if="{{item.tableData&&item.tableData.length}}">
+        <view class="opening-stats-list">
+            <block wx:if="{{item.NeedYaohao}}">
+                <view class="opening-stats-item" wx:for="{{item.tableData}}" wx:for-item="tableItem" wx:key="index">
+                    <text>{{tableItem}}</text>
+                </view>
+            </block>
+            <block wx:elif="{{item.RegistrationNumber}}">
+                <view class="opening-stats-item">
+                    <text>{{'房源套数: '+item.HouseNumber}}</text>
+                </view>
+                <view class="opening-stats-item">
+                    <text>{{'登记: '+item.RegistrationNumber+'人'}}</text>
+                </view>
+                <view class="opening-stats-item">
+                    <text>{{'无需摇号'}}</text>
+                </view>
+            </block>
+            <view class="opening-stats-item" wx:else>
+                <text>登记人数不足，无需摇号</text>
+            </view>
+        </view>
+    </view>
+</block>

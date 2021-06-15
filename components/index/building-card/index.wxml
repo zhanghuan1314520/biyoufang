@@ -1,0 +1,34 @@
+<view class="building-card-list">
+    <view bind:tap="goDetailPage" class="building-card-item {{index%3!==2?'mr10':''}}" data-advert-id="{{item.Id}}" data-id="{{item.buildingInfo.buildingId}}" data-project-id="{{item.buildingInfo.projectId}}" data-type="hotBuildingList" wx:for="{{_buildingList}}" wx:key="index">
+        <form bind:submit="getFollowFormid" class="form_submit">
+            <button class="btn_reset btn_submit">
+                <view class="building-card-cover">
+                    <image webp class="building-cover" mode="aspectFill" src="{{item.buildingInfo.coverImageUrl}}"></image>
+                    <view class="building-status" wx:if="{{item.buildingInfo.buildingStatusText}}">
+                        <text>{{item.buildingInfo.buildingStatusText}}</text>
+                    </view>
+                    <view class="view-info" wx:if="{{item.buildingInfo.totalViewText}}">
+                        <image class="icon_view" mode="aspectFill" src="/resource/list_icon_viewed@3x.png"></image>
+                        <view class="view-num">
+                            <text>{{item.buildingInfo.totalViewText}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="building-info">
+                    <view class="building-name">
+                        <text class="building-name__text">{{item.buildingInfo.buildingName}}</text>
+                    </view>
+                    <view class="building-intro">
+                        <view class="building-location">
+                                {{item.buildingInfo.districtName}}
+                            </view>
+                        <view class="building-price">
+                                {{formatData.formatPrice(item.buildingInfo.buildingTotalPrice)}}
+                            </view>
+                    </view>
+                </view>
+            </button>
+        </form>
+    </view>
+</view>
+<wxs module="formatData" src="formatData.wxs" />

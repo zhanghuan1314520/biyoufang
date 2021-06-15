@@ -1,0 +1,22 @@
+<view catch:tap="goBrokerPage" class="broker-card-wrapper">
+    <text class="area-name">{{formate.strToFixed(brokerCardInfo.DistrictName)}}</text>
+    <view class="broker-avatar">
+        <image webp class="broker-avatar__img" mode="aspectFill" src="{{brokerCardInfo.personalImageUrl}}"></image>
+    </view>
+    <view class="broker-name">
+        <text>{{brokerCardInfo.Name}}</text>
+    </view>
+    <view class="building-name">
+        <text>{{brokerCardInfo.BuildingName}}</text>
+    </view>
+    <view catch:tap="noop">
+        <UserAuthorize authPhoneNumber authUserInfo userInfo="{{userInfo}}">
+            <view class="advisory">
+                <button catch:tap="goChatPage" class="reset-btn advisory-btn">
+          咨询
+        </button>
+            </view>
+        </UserAuthorize>
+    </view>
+</view>
+<wxs module="formate" src="index.wxs" />

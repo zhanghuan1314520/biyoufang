@@ -1,0 +1,38 @@
+<view class="building-card-wrapper">
+    <view bind:tap="goDetailPage" class="building-info" data-type="goDetailPage">
+        <view class="cover">
+            <view class="building-status" wx:if="{{false}}">
+                <text>{{buildiingItemInfo.buildingStatusText}}</text>
+            </view>
+            <view class="building-status custom-status-class" wx:else>
+                <text>{{buildiingItemInfo.buildingStatusText}}</text>
+            </view>
+            <image class="cover__img" src="{{buildiingItemInfo.coverImageUrl}}"></image>
+        </view>
+        <view class="building-detail">
+            <view class="building-intro">
+                <view class="building-title">
+                    <view class="building-name">
+                        <text class="building-name__text">{{buildiingItemInfo.buildingName}}</text>
+                    </view>
+                </view>
+                <view class="lottery-time">
+                    <view class="lottery-time__label">
+                        <text>摇号时间</text>
+                    </view>
+                    <view class="lottery-time__content">
+                        <text>{{buildiingItemInfo.lotteryTime}}</text>
+                    </view>
+                </view>
+                <view class="register-info">
+                    <view class="register-number">
+                        <text>登记:{{buildiingItemInfo.registerNum}}人</text>
+                    </view>
+                    <view class="lottery-percent">
+                        <text>综合中签率：{{buildiingItemInfo.lotteryPercent}}%</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

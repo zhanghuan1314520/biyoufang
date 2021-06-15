@@ -1,0 +1,58 @@
+.reset-btn {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.reset-btn,.tabs {
+    background-color: #fff;
+}
+
+.tabs {
+    position: sticky;
+    font-size: 32rpx;
+    color: #999;
+    display: flex;
+    line-height: 79rpx;
+    height: 79rpx;
+    border-bottom: 1px solid #ededed;
+    text-align: center;
+    z-index: 2;
+}
+
+.tabs .tabs-item {
+    flex: 1;
+}
+
+.tabs .active-tab {
+    font-weight: 500;
+    color: #333;
+}
+
+.tabs .line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50rpx;
+    height: 8rpx;
+    background: #fe660b;
+    border-radius: 4rpx;
+    transform: translate(-50%);
+    transition: left .6s ease;
+}
+
+.tabs .red-dot {
+    position: relative;
+}
+
+.tabs .red-dot::before {
+    content: "";
+    position: absolute;
+    right: -16rpx;
+    top: -4rpx;
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 50%;
+    background-color: #f50000;
+}

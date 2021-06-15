@@ -1,0 +1,50 @@
+<view class="detail__pricePerRoom" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="一房一价" showShare="{{false}}" type="album"></nav-bar>
+    <back-home wx:if="{{isShare}}"></back-home>
+    <view class="pricePerRoom__top">
+        <view class="nameHandler__wrap">
+            <view class="building__name">{{buildingName}}</view>
+            <view class="handler">
+                <button bind:tap="savePricePerRoomImg" class="save" wx:if="{{roomFiles.length>0}}">
+                    <image class="share__img" src="/resource/base/base_icon_downlorg@3x.png"></image>
+                    <text class="share__text">下载一房一价</text>
+                </button>
+                <button class="share" openType="share">
+                    <image class="share__img" src="/resource/base/base_icon_share_org@3x.png"></image>
+                    <text class="share__text">分享</text>
+                </button>
+            </view>
+        </view>
+        <scroll-view class="scroll__unit" scrollX="{{true}}">
+            <view bind:tap="changeUnitTab" class="scroll__unit-item {{unitTab===index?'scroll__unit-item-active':''}}" data-index="{{index}}" id="{{'u'+index}}" wx:for="{{list}}" wx:key="index">
+        {{item.HouseNo}}{{item.UnitNo}}
+        <view class="scroll__unit-item-dot" wx:if="{{unitTab===index}}"></view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="pricePerRoom__list" style="height:{{listH}}px">
+        <scroll-view class="scroll__floor" enableFlex="{{false}}" scrollX="{{false}}" scrollY="{{true}}">
+            <view class="floor__handler-wrap">
+                <view class="floor__handler" wx:for="{{list[unitTab].List}}" wx:key="index">
+                    <text class="floor__handler-text">{{item.FloorNo}}层</text>
+                </view>
+            </view>
+            <scroll-view class="scroll__house" scrollX="{{true}}">
+                <view class="house__line" wx:for="{{list[unitTab].List}}" wx:for-item="f" wx:key="index">
+                    <view class="house__wrap" wx:for="{{f.RoomPriceList}}" wx:for-index="i" wx:for-item="h" wx:key="{{i}}">
+                        <view bindtap="checkHouseDetail" class="house {{!h.IsReal||!h.RoomName?'no-house':''}} {{h.IsLimitRoom?'limited-house':''}}" data-id="{{h.Id}}" data-islimitroom="{{h.IsLimitRoom}}" data-isreal="{{h.IsReal}}" data-roomname="{{h.RoomName}}" hoverClass="{{h.IsReal&&!h.RoomName?'house-active':''}}">
+                            <block wx:if="{{h.IsReal&&h.RoomName}}">
+                                <view class="house__number">{{h.RoomName}}</view>
+                                <view class="house__acreage">{{h.Acreage?h.Acreage+'m²':'--'}}</view>
+                                <view class="house_limited" wx:if="{{h.IsLimitRoom}}">限售</view>
+                                <view class="house__totalPrice" wx:else>
+                    {{h.TotalPrice?h.TotalPrice+'万':'--'}}
+                  </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </scroll-view>
+    </view>
+</view>

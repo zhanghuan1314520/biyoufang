@@ -1,0 +1,33 @@
+.question__list {
+    box-sizing: border-box;
+    padding: 29rpx;
+}
+
+.question__item {
+    box-sizing: border-box;
+    padding: 24rpx 6rpx 24rpx 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.hot__icon {
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 19rpx;
+}
+
+.question__text {
+    color: #333;
+    line-height: 42rpx;
+    font-size: 30rpx;
+    padding-right: 20rpx;
+    box-sizing: border-box;
+}
+
+.question__arrow {
+    width: 11rpx;
+    height: 20rpx;
+    flex-shrink: 0;
+}

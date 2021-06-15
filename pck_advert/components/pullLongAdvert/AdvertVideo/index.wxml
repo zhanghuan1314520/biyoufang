@@ -1,0 +1,3 @@
+<view>
+    <video muted showCenterPlayBtn showMuteBtn class="advert-video" id="advertVideo" poster="{{poster}}" src="{{url}}" style="width: {{width}}; height: {{height}};"></video>
+</view>

@@ -1,0 +1,31 @@
+<ModalBox wx:if="{{dialogShow}}">
+    <view class="subscirbe-dialog">
+        <view class="subscirbe-dialog-header">
+            <text>订阅提醒短信通知</text>
+        </view>
+        <view class="subscirbe-dialog-content">
+            <view class="phone" wx:if="{{useingDefaultPhone}}">
+                <text class="phone__text">{{userInfo.PhoneNumber}}</text>
+                <text bind:tap="toggleSubscribePhoneType" class="phone_tip" data-type="other">
+            使用其他手机号
+          </text>
+            </view>
+            <view class="phone" wx:else>
+                <input class="input_phone" focus="true" maxlength="{{11}}" value="{{phone}}" placeholder="请输入手机号" type="number"></input>
+                <button bind:tap="{{userInfo.PhoneNumber?'toggleSubscribePhoneType':'noHandle'}}" bindgetphonenumber="getPhoneNumber" class="phone_tip btn_reset" data-type="default" openType="{{userInfo.PhoneNumber?'':'getPhoneNumber'}}">
+            使用微信手机号
+          </button>
+            </view>
+        </view>
+        <view class="subscirbe-dialog-footer">
+            <view class="btn-list">
+                <view bind:tap="operateSubscribeDialog" class="btn-item btn_cancel" data-type="cancel">
+                    <text>取消</text>
+                </view>
+                <view bind:tap="operateSubscribeDialog" class="btn-item btn_confirm" data-type="confirm">
+                    <text>确定</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</ModalBox>

@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "楼盘详情",
+    "usingComponents": {
+        "back-home": "/components/back_home/back_home",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

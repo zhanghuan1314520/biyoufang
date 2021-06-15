@@ -1,0 +1,34 @@
+<view animation="{{slideInOrOut}}" class="nav-wrap">
+    <view class="btn-left">
+        <button bind:tap="handleTap" class="bottom-icon reset-btn" data-type="phone" wx:if="{{buildInfo.NeedCall}}">
+            <image class="lpxq-icon" src="{{icons['cly_icon_phone']}}"></image>
+            拨号
+        </button>
+        <button bind:tap="{{userInfo.Authorized?'handleTap':''}}" bindgetuserinfo="authorizedUserInfo" class="bottom-icon reset-btn" data-type="focus" openType="{{userInfo.Authorized?'':'getUserInfo'}}">
+            <image class="lpxq-icon" src="{{buildInfo.IsFollow?icons['cly_icon_subscribed']:icons['cly_icon_subscribe']}}"></image>
+            {{buildInfo.IsFollow?'已订阅':'订阅'}}
+        </button>
+        <button bind:tap="handleTap" class="bottom-icon reset-btn" data-type="more">
+            <image class="lpxq-icon" src="{{icons['cly_icon_more']}}"></image>
+            更多
+        </button>
+    </view>
+    <view class="btn-right">
+        <button bindgetphonenumber="authorizePhoneNumber" bindtap="submitForm" class="reset-btn btn-common see-hourse {{buildInfo.HaveBooked?'booked':''}}" data-source="navButton" disabled="{{buildInfo.HaveBooked}}" openType="{{!userInfo.PhoneNumber&&needPhoneAuthorize?'getPhoneNumber':''}}">
+            <view>
+                {{buildInfo.HaveBooked?btnText.ReservedFirstCopywriting||'已预约':btnText.MakeAnAppointment||'预约看房'}}
+            </view>
+            <view class="attach-mes">
+              {{buildInfo.HaveBooked&&btnText.ReservedSecondCopywriting?btnText.ReservedSecondCopywriting:buildInfo.AppointmentNumber&&buildInfo.ShowAppointmentNumber?buildInfo.AppointmentNumber+'人预约':'一键直达'}}
+            </view>
+        </button>
+        <button bind:tap="handleTap" class="reset-btn btn-common online-contact" data-type="consultant" wx:if="{{buildInfo.ExistConsultant}}">
+            <view>在线咨询</view>
+            <view class="attach-mes">多顾问为您服务</view>
+        </button>
+        <button bind:tap="handleTap" class="reset-btn btn-common online-contact" data-type="sales" wx:else>
+                咨询售楼处
+            </button>
+    </view>
+    <SubscribeRemind bindcancel="handelSubscribeRemind" bindsuccess="handelSubscribeRemind" buildingId="{{buildInfo.BuildingId}}" dialogShow="{{subscribeRemind}}" userInfo="{{userInfo}}"></SubscribeRemind>
+</view>

@@ -1,0 +1,82 @@
+<view class="broker" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="置业顾问名片" needBackBtn="{{!noBackBtn}}" showBackHome="{{noBackBtn}}" showShare="{{false}}"></nav-bar>
+    <block wx:if="{{!loading}}">
+        <view class="user-box">
+            <broker_item bind:operateBrokerItemInfo="operateBrokerItemInfo" brokerItemInfo="{{broker}}" userInfo="{{userInfo}}"></broker_item>
+        </view>
+        <view class="building" wx:if="{{broker}}">
+            <view class="building__main">
+                <building-card bind:operateBuildingCardInfo="operateBuildingCardInfo" buildingCardInfo="{{buildingData.buildingInfo}}"></building-card>
+            </view>
+            <view class="building__detail">
+                <view class="detail__panel">
+                    <view class="building-intro">
+                        <view class="building-info">
+                            <view class="building-title">楼盘信息</view>
+                        </view>
+                        <view class="base-info-list">
+                            <view class="base-info-item">
+                                <view class="base-info-item-left">
+                                    <view class="label">建筑类型：</view>
+                                    <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.buildingTypes?buildingData.buildingInfo.buildingTypes:'--'}}</view>
+                                </view>
+                                <view class="base-info-item-right">
+                                    <view class="label">主力户型：</view>
+                                    <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.buildingTypeArea?buildingData.buildingInfo.buildingTypeArea:'--'}}</view>
+                                </view>
+                            </view>
+                            <view class="base-info-item">
+                                <view class="base-info-item-left">
+                                    <view class="label">规划户数：</view>
+                                    <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.totalHouseholds?buildingData.buildingInfo.totalHouseholds:'--'}}</view>
+                                </view>
+                                <view class="base-info-item-right">
+                                    <view class="label">车位比：</view>
+                                    <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.parkingSpaceRatio?buildingData.buildingInfo.parkingSpaceRatio:'--'}}</view>
+                                </view>
+                            </view>
+                            <view class="base-info-item">
+                                <view class="base-info-item-left">
+                                    <view class="label">绿化率：</view>
+                                    <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.greeningRate?buildingData.buildingInfo.greeningRate:'--'}}</view>
+                                </view>
+                                <view class="base-info-item-right">
+                                    <view class="label">占地面积：</view>
+                                    <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.coveredArea?buildingData.buildingInfo.coveredArea:'--'}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="advantage-info developer-info">
+                            <view class="label">规划楼栋：</view>
+                            <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.buildingInstruction?buildingData.buildingInfo.buildingInstruction:'--'}}</view>
+                        </view>
+                        <view class="advantage-info property-company-info">
+                            <view class="label">物业公司：</view>
+                            <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.propertyCompanyName?buildingData.buildingInfo.propertyCompanyName:'--'}}</view>
+                        </view>
+                        <view class="advantage-info developer-info">
+                            <view class="label">开发商：</view>
+                            <view class="info-content">{{buildingData.buildingInfo&&buildingData.buildingInfo.developerName?buildingData.buildingInfo.developerName:'--'}}</view>
+                        </view>
+                        <view class="subway-info" wx:if="{{buildingData.buildingInfo.subways&&buildingData.buildingInfo.subways.length}}">
+                            <view class="label">地铁交通：</view>
+                            <view class="subway-list">
+                                <view class="subway-list-item" wx:for="{{buildingData.buildingInfo.subways}}" wx:key="index">
+                                    <view class="subway-name">
+                      {{item.title}}
+                      <text class="walking" wx:if="{{item.walkingTime}}">(步行{{item.walkingTime}}分钟)</text>
+                                    </view>
+                                    <view class="subway-distance" wx:if="{{item.distance}}">{{item.distance}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="btn-more-wrap">
+                        <button bindtap="checkProjectDetail" class="btn-more">更多详情></button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <ShareButton></ShareButton>
+</view>

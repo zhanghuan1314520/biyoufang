@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "load-more": "/components/load-more/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

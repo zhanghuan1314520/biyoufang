@@ -1,0 +1,30 @@
+.message-status {
+    width: 104rpx;
+    height: 100rpx;
+    overflow: hidden;
+    text-align: center;
+}
+
+.message-status-text {
+    height: 40rpx;
+    line-height: 40rpx;
+    width: 148rpx;
+    margin-left: -22rpx;
+    font-size: 22rpx;
+    color: #fff;
+    margin-top: 32rpx;
+    transform-origin: center center;
+    transform: rotate(44deg) translateY(-21rpx);
+}
+
+.state-0 {
+    background: linear-gradient(90deg,#ff7603,#fe5e10);
+}
+
+.state-1 {
+    background: linear-gradient(90deg,#18d188,#09c47a);
+}
+
+.state--1 {
+    background: linear-gradient(90deg,#ff034e,#fe1010);
+}

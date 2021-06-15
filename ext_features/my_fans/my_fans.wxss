@@ -1,0 +1,53 @@
+.fans__list {
+    box-sizing: border-box;
+    padding: 20rpx 30rpx 0;
+}
+
+.fans {
+    justify-content: space-between;
+    padding: 30rpx 0;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.fans,.fans__info {
+    display: flex;
+    align-items: center;
+}
+
+.fans__content {
+    margin-left: 18rpx;
+}
+
+.avatar__wrap {
+    width: 96rpx;
+    height: 96rpx;
+    background: #e5e5e5;
+    border-radius: 50%;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.fans__name {
+    font-weight: 700;
+    padding-bottom: 12rpx;
+}
+
+.time {
+    color: #8a969e;
+    font-size: 22rpx;
+}
+
+.fans__chat {
+    border-radius: 30rpx;
+    border: 1px solid #fe5e10;
+    color: #fe5e10;
+    font-size: 28rpx;
+    width: 110rpx;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+}

@@ -1,0 +1,33 @@
+<view class="moments-item">
+    <view class="left-image-box">
+        <image bindtap="clickAvatar" class="personer-image {{comptype==='0'?'sm':''}}" mode="aspectFill" src="{{moments.personalImageUrl}}"></image>
+    </view>
+    <view class="right-box">
+        <view class="moment-title-line">
+            <view class="moment-name-box">
+                <view class="moment-name">{{moments.RealtyConsultantName}}</view>
+                <view class="moment-time">{{moments.CreateTime}}</view>
+            </view>
+            <view bindtap="momOperate" class="operate-box">
+                <view catchtap="noop" class="moment-del-item" wx:if="{{comptype==2}}">
+                    <UserAuthorize authUserInfo bindproxySuccess="momOperate" recordParams="{{[ {o:'chat',id:item.id} ]}}" userInfo="{{userInfo}}">
+                        <image class="moment-del" src="/resource/my_states/youliao_icon_consult@3x.png"></image>
+                    </UserAuthorize>
+                </view>
+                <image class="moment-del" data-id="{{item.Id}}" data-o="phone" src="/resource/my_states/youliao_icon_phone@3x.png" wx:if="{{comptype==2}}"></image>
+                <image class="moment-del" data-id="{{item.Id}}" data-o="del" src="/resource/my_states/youliao_icon_dele@3x.png" wx:if="{{comptype==1}}"></image>
+            </view>
+        </view>
+        <view class="moment-main">
+            <view class="moment-content">{{moments.Content}}</view>
+            <view class="moment-image-box {{borderFlag?'':'moment-border-none'}}">
+                <image bindtap="previewImage" class="moment-content-image {{moments.covers.length<2?'sp':''}}" data-i="{{index}}" mode="aspectFill" src="{{iit}}" wx:for="{{moments.covers}}" wx:for-item="iit" wx:key="index"></image>
+            </view>
+            <view bindtap="momOperate" class="moment-content-footer" data-id="{{moments.BuildingId}}" data-o="detail" wx:if="{{moments.BuildingId}}">
+                <image class="footer-icon" src="/resource/my_states/youliao_icon_lp_blue@3x.png"></image>
+                <view class="footer-building">点击了解更多：{{moments.BuildingName}}</view>
+                <image class="footer-right-o icon iconfont icon-jiantouyou"></image>
+            </view>
+        </view>
+    </view>
+</view>

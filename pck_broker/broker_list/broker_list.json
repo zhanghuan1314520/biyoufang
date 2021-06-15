@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "broker-item": "/components/broker_module/broker_item/broker_item",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

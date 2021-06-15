@@ -1,0 +1,57 @@
+<view class="lottery" style="padding-top: {{navH}}px">
+    <nav-bar navBarTitle="帮助" showShare="{{false}}"></nav-bar>
+    <view class="lottery-title">摇中概率计算方式</view>
+    <block wx:if="{{versionType!==0}}">
+        <view class="lottery-params-info">
+            <view class="item">无房倾斜套数 = A</view>
+            <view class="item">登记无房人数 = B</view>
+        </view>
+        <view class="help-main">
+            <view class="line">
+                <view class="title">无房摇中概率</view>
+                <view class="equal">=</view>
+                <view class="value-box">
+                    <view class="value1">A</view>
+                    <view class="value2"></view>
+                    <view class="value1">B</view>
+                </view>
+            </view>
+            <view class="line">
+                <view class="title">非倾斜摇中概率</view>
+                <view class="equal">=</view>
+                <view class="value-box">
+                    <view class="value1">
+                        <text class="color-dark">总可售套数-Min</text>
+                        (A，B)
+                    </view>
+                    <view class="value2"></view>
+                    <view class="value1">
+                        <text class="color-dark">登记人数-Min</text>
+                        (A，B)
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <block wx:for="{{table}}" wx:key="index">
+            <view class="lottery-params-info talent-title" wx:if="{{index<2&&childIndex===0}}" wx:for="{{item}}" wx:for-index="childIndex" wx:for-item="child" wx:key="childIndex">
+                <view class="item">{{child}}</view>
+            </view>
+            <view class="help-main talent-main {{index===2?'mgt-30':''}}">
+                <view class="line" wx:if="{{index<2&&childIndex!==0||index===2}}" wx:for="{{item}}" wx:for-index="childIndex" wx:for-item="child" wx:key="childIndex">
+                    <view class="title">
+                            {{child.a}}
+                        </view>
+                    <view class="equal">=</view>
+                    <view class="value-box">
+                        <view class="value1">{{child.b}}</view>
+                        <view class="value2"></view>
+                        <view class="value1">{{child.c}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class="talent-explain">说明: 人数小于房源数，赋值100%</view>
+    </block>
+</view>

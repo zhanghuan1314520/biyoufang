@@ -1,0 +1,12 @@
+function formatePrice(priceText) {
+    priceText = priceText || '';
+    return (priceText.indexOf('（参考价格）') >= 0 ? priceText.replace('（参考价格）', '') : priceText)
+};
+
+function formateCityText(name, end) {
+    return (name ? name.slice(0, end) : '')
+};
+module.exports = ({
+    formatePrice: formatePrice,
+    formateCityText: formateCityText,
+});

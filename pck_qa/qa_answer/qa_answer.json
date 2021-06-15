@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "question-card": "/components/qa/question_card/question_card",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

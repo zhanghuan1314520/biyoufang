@@ -1,0 +1,22 @@
+<view class="category">
+    <view class="first-category">
+        <view bindtap="handleTapClick" class="first-category_item {{index===activeIndex?'active-category':''}}" data-index="{{index}}" style="{{index===activeIndex?bgColor[activeIndex]:''}}" wx:for="{{list}}" wx:key="index">
+            <text class="category-name">{{item.Title}}</text>
+            <view class="des-icon" style="border-top-color: {{textColor[index]}}"></view>
+        </view>
+    </view>
+    <view class="second-category">
+        <swiper circular autoplay="{{startPlay}}" bindchange="swipeChange" class="swiper" current="{{currentIndex}}" duration="{{0}}" interval="{{4000}}">
+            <swiper-item catchtouchmove="catchTouchMove" class="swiper-item" wx:for="{{list}}" wx:key="index">
+                <view catch:tap="handleSecondCategorytap" class="second-category_item" data-id="{{secondItem.Id}}" data-title="{{secondItem.Title}}" wx:for="{{item.Children}}" wx:for-index="secondIndex" wx:for-item="secondItem" wx:key="secondIndex">
+                    <view class="category-name" style="color: {{textColor[index]}}">
+            {{secondItem.Title}}
+          </view>
+                    <view class="category-keyword">
+            {{secondItem.SubTitle}}
+          </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "moment-item": "/components/myStates/moment_item/moment_item",
+        "project-list-item": "/components/project_list_item/project_list_item",
+        "join-building-tab": "/components/my/join-building-tab/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

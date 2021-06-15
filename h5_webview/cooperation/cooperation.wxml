@@ -1,0 +1,6 @@
+<view class="container" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="商务合作" showShare="{{false}}"></nav-bar>
+    <canvas canvasId="canvas" class="canvas" style="height:{{ctxHeight}}px; width: {{ctxWidth}}px"></canvas>
+    <cover-view bind:tap="savePlacard" class="save-btn" wx:if="{{showFlag}}">保存图片</cover-view>
+    <cover-view bind:tap="copyText" class="copy-btn" wx:if="{{showFlag}}">(点击复制)</cover-view>
+</view>

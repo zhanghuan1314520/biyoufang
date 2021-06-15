@@ -1,0 +1,17 @@
+.goHome__wrap {
+    position: fixed;
+    width: 120rpx;
+    height: 120rpx;
+    right: 30rpx;
+    bottom: 60rpx;
+}
+
+.goHome__btn {
+    background: transparent;
+    padding: 0;
+}
+
+.goHome,.goHome__btn {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,15 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "楼盘列表",
+    "usingComponents": {
+        "project-list": "/components/project_list/project_list",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "search": "/components/building/search/search",
+        "select": "/components/building/select/select",
+        "building-card": "/components/base/building-card/building-card",
+        "load-more": "/components/load-more/index",
+        "advert-banner": "/components/advert-banner/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

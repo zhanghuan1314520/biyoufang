@@ -1,0 +1,8 @@
+<view catchtouchmove="noTouch" class="modal" wx:if="{{_visibility}}">
+    <view animation="{{slideInOrOut}}" class="animation">
+        <view class="modal-content">
+            <slot></slot>
+        </view>
+        <view bindtap="toggleVisibility" class="modal-btn">取消</view>
+    </view>
+</view>

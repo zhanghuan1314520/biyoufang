@@ -1,0 +1,14 @@
+<view class="loadmore-wrap" id="loadMore">
+    <div class="load-more" wx:if="{{screenShow}}">
+        <view class="no-more" hidden="{{!(!loadFail&&!noMoreFlag&&loadFlag)}}">
+            {{loadText}}
+        </view>
+        <image class="icon active" hidden="{{!(!loadFail&&!noMoreFlag&&loadFlag)}}" src="{{loadImage}}" wx:if="{{!loadText}}"></image>
+        <view class="no-more" wx:if="{{!loadFail&&noMoreFlag}}">
+            {{noMore}}
+        </view>
+        <view catch:tap="reload" class="no-more" wx:if="{{loadFail}}">
+            加载失败！
+        </view>
+    </div>
+</view>

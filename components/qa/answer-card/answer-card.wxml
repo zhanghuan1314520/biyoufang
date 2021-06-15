@@ -1,0 +1,57 @@
+<view class="answer-card-wrapper">
+    <view class="answer-card-info">
+        <view class="answer-card-aside">
+            <image class="avator" mode="aspectFill" src="{{answerCardInfo.avatar}}"></image>
+        </view>
+        <view class="answer-card-main">
+            <view class="user-info">
+                <view class="user-name {{'user-name_'+answerCardInfo.userType}}">
+                    <text>{{answerCardInfo.userName}}</text>
+                </view>
+                <view class="user-type user-type_official" wx:if="{{answerCardInfo.userType==='official'}}">
+                    <image class="user-type_official-image" src="/resource/qa/icon_official@3x.png"></image>
+                    <text>官方</text>
+                </view>
+                <view catchtap="operateAnswerCardInfo" class="user-type user-type_broker" data-type="chatBroker" wx:elif="{{answerCardInfo.userType==='broker'}}">
+                    <image class="icon_broker" src="/resource/detail/detail_icon_contact@3x.png"></image>
+                    <text class="contact-me">联系TA</text>
+                </view>
+                <view class="answer-status">
+                    <view catch:tap="operateAnswerCardInfo" class="dropoption" data-type="adoptAnswer" wx:if="{{answerCardInfo.showAdopt}}">
+                        <view class="adoption__add">+</view>
+                        <view class="adoption__text">采纳</view>
+                    </view>
+                </view>
+            </view>
+            <view class="answer-content">
+                <view class="content">
+                    <view class="featured" wx:if="{{answerCardInfo.IsSelected}}">
+            精选
+          </view>
+                    <view class="adoption" wx:if="{{answerCardInfo.IsAdopted}}">
+            采纳
+          </view>
+                    <text class="content fc-gray">{{answerCardInfo.Content}}</text>
+                </view>
+                <view class="answer-card__img-list" wx:if="{{answerCardInfo.covers&&answerCardInfo.covers.length}}">
+                    <image catch:tap="previewImage" class="answer-card__img-item {{'answer-card__img-item_mini'+answerCardInfo.imgSize}}" data-id="{{item.id}}" mode="aspectFill" src="{{item.imgSrc}}" wx:for="{{answerCardInfo.covers}}" wx:key="index"></image>
+                </view>
+            </view>
+            <view class="footer">
+                <view class="create-time">
+                    <text class="create-time">{{answerCardInfo.createTime}}</text>
+                </view>
+                <view class="like-info">
+                    <UserAuthorize authUserInfo bindproxySuccess="operateAnswerCardInfo" recordParams="{{[ {type:'like'} ]}}" userInfo="{{userInfo}}">
+                        <view class="like">
+                            <text class="like_num {{answerCardInfo.IsLiked?'like-color':''}}">{{answerCardInfo.LikeNumber}}</text>
+                            <image class="icon_like" src="/resource/qa/myqa_icon_like@3x.png" wx:if="{{!answerCardInfo.IsLiked}}"></image>
+                            <image class="icon_like" src="/resource/qa/myqa_icon_like_1@3x.png" wx:else></image>
+                        </view>
+                    </UserAuthorize>
+                </view>
+            </view>
+            <view class="line"></view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,24 @@
+<view class="list" style="padding-top: {{navH}}px">
+    <nav-bar navBarTitle="{{navBarTitle}}"></nav-bar>
+    <view class="show-share" wx:if="{{status==='1'&&showShare}}">
+        <view>你可以点击左上角分享，让朋友了解最新购房信息</view>
+        <view bindtap="closeShare" class="icon iconfont icon-guanbi close"></view>
+    </view>
+    <view class="advert-banner" wx:if="{{positionKey}}">
+        <advert-banner isReady="{{canLoadBanner}}" status="{{positionKey}}"></advert-banner>
+    </view>
+    <view class="notice notice-free" wx:if="{{status==8&&list.length>0&&versionType===0}}">
+        <view class="notice-title">据必有房统计</view>
+        <view class="notice-month">近6个月,杭州新房市场共有<text class="today">{{freeCount}}</text>次</view>
+        <view class="notice-count">开盘没有摇号</view>
+        <image class="notice-bg notice-bg-state5" src="{{imageRoot}}/images_wx/bg/wxyh_img_bj@3x.png"></image>
+    </view>
+    <view class="list-wrap">
+        <view class="building-card {{item.Id?'advert-build':''}}" data-index="{{index}}" wx:for="{{list}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="buildCardOperate" buildingCardInfo="{{item.info}}"></building-card>
+        </view>
+        <load-more id="loadMore" loadFlag="{{canLoadMore}}" noMoreFlag="{{!canLoadMore}}" screenShow="{{list.length>=3}}"></load-more>
+        <empty-view imgIcon="{{imageRoot}}/images_wx/default_graph/img_nohouse.png" isReveal="{{!list.length&&pageState!==-1}}" tipsText="暂无楼盘"></empty-view>
+    </view>
+    <back-home wx:if="{{isShare==1}}"></back-home>
+</view>

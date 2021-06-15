@@ -1,0 +1,58 @@
+<view class="upload-building-imgs-wrapper" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="上传楼盘图片" showShare="{{false}}"></nav-bar>
+    </view>
+    <blocK wx:if="{{!buildingId}}">
+        <consultant-buildings buildings="{{userInfo.RealtyConsultantInfo.Buildings}}" id="buildingTab"></consultant-buildings>
+    </blocK>
+    <view class="img-type">
+        <view class="img-type-left">
+            <text>图片类型</text>
+        </view>
+        <view class="img-type-right">
+            <picker bind:cancel="cancelImageType" bind:change="selectImageType" mode="selector" range="{{imageTypeInfo.imageTypeList}}" value="{{imageTypeInfo.index}}">
+                <view class="type">{{imageTypeInfo.imageTypeList[imageTypeInfo.index]}}</view>
+            </picker>
+            <image class="arrow" src="/resource/arrow_right.png"></image>
+        </view>
+    </view>
+    <view class="upload-img-container">
+        <view class="label">
+            <text class="asterisk">*</text>
+            <text class="title">上传楼盘图片</text>
+            <text class="limit">(单次最多可上传9张)</text>
+        </view>
+        <view class="upload-imgs-list">
+            <view bind:tap="chooseImage" class="upload-imgs-item" wx:if="{{uploadImgs&&uploadImgs.length<9}}">
+                <view class="img-container">
+                    <image class="plus" src="/resource/register_add.png"></image>
+                </view>
+            </view>
+            <view bind:tap="previewImage" class="upload-imgs-item" data-id="{{item.id}}" wx:for="{{uploadImgs}}" wx:key="index">
+                <view class="img-container">
+                    <image class="img" src="{{item.imgUrl}}"></image>
+                </view>
+                <view catch:tap="deleteImage" class="delete" data-id="{{item.id}}" wx:if="{{item.canDelete}}">
+                    <view class="line"></view>
+                </view>
+            </view>
+        </view>
+        <view class="rule-list">
+            <view class="rule-item rule-item-tip">提示：不要上传哪些图片</view>
+            <viws class="rule-item">1、含其他平台水印的图片</viws>
+            <viws class="rule-item">2、楼盘相册已有的图片</viws>
+            <viws class="rule-item">3、与本楼盘无关的图片</viws>
+            <viws class="rule-item">4、模糊不清的图片</viws>
+            <viws class="rule-item">5、带有个人宣传的图片</viws>
+        </view>
+    </view>
+    <view class="footer">
+        <button bind:tap="submitNewsInfo" class="submit-btn" loading="{{showLoading}}">
+            <text>确认上传</text>
+        </button>
+    </view>
+    <view>
+        <canvas id="canvas"></canvas>
+    </view>
+    <canvas canvasId="canvas" class="canvas-position"></canvas>
+</view>

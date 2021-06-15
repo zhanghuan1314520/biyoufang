@@ -1,0 +1,380 @@
+.detail__panel {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+}
+
+.detail__panel-head {
+    display: flex;
+    align-items: center;
+    min-height: 97rpx;
+    box-sizing: border-box;
+    padding-top: 20rpx;
+    color: #333;
+}
+
+.detail__panel-head.large {
+    padding-bottom: 20rpx;
+}
+
+.detail__panel-title {
+    flex: 1;
+    font-size: 38rpx;
+    font-weight: 700;
+    color: #333;
+}
+
+.detail__panel-title-s {
+    font-size: 32rpx;
+}
+
+.detail__panel-qrcode-wrap {
+    flex: none;
+    display: flex;
+    align-items: center;
+}
+
+.detail__panel-qrcode-desc {
+    flex: none;
+    font-size: 20rpx;
+    color: #0089fd;
+    padding-right: 5rpx;
+}
+
+.detail__panel-qrcode {
+    flex: none;
+    display: block;
+    width: 94rpx;
+    height: 94rpx;
+}
+
+.detail__panel-arrow {
+    flex: none;
+    display: block;
+    width: 32rpx;
+    height: 14rpx;
+    transition: all .25s;
+    transform: rotate(180deg);
+}
+
+.detail__panel-arrow.open {
+    transform: rotate(0);
+}
+
+.detail__panel-link {
+    flex: none;
+    font-size: 22rpx;
+    color: #777;
+    display: flex;
+    align-items: center;
+}
+
+.detail__panel-link-text {
+    color: #4b70c4;
+    font-size: 26rpx;
+    padding-right: 20rpx;
+}
+
+.detail__panel-link.center {
+    font-size: 30rpx;
+    line-height: 42rpx;
+    text-align: center;
+    color: #fe5e10;
+    padding: 23rpx 0 0;
+}
+
+.detail__panel-body {
+    padding: 30rpx 0;
+}
+
+.detail__panel-cell {
+    display: flex;
+    min-height: 37rpx;
+}
+
+.detail__panel-cell:not(:last-child) {
+    margin-bottom: 25rpx;
+}
+
+.detail__panel-cell-column {
+    flex: 1;
+    display: flex;
+}
+
+.detail__panel-cell-title {
+    flex: none;
+    position: relative;
+    box-sizing: border-box;
+    width: 126rpx;
+    font-size: 26rpx;
+    line-height: 37rpx;
+    color: #999;
+    text-align: left;
+}
+
+.detail__panel-cell-title text {
+    letter-spacing: 4.1px;
+}
+
+.detail__panel-cell-title.text-left {
+    text-align: left;
+}
+
+.detail__panel-cell-title.panel-title-with-dot {
+    width: 180rpx;
+    padding-left: 22rpx;
+    text-align: left;
+}
+
+.detail__panel-cell-title.panel-title-with-dot::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18.5rpx;
+    margin-top: -4rpx;
+    width: 8rpx;
+    height: 8rpx;
+    border-radius: 100%;
+    background: #d8d8d8;
+}
+
+.detail__panel-cell-content {
+    flex: 1;
+    font-size: 26rpx;
+    line-height: 37rpx;
+    box-sizing: border-box;
+    color: #333;
+    padding-left: 8rpx;
+}
+
+.detail__panel-cell-content.content-flex {
+    display: flex;
+}
+
+.detail__panel-cell-content.red {
+    color: #fe5e10;
+}
+
+.detail__panel-cell-content .content-link {
+    padding-right: 5rpx;
+    color: #0089fd;
+}
+
+.detail__panel-cell-content .content-icon {
+    display: block;
+    width: 26rpx;
+    height: 18rpx;
+}
+
+.cell-short .detail__panel-cell-title,.detail__panel-cell-column .detail__panel-cell-title {
+    width: 170rpx;
+}
+
+.cell-short .detail__panel-cell-content,.detail__panel-cell-column .detail__panel-cell-content {
+    padding-right: 10rpx;
+}
+
+.detail__panel-cell-title.panel-title-with-dot {
+    width: 155rpx;
+}
+
+.detail__panel {
+    margin-top: 0;
+}
+
+.building,page {
+    background: #fff;
+}
+
+.building__main {
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 30rpx 0;
+}
+
+.building__main,.line {
+    margin: 0 30rpx;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.img-wrap {
+    float: left;
+    width: 192rpx;
+    height: 144rpx;
+    border-radius: 8rpx;
+    overflow: hidden;
+}
+
+.img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    float: left;
+    box-sizing: border-box;
+    padding: 4rpx 20rpx 0;
+    width: 399rpx;
+}
+
+.name {
+    font-size: 32rpx;
+    font-weight: 700;
+    line-height: 45rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.price {
+    font-size: 28rpx;
+    line-height: 42rpx;
+    color: #777;
+}
+
+.price text {
+    font-size: 30rpx;
+    color: #fe5e10;
+    margin-top: 8rpx;
+}
+
+.date {
+    font-size: 24rpx;
+    line-height: 33rpx;
+    margin-top: 18rpx;
+}
+
+.other {
+    float: left;
+    width: 100rpx;
+    padding-top: 4rpx;
+}
+
+.status {
+    width: 100rpx;
+    height: 30rpx;
+    background: #fe5e10;
+    text-align: center;
+    font-size: 20rpx;
+    font-weight: 700;
+    color: #fff;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    margin-top: 75rpx;
+}
+
+.location-icon {
+    width: 20rpx;
+    height: 25rpx;
+}
+
+.location-text {
+    flex: 1;
+    font-size: 24rpx;
+    line-height: 33rpx;
+    padding-left: 5rpx;
+}
+
+.btn-more-wrap {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40rpx;
+}
+
+.btn-more {
+    margin-top: 30rpx;
+    width: 412rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: #fff1ea;
+    border-radius: 4rpx;
+    font-size: 32rpx;
+    color: #fe5e10;
+}
+
+.building-info {
+    margin: 21rpx 0 47rpx;
+    font-size: 38rpx;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 500;
+    color: #062941;
+    line-height: 53rpx;
+}
+
+.base-info-item {
+    display: flex;
+    margin-bottom: 26rpx;
+}
+
+.base-info-item-left,.base-info-item-right {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    height: 33rpx;
+}
+
+.label {
+    color: #8a969e;
+    line-height: 33rpx;
+}
+
+.info-content,.label {
+    font-size: 24rpx;
+    font-family: PingFang-SC-Regular,PingFang-SC;
+    font-weight: 400;
+}
+
+.info-content {
+    flex: 1;
+    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 10rpx;
+}
+
+.advantage-info {
+    margin-bottom: 25rpx;
+    height: 33rpx;
+}
+
+.advantage-info,.subway-info {
+    display: flex;
+}
+
+.subway-list {
+    flex: 1;
+    font-size: 24rpx;
+    font-family: PingFang-SC-Regular,PingFang-SC;
+    font-weight: 400;
+    color: #333;
+}
+
+.subway-list-item {
+    display: flex;
+    margin-bottom: 22rpx;
+}
+
+.subway-name {
+    flex: 1;
+}
+
+.walking {
+    color: #8a969e;
+}
+
+.back-index {
+    position: fixed;
+    bottom: 30rpx;
+    right: 30rpx;
+    width: 126rpx;
+    height: 126rpx;
+}
+
+.user-box {
+    padding: 40rpx 30rpx 0rpx;
+}

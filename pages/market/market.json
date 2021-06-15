@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "market_swiper": "/components/market/market_swiper/market_swiper",
+        "category-card": "/components/market/category-card/index",
+        "article-list": "/components/market/article_list/article_list",
+        "nav-menu": "/components/market/nav-menu/nav-menu",
+        "moment": "/components/myStates/moment/moment",
+        "question-card": "/components/qa/question_card/question_card",
+        "load-more": "/components/load-more/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    },
+    "enablePullDownRefresh": true
+}

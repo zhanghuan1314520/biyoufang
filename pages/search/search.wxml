@@ -1,0 +1,63 @@
+<view class="search" style="padding-top: {{navH+deviceWidth/750*112}}px;">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="搜索" showShare="{{false}}"></nav-bar>
+    <view class="search__bar" style="top: {{navH}}px;">
+        <form bindreset="formReset">
+            <view class="search__bar-wrap-flex">
+                <view class="search__bar-wrap">
+                    <image class="search__bar-icon" src="/resource/search_i.png"></image>
+                    <input bindconfirm="ensureToSearch" bindfocus="inputFocus" bindinput="inputing" class="search__bar-input" confirmType="search" focus="{{focus}}" name="keyword" placeholder="请输入楼盘名称" placeholderClass="input-placeholder-class" value="{{keyWords}}"></input>
+                    <button class="btn-reset" formType="reset" hidden="{{!keyWords}}">
+                        <image class="icon-reset" src="/resource/search_close@3x.png"></image>
+                    </button>
+                </view>
+                <view bindtap="ensureToSearch" class="search-btn">搜索</view>
+            </view>
+        </form>
+    </view>
+    <advert-banner browserPoint="{{true}}" id="swiperBanner" isReady="{{canLoadBanner}}" status="{{'BuildingSearchBanner'}}" swiperClass="swiper-wrap"></advert-banner>
+    <view class="search__hot" wx:if="{{hotSearchList.length>0&&!keyWords}}">
+        <view class="search__hot-title">热门搜索</view>
+        <view class="search__hot-tags">
+            <view bindtap="searchFromRecord" class="search__hot-tag" data-index="{{index}}" data-keywords="{{item.BuildingName}}" data-type="{{1}}" wx:for="{{hotSearchList}}" wx:key="BuildingName">{{item.BuildingName}}</view>
+        </view>
+    </view>
+    <view class="list__like" wx:if="{{keyWords&&likely}}">
+        <scroll-view scrollY style="height: calc(100vh - {{navH+'px'}} - 120rpx);">
+            <view bindtap="checkDetail" class="list__like-item" data-id="{{item.BuildingId}}" data-name="{{item.BuildingName}}" wx:for="{{searchList}}" wx:key="BuildingId">
+                <view class="list__like-left">
+                    <image class="list__like-icon" src="/resource/search_i.png"></image>
+                    <view class="list__like-wrap">
+                        <highlight-view key="{{keyWords}}" str="{{item.BuildingName}}" wx:if="{{version>=261}}"></highlight-view>
+                        <view class="like" wx:else>{{item.BuildingName}}</view>
+                    </view>
+                </view>
+                <view class="list__like-right">
+                    <image class="list__like-arrow" src="/resource/arrow_right.png"></image>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="search__history" wx:if="{{!keyWords}}">
+        <view class="search__history-title">历史搜索</view>
+        <view class="search__history-list" wx:if="{{historySearchList.length>0}}">
+            <view bindtap="searchFromRecord" class="search__history-item" data-index="{{index}}" data-keywords="{{item}}" data-type="{{2}}" hoverClass="hover-text-color" wx:for="{{historySearchList}}" wx:key="item">
+                <image class="search__history-icon" src="/resource/history_icon@3x.png"></image>
+                <text class="search__history-text">{{item}}</text>
+            </view>
+            <view bindtap="deleteHistorySearch" class="search__history-item">
+                <image class="search__history-icon" src="/resource/delete_icon@3x.png"></image>
+                <text class="search__history-text" style="color:#999999">清空搜索历史</text>
+            </view>
+        </view>
+        <view class="search__history-empty" wx:if="{{historySearchList.length<=0}}">暂无历史搜索记录</view>
+    </view>
+    <view class="list" wx:if="{{keyWords&&!likely}}">
+        <view class="building-card" wx:for="{{searchList}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="buildCardOperate" buildingCardInfo="{{item.info}}"></building-card>
+        </view>
+    </view>
+    <view class="empty" wx:if="{{keyWords&&searchList.length<=0}}">
+        <image class="empty-img" src="{{imageRoot}}/images_wx/default_graph/null.png"></image>
+    </view>
+    <back-home wx:if="{{isShare==1}}"></back-home>
+</view>

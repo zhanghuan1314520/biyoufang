@@ -1,0 +1,6 @@
+function formateTime(date) {
+    return (date ? '预计' + date.replace(getRegExp('-', 'g'), '.').slice(0, 7) : '--')
+};
+module.exports = ({
+    formateTime: formateTime,
+});

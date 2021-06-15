@@ -1,0 +1,58 @@
+<view class="knowledge" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="新手买房" showShare="{{false}}"></nav-bar>
+    <view class="steps">
+        <view bindtap="changeTab" class="step {{curTab===0?'active':''}}" data-tab="{{0}}">
+            <view class="step-title">step1</view>
+            <view class="step-name">买房准备</view>
+            <view class="arrow-pos-right">
+                <view class="arrow right"></view>
+                <view class="arrow right arrow-gray mg-l8"></view>
+            </view>
+        </view>
+        <view bindtap="changeTab" class="step {{curTab===1?'active':''}}" data-tab="{{1}}">
+            <view class="step-title">step2</view>
+            <view class="step-name">看房选房</view>
+            <view class="arrow-pos-right">
+                <view class="arrow right"></view>
+                <view class="arrow right arrow-gray mg-l8"></view>
+            </view>
+        </view>
+        <view bindtap="changeTab" class="step {{curTab===2?'active':''}}" data-tab="{{2}}">
+            <view class="step-title">step3</view>
+            <view class="step-name">签约认购</view>
+            <view class="arrow-pos-bottom">
+                <view class="arrow down"></view>
+                <view class="arrow down arrow-gray mg-b8"></view>
+            </view>
+        </view>
+        <view bindtap="changeTab" class="step {{curTab===5?'active':''}}" data-tab="{{5}}">
+            <view class="step-title">step6</view>
+            <view class="step-name">收房验房</view>
+            <view class="arrow-pos-right arrow-pos-left">
+                <view class="arrow left arrow-gray"></view>
+                <view class="arrow left mg-l8"></view>
+            </view>
+        </view>
+        <view bindtap="changeTab" class="step {{curTab===4?'active':''}}" data-tab="{{4}}">
+            <view class="step-title">step5</view>
+            <view class="step-name">缴税产权</view>
+            <view class="arrow-pos-right arrow-pos-left">
+                <view class="arrow left arrow-gray"></view>
+                <view class="arrow left mg-l8"></view>
+            </view>
+        </view>
+        <view bindtap="changeTab" class="step {{curTab===3?'active':''}}" data-tab="{{3}}">
+            <view class="step-title">step4</view>
+            <view class="step-name">贷款办理</view>
+        </view>
+    </view>
+    <view class="articles">
+        <view bindtap="readKnowledge" class="article" data-index="{{index}}" wx:for="{{list}}" wx:key="index">
+            <view class="article-name">· {{item.Title}}</view>
+            <image class="article-arrow" src="/resource/arrow.png"></image>
+        </view>
+        <view class="data__empty" wx:if="{{list&&list.length===0}}">
+            <image class="data__empty-img" src="{{nullImg}}"></image>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,33 @@
+<view class="city-wrapper {{selectType==2?'bottom-spacing':''}}" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="{{title}}" showShare="{{false}}"></nav-bar>
+    <view class="section-current">
+        <text>{{tools.formateCityText(cityInfo.CityName,-1)}}</text>
+        <button bind:tap="reloadLocation" class="reset-btn reload-location" loading="{{locationLoading}}" wx:if="{{selectType==1}}">
+      重新定位
+    </button>
+    </view>
+    <view class="section-history" wx:if="{{historyList.length}}">
+        <view class="title">历史</view>
+        <view class="history-list">
+            <view bind:tap="selectCity" class="history-item" data-city-id="{{item.CityId}}" wx:for="{{historyList}}" wx:key="Id">
+        {{item.CityName}}
+      </view>
+        </view>
+    </view>
+    <view class="section-city-wrap">
+        <block wx:if="{{province._show||selectCity==2}}" wx:for="{{groupCityList}}" wx:for-item="province" wx:key="ProvinceId">
+            <view class="provincial">
+          {{province.ProvinceName}}
+        </view>
+            <view class="city-list">
+                <view bind:tap="selectCity" class="city-item {{city.CityId===cityInfo.CityId?'active':''}}" data-city-id="{{city.CityId}}" wx:if="{{city.IsShow||selectCity==2}}" wx:for="{{province.CityList}}" wx:for-item="city" wx:key="CityId">
+              {{tools.formateCityText(city.CityName,-1)}}
+            </view>
+            </view>
+        </block>
+    </view>
+    <button catchtap="additionClick" class="addition-btn" wx:if="{{selectType==2}}">
+    申请追加入驻
+  </button>
+</view>
+<wxs module="tools" src="../../utils/wxs/formatData.wxs" />

@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "楼盘相册",
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "skeleton": "/components/base/skeleton/skeleton",
+        "empty-view": "/components/empty-view/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

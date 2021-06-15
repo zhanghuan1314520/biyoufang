@@ -1,0 +1,30 @@
+.no-moment {
+    text-align: center;
+}
+
+.img-none {
+    width: 252rpx;
+    height: 252rpx;
+    padding-top: 268rpx;
+    padding-bottom: 24rpx;
+}
+
+.txt-none {
+    font-size: 24rpx;
+    font-family: PingFang-SC-Regular,PingFang-SC;
+    color: #999;
+    line-height: 33rpx;
+}
+
+.emit-public {
+    width: 400rpx;
+    height: 90rpx;
+    margin: 53rpx auto 0;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 34rpx;
+    color: #fff;
+    font-weight: 500;
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+    border-radius: 45px;
+}

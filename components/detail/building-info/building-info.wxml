@@ -1,0 +1,106 @@
+<view class="building-info-wrapper">
+    <view class="building-info-list">
+        <view class="building-info-item">
+            <view class="building-info-item__label">
+                <text>销售楼栋:</text>
+            </view>
+            <view class="building-info-item__content">
+                <text>{{project.BuildingNo||'--'}}</text>
+            </view>
+        </view>
+        <view class="building-info-item" wx:if="{{versionType===1||versionType===2}}">
+            <view class="building-info-item__label">
+                <text>销售均价:</text>
+            </view>
+            <view class="building-info-item__content">
+                <text>{{project.AveragePrice?project.AveragePrice+'元/㎡':'--'}}</text>
+            </view>
+        </view>
+        <view class="building-info-item" wx:if="{{!renderMap[projectStatusName]||!project.NeedYaohao}}">
+            <view class="building-info-item__label">
+                <text>房源套数:</text>
+            </view>
+            <view class="building-info-item__content">
+                <text wx:if="{{versionType===0}}">{{project.HouseNumber?project.HouseNumber+'套（含无房倾斜'+project.NoHouseNumber+'套）':'--'}}</text>
+                <text wx:else>{{project.HouseNumber?project.HouseNumber+'套':'--'}}</text>
+            </view>
+        </view>
+        <view class="building-info-item">
+            <view class="building-info-item__label">
+                <text>户型面积:</text>
+            </view>
+            <view class="building-info-item__content">
+                <text>{{project.HouseType||'--'}}</text>
+            </view>
+        </view>
+        <view class="building-info-item" wx:if="{{versionType===1}}">
+            <view class="building-info-item__label">
+                <text>认筹地点:</text>
+            </view>
+            <view class="building-info-item__content">
+                <text>{{project.RegisterAddress||'--'}}</text>
+            </view>
+        </view>
+        <view class="building-info-item" wx:if="{{!renderMap[projectStatusName]||!project.NeedYaohao}}">
+            <view class="building-info-item__label">
+                <text>验资要求:</text>
+            </view>
+            <view class="building-info-item__content">
+                <text>{{project.CapitalVerification||'--'}}</text>
+            </view>
+        </view>
+        <view class="building-info-item" wx:if="{{!renderMap[projectStatusName]}}">
+            <view class="building-info-item__label">
+                <text>交房时间:</text>
+            </view>
+            <view class="building-info-item__content">
+                <text>{{tools.formateTime(project.DeliveryDay)}}</text>
+            </view>
+        </view>
+        <block wx:if="{{project.tableData&&project.tableData.length}}">
+            <view class="lottery-info">
+                <view class="lottery-info__title">
+                    <text>摇号信息：</text>
+                </view>
+                <view class="lottery-info__content">
+                    <view class="theader">
+                        <view class="th th_none">
+                            <text></text>
+                        </view>
+                        <view class="th">
+                            <text>全部</text>
+                        </view>
+                        <view class="th" wx:if="{{versionType===0}}">
+                            <text>人才</text>
+                        </view>
+                        <view class="th">
+                            <text>无房</text>
+                        </view>
+                        <view class="th">
+                            <text>有房</text>
+                        </view>
+                    </view>
+                    <view class="tbody">
+                        <view class="tr">
+                            <view class="td {{index===0?'td_first':''}}" wx:for="{{project.tableData[0]}}" wx:key="index">
+                                <text>{{item}}</text>
+                            </view>
+                        </view>
+                        <view class="tr">
+                            <view class="td {{index===0?'td_first':''}}" wx:for="{{project.tableData[1]}}" wx:key="index">
+                                <text>{{item}}</text>
+                            </view>
+                        </view>
+                        <view class="tr">
+                            <view class="td {{index===0?'td_first':'td_stats'}}" wx:for="{{project.tableData[2]}}" wx:key="index">
+                                <text>{{item}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="talent-explain" wx:if="{{versionType===0}}">说明：不包括A类人才及其已选定的房源</view>
+        </block>
+    </view>
+</view>
+<wxs module="tools" src="building-info.wxs" />

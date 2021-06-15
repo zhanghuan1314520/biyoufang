@@ -1,0 +1,28 @@
+{
+    "navigationBarTitleText": "楼盘详情",
+    "usingComponents": {
+        "back-home": "/components/back_home/back_home",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "project-list": "/components/project_list/project_list",
+        "project-basic-info": "/components/project_basic_info/project_basic_info",
+        "subscribe-lottery": "/components/subscribe_lottery/subscribe_lottery",
+        "module-nav": "/components/detail/module-nav/index",
+        "building-intro": "/components/detail/building-intro/building-intro",
+        "base-info": "/components/detail/base-info/base-info",
+        "btn-group": "/components/detail/btn-group/btn-group",
+        "building-info": "/components/detail/building-info/building-info",
+        "building-open": "/components/detail/building-open/index",
+        "article-card": "/components/index/article-card/article-card",
+        "comment-card": "/components/detail/comment-card/comment-card",
+        "building-card": "/components/base/building-card/building-card",
+        "building-item": "/components/base/building-item/building-item",
+        "lottery-register-dialog": "/components/lottery/lottery-register-dialog/lottery-register-dialog",
+        "recently-opened": "/components/recentlyOpened/index",
+        "bottom-modal": "/components/modal-box/bottom-modal/index",
+        "join-us": "/components/detail/join-us/index",
+        "ReplyComment": "/components/common/ReplyComment/index",
+        "SubscribeDialog": "/components/detail/SubscribeDialog/index",
+        "SubscribeRemind": "/components/common/SubscribeRemind/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

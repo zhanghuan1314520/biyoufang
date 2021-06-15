@@ -1,0 +1,7 @@
+<import src="./templet.wxml"></import>
+<view class="container" wx:if="{{brokerList}}">
+    <template is="consultant" data="{{consultant:item,userInfo:userInfo}}" wx:for="{{brokerList}}" wx:key="index"></template>
+    <load-more id="loadMore" loadFlag="{{pagination.canLoadMore}}" loadText="loading..." noMore="-  已显示全部  -" noMoreFlag="{{!pagination.canLoadMore}}" screenShow="{{brokerList.length}}" vIf="{{brokerList.length}}"></load-more>
+    <empty-view isReveal="{{brokerList.length?false:true}}" tipsText="暂无置业顾问"></empty-view>
+</view>
+<skeleton active row="{{[ {width:'100vw',height:' 100vh'} ]}}" wx:else></skeleton>

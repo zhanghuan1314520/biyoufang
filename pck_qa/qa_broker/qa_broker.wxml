@@ -1,0 +1,64 @@
+<view class="qa-broker-wrapper" style="padding-top:{{navH*2}}rpx">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="{{title}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="nav-menu">
+        <view class="nav-menu-list">
+            <view bind:tap="toggleNavMenu" class="nav-menu-item {{item.isActived?'nav-menu-item_active':''}}" data-id="{{item.id}}" wx:for="{{navMenuList}}" wx:key="index">
+                <view class="nav-nemu-item__title">
+                    <text>{{item.title}}</text>
+                </view>
+                <view class="line" wx:if="{{item.isActived}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="answer" wx:if="{{pageStatus===1}}">
+        <view class="answer-list">
+            <view class="answer-item" wx:for="{{questionList}}" wx:key="index">
+                <answer-item answerInfo="{{item}}" bind:operateAnswerItem="operateAnswerItem" typeIndex="{{index}}"></answer-item>
+            </view>
+            <view class="no-more" wx:if="{{!canLoadMore}}">没有更多了~</view>
+        </view>
+        <view class="answer-footer {{isIpx?'answer-footer-add':''}}">
+            <view class="answer-btn-list">
+                <view class="answer-btn-item">
+                    <form bind:submit="getFollowFormid" class="form_submit">
+                        <button bind:tap="handleClickBtn" class="btn_submit btn_subscribe" data-type="subscribeAnswer" formType="submit">
+                            <image class="btn_subscribe-img" src="/resource/qa/qa_broker_white@3x.png"></image>
+                            <text>订阅回答邀请</text>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="no-data" wx:if="{{pageStatus===0}}">
+        <view class="no-data-info">
+            <image class="icon_null" src="{{nullImg}}"></image>
+            <view class="no-data-tip">
+                <text class="no-question__title">机会来喽</text>
+                <view class="no-question__content">
+                    <view>百万用户的买房难题等你答</view>  被设为精选回答，奖励{{SelectedIntergral}}积分</view>
+            </view>
+        </view>
+        <view class="no-data-footer">
+            <view class="btn-list">
+                <view class="btn-item">
+                    <form bind:submit="getFollowFormid" class="form_submit">
+                        <button bind:tap="handleClickBtn" class="btn_submit btn_answer" data-type="goAnswer" formType="submit">
+                            <text>去回答</text>
+                        </button>
+                    </form>
+                </view>
+                <view class="btn-item">
+                    <form bind:submit="getFollowFormid" class="form_submit">
+                        <button bind:tap="handleClickBtn" class="btn_submit btn_subscribe" data-type="subscribeAnswer" formType="submit">
+                            <image class="btn_subscribe-img" src="/resource/qa/qa_broker_white@3x.png"></image>
+                            <text>订阅回答邀请</text>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

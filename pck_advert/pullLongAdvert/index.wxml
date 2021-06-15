@@ -1,0 +1,26 @@
+<skeleton active row="{{[ {width:'100vw',height:' 100vh'} ]}}" wx:if="{{!adverForm}}"></skeleton>
+<view class="container" style="padding-top: calc({{navH}}px + 86rpx);">
+    <nav-bar advertId="{{advertId}}" bindnavigator="onNavigator" buildingId="{{adverForm.BuildingId}}" navBarTitle="{{adverForm.Title||'必有房'}}" needBackBtn="{{fromBuilding}}" showBackHome="{{!fromBuilding}}" showShare="{{false}}"></nav-bar>
+    <block wx:if="{{adverForm}}">
+        <view bind:touchcancel="touchEnd" bind:touchend="touchEnd" bind:touchmove="touchMove">
+            <block wx:for="{{adverForm.Content}}" wx:key="index">
+                <view class="reserve-form-ele" wx:if="{{item.type&&item.type==='appointment-form'}}">
+                    <reserve-form bind:toggleStatus="handleNavBtn" btnText="{{buttonTextList}}" buildInfo="{{adverForm}}" needPhoneAuthorize="{{adverForm.GetPhoneNumber}}" rootClass="reserve-form_root" userInfo="{{userInfo}}" wx:if="{{!adverForm.HaveBooked}}"></reserve-form>
+                </view>
+                <advert-video height="{{item.height}}rpx" margins="{{top:-80}}" poster="{{item.poster}}" url="{{item.url}}" width="{{item.width}}rpx" wx:if="{{item.type&&item.type==='video'}}"></advert-video>
+                <view bind:tap="themeNavigateBuildingPage" data-info="{{item}}" wx:if="{{item.type&&item.type==='imageTheme'}}">
+                    <rich-text class="content" nodes="{{item.element}}"></rich-text>
+                </view>
+                <rich-text class="content" nodes="{{item}}" wx:else></rich-text>
+            </block>
+        </view>
+        <welcome-home bind:toggleStatus="handleNavBtn" btnText="{{buttonTextList.WelcomeHome||'欢迎回家'}}" buildInfo="{{adverForm}}" needPhoneAuthorize="{{adverForm.GetPhoneNumber}}" userInfo="{{userInfo}}" visibility="{{welcomeShow}}" wx:if="{{adverForm.NeedPopupWelcome&&adverForm.WelcomeImageUrl}}"></welcome-home>
+        <view animation="{{slideInOrOut}}" catch:tap="backToTop" class="back-top">
+            <image class="back-top-icon" src="/pck_advert/images/pullLong/cly_icon_back@3x.png"></image>
+        </view>
+        <top-bar animationStatus="{{topBarShow}}" bind:toggleStatus="handleNavBtn" buildInfo="{{adverForm}}" userInfo="{{userInfo}}"></top-bar>
+        <nav-button animationStatus="{{navBtnShow}}" bind:toggleStatus="handleNavBtn" btnText="{{buttonTextList}}" buildInfo="{{adverForm}}" needPhoneAuthorize="{{adverForm.GetPhoneNumber}}" userInfo="{{userInfo}}"></nav-button>
+        <more-button bind:toggleStatus="toggleSlideAnimation" buildInfo="{{adverForm}}" enterPageTime="{{enterPageTime}}" visibility="{{moreBtnShow}}"></more-button>
+        <live-play appId="{{wxLiveConfiguration.AppId}}" path="{{wxLiveConfiguration.Path}}" wx:if="{{wxLiveConfiguration&&wxLiveConfiguration.Show}}"></live-play>
+    </block>
+</view>

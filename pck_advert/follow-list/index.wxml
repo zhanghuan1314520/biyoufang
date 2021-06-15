@@ -1,0 +1,17 @@
+<view>
+    <view class="effect">
+        <image webp class="effect-img" src="{{fllowImg}}"></image>
+    </view>
+    <view class="follow-num">
+        已有<text class="number-sto">{{followNumber}}</text>位用户关注
+    </view>
+    <view class="avator-list">
+        <view class="avator-item" wx:if="{{!isTheFirstAvatar}}">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <image webp class="avator-item" mode="aspectFill" src="{{item}}" wx:for="{{avatarList}}" wx:key="index"></image>
+    </view>
+    <view class="load-more">
+        <text bind:tap="loadMore">{{pagination.canLoadMore?'点击查看更多':'- 已显示全部用户 -'}}</text>
+    </view>
+</view>

@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "nav-menu": "/components/market/nav-menu/nav-menu",
+        "question-card": "/components/qa/question_card/question_card",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    },
+    "enablePullDownRefresh": true
+}

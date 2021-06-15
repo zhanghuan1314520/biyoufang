@@ -1,0 +1,45 @@
+<view class="{{enter==='service'?'con-box':''}} " style="padding-top:{{navH}}px">
+    <nav-bar bgColor="#FF8E00" isTransparent="{{true}}" navBarTitle="{{title}}" showShare="{{false}}"></nav-bar>
+    <view class="bg-main {{enter!=='service'?'':'bg-main-kf'}}">
+        <view class="bg-main_img1">
+            <image lazyLoad="true" src="{{bgImg}}"></image>
+        </view>
+    </view>
+    <view class="main {{enter==='service'?'flex1':''}}">
+        <view class="main-box">
+            <view class="m_box-content">
+                <view class="m_box-title">{{boxTitle}}</view>
+                <view class="m_box-text">
+                    <text wx:for="{{box_title}}">{{item}}</text>
+                </view>
+                <view class="m_box-dot m_box-dot-left"></view>
+                <view class="m_box-dot m_box-dot-right"></view>
+            </view>
+            <view class="m_box-code flex_space">
+                <view class="m_b_code-img">
+                    <image src="{{codeImg}}"></image>
+                </view>
+                <view>
+                    <view class="m_b_code-text">
+                        <text>{{enter==='public'?'关注必有房公众号：':'客服微信：'}}</text>
+                        <text class="m_b_code-title">{{wxName}}</text>
+                    </view>
+                    <view class="m_b_code-btn">
+                        <text>{{enter==='public'?'保存二维码图片，扫码关注':enter==='flock'?'复制客服微信，':'复制客服微信，领取专属管家'}}</text>
+                        <text wx:if="{{enter==='flock'}}">加入购房群</text>
+                        <button bindtap="copyCode" class="btn_getUserInfo btn_reset"></button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom" wx:if="{{enter!=='service'}}">
+        <view class="bot-title">操作步骤</view>
+        <view class="bot-explain">
+            <view wx:for="{{operationText}}" wx:key="index">{{item}}</view>
+        </view>
+        <view>
+            <image class="{{enter==='flock'?'bot-img-gfq':'bot-img-gzh'}}" lazyLoad="true" src="{{bgBotImg}}"></image>
+        </view>
+    </view>
+</view>

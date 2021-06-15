@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "upload-imgs-type": "/components/base/upload-imgs-type/upload-imgs-type",
+        "consultant-buildings": "/components/my/consultant-buildings/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

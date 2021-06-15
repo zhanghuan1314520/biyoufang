@@ -1,0 +1,10 @@
+<ModalBox catch:tap="triggerReply" catch:touchmove="triggerReply" modalRoot="modal-replay" wx:if="{{replyShow}}">
+    <view animation="{{animationData}}" catch:tap="noHandle" catch:touchmove="noHandle" class="comment-replay" style="bottom:{{boardHeight.height}}px;transition:{{boardHeight.duration}}s">
+        <input confirmHold holdKeyboard adjustPosition="{{false}}" catch:confirm="submitComment" catch:input="noHandle" catch:keyboardheightchange="borderHeightChange" class="replay_input" confirmType="send" cursorSpacing="12" focus="{{replyShow}}" value="{{content}}" placeholder="{{placeholder}}" placeholderClass="form-placeholder" showConfirmBar="{{false}}"></input>
+        <UserAuthorize authUserInfo catchproxySuccess="submitComment" userInfo="{{userInfo}}">
+            <view class="submit-btn">
+                <image class="icon_send" src="{{content?sendIcon['activeSend']:sendIcon['normalSend']}}"></image>
+            </view>
+        </UserAuthorize>
+    </view>
+</ModalBox>

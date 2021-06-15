@@ -1,0 +1,193 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/building/building",
+    "pages/my_message/my_message",
+    "pages/market/market",
+    "pages/my/my",
+    "pages/detail/detail",
+    "pages/list/list",
+    "pages/city/city",
+    "pages/search/search",
+    "pages/lottery/lottery",
+    "pages/lottery_lookup/lottery_lookup",
+    "pages/lottery_detail/lottery_detail",
+    "pages/broker_card/broker_card",
+    "pages/broker/broker"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "必有房",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#666666",
+    "selectedColor": "#333333",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "resource/tabBar/home.png",
+        "selectedIconPath": "resource/tabBar/home_on.png"
+      },
+      {
+        "pagePath": "pages/building/building",
+        "text": "楼盘",
+        "iconPath": "resource/tabBar/house.png",
+        "selectedIconPath": "resource/tabBar/house_on.png"
+      },
+      {
+        "pagePath": "pages/my_message/my_message",
+        "text": "消息",
+        "iconPath": "resource/tabBar/msg.png",
+        "selectedIconPath": "resource/tabBar/msg_on.png"
+      },
+      {
+        "pagePath": "pages/market/market",
+        "text": "有料",
+        "iconPath": "resource/tabBar/market.png",
+        "selectedIconPath": "resource/tabBar/market_on.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "resource/tabBar/me.png",
+        "selectedIconPath": "resource/tabBar/me_on.png"
+      }
+    ]
+  },
+  "subPackages": [
+    {
+      "root": "pck_chat/",
+      "pages": [
+        "chat/chat"
+      ]
+    },
+    {
+      "root": "pck_qa/",
+      "pages": [
+        "qa_query/qa_query",
+        "qa_question/qa_question",
+        "qa_answer/qa_answer",
+        "qa_detail/qa_detail",
+        "qa_user/qa_user",
+        "qa_broker/qa_broker",
+        "qa_invite_answer/qa_invite_answer"
+      ]
+    },
+    {
+      "root": "h5_webview/",
+      "pages": [
+        "activity_webview/activity_webview",
+        "article_webview/article_webview",
+        "webview/webview",
+        "feedback/feedback",
+        "quotes/quotes",
+        "knowledge/knowledge",
+        "newspaper/newspaper",
+        "cooperation/cooperation",
+        "loan_select/loan_select",
+        "loan_analyse/loan_analyse",
+        "loan-help/loan-help",
+        "register_webview/register_webview"
+      ]
+    },
+    {
+      "root": "pck_building/",
+      "pages": [
+        "detail_history/detail_history",
+        "detail_imgs/index",
+        "detail_info/detail_info",
+        "detail_surrounding/detail_surrounding",
+        "detail_houseType/detail_houseType",
+        "house_detail/house_detail",
+        "detail_comment/detail_comment",
+        "detail_commentList/detail_commentList",
+        "detail_newsList/detail_newsList",
+        "detail_articleList/detail_articleList",
+        "detail_pricePerRoom/detail_pricePerRoom",
+        "detail_pricePerHouse/detail_pricePerHouse",
+        "pricePerRoom_imgs/pricePerRoom_imgs",
+        "comment_detail/index"
+      ]
+    },
+    {
+      "root": "pck_broker/",
+      "pages": [
+        "update_news/update_news",
+        "upload_hosetype_imgs/upload_hosetype_imgs",
+        "upload_building_imgs/upload_building_imgs",
+        "prolongation_img/prolongation_img",
+        "Cropper/Cropper",
+        "broker_belong/broker_belong",
+        "broker_mine/broker_mine",
+        "post_moment/post_moment",
+        "broker_list/broker_list"
+      ]
+    },
+    {
+      "root": "pck_my/",
+      "pages": [
+        "duplicate_code/duplicate_code",
+        "system-message/index",
+        "subscription_list/subscription_list",
+        "history/history",
+        "question/question",
+        "question_detail/question_detail"
+      ]
+    },
+    {
+      "root": "ext_features/",
+      "pages": [
+        "map_subway/map_subway",
+        "lottery_latest/lottery_latest",
+        "map/map",
+        "market_headline/market_headline",
+        "my_states/my_states",
+        "my_news/my_news",
+        "my_fans/my_fans",
+        "integrals/integrals",
+        "broker_registion/broker_registrion",
+        "my_integral/index",
+        "registion_detail/index",
+        "maintain/maintain",
+        "lottery_help/lottery_help"
+      ]
+    },
+    {
+      "root": "pck_advert/",
+      "pages": [
+        "pullLongAdvert/index",
+        "consultantList/index",
+        "follow-list/index",
+        "brand-pavilion/index",
+        "brand-list/index",
+        "my_interest/index"
+      ]
+    },
+    {
+      "root": "pck_poster/",
+      "pages": [
+        "building_poster/index",
+        "lottery_poster/index",
+        "article_poster/index"
+      ]
+    },
+    {
+      "root": "pck_common/",
+      "pages": [
+        "acticle_list/index"
+      ]
+    },
+    {
+      "root": "pck_test/",
+      "pages": [
+        "test/index"
+      ]
+    }
+  ],
+  "sitemapLocation": "sitemap87.json"
+}

@@ -1,0 +1,98 @@
+.reset-btn {
+    line-height: 1;
+    border-radius: 0;
+}
+
+.btn_reset,.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.subscirbe-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: fixed;
+    box-sizing: border-box;
+    padding: 0 50rpx;
+    width: 650rpx;
+    border-radius: 8rpx;
+    background-color: #fff;
+}
+
+.subscirbe-dialog .subscirbe-dialog-header {
+    display: flex;
+    align-items: center;
+    height: 98rpx;
+    font-size: 38rpx;
+    font-weight: 500;
+    color: #333;
+}
+
+.subscirbe-dialog .subscirbe-dialog-content {
+    padding-top: 50rpx;
+    padding-bottom: 40rpx;
+    border-top: 1px solid #ededed;
+}
+
+.subscirbe-dialog .subscirbe-dialog-content .phone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscirbe-dialog .subscirbe-dialog-content .phone__text {
+    font-size: 40rpx;
+    font-weight: 500;
+    color: #333;
+}
+
+.subscirbe-dialog .subscirbe-dialog-content .phone_tip {
+    font-size: 30rpx;
+    color: #666;
+    text-decoration: underline;
+}
+
+.subscirbe-dialog .subscirbe-dialog-content .input_phone {
+    font-size: 32rpx;
+    display: block;
+    box-sizing: border-box;
+    width: 500rpx;
+    height: 90rpx;
+    border-radius: 8rpx;
+    background: #f8f8f8;
+    padding: 0 30rpx;
+    margin: 0 auto;
+}
+
+.subscirbe-dialog .subscirbe-dialog-footer {
+    padding-bottom: 44rpx;
+}
+
+.subscirbe-dialog .subscirbe-dialog-footer .btn-list {
+    display: flex;
+}
+
+.subscirbe-dialog .subscirbe-dialog-footer .btn-item {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    height: 76rpx;
+    border-radius: 4rpx;
+    font-size: 34rpx;
+    color: #666;
+}
+
+.subscirbe-dialog .subscirbe-dialog-footer .btn_cancel {
+    margin-right: 30rpx;
+    background-color: #f8f8f8;
+}
+
+.subscirbe-dialog .subscirbe-dialog-footer .btn_confirm {
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+    color: #fff;
+}

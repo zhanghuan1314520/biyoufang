@@ -1,0 +1,38 @@
+.slide-image,.swiper-layout {
+    height: 284rpx;
+    border-radius: 8rpx;
+    overflow: hidden;
+    transform: translateY(0);
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.swiper-item {
+    background: linear-gradient(180deg,rgba(73,70,66,0),#35373d);
+}
+
+.dots {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    bottom: 10px;
+}
+
+.dot {
+    width: 8rpx;
+    height: 8rpx;
+    border-radius: 50%;
+    background-color: hsla(0,0%,100%,.7);
+    margin: 0 10rpx;
+    transition: width .3s linear;
+}
+
+.active {
+    width: 34rpx;
+    height: 8rpx;
+    border-radius: 8rpx;
+    background-color: #fe5e10;
+}

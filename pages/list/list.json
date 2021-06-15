@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "project-list": "/components/project_list/project_list",
+        "back-home": "/components/back_home/back_home",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "building-card": "/components/base/building-card/building-card",
+        "load-more": "/components/load-more/index",
+        "advert-banner": "/components/advert-banner/index",
+        "empty-view": "/components/empty-view/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    },
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+}

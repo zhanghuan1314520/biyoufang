@@ -1,0 +1,73 @@
+var formatCurTime = (function(startTime, endTime) {
+    if (!startTime && !endTime) {
+        return ("待定")
+    } else {
+        return (startTime.substring(5) + ' - ' + endTime.substring(5))
+    }
+});
+var IntegralSourceType = (function(type) {
+    var typeName = '';
+    switch (type) {
+        case -2:
+            typeName = '运营扣减';
+            break;
+        case -1:
+            typeName = '运营增加';
+            break;
+        case 0:
+            typeName = '注册';
+            break;
+        case 1:
+            typeName = '登录';
+            break;
+        case 2:
+            typeName = '拓客图';
+            break;
+        case 3:
+            typeName = '带客量（新）';
+            break;
+        case 4:
+            typeName = '带客量（旧）';
+            break;
+        case 5:
+            typeName = '邀请入驻';
+            break;
+        case 6:
+            typeName = '回复评论';
+            break;
+        case 7:
+            typeName = '发布动态';
+            break;
+        case 8:
+            typeName = '上传楼盘相册';
+            break;
+        case 9:
+            typeName = '上传楼盘快讯';
+            break;
+        case 10:
+            typeName = '上传楼盘户型';
+            break;
+        case 11:
+            typeName = '回答累计赞数';
+            break;
+        case 12:
+            typeName = '回答被精选';
+            break;
+        case 13:
+            typeName = '回答被采纳';
+            break;
+    };
+    return (typeName)
+});
+var sliceStr = (function(text, start, end) {
+    if (typeof text === 'string') {
+        return (text.slice(start, end))
+    } else {
+        return ('')
+    }
+});
+module.exports = ({
+    formatCurTime: formatCurTime,
+    IntegralSourceType: IntegralSourceType,
+    sliceStr: sliceStr,
+});

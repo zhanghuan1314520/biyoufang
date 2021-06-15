@@ -1,0 +1,51 @@
+<nav-bar navBarTitle="{{title}}"></nav-bar>
+<view class="lottery-bg"></view>
+<view class="lottery" style="padding-top: {{navH}}px" wx:if="{{init}}">
+    <back-home wx:if="{{isShare}}"></back-home>
+    <view class="nav__lottery" wx:if="{{true}}">
+        <view class="nav__lottery-head">
+            <view class="nav__lottery-info">
+                <view class="nav__lottery-poster-wrap">
+                    <view class="nav__lottery-poster-tip">已摇号</view>
+                    <image class="nav__lottery-poster" mode="aspectFill" src="{{coverFileUrl}}"></image>
+                </view>
+                <view class="nav__lottery-name">{{projectName}}</view>
+            </view>
+        </view>
+        <view class="nav__lottery-search">
+            <view class="lottery__form">
+                <view class="lottery__form__input-wrap">
+                    <image class="lottery__form__input-icon" src="/resource/search_i.png"></image>
+                    <input bindconfirm="lottery" bindinput="changeKey" class="lottery__form__input" focus="{{focus}}" name="key" placeholder="请输入完整登记编号查询" placeholderClass="input-placeholder-class" value="{{inputValue}}"></input>
+                    <view bindtap="clearInput" class="icon iconfont icon-guanbi"></view>
+                </view>
+            </view>
+            <view bindtap="searchLottery" class="search-btn">搜索</view>
+        </view>
+    </view>
+    <view class="middle__content" style="height:{{screenHeight}}px;padding-top:{{navH}}px" wx:if="{{!projectId&&!checkMyLottery&&(!result||result.length<1)&&!hasLotteried}}">
+        <image class="middle__img" src="{{imageRoot}}/images_wx/bg/yaohao_img@3x.png"></image>
+        <view class="input__wrap">
+            <image class="input__icon" src="/resource/search_i.png"></image>
+            <input bindconfirm="lottery" class="input__text" cursorSpacing="12" focus="{{focus}}" name="key" placeholder="请输入完整登记编号查询" placeholderClass="input-placeholder-class" value="{{inputValue}}"></input>
+        </view>
+    </view>
+    <view class="lottery__result" wx:if="{{result!==null}}">
+        <view class="lottery__result-list" wx:if="{{result.length>0}}">
+            <view class="lottery__result-item" wx:for="{{result}}" wx:key="Id">
+                <lottery-status-card bind:operateLotteryStatus="lotteryCardOperate" lotteryStatusInfo="{{item.info}}"></lottery-status-card>
+            </view>
+        </view>
+        <view class="lottery__result-empty no-search" wx:else>
+            <image src="{{imageRoot}}/images_wx/default_graph/null.png"></image>
+            <view class="no-search-tip">暂未搜索到，换一个试试</view>
+        </view>
+    </view>
+</view>
+<view bindtap="navigationPoster" class="save-btn">
+    <image class="save-icon" src="/resource/lottery/yh_icon_tym@3x.png"></image>
+    <view class="save-text-wrap">
+        <text class="save-text">保存本码
+快捷查询</text>
+    </view>
+</view>

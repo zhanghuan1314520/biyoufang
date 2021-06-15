@@ -1,0 +1,21 @@
+<view class="broker-card-wrapper">
+    <view bind:tap="goBrokerPage" class="broker-card-info">
+        <view class="broker-avatar">
+            <image class="broker-avatar__img" mode="aspectFill" src="{{brokerCardInfo.personalImageUrl}}"></image>
+        </view>
+        <view class="broker-name">
+            <text class="broker-name__text">{{brokerCardInfo.Name}}</text>
+        </view>
+        <view class="building-name" wx:if="{{!showBuildingName}}">
+            <text class="building-name__text">{{brokerCardInfo.BuildingName}}</text>
+        </view>
+        <view catch:tap="noop">
+            <UserAuthorize authUserInfo bindproxySuccess="goChatPage" userInfo="{{userInfo}}">
+                <view class="btn_chat">
+                    <image class="icon_chat" src="/resource/base/base_icon_counsel@3x.png"></image>
+                    <text class="btn__text">咨询</text>
+                </view>
+            </UserAuthorize>
+        </view>
+    </view>
+</view>

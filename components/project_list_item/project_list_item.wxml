@@ -1,0 +1,58 @@
+<form bind:submit="getFollowFormid">
+    <view bindtap="checkProject" class="list__item {{projectIndex==projectLength?'list__item-noBorder':''}}" data-id="{{project.BuildingId}}" data-pid="{{project.ProjectId}}" data-showasproject="{{project.showAsProject}}" id="item_comp_record">
+        <button class="formid__btn" formType="submit"></button>
+        <view class="list__item-image-wrap">
+            <view class="list__item-pageviews" wx:if="{{project.totalViewNumber}}">
+                <image class="views-icon" src="/resource/list_icon_viewed@3x.png"></image>
+                <text class="views-count">{{project.totalViewNumber}}</text>
+            </view>
+            <image class="list__item-image" lazyLoad="{{true}}" src="{{project.CoverImageUrl}}"></image>
+        </view>
+        <view class="list__item-content">
+            <view class="list__item-content-noVerify">
+                <view class="list__item-name">{{project.showAsProject?project.ProjectName:project.BuildingName}}</view>
+                <view class="list__item-price">
+                    <view wx:if="{{(project.BuildingStatus===3||project.Status===0)&&project.HistoricalAveragePrice||project.AveragePrice}}">
+                        <text class="list__item-num" wx:if="{{project.AveragePrice&&project.totalPrice&&project.Status!==0}}">{{project.totalPrice+'万起'}}</text>
+                        <text class="list__item-num" wx:if="{{project.AveragePrice&&project.Status!==0&&project.BuildingStatus!==3}}">{{project.AveragePrice}}<text class="list__item-tag">元/m²</text>
+                        </text>
+                        <text class="list__item-num" wx:if="{{(project.Status===0||project.BuildingStatus===3)&&project.HistoricalAveragePrice}}">{{project.HistoricalAveragePrice}}<text class="list__item-tag">元/m²</text>
+                        </text>
+                    </view>
+                    <view class="list__item-noPrice" wx:else>价格待定</view>
+                </view>
+                <view class="list__item-tags">
+                    <view class="list__tag" wx:if="{{project.SubwayDistance}}">距地铁{{project.SubwayDistanceText}}</view>
+                    <view class="list__tag" wx:if="{{project.buildingTags&&project.buildingTags.length>0}}" wx:for="{{project.buildingTags}}" wx:key="index">{{item}}</view>
+                </view>
+                <view class="list__item-status" wx:if="{{project.Status!=null||project.BuildingStatus!=null}}">
+                    <view class="list__item-status-time" wx:if="{{project.BuildingStatus==1&&(project.Status==1||project.Status==2)&&!project.RegisterStartTime}}">已拿预售证</view>
+                    <view class="list__item-status-time" wx:else>{{project.StatusShortText}}<block wx:if="{{project.BuildingStatus==1}}">{{project.Status==5?'':fs.fixSharpTime(project.CurrentStatusTime)}}</block>
+                    </view>
+                    <view class="list__item-sharp" wx:if="{{project.Status==1&&project.RestDay>0}}">#<text class="number" wx:if="{{project.RestDay>1}}">{{project.RestDay}}</text>{{project.RestDay>1?'天后登记':'明天登记'}}#</view>
+                    <view class="list__item-sharp" wx:if="{{project.Status==2&&project.RestDay>=0}}">#<text class="number" wx:if="{{project.RestDay>=2}}">{{project.RestDay}}</text>{{project.RestDay>=2?'天后结束':project.RestDay===0?'今天截止':'明天截止'}}#</view>
+                </view>
+            </view>
+            <view class="list__item-verify list__item-cell" wx:if="{{project.registerInfo}}">{{project.registerInfo}}</view>
+            <block wx:else>
+                <view class="list__item-verify list__item-cell" wx:if="{{project.CapitalVerification}}">
+                    <image class="list__item-verify-icon list__item-cell-icon" src="../../resource/verify.png"></image>
+                    <text class="list__item-verify-text list__item-cell-text">{{project.CapitalVerification}}</text>
+                </view>
+                <view class="list__item-Prefer list__item-cell" wx:if="{{project.PreferentialInfo}}">
+                    <image class="list__item-verify-icon list__item-cell-icon" src="../../resource/loupan_icon_hui@3x.png"></image>
+                    <text class="list__item-verify-text list__item-cell-text">{{project.PreferentialInfo}}</text>
+                </view>
+            </block>
+            <view class="item__isSubscribe" wx:if="{{project.Id&&project.PhoneNumber}}">
+                <view class="subscribe__phone-wrap">
+                    <text>接收手机号：</text>
+                    <text class="subscribe__phone">{{project.PhoneNumber}}</text>
+                </view>
+                <view catchtap="cancelSubscribe" class="subscribe__cancel" data-id="{{project.Id}}" data-index="{{projectIndex-1}}" data-type="{{project.SubscriptionType}}">取消订阅</view>
+            </view>
+            <view class="list__item-district">{{project.DistrictName}}</view>
+        </view>
+    </view>
+</form>
+<wxs module="fs" src="project_list_item.wxs" />

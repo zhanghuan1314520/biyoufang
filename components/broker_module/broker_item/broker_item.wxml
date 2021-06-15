@@ -1,0 +1,44 @@
+<view bind:tap="toCarteDetail" class="broker-item-wrapper">
+    <view class="broker-item" style=" {{bgImageSrc?'background-image:url('+bgImageSrc+')':''}} ">
+        <view catch:tap="previewImage" class="avatar">
+            <image webp class="avatar__inner" mode="aspectFill" src="{{brokerItemInfo.PersonalImageUrl||'/resource/agent_default@3x.png'}}"></image>
+        </view>
+        <view class="broker-info">
+            <view class="broker-intro">
+                <view class="broker">
+                    <view catch:tap="operateBrokerItem" class="broker-name" data-type="goBrokerCardPage">
+                        <text class="broker-name__text">{{brokerItemInfo.Name}}</text>
+                        <image class="icon_broker" src="/resource/detail/detail_icon_contact@3x.png"></image>
+                    </view>
+                    <view class="building-list {{brokerItemInfo.Buildings.length>4?'ellipse':''}}">
+                        <view catch:tap="showBuildingDetail" class="building-name" data-building-id="{{item.BuildingId}}" wx:if="{{index<4}}" wx:for="{{brokerItemInfo.Buildings}}" wx:key="index">
+                            <text class="building-name__text">{{item.BuildingName}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view catch:tap="noop" style="margin-left: auto;" wx:if="{{userInfo.RealtyConsultantInfo.RealtyConsultantId!==brokerItemInfo.Id}}">
+                    <UserAuthorize authUserInfo bindproxySuccess="operateBrokerItem" recordParams="{{[ {type:'follow'} ]}}" userInfo="{{userInfo}}">
+                        <view class="unfollow {{brokerItemInfo.IsFollow?'follow':''}}">
+                            <text>{{brokerItemInfo.IsFollow?'已':'+'}}关注</text>
+                        </view>
+                    </UserAuthorize>
+                </view>
+            </view>
+            <view class="intro-me">
+        {{brokerItemInfo.Introduction}}
+      </view>
+        </view>
+    </view>
+    <view class="broker-contact">
+        <view class="btn-list">
+            <view catch:tap="noop" style="flex: 1;" wx:for="{{brokerItemInfo.btnList}}" wx:key="index">
+                <UserAuthorize authUserInfo authPhoneNumber="{{item.type==='consult'}}" bindproxySuccess="operateBtn" recordParams="{{[ {id:item.id} ]}}" userInfo="{{userInfo}}">
+                    <view class="btn-item {{'btn-item_'+item.mode}}">
+                        <image class="icon_btn {{'icon_'+item.type}}" src="{{item.iconSrc}}"></image>
+                        <text class="btn-item__text">{{item.name}}</text>
+                    </view>
+                </UserAuthorize>
+            </view>
+        </view>
+    </view>
+</view>

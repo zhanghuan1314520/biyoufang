@@ -1,0 +1,39 @@
+<view class="prolongation-img" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="名片拓客图" showShare="{{false}}"></nav-bar>
+    <view class="code-wrap" wx:if="{{!readyToPaint}}">
+        <view class="loadbtn-wrap">
+            <image class="right-angle" src="/resource/done_icon@3x.png" wx:if="{{isLoaded}}"></image>
+            <button bindtap="loadImage" class="z-btn-load {{isLoaded?'loaded':''}}">{{isLoaded?'上传成功!':'点击上传图片'}}</button>
+        </view>
+        <view class="add-type-wrap">
+            <view class="type-title">选择模式</view>
+            <view class="type-options-list">
+                <view bindtap="changePaintType" class="type-options-item">
+                    <view class="type-options-name">拼接</view>
+                    <view class="type-options-checked-icon">
+                        <image src="/resource/angle.png" wx:if="{{paintType==1}}"></image>
+                    </view>
+                    <view class="type-options-example {{paintType==1?'checked':''}}">
+                        <image src="/resource/pinjie.png"></image>
+                    </view>
+                </view>
+                <view bindtap="changePaintType" class="type-options-item">
+                    <view class="type-options-name">遮罩</view>
+                    <view class="type-options-checked-icon">
+                        <image src="/resource/angle.png" wx:if="{{paintType==2}}"></image>
+                    </view>
+                    <view class="type-options-example {{paintType==1?'':'checked'}}">
+                        <image src="/resource/zhezhao.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="building-tab">
+            <consultant-buildings buildings="{{consultantInfo.Buildings}}" id="buildingTab"></consultant-buildings>
+        </view>
+        <button bindtap="createImg" class="z-btn" hoverClass="z-btn-light-hover">生成拓客图</button>
+    </view>
+    <canvas canvasId="canvas" style="{{'height:'+canvasHeight+'px'}}" wx:if="{{isLoaded&&readyToPaint}}"></canvas>
+    <cover-view bindtap="saveSuncode" class="btn-download" wx:if="{{downloadVisible}}">保存拓客图</cover-view>
+    <auth-alert bind:cancel="cancelAuth" visible="{{showAuth}}"></auth-alert>
+</view>

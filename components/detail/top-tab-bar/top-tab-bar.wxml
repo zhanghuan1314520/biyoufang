@@ -1,0 +1,8 @@
+<view class="top-tab-bar-wrapper">
+    <scroll-view bindscrolltolower="scrollToLower" class="top-tab-bar-list" scrollAnchoring="{{true}}" scrollLeft="{{scrollLeft}}" scrollWithAnimation="{{true}}" scrollX="{{true}}">
+        <view bind:tap="scrollTo" class="top-tab-bar-item" data-id="{{item.id}}" wx:for="{{topTabBarList}}" wx:key="index">
+            <text>{{item.name}}</text>
+            <view class="arc {{item.isActived?'arc_actived':''}}"></view>
+        </view>
+    </scroll-view>
+</view>

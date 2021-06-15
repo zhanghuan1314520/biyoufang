@@ -1,0 +1,59 @@
+<view catchtouchmove="prevent" class="container">
+    <view class="building__filter">
+        <view bindtap="changeFilter" class="building__filter-item" data-index="{{index}}" wx:if="{{item.show!==false}}" wx:for="{{building}}" wx:key="index">
+            <view class="filter__item-text {{item.active?'filter__item-text-active':''}}">{{item.selName||item.name}}</view>
+            <image class="filter__item-arrow" src="/resource/{{curFilter===index?'up':'down'}}.png"></image>
+        </view>
+        <block wx:if="{{curFilter===index&&curFilter!==3}}" wx:for="{{building}}" wx:key="index">
+            <view class="filter__wrap">
+                <view class="filter__column" style="height:{{91*fitNum}}rpx;">
+                    <view class="filter__column-left">
+                        <view bind:tap="changeLeftSub" class="column__item {{item.active?'column__item-active':''}}" data-_key="{{item._key}}" data-index="{{index}}" wx:if="{{item.show!==false}}" wx:for="{{item.children}}" wx:key="index">{{item.name}}</view>
+                    </view>
+                    <view class="filter__column-right">
+                        <scroll-view scrollY class="column-right-col {{secondSel&&secondSel.length>1?'':'column-right-col-long'}}">
+                            <view bind:tap="changeRightSub" class="column__item {{n.active?'column__item-active':''}} {{!hasLocation&&n._sk?'column__item-disable':''}}" data-_key="{{n._key}}" data-canclick="{{!hasLocation&&n._sk?false:true}}" data-index="{{i}}" wx:if="{{n.show}}" wx:for="{{item.children[item.selItem].children}}" wx:for-index="i" wx:for-item="n" wx:key="i">{{n.name}}</view>
+                        </scroll-view>
+                        <scroll-view scrollY class="column-right-col column-right-col-third">
+                            <view bindtap="triggerThirdLevel" class="column__item {{m.active?'column__item-active':''}}" data-_key="{{m._key}}" data-index="{{t}}" wx:for="{{secondSel}}" wx:for-index="t" wx:for-item="m" wx:key="t">
+                                <view class="column__item-text">{{m.name}}</view>
+                                <view class="column__item-check">
+                                    <image class="checked" src="/resource/right_angle.png" wx:if="{{m.active}}"></image>
+                                </view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </view>
+                <view class="filter__handler" wx:if="{{curFilter!==-1}}">
+                    <view bindtap="resetAreaFilter" class="filter__handler-reset filter__handler-btn">重置</view>
+                    <view bindtap="confirmAreaFilter" class="filter__handler-confirm filter__handler-btn">确认</view>
+                </view>
+            </view>
+            <view bindtap="cliseMaskAndReset" catchtouchmove="prevent" class="mask"></view>
+        </block>
+    </view>
+    <view class="building__filter-quick">
+        <block wx:for="{{quickTag}}" wx:key="index">
+            <view bindtap="quickFilter" class="filter-quick-item {{item.active?'filter-quick-item-active':''}}" data-_key="{{item._key}}" data-index="{{index}}" wx:if="{{item.name!=='地铁盘'}}">{{item.name}}
+          <image class="checked" src="/resource/right_angle1.png" wx:if="{{item.active}}"></image>
+            </view>
+            <view bindtap="quickFilter" class="filter-quick-item {{item.active?'filter-quick-item-active':''}}" data-_key="{{item._key}}" data-index="{{index}}" wx:elif="{{quickSubwayFlag&&item.name==='地铁盘'}}">{{item.name}}
+          <image class="checked" src="/resource/right_angle1.png" wx:if="{{item.active}}"></image>
+            </view>
+        </block>
+    </view>
+</view>
+<view class="moreFilter__wrap {{moreFilter?'moreFilter-show':''}}" style="height:{{moreFilterTop+'px'}};bottom:-{{moreFilterTop+28}}px">
+    <scroll-view class="moreFilter__scroll" scrollY="{{true}}">
+        <view class="moreFilter__list">
+            <view class="moreFilter__item" wx:for="{{building[3].children}}" wx:key="index">
+                <view class="moreFilter__title">{{item.name}}</view>
+                <view bindtap="selectOption" class="moreFilter__option {{option.active?'moreFilter__option-checked':''}}" data-_key="{{option._key}}" data-index="{{index}}" wx:for="{{item.children}}" wx:for-index="optionIndex" wx:for-item="option" wx:key="name">{{option.name}}</view>
+            </view>
+        </view>
+        <view class="moreFilter__handler {{isIphoneX?'moreFilter__handler-ipx':''}}">
+            <button bindtap="cancelMoreFilter" class="moreFilter__cancel moreFilter__common">取消</button>
+            <button bindtap="ensureMoreFilter" class="moreFilter__ensure moreFilter__common">确定</button>
+        </view>
+    </scroll-view>
+</view>

@@ -1,0 +1,11 @@
+<view class="module-nav-wrapper">
+    <scroll-view class="scroll-wrap" scrollIntoView="{{scrollIntoView}}" scrollX="true">
+        <view bind:tap="handleNavClick" class="nav-wrap" data-index="{{index}}" data-selector="{{item.selector}}" id="{{formate.formateSelector(item.selector)}}" wx:for="{{moduleNavList}}" wx:key="index">
+            <view class="nav-item {{item.isActived?'active':''}}">
+                <image class="nav-icon" src="{{iconMap[item.isActived?item.iconKey+'_on':item.iconKey]}}"></image>
+            {{item.name}}
+          </view>
+        </view>
+    </scroll-view>
+</view>
+<wxs module="formate" src="index.wxs" />

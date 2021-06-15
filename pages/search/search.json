@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "搜索",
+    "usingComponents": {
+        "project-list": "/components/project_list/project_list",
+        "back-home": "/components/back_home/back_home",
+        "highlight-view": "/components/hl_view/hl_view",
+        "building-card": "/components/base/building-card/building-card",
+        "advert-banner": "/components/advert-banner/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

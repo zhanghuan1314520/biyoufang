@@ -1,0 +1,6 @@
+var formateSelector = (function(value) {
+    return (value.replace('#', ''))
+});
+module.exports = ({
+    formateSelector: formateSelector,
+});

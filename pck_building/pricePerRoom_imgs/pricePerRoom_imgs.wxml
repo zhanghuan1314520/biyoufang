@@ -1,0 +1,11 @@
+<view class="pricePerRoom__imgs" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="{{swiperIndex+1}}/{{list.length}}" showShare="{{false}}"></nav-bar>
+    <swiper bindanimationfinish="swiperChange" class="swiper" style="height:{{swiperH}}px">
+        <swiper-item class="swiper__item" wx:for="{{list}}" wx:key="index">
+            <scroll-view class="img__wrap" scrollY="{{true}}">
+                <image class="swiper-image" mode="widthFix" src="{{item}}"></image>
+            </scroll-view>
+            <image bindtap="saveImage" class="save__img" data-url="{{list[index]}}" src="/resource/yfyj_icon_download@3x.png"></image>
+        </swiper-item>
+    </swiper>
+</view>

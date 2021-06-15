@@ -1,0 +1,8 @@
+<view class="into-building" wx:if="{{buildings}}">
+    <view class="into-building-title">请选择楼盘</view>
+    <view class="building-list">
+        <view catch:tap="handleBuildingTap" class="building-item {{activeIndex===index?'building-item-active':''}}" data-index="{{index}}" wx:for="{{buildings}}" wx:key="index">
+        {{item.BuildingName}}
+      </view>
+    </view>
+</view>

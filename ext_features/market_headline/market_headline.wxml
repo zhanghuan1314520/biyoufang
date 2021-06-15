@@ -1,0 +1,38 @@
+<view class="market__headline" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="楼市头条"></nav-bar>
+    <back-home wx:if="{{isShare}}"></back-home>
+    <view class="headimg_container">
+        <view class="headimg__wrap" wx:if="{{list&&list.length>0}}">
+            <view class="hadimg__text">
+                <view class="hadimg-title__text">楼市头条</view>
+                <view class="hadimg-tips__text">资讯千万条，靠谱第一天</view>
+            </view>
+            <image class="headimg" mode="aspectFill" src="/ext_features/image/headline/lstt_img_bj@3x.png"></image>
+        </view>
+    </view>
+    <view class="headline__list">
+        <view class="headline__item" wx:for="{{list}}" wx:key="index">
+            <view class="headline__day" wx:if="{{item.showDay}}">{{item.day[0]}} <text class="weekday">{{item.day[1]}}</text>
+            </view>
+            <view class="headline__day_none" wx:else></view>
+            <view bindtap="checkArticle" class="headline__content {{list[index+1].showDay?'content-last':''}}" data-article-id="{{item.ArticleId}}" data-id="{{item.Id}}" data-title="{{item.Title}}" data-url="{{item.ArticleUrl}}">
+                <view class="headline__left">
+                    <view class="headline__title {{!item.CoverFileUrl?'headline__title-only':''}}">{{item.Title}}</view>
+                    <view class="headline__info">
+                        <view class="headline__icon-box">
+                            <image class="headline__icon" src="{{item.LogoUrl}}"></image>
+                            <text class="headline__name">{{item.MediumName}}</text>
+                        </view>
+                        <view class="headline__time">{{item.time}}</view>
+                    </view>
+                </view>
+                <view class="headline__right" wx:if="{{item.CoverFileUrl}}">
+                    <image class="headline__poster" mode="aspectFill" src="{{item.CoverFileUrl}}"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="data__empty" wx:if="{{list&&list.length===0}}">
+        <image class="data__empty-img" src="/resource/null.png"></image>
+    </view>
+</view>

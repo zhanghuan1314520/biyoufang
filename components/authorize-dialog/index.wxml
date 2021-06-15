@@ -1,0 +1,15 @@
+<view catchtouchmove="noTouch" class="modal" wx:if="{{visibility}}">
+    <view class="content-wrap">
+        <view class="title">提示</view>
+        <view class="content">
+            当前页面需要授权，请点击确定进行授权
+        </view>
+        <view class="btn-list">
+            <UserAuthorize authUserInfo bindproxySuccess="authorizeSuccess" userInfo="{{userInfo}}">
+                <view class="confirm-btn">
+              确定
+            </view>
+            </UserAuthorize>
+        </view>
+    </view>
+</view>

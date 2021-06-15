@@ -1,0 +1,42 @@
+<view class="qa-wrapper" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="{{title}}" needBackBtn="{{true}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="qa-search">
+        <view class="qa-input">
+            <image class="qa-input__prepend" src="/resource/search_i.png"></image>
+            <input focus bind:confirm="clickSearchBtn" bindinput="getInputeValue" class="qa-input__inner" confirmType="search" data-type="userInput" placeholder="搜索问题或标签" placeholderClass="input-placeholder" value="{{inputValue}}"></input>
+            <view bind:tap="clearInputValue" class="qa-input__suffix" wx:if="{{inputValue&&inputValue.length}}">
+                <image class="qa-input__suffix-inner" src="/resource/search_close@3x.png"></image>
+            </view>
+        </view>
+        <view bind:tap="clickSearchBtn" class="qa-input__btn" data-type="userInput">
+            <text>搜索</text>
+        </view>
+    </view>
+    <view class="query-history" wx:if="{{queryHistoryList&&queryHistoryList.length}}">
+        <view class="query-history-title">
+            <view class="query-history-title__tip">历史搜索</view>
+            <view bind:tap="clearQueryHistoryList" class="icon-delete">
+                <image class="icon-delete__inner" src="/resource/delete_icon@3x.png"></image>
+            </view>
+        </view>
+        <view class="query-history-list">
+            <view bind:tap="clickSearchBtn" class="query-history-item" data-id="{{item.id}}" data-type="historyList" wx:for="{{queryHistoryList}}" wx:key="{{ index }}">
+                <image class="icon-search" src="/resource/search_i.png"></image>
+                <view class="query-history-item__content">{{item.msg}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="query-list" wx:if="{{questionList&&questionList.length}}">
+        <view class="query-item" wx:for="{{questionList}}" wx:key="{{ index}}">
+            <question-card bind:operateQuestionCardInfo="operateQuestionCardInfo" questionCardInfo="{{item}}" userInfo="{{userInfo}}"></question-card>
+        </view>
+    </view>
+    <view class="no-qa" wx:if="{{questionList.length===0&&queryHistoryList.length===0}}">
+        <image class="no-qa-list" src="{{imageRoot}}/images_wx/default_graph/null.png"></image>
+        <view class="no-qa-list-tip">
+      {{queryHistoryList.length===0&&firstTimes?'还没有任何搜索历史':'暂未搜索到，换一个试试'}}
+    </view>
+    </view>
+</view>

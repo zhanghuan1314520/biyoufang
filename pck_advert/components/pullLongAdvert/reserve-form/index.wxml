@@ -1,0 +1,15 @@
+<view class="reserve root-class">
+    <input bindblur="handerBlur" class="form-input" data-type="name" focus="{{nameFocus}}" value="{{name}}" placeholder="请输入您的姓名" placeholderClass="placeholder-reset" wx:if="{{nameFocus}}"></input>
+    <view bind:tap="handleFocus" class="form-input {{name?'':'placeholder-reset'}}" data-type="name" wx:else>
+        <text>{{name||'请输入您的姓名'}}</text>
+    </view>
+    <input bindblur="handerBlur" class="form-input" data-type="phone" disabled="{{userInfo.PhoneNumber}}" focus="{{phoneFocus}}" maxlength="{{11}}" value="{{phoneNumber}}" placeholder="{{userInfo.PhoneNumber?formate.ciphertext(userInfo.PhoneNumber):'请输入您的手机号'}}" placeholderClass="placeholder-reset" type="number" wx:if="{{phoneFocus}}"></input>
+    <view bind:tap="{{userInfo.PhoneNumber?'noHandle':'handleFocus'}}" class="form-input {{phoneNumber?'':'placeholder-reset'}}" data-type="phone" wx:else>
+        <text>{{phoneNumber||formate.ciphertext(userInfo.PhoneNumber)||'请输入您的手机号'}}</text>
+    </view>
+    <button bindgetphonenumber="authorizePhoneNumber" bindtap="submitForm" class="reset-btn reserve-btn" data-source="reserveForm" openType="{{userInfo.PhoneNumber?'':phoneNumber?'':needPhoneAuthorize?'getPhoneNumber':''}}">
+        <text>{{buildInfo.HaveBooked?btnText.ReservedFirstCopywriting||'已预约':btnText.MakeAnAppointment||'预约看房'}}</text>
+        <text class="attach-mes">{{buildInfo.HaveBooked&&btnText.ReservedSecondCopywriting?btnText.ReservedSecondCopywriting:buildInfo.AppointmentNumber&&buildInfo.ShowAppointmentNumber?buildInfo.AppointmentNumber+'人预约':'一键直达'}}</text>
+    </button>
+</view>
+<wxs module="formate" src="index.wxs" />

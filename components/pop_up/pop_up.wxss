@@ -1,0 +1,51 @@
+.main-pop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 5;
+    justify-content: center;
+}
+
+.main-pop,.pop-cen {
+    display: flex;
+    align-items: center;
+}
+
+.pop-cen {
+    background: #fff;
+    flex-direction: column;
+    padding: 66rpx 65rpx 49rpx;
+    border-radius: 8rpx;
+}
+
+.pop-img {
+    width: 220rpx;
+    height: 220rpx;
+}
+
+.pop-text {
+    margin: 54rpx 0;
+    font-size: 38rpx;
+    font-weight: 500;
+    color: #fe6010;
+}
+
+.pop-btn_yes {
+    width: 520rpx;
+    height: 90rpx;
+    background: #fe5e10;
+    border-radius: 45rpx;
+    font-size: 34rpx;
+    color: #fff;
+    line-height: 90rpx;
+    text-align: center;
+    margin: 30rpx 0 36rpx;
+}
+
+.pop-btn_no {
+    font-size: 34rpx;
+    color: #666;
+}

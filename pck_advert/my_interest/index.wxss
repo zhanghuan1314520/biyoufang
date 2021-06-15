@@ -1,0 +1,85 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.nav,page {
+    background: #fff;
+}
+
+.nav {
+    box-shadow: 0 4rpx 8rpx 0 hsla(0,0%,87.1%,.5);
+    padding-top: 65rpx;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    z-index: 2;
+    position: -webkit-sticky;
+    position: sticky;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.nav__item {
+    text-align: center;
+    line-height: 0;
+}
+
+.nav__text {
+    padding-bottom: 22rpx;
+    font-size: 30rpx;
+    color: #8a969e;
+}
+
+.nav__bar {
+    height: 7rpx;
+    background: #fe5e10;
+    border-radius: 4rpx;
+    display: inline-block;
+    width: 0;
+    transition: all .3s;
+}
+
+.nav-active .nav__text {
+    font-weight: 700;
+    color: #333;
+}
+
+.nav-active .nav__bar {
+    width: 46rpx;
+}
+
+.interest__item {
+    background: #fff;
+    margin-top: 21rpx;
+    padding: 20rpx 30rpx;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.interest__item-handler {
+    color: #faac18;
+    font-size: 26rpx;
+    font-weight: 700;
+    text-align: center;
+    line-height: 37rpx;
+    padding: 18rpx 0;
+    margin: 0 29rpx;
+    border-top: 1rpx solid #ededed;
+    box-sizing: border-box;
+}
+
+.broker__list {
+    padding: 0 30rpx 30rpx;
+}
+
+.broker__list-main {
+    margin-top: 30rpx;
+}
+
+.data__empty-img {
+    width: 155rpx;
+    height: 209rpx;
+    padding-top: 297rpx;
+}

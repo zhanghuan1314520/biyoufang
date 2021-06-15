@@ -1,0 +1,20 @@
+.handlers {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 0 70rpx 70rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.handler {
+    color: #fff;
+    font-size: 32rpx;
+}
+
+.handler.confirm {
+    color: #18ac18;
+    font-weight: 700;
+}

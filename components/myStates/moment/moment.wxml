@@ -1,0 +1,19 @@
+<view>
+    <moment_item binduserOperate="userOperate" comptype="{{comptype}}" moments="{{item}}" wx:for="{{moments}}" wx:key="index"></moment_item>
+    <view class="no-moment" wx:if="{{moments&&moments.length===0}}">
+        <image class="img-none" src="{{imageRoot}}/images_wx/default_graph/youliao_img_information@3x.png"></image>
+        <block wx:if="{{userInfo.UserType===1&&canPublish}}">
+            <view class="txt-none">全网曝光，抢占先机</view>
+            <view class="txt-none">快来发布我的楼盘最新动态吧！</view>
+            <view bindtap="emitpublish" class="emit-public">去发布</view>
+        </block>
+        <block wx:else>
+            <view class="txt-none">这些置业顾问太懒了，</view>
+            <view class="txt-none">还没有提交过楼盘的一手信息</view>
+        </block>
+    </view>
+    <load-more id="loadMore111" loadFlag="{{canLoadMore}}" noMoreFlag="{{!canLoadMore}}" screenShow="{{moments&&moments.length>0}}"></load-more>
+    <view class="dialog" wx:if="{{showDialog}}">
+        <dialog binddialogOperate="dialogOperate"></dialog>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+{
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "state": "/components/myStates/moment_state/moment_state",
+        "tabs": "/components/tabs/index",
+        "join-building-tab": "/components/my/join-building-tab/index",
+        "newsCard": "/ext_features/components/newsCard/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

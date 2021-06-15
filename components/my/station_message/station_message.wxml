@@ -1,0 +1,41 @@
+<view class="station__message">
+    <view class="bg"></view>
+    <view class="msg__list" wx:if="{{message}}">
+        <view class="msg__item" wx:for="{{message}}" wx:key="index">
+            <view class="msg__time-wrap" wx:if="{{item.time}}">
+                <view class="msg__time">{{item.time}}</view>
+            </view>
+            <view bindtap="checkDetail" class="msg__card" data-index="{{index}}">
+                <view class="msg__title">
+                    <view class="msg__status">
+                        <view class="msg__status-icon">
+                            <image class="msg__status-icon" src="{{item.icon}}" wx:if="{{item.icon}}"></image>
+                            <view class="msg_new" wx:if="{{item.Status===0&&item.MessageType>5&&item.MessageType<=10}}"></view>
+                        </view>
+                        <view class="msg__status-text">{{item.statusText}}</view>
+                    </view>
+                </view>
+                <view class="msg__content {{item.BuildingId&&item.MessageType<=5?'border-btm':''}}" wx:if="{{item.MessageType<=10}}">{{item.Content}}</view>
+                <view class="msg__content {{item.BuildingId&&item.MessageType<13?'border-btm':''}}" wx:if="{{item.MessageType>10}}">
+                    <view class="msg__content_box">
+                        <view class="msg__content_main">
+                            <view class="msg__content_title">{{item.Content.title}}
+                  <text class="msg__content_sp" wx:if="{{item.Content.sp}}">{{item.Content.sp}}</text>
+                            </view>
+                {{item.Content.main}}
+              </view>
+                    </view>
+                    <view class="msg__content_btm">{{item.Content.btm}}</view>
+                </view>
+                <view class="msg__handler" wx:if="{{item.BuildingId&&(item.MessageType<=5||item.MessageType>10&&item.MessageType<13)}}">详情 >
+          </view>
+            </view>
+        </view>
+        <view class="no-more" wx:if="{{message&&message.length}}">已经到底啦～</view>
+    </view>
+    <view class="data__empty" wx:if="{{message&&message.length===0}}">
+        <image class="data__empty-img" src="{{bgIcons[0]}}"></image>
+        <view class="data__empty-tip">暂无通知</view>
+        <view bindtap="goBuildingPage" class="data__empty-go">去看看有没有值得买的楼盘 ></view>
+    </view>
+</view>

@@ -1,0 +1,12 @@
+.button-reset {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border-radius: 0;
+    text-align: left;
+    line-height: inherit;
+}
+
+.common-btn {
+    width: 100%;
+}

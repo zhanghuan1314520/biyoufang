@@ -1,0 +1,68 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.brand-card {
+    position: relative;
+    margin: 0 30rpx 30rpx;
+    border-radius: 20rpx;
+    background-color: #d8d8d8;
+    overflow: hidden;
+}
+
+.brand-card .brand-cover {
+    height: 348rpx;
+}
+
+.brand-card .brand-cover .cover-img {
+    width: 100%;
+    height: 100%;
+}
+
+.brand-card .brand-focus {
+    position: absolute;
+    top: 30rpx;
+    right: 30rpx;
+}
+
+.brand-card .brand-focus .focus-btn {
+    background-color: transparent;
+}
+
+.brand-card .brand-focus .focus-icon {
+    border-radius: 50%;
+    width: 64rpx;
+    height: 64rpx;
+}
+
+.brand-card .brand-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 122rpx;
+    padding: 13rpx 94rpx 30rpx 30rpx;
+    width: 100%;
+    box-sizing: border-box;
+    background: linear-gradient(1turn,#001432,rgba(0,20,50,0));
+    border-radius: 0 0 20rpx 20rpx;
+}
+
+.brand-card .brand-info .brand-name {
+    font-size: 36rpx;
+    color: #fff;
+    padding-bottom: 10rpx;
+    text-shadow: 0 2rpx 2rpx rgba(0,0,0,.5);
+}
+
+.brand-card .brand-info .brand-des {
+    font-size: 24rpx;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 36rpx;
+}

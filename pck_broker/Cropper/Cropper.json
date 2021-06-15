@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "image-cropper": "/components/ImageCropper/ImageCropper",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    },
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "裁剪图片",
+    "disableScroll": true
+}

@@ -1,0 +1,95 @@
+.building-info-item {
+    display: flex;
+    margin-bottom: 20rpx;
+    font-size: 26rpx;
+}
+
+.building-info-item__label {
+    width: 130rpx;
+    height: 38rpx;
+    color: #999;
+}
+
+.building-info-item__content,.building-info-item__label {
+    display: flex;
+    align-items: center;
+}
+
+.building-info-item__content {
+    flex: 1;
+    line-height: 38rpx;
+    color: #333;
+}
+
+.lottery-info__title {
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.lottery-info__content {
+    margin-top: 24rpx;
+}
+
+.theader {
+    border: 1px solid #ffd6c1;
+}
+
+.th,.theader {
+    display: flex;
+    align-items: center;
+}
+
+.th {
+    flex: 1;
+    justify-content: center;
+    box-sizing: border-box;
+    border-right: 1px solid #ffd6c1;
+    height: 62rpx;
+    font-size: 26rpx;
+    background-color: #fffaf8;
+    color: #88756c;
+}
+
+.th:last-child {
+    border-right: 0;
+}
+
+.tr {
+    border-left: 1px solid #ffd6c1;
+    border-bottom: 1px solid #ffd6c1;
+}
+
+.td,.tr {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-right: 1px solid #ffd6c1;
+}
+
+.td {
+    flex: 1;
+    justify-content: center;
+    height: 62rpx;
+    font-size: 26rpx;
+    color: #333;
+}
+
+.td:last-child {
+    border-right: 0;
+}
+
+.td_first {
+    color: #888;
+}
+
+.td_stats {
+    color: red;
+}
+
+.talent-explain {
+    color: #888;
+    font-size: 24rpx;
+    padding-top: 10rpx;
+}

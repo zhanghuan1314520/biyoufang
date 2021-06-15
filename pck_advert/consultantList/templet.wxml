@@ -1,0 +1,17 @@
+<template name="consultant">
+    <view class="consultant">
+        <view bind:tap="carteDetail" class="consultant-info" data-id="{{consultant.Id}}">
+            <image webp class="avatar" mode="aspectFill" src="{{consultant.PersonalImageUrl}}"></image>
+            <view class="name">
+                <view>{{consultant.Name}}</view>
+                <view>置业顾问</view>
+            </view>
+        </view>
+        <view class="btn-list">
+            <button bindgetphonenumber="getPhoneNumber" bindgetuserinfo="getUserInfo" bindtap="{{userInfo&&item.authorUserInfo&&!userInfo.Authorized?'getUserInfo':userInfo&&item.authorPhoneNumber&&!userInfo.PhoneNumber?'getPhoneNumber':'handleBtnClick'}}" class="reset-btn btn-item" data-consultant="{{consultant}}" data-type="{{item.type}}" openType="{{userInfo&&item.authorUserInfo&&!userInfo.Authorized?'getUserInfo':userInfo&&item.authorPhoneNumber&&!userInfo.PhoneNumber?'getPhoneNumber':''}}" wx:for="{{consultant.btnList}}" wx:key="index">
+                <image class="btn-icon" src="{{item.iconSrc}}"></image>
+                <text class="btn-text">{{item.name}}</text>
+            </button>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,13 @@
+.like {
+    font-size: 28rpx;
+    color: #8a969e;
+    height: 37rpx;
+    line-height: 37rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.highlight {
+    font-weight: 700;
+    color: #333;
+}

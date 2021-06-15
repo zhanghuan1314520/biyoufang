@@ -1,0 +1,300 @@
+page {
+    background: #fff;
+    min-height: 100%;
+}
+
+.lottery-detail {
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+image {
+    vertical-align: middle;
+}
+
+.success-image {
+    height: 445rpx;
+    background: #ff8f00;
+}
+
+.loser-image,.success-image {
+    width: 750rpx;
+    position: relative;
+    z-index: 1;
+}
+
+.loser-image {
+    height: 414rpx;
+    background: #4a44f9;
+}
+
+.card-info {
+    width: 750rpx;
+    min-height: 500rpx;
+    background: linear-gradient(1turn,#3c28af,#4b46ff);
+    padding-top: 136rpx;
+    padding-bottom: 30rpx;
+    margin-top: -136rpx;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.card-info-success {
+    background: linear-gradient(1turn,#ff9000,#ff8f00);
+}
+
+.card-top-line {
+    width: 720rpx;
+    height: 38rpx;
+    background: #0535ab;
+    border-radius: 19rpx;
+    border: 4rpx solid #85b3ff;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.card-info-success .card-top-line {
+    background: #8e2112;
+    border: 4rpx solid #fdf1b2;
+}
+
+.card-main {
+    width: 690rpx;
+    min-height: 300rpx;
+    background: #fff;
+    margin: -18rpx auto 0;
+    box-shadow: 0 2rpx 15rpx 0 #503acf;
+    border-radius: 6rpx;
+    text-align: center;
+    overflow: hidden;
+}
+
+.card-info-success .card-main {
+    box-shadow: 0 2rpx 15rpx 0 #d6663d;
+}
+
+.building-name {
+    width: 468rpx;
+    padding: 50rpx 60rpx 16rpx;
+    margin: 0 50rpx;
+    text-align: center;
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333;
+    line-height: 40rpx;
+    border-bottom: 1px solid #172a85;
+}
+
+.building-result {
+    font-size: 40rpx;
+    color: #bd8d5c;
+    line-height: 38rpx;
+    padding: 31rpx 0 45rpx;
+    font-weight: 700;
+}
+
+.building-user-name {
+    font-size: 24rpx;
+    color: #333;
+    line-height: 28rpx;
+    margin-bottom: 24rpx;
+}
+
+.building-register-success {
+    font-size: 80rpx;
+    font-weight: 700;
+    color: red;
+}
+
+.register-fail {
+    color: #3e3a39;
+}
+
+.building-success-info {
+    padding: 36rpx 0 40rpx;
+    margin: 0 50rpx;
+    font-size: 24rpx;
+    color: #999;
+    border-bottom: 1px solid #ff9001;
+}
+
+.building-fail-info {
+    border-bottom: 1px solid #172a85;
+}
+
+.rank__rate {
+    color: #fa5500;
+    font-weight: 700;
+}
+
+.building-info-box {
+    margin-top: 36rpx;
+    padding-bottom: 40rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.result__data-title {
+    font-size: 24rpx;
+    color: #999;
+    padding-bottom: 14rpx;
+}
+
+.result__data-content {
+    font-size: 36rpx;
+    color: #333;
+    font-weight: 700;
+}
+
+.fs-22 {
+    font-size: 22rpx;
+    font-weight: 400;
+}
+
+.building-public {
+    position: relative;
+}
+
+.building-public__success::after {
+    border-bottom: 2rpx solid #ff9001;
+}
+
+.building-public__fail::after,.building-public__success::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    left: 40rpx;
+    right: 40rpx;
+    margin-top: -1rpx;
+}
+
+.building-public__fail::after {
+    border-bottom: 2rpx solid #172a85;
+}
+
+.gl {
+    width: 30rpx;
+    height: 30rpx;
+    float: left;
+    position: relative;
+    border-radius: 18rpx;
+    margin-left: -18rpx;
+    margin-top: 6rpx;
+    overflow: hidden;
+}
+
+.g2 {
+    float: right;
+    margin-right: -18rpx;
+}
+
+.gl-color {
+    width: 36rpx;
+    height: 896rpx;
+    background: linear-gradient(#63cef2,#6e3fdb,#202ec1);
+    position: absolute;
+    left: 0;
+    bottom: -260rpx;
+}
+
+.card-info-success .gl-color {
+    box-shadow: 0 2rpx 15rpx 0 #d6663d;
+    background: linear-gradient(#e52213,#feeea7);
+}
+
+.building-public-text {
+    background-color: #fff;
+    position: relative;
+    z-index: 2;
+    padding: 0 15rpx;
+    font-size: 26rpx;
+    color: #172a85;
+    line-height: 36rpx;
+}
+
+.building-public-box {
+    overflow: hidden;
+    line-height: 36rpx;
+}
+
+.left-circle {
+    float: left;
+    margin-left: -6rpx;
+}
+
+.left-circle,.right-circle {
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 6rpx;
+    overflow: hidden;
+}
+
+.right-circle {
+    float: right;
+    margin-right: -6rpx;
+}
+
+.offcial-box {
+    display: flex;
+    margin: 30rpx 50rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.offcial-image {
+    width: 148rpx;
+    height: 148rpx;
+    margin-right: 22rpx;
+}
+
+.offcial-word {
+    padding-top: 2rpx;
+    font-size: 22rpx;
+    color: #999;
+    line-height: 148rpx;
+}
+
+.offcial-left {
+    text-align: center;
+    display: flex;
+}
+
+.share-btn {
+    padding: 0 36rpx;
+    height: 62rpx;
+    background: linear-gradient(180deg,#ff9b18,#ff8f00);
+    box-shadow: 0 2rpx 12rpx 0 #fdc6ac;
+    border-radius: 45rpx;
+    font-weight: 700;
+    color: #fff;
+    line-height: 62rpx;
+    font-size: 26rpx;
+}
+
+.building-list-title {
+    margin-bottom: 11rpx;
+    margin-top: 41rpx;
+    padding-left: 30rpx;
+    font-size: 40rpx;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 500;
+    color: #333;
+    line-height: 40rpx;
+}
+
+.is-reactom {
+    padding: 14rpx 0 24rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.success-border {
+    border-bottom: 1px solid #ff9001;
+}
+
+.success-color {
+    color: #ff9000;
+}

@@ -1,0 +1,19 @@
+var fixCurrentTime = (function(time) {
+    if (time.length > 20) {
+        return (time.slice(1))
+    } else {
+        return (time)
+    }
+});
+var calcNavBarLeft = (function(index, quotesItemW) {
+    return ((quotesItemW / 2 - 9) + index * (18 + quotesItemW))
+});
+var formatQuoteRate = (function(rate) {
+    if (!rate) return ('');;
+    return (Math.abs(rate) + '%')
+});
+module.exports = ({
+    fixCurrentTime: fixCurrentTime,
+    calcNavBarLeft: calcNavBarLeft,
+    formatQuoteRate: formatQuoteRate,
+});

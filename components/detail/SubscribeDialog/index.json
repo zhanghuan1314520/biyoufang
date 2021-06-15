@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "ModalBox": "/components/common/ModalBox/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

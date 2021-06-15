@@ -1,0 +1,10 @@
+function textEllipsis(text, maxLength, splitFlag) {
+    if (splitFlag && text.length > maxLength) {
+        return (text.substring(0, maxLength - 1) + '...')
+    } else {
+        return (text)
+    }
+};
+module.exports = ({
+    textEllipsis: textEllipsis,
+});

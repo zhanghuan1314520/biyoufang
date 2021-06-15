@@ -1,0 +1,30 @@
+.online__tip {
+    padding-top: 186rpx;
+    text-align: center;
+}
+
+.online__tip-image {
+    width: 229rpx;
+    height: 169rpx;
+    margin-left: -22rpx;
+}
+
+.online__tip-title {
+    font-size: 38rpx;
+    font-weight: 700;
+    color: #062941;
+    line-height: 53rpx;
+    padding-top: 35rpx;
+}
+
+.online__tip-description {
+    line-height: 33rpx;
+    font-size: 24rpx;
+    color: #777;
+    padding-top: 60rpx;
+}
+
+.online__tip-description-feedback {
+    color: #0091ff;
+    padding-left: 4rpx;
+}

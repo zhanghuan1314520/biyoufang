@@ -1,0 +1,117 @@
+.reset-btn {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.category,.reset-btn {
+    background-color: #fff;
+}
+
+.category {
+    padding: 40rpx 30rpx;
+    border-bottom: 14rpx solid #f7f7f7;
+}
+
+.first-category {
+    display: flex;
+    justify-content: space-around;
+}
+
+.first-category .first-category_item {
+    font-size: 26rpx;
+    color: #333;
+    width: 160rpx;
+    height: 62rpx;
+    line-height: 62rpx;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+    font-weight: 500;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 2rpx 12rpx 0 hsla(0,0%,56.9%,.14);
+    opacity: .92;
+    border-radius: 8rpx;
+}
+
+.first-category .first-category_item .category-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.first-category .first-category_item:last-of-type {
+    margin-right: 0;
+}
+
+.first-category .des-icon {
+    display: none;
+}
+
+.first-category .active-category {
+    background: linear-gradient(90deg,#ff9000,#ff7300);
+    opacity: .92;
+    color: #fff;
+    border: none;
+    position: relative;
+}
+
+.first-category .active-category .des-icon {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -20rpx;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 12rpx solid transparent;
+    border-top-color: #ff7300;
+}
+
+.second-category {
+    padding-top: 38rpx;
+}
+
+.second-category .swiper {
+    height: 118rpx;
+}
+
+.second-category .second-category_item,.second-category .swiper-item {
+    height: 100%;
+    display: flex;
+}
+
+.second-category .second-category_item {
+    justify-content: center;
+    flex-direction: column;
+    width: 220rpx;
+    margin-right: 16rpx;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    background-color: #f8f8f8;
+    border-radius: 8rpx;
+}
+
+.second-category .second-category_item .category-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 600;
+    padding-bottom: 16rpx;
+}
+
+.second-category .second-category_item .category-keyword {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 22rpx;
+    color: #666;
+}
+
+.second-category .second-category_item:last-of-type {
+    margin-right: 0;
+}

@@ -1,0 +1,69 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.bar-wrap {
+    font-size: 22rpx;
+    color: #fff;
+    width: 100%;
+    height: 86rpx;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    background-color: #f6f6f6;
+    display: flex;
+    align-items: center;
+}
+
+.bar-wrap .swiper-layout {
+    width: 288rpx;
+    height: 40rpx;
+    background-color: #feba08;
+    border-radius: 0 43rpx 43rpx 0;
+}
+
+.bar-wrap .swiper-layout .swiper-item {
+    width: 100%;
+    padding-left: 20rpx;
+    line-height: 40rpx;
+}
+
+.bar-wrap .visit-list {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bar-wrap .visit-list .visit-number {
+    height: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    background: #ff7d19;
+    border-radius: 20rpx;
+    min-width: 115rpx;
+    padding: 0 20rpx;
+    margin: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.bar-wrap .visit-list .my-avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 44rpx;
+    height: 44rpx;
+    border: 2rpx solid #ffd157;
+    box-sizing: border-box;
+    margin-right: 8rpx;
+}
+
+.bar-wrap .visit-list .avatar {
+    width: 44rpx;
+    height: 44rpx;
+    border-radius: 50%;
+    margin-right: 8rpx;
+    background-color: #e6e6e6;
+}

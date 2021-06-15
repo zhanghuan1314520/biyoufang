@@ -1,0 +1,12 @@
+var fixSharpTime = (function(time) {
+    if (!time) return;;
+    if (time.length > 20) {
+        time = time.split("-");
+        return ("：" + time[(0)].slice(5) + "-" + time[(1)].slice(5))
+    } else if (time.length > 0 && time.length <= 11) {
+        return ("：" + time)
+    }
+});
+module.exports = ({
+    fixSharpTime: fixSharpTime,
+});

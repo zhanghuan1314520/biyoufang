@@ -1,0 +1,43 @@
+.ad-mask {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad-wrap {
+    width: 680rpx;
+    height: 1012rpx;
+    border-radius: 16rpx;
+    overflow: hidden;
+    background: #eee;
+    margin-top: 120rpx;
+    position: relative;
+}
+
+.ad-wrap .img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.ad-close {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    width: 120rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    background: rgba(0,0,0,.25);
+    border-radius: 8rpx;
+    border: 2rpx solid hsla(0,0%,59.2%,.25);
+    font-size: 30rpx;
+    text-align: center;
+    color: #fff;
+}

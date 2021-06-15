@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "menu-nav": "/components/my/menu-nav/menu-nav",
+        "bottom-modal": "/components/modal-box/bottom-modal/index",
+        "consultant-buildings": "/components/my/consultant-buildings/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

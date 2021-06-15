@@ -1,0 +1,131 @@
+<view class="broker-register" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="{{navBarTitle}}" showShare="{{false}}"></nav-bar>
+    <join-building-tab bindchange="changeSelectBuilding" sourceBuildings="{{passBuildings}}" wx:if="{{checkState===1||checkState===2}}"></join-building-tab>
+    <form bindsubmit="submit" wx:if="{{checkState===0||checkState===2||checkState===3||checkState===4}}">
+        <view class="form-wrap">
+            <view class="form-group">
+                <view class="form-label">姓名</view>
+                <view class="form-input-wrap input-wrap-with-bg {{realNameError?'input-wrap-error':''}}" wx:if="{{!consultantInfo.Buildings}}">
+                    <input class="form-input" name="RealName" placeholder="请输入姓名" placeholderClass="input-place" value="{{checkState===0?'':consultantInfo.Name}}"></input>
+                </view>
+                <view class="form-input-wrap" wx:else>
+                    <view class="form-input-fake">{{consultantInfo.Name}}</view>
+                </view>
+            </view>
+            <view class="form-group">
+                <view class="form-label">手机号码</view>
+                <view class="form-input-wrap flex-between {{useOtherPhone?'input-wrap-with-bg':''}}">
+                    <view class="phone-box">
+                        <input class="form-input" name="phone" placeholder="请输入手机号" placeholderClass="input-place" value="{{currentInfoDetail.PhoneNumber||userInfo.PhoneNumber}}"></input>
+                    </view>
+                    <button bindgetphonenumber="getPhoneNumber" class="form-handler btn-handler" openType="getPhoneNumber">使用微信绑定手机号
+            </button>
+                </view>
+            </view>
+            <view class="form-group">
+                <view class="form-label">
+                    <text>入驻楼盘</text>
+                    <view class="edit-desc" wx:if="{{checkState==2}}">修改后需重新审核</view>
+                </view>
+                <view class="form-input-wrap-outside">
+                    <view bindtap="checkBuilding" class="form-input-wrap" style="justify-content: space-between;">
+                        <view class="form-input-fake-wrap">
+                            <view class="form-input-fake {{currentInfoDetail.BuildingName?'form-input-fake-have':''}}">
+                  {{currentInfoDetail.BuildingName?currentInfoDetail.BuildingName:checkState===2?'去更改':'去绑定'}}
+                </view>
+                        </view>
+                        <view class="form-fake-link">
+                            <text wx:if="{{checkState===2}}">更改楼盘</text>
+                            <image src="/resource/arrow.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="form-group">
+                <view class="form-label">微信号</view>
+                <view class="form-input-wrap input-wrap-with-bg {{wechatError?'input-wrap-error':''}}">
+                    <input class="form-input" name="WechatNumber" placeholder="微信号必填" placeholderClass="input-place" value="{{currentInfoDetail.WechatNumber||consultantInfo.WechatNumber}}"></input>
+                </view>
+            </view>
+            <view class="form-group form-group-bottom form-group-normal">
+                <view class="form-label">自我介绍</view>
+                <view class="form-input-wrap input-wrap-with-bg input-wrap-textarea {{introError?'input-wrap-error':''}}">
+                    <textarea class="form-textarea" name="Introduction" placeholder="一句话描述项目优势，或个人服务优势。50字内。" placeholderClass="input-place" value="{{currentInfoDetail.Introduction}}"></textarea>
+                </view>
+            </view>
+        </view>
+        <view class="form-wrap">
+            <view class="form-label form-label-left">图片材料</view>
+            <view class="photo-box">
+                <view class="flex form-group form-group-bottom form-group-normal align-between">
+                    <view class="flex">
+                        <view class="form-group-text">形象照</view>
+                        <view class="form-input-wrap">
+                            <view bindtap="uploadImg" class="form-img-wrap {{hasOnceValidate&&!currentInfoDetail.PersonalImageUrl?'input-wrap-error':''}}" data-type="2">
+                                <image class="form-img" mode="aspectFill" src="{{currentInfoDetail.PersonalImageUrl}}" wx:if="{{currentInfoDetail.PersonalImageUrl}}"></image>
+                                <image class="form-img-icon" src="/resource/register_add.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="flex">
+                        <view class="form-group-text">示例</view>
+                        <view catch:tap="previewExamples" class="form-input-wrap" data-url="{{examplesImgs[0]}}">
+                            <view class="form-img-wrap">
+                                <image class="form-img" mode="aspectFill" src="{{examplesImgs[0]}}"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="flex form-group form-group-bottom form-group-normal align-between">
+                    <view class="flex">
+                        <view class="form-group-text">工作证</view>
+                        <view class="form-input-wrap" style="align-items: flex-end;">
+                            <view bindtap="uploadImg" class="form-img-wrap {{hasOnceValidate&&!currentInfoDetail.WorkPermitUrl?'input-wrap-error':''}}" data-type="1">
+                                <image class="form-img" mode="aspectFill" src="{{currentInfoDetail.WorkPermitUrl}}" wx:if="{{currentInfoDetail.WorkPermitUrl}}"></image>
+                                <image class="form-img-icon" src="/resource/register_add.png"></image>
+                            </view>
+                            <text class="edit-desc" style="padding-left: 10rpx;" wx:if="{{checkState==2}}">(修改后需重新审核)
+                </text>
+                        </view>
+                    </view>
+                    <view class="flex">
+                        <view class="form-group-text">示例</view>
+                        <view catch:tap="previewExamples" class="form-input-wrap" data-url="{{examplesImgs[1]}}">
+                            <view class="form-img-wrap">
+                                <image class="form-img" mode="aspectFit" src="{{examplesImgs[1]}}" style="background-color: #000"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="worker-permit form-group form-group-bottom form-group-normal">
+                    <text>提示：
+              工作证处请上传本人名片或工牌等可以证明置业顾问身份的资料；形象照处请上传本人真实证件照或生活照。
+            </text>
+                </view>
+            </view>
+            <view class="blank"></view>
+            <view class="form-group form-group-top" wx:if="{{checkState===0}}">
+                <view class="form-label">邀请码
+            <text class="form-label-sub">(选填)</text>
+                </view>
+                <view class="form-input-wrap input-wrap-with-bg" style="padding-left:0">
+                    <input class="form-input" name="InviteCode" placeholder="推荐人邀请码（可为对方加分）" placeholderClass="input-place" style="padding-left:0" value="{{inviteCode||''}}"></input>
+                </view>
+            </view>
+            <view class="form-group" wx:if="{{userInfo.RealtyConsultantInfo&&checkState!==0}}">
+                <view class="form-label">设置为主推楼盘</view>
+                <view class="form-input-wrap-end">
+                    <text class="setted-tips" wx:if="{{currentInfoDetail.IsMain&&checkState===2}}">已设置</text>
+                    <switch checked="{{currentInfoDetail.IsMain}}" color="{{currentInfoDetail.IsMain&&checkState===2?'#f2f2f2':'#FF9100'}}" disabled="{{currentInfoDetail.IsMain&&checkState===2}}" name="IsMain"></switch>
+                </view>
+            </view>
+            <view class="z-btn-box {{checkState==2?'extra-padding':''}}">
+                <button class="z-btn" formType="submit">
+            {{checkState===0?'申请入驻':checkState===3?'申请追加入驻':'提交'}}
+          </button>
+            </view>
+        </view>
+    </form>
+</view>
+<pop_up bind:popClick="popClick" pageData="{{popData}}" wx:if="{{showPop}}"></pop_up>
+<authorize-dialog userInfo="{{userInfo}}" visibility="{{userInfo&&!userInfo.Authorized}}"></authorize-dialog>

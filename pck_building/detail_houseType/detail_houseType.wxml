@@ -1,0 +1,62 @@
+<view class="detail" style="padding-top: {{navH}}px;">
+    <nav-bar bgColor="#fff" navBarTitle="楼盘户型" type="album"></nav-bar>
+    <scroll-view class="switch" scrollX="{{true}}">
+        <view bindtap="changeTab" class="switch__item {{curTab==-1?'switch__item-active':''}}" data-index="{{-1}}">全部<text class="switch__item-count">({{houseTypeListInit.length}})</text>
+            <image class="icon_selected" src="/resource/detail/detail_housetype_icon_selected@3x.png" wx:if="{{curTab==-1}}"></image>
+        </view>
+        <view bindtap="changeTab" class="switch__item {{curTab==index?'switch__item-active':''}}" data-index="{{index}}" wx:for="{{houseTypeArr}}" wx:key="index">{{houseTypeArr[index][0].roomCount}}室<text class="switch__item-count">({{houseTypeArr[index].length}})</text>
+            <image class="icon_selected" src="/resource/detail/detail_housetype_icon_selected@3x.png" wx:if="{{curTab==index}}"></image>
+        </view>
+    </scroll-view>
+    <view class="house-type__list" wx:if="{{houseTypeList&&houseTypeList.length>0}}">
+        <view bindtap="checkHouseDetail" class="building-house-type__item" data-id="{{item.Id}}" data-index="{{item.houseIndex}}" wx:for="{{houseTypeList}}" wx:key="index">
+            <image class="building-house-type__img" data-url="{{item.ImageUrl}}" mode="aspectFill" src="{{item.ImageUrl}}"></image>
+            <view class="building-house-type__content">
+                <view class="building-house-type__main">
+                    <view class="building-house-type__name">{{item.HouseTypeName}}</view>
+                    <view class="building-house-type__status" wx:if="{{item.IsOnSale&&!item.IsSoldOut}}">
+              在售
+          </view>
+                    <view class="building-house-type__status building-house-type__soldout" wx:elif="{{item.IsSoldOut}}">
+              售罄
+          </view>
+                </view>
+                <view class="building-house-type__cell-row">
+                    <view class="building-house-type__cell">
+                        <view class="building-house-type__cell-title">房型</view>
+                        <view class="building-house-type__cell-content">{{item.SeveralRooms}}</view>
+                    </view>
+                </view>
+                <view class="building-house-type__cell-row">
+                    <view class="building-house-type__cell">
+                        <view class="building-house-type__cell-title">建面</view>
+                        <view class="building-house-type__cell-content">{{item.HouseArea?item.HouseArea+'m²':'--'}}</view>
+                    </view>
+                    <view class="line line-lg"></view>
+                    <view class="building-house-type__cell">
+                        <view class="building-house-type__cell-title">朝向</view>
+                        <view class="building-house-type__cell-content"> {{item.Orientation?item.Orientation:'--'}}</view>
+                    </view>
+                </view>
+                <view class="building-house-type__cell-row" wx:if="{{item.totalPrice&&item.IsOnSale}}">
+                    <view class="building-house-type__cell">
+                        <view class="building-house-type__cell-title">总价</view>
+                        <view class="building-house-type__cell-content" style="color:#092C43">
+                            <text class="building-house-type__price price-total">约{{item.totalPrice}}万</text>
+                            <view class="line"></view>
+                            <text class="scale-fc">3成</text>
+                            <text class="building-house-type__price">{{item.thirtyPercentPrice}}万</text>
+                            <view class="line"></view>
+                            <text class="scale-fc">6成</text>
+                            <text class="building-house-type__price">{{item.sixthPercentPrice}}万</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="no-qa" wx:if="{{houseTypeList.length===0}}">
+        <image class="no-qa-list" src="{{imageRoot}}/images_wx/default_graph/null.png"></image>
+        <view class="no-qa-list-tip">暂无你想要的结果</view>
+    </view>
+</view>

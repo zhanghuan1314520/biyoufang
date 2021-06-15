@@ -1,0 +1,6 @@
+<view class="tabs" style="top: {{top}}px">
+    <view catch:tap="handleSelect" class="tabs-item {{activeIndex===index?'active-tab':''}}" data-index="{{index}}" wx:for="{{tabsList}}" wx:key="index">
+        <text class="{{item.showDot&&index!==0?'red-dot':''}} ">{{item.name}}</text>
+    </view>
+    <view class="line" style="left: {{750/tabsList.length*(activeIndex+1)-375/tabsList.length}}rpx"></view>
+</view>

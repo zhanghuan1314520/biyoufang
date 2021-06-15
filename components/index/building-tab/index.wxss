@@ -1,0 +1,63 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.container {
+    border-top: 14rpx solid #f7f7f7;
+}
+
+.tab-list {
+    font-size: 30rpx;
+    color: #333;
+    height: 95rpx;
+    line-height: 95rpx;
+    white-space: nowrap;
+    position: relative;
+    border-bottom: 1px solid #ededed;
+}
+
+.tab-list .level-line {
+    position: absolute;
+    bottom: 4rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    opacity: 0;
+    height: 8rpx;
+    border-radius: 4rpx;
+    background-color: #fe660b;
+    transition: width .5s;
+}
+
+.tab-list .line-active {
+    width: 50rpx;
+    opacity: 1;
+}
+
+.tab-list .active-tag {
+    font-size: 38rpx;
+    color: #333;
+    font-weight: 700;
+}
+
+.tab-list .tab-item {
+    display: inline-block;
+    position: relative;
+    padding: 0 20rpx;
+    vertical-align: middle;
+}
+
+.building-card {
+    padding: 30rpx;
+    border-bottom: 1px solid #ededed;
+}
+
+.tab-list-fixed {
+    position: sticky;
+    background: #fff;
+    z-index: 10;
+}

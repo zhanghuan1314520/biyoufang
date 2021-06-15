@@ -1,0 +1,10 @@
+<cover-view class="main-pop">
+    <cover-view class="pop-cen">
+        <cover-view class="pop-img">
+            <cover-image class="pop-img" src="{{pageData.imgUrl}}"></cover-image>
+        </cover-view>
+        <cover-view class="pop-text">{{pageData.text}}</cover-view>
+        <cover-view catchtap="popClickYes" class="pop-btn_yes">{{pageData.btnTitleYes}}</cover-view>
+        <cover-view catchtap="popClickNo" class="pop-btn_no">{{pageData.btntitleNo}}</cover-view>
+    </cover-view>
+</cover-view>

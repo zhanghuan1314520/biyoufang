@@ -1,0 +1,14 @@
+<view class="building-search">
+    <view bind:tap="operate" class="building-search-input" data-t="search">
+        <image class="icon_search" src="/resource/search_i.png"></image>
+        <view class="building-search-input__inner">
+            <text>搜索想了解的楼盘</text>
+        </view>
+    </view>
+    <view bind:tap="operate" class="building-search-share" data-t="map">
+        <image class="icon_share" src="/resource/index/loupan_icon_mapsearch@3x.png"></image>
+        <view class="share-info">
+            <text class="">地图找房</text>
+        </view>
+    </view>
+</view>

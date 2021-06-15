@@ -1,0 +1,83 @@
+.qa-invite-answer-wrapper {
+    font-family: PingFangSC-Medium,PingFang SC;
+}
+
+.qa-search {
+    padding: 22rpx 30rpx;
+    background-color: #fe6c08;
+}
+
+.qa-input,.qa-search {
+    display: flex;
+}
+
+.qa-input {
+    position: relative;
+    flex: 1;
+    align-items: center;
+    width: 690rpx;
+    height: 70rpx;
+    background-color: #f6f6f6;
+    border-radius: 8rpx;
+    color: #8e8e93;
+}
+
+.qa-input__prepend {
+    margin: 0 15rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.qa-input__inner {
+    flex: 1;
+    padding-right: 65rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.input-placeholder {
+    color: #8e8e93;
+}
+
+.qa-input__suffix {
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52rpx;
+    height: 52rpx;
+    margin-right: 10rpx;
+    transform: translateY(50%);
+}
+
+.qa-input__suffix-inner {
+    width: 32rpx;
+    height: 32rpx;
+    border-radius: 50%;
+    background-color: #777;
+    color: #fff;
+    font-size: 16rpx;
+}
+
+.qa-input__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 28rpx;
+    height: 70rpx;
+    font-size: 32rpx;
+    color: #fff;
+}
+
+.query-list {
+    padding: 20rpx 30rpx;
+    background-color: #f7f7f7;
+}
+
+.query-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20rpx;
+}

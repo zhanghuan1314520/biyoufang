@@ -1,0 +1,21 @@
+<view class="container" id="buildingTab">
+    <view class="tab-list-fixed" style="top: {{navH+50}}px">
+        <scroll-view scrollWithAnimation scrollX class="tab-list" scrollIntoView="categoryTab{{activeIndex}}">
+            <view catch:tap="clickTag" class="tab-item {{activeIndex===index?'active-tag':''}}" data-index="{{index}}" data-type="{{item.tagType}}" id="{{'categoryTab'+index}}" wx:if="{{item.Show}}" wx:for="{{tabList}}" wx:key="index">
+                <text>{{item.TabName}}</text>
+                <view class="level-line {{activeIndex===index?'line-active':''}}"></view>
+            </view>
+        </scroll-view>
+    </view>
+    <swiper circular bindchange="swiperChange" class="swiper" current="{{activeIndex}}" style="min-height: calc(100vh - 96rpx - {{navH+60}}px); {{swiperHeight[activeIndex]?'height:'+swiperHeight[activeIndex]+'px;':''}}">
+        <swiper-item wx:for="{{tabList}}" wx:key="index">
+            <view id="tab{{index}}">
+                <view class="building-card {{citem.id?'advert-build':''}}" data-position-one="{{index}}" data-position-two="{{cindex}}" wx:for="{{buildingList[index]||[]}}" wx:for-index="cindex" wx:for-item="citem" wx:key="index">
+                    <building-card bind:operateBuildingCardInfo="buildCardOperate" buildingCardInfo="{{citem}}"></building-card>
+                </view>
+                <load-more id="loadMore" loadFlag="{{pageData[index].canLoadMore}}" noMoreFlag="{{!pageData[index].canLoadMore}}" screenShow="{{buildingList[index]&&buildingList[index].length}}"></load-more>
+                <empty-view isReveal="{{!buildingList[index]||!buildingList[index].length}}" tipsText="暂无楼盘"></empty-view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

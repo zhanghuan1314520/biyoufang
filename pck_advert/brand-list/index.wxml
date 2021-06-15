@@ -1,0 +1,33 @@
+<view class="container" style="padding-top: {{topHeight+(introducState?remainderHeight+10:0)}}px" wx:if="{{brand}}">
+    <view class="preview-view">
+        <view class="navigation" style="background-image: url('{{brand.ImageUrl}}');">
+            <nav-bar isTransparent="{{true}}" showShare="{{false}}"></nav-bar>
+        </view>
+        <view class="brand-info">
+            <view class="brand-focus">
+                <button bindgetuserinfo="getUserInfo" catch:tap="{{userInfo.Authorized?'followBrand':''}}" class="reset-btn focus-btn {{brand.IsFollow?'':'focused-btn'}}" openType="{{!userInfo.Authorized?'getUserInfo':''}}">
+                    <image class="focus-icon" src="{{brand.IsFollow?'/pck_advert/images/brand/ppg_icon_like@3x.png':'/pck_advert/images/brand/ppg_icon_unlike@3x.png'}}"></image>
+                </button>
+            </view>
+            <view class="brand-name">
+                <text>{{brand.BrandName}}</text>
+            </view>
+            <view class="brand-introduc {{introducState?'':introduLineNum>2?'fixed-height':''}}" id="introducWrap" style="{{introducState&&introduLineNum>2?'height: '+introduHeight+10+'px':''}}">
+                <text id="introduc">{{brand.Introduction}}</text>
+            </view>
+            <view catch:tap="expansionIntroduc" class="ppg-more" wx:if="{{introduLineNum>2}}">
+                <image class="ppg-more_icon {{introducState?'expansion':''}}" src="/resource/base/ppg_icon_more@3x.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="building-wrap">
+        <view class="{{item.Id?'advertCard':''}}" data-index="{{index}}" wx:for="{{buildingList}}" wx:key="index">
+            <building-card building="{{item}}" sourceKey="BrandBuildings"></building-card>
+        </view>
+        <load-more loadFlag="{{pageData.canLoadMore}}" noMoreFlag="{{!pageData.canLoadMore}}" screenShow="{{buildingList.length>0}}"></load-more>
+        <view class="data__empty" wx:if="{{buildingList.length===0}}">
+            <image class="data__empty-img" src="{{nullImg}}"></image>
+        </view>
+    </view>
+</view>
+<skeleton active row="{{[ {width:'100vw',height:' 100vh'} ]}}" wx:else></skeleton>

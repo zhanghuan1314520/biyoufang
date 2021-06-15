@@ -1,0 +1,24 @@
+<view class="broker-belong" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="置业顾问注册" showShare="{{false}}"></nav-bar>
+    <view class="search">
+        <view class="search-wrap">
+            <image class="search-icon" src="/resource/search_i.png"></image>
+            <input bindconfirm="search" bindinput="inputing" class="search-input" confirmType="search" focus="{{true}}" placeholder="请输入楼盘名称"></input>
+        </view>
+    </view>
+    <view class="list" wx:if="{{buildingList&&buildingList.length>0}}">
+        <view bindtap="checkBuilding" class="item" data-id="{{item.BuildingId}}" data-name="{{item.BuildingName}}" wx:for="{{buildingList}}" wx:key="index">
+            <view class="content">
+                <image class="location-icon" src="/resource/registrationlist_icon_location@3x.png"></image>
+                <view class="name">{{item.BuildingName}}</view>
+                <view class="location">
+                    <text wx:if="{{item.DistrictName}}">【{{item.DistrictName}}】</text>
+                    <text wx:if="{{item.Address}}">{{item.Address}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="empty-wrap" wx:if="{{buildingList&&buildingList.length===0}}">
+        <image class="empty-img" src="{{nullImg}}"></image>
+    </view>
+</view>

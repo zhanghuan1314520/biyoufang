@@ -1,0 +1,10 @@
+<block wx:if="{{bannerList.length}}">
+    <swiper autoplay bindchange="swiperChange" circular="{{bannerOptions.circular}}" class="swiper-layout swiper-class" indicatorActiveColor="{{bannerOptions.indicatorActiveColor}}" indicatorColor="{{bannerOptions.indicatorColor}}" indicatorDots="{{bannerOptions.indicatorDots}}" interval="{{bannerOptions.interval}}">
+        <swiper-item bindtap="goBannerBuildingPage" class="swiper-item" data-id="{{item.Id}}" data-targeturl="{{item.TargetUrl}}" wx:for="{{bannerList}}" wx:key="TargetUrl">
+            <image webp class="slide-image image-class" src="{{item.ImageUrl}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="dots" wx:if="{{bannerList.length>1}}">
+        <view class="dot{{index==currentSwiper?' active':''}}" wx:for="{{bannerList}}" wx:key="index"></view>
+    </view>
+</block>

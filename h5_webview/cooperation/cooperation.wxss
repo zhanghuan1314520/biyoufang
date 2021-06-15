@@ -1,0 +1,25 @@
+.container {
+    position: relative;
+}
+
+.save-btn {
+    bottom: 40rpx;
+    width: 580rpx;
+    line-height: 90rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+    font-size: 32rpx;
+}
+
+.copy-btn,.save-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+}
+
+.copy-btn {
+    bottom: 190rpx;
+    font-size: 26rpx;
+}

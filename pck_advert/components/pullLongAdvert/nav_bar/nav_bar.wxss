@@ -1,0 +1,173 @@
+.nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    transition: all .2s;
+}
+
+.nav,.nav-center {
+    background: #fff;
+}
+
+.nav-album {
+    background: #f9f9f9;
+}
+
+.isTransparent {
+    background: transparent;
+}
+
+.nav-lottery {
+    background: #ff6853;
+}
+
+.nav-title {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    color: #333;
+    font-family: PingFang-SC-Medium;
+    font-size: 36rpx;
+    letter-spacing: 1px;
+    transition: all .2s;
+    padding-left: 90rpx;
+}
+
+.isTransparent .nav-title,.nav-title-white {
+    color: #fff;
+}
+
+.nav-handler {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45px;
+    padding-left: 10px;
+    padding-top: 11px;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 11;
+}
+
+.nav-button-wrap {
+    position: relative;
+    float: left;
+    margin-left: 26rpx;
+    width: 24px;
+    height: 24px;
+}
+
+.nav-icon-share {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-button-share {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 19;
+    background: transparent;
+}
+
+.nav-back {
+    float: left;
+    width: 20px;
+    height: 20px;
+    padding-top: 4rpx;
+}
+
+.nav-home {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-left: 26rpx;
+}
+
+.nav-location {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-location,.nav-newspaper {
+    position: absolute;
+    bottom: 13px;
+    left: 30rpx;
+}
+
+.nav-icon-location {
+    display: block;
+    width: 12px;
+    height: 7px;
+    margin-left: 6rpx;
+}
+
+.nav-local-name {
+    font-size: 30rpx;
+    color: #333;
+    text-align: center;
+    margin-top: 2rpx;
+    margin-right: 6rpx;
+}
+
+.nav-newspaper-handler {
+    display: flex;
+    align-items: center;
+    margin-top: 2rpx;
+    margin-right: 6rpx;
+}
+
+.nav-newspaper-icon {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.nav-newspaper-text {
+    font-size: 30rpx;
+    color: #333;
+    text-align: center;
+    padding-left: 4rpx;
+}
+
+.nav-search {
+    position: absolute;
+    left: 146rpx;
+    bottom: 7px;
+    background: #f6f6f6;
+    width: 360rpx;
+    height: 32px;
+    border-radius: 8rpx;
+    overflow: hidden;
+}
+
+.nav-search-without-location {
+    left: 30rpx;
+    width: 500rpx;
+}
+
+.nav-icon-search {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 16rpx;
+    top: 9px;
+}
+
+.nav-search-input {
+    margin-left: 58rpx;
+    font-size: 15px;
+    line-height: 32px;
+    color: #8e8e93;
+}

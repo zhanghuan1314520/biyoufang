@@ -1,0 +1,10 @@
+<swiper autoplay="{{true}}" bindchange="changeItem" circular="{{true}}" class="banner" duration="{{400}}" interval="{{5000}}">
+    <swiper-item wx:for="{{bannerList}}" wx:key="index">
+        <view bindtap="checkArticle" class="banner__item" data-id="{{item.ArticleId}}" data-title="{{item.Title}}" data-url="{{item.TargetUrl}}">
+            <image webp class="banner__image" mode="aspectFill" src="{{item.CoverFileUrl}}"></image>
+            <view class="banner__title">
+                <view class="banner__title-text">{{item.Title||''}}</view>
+            </view>
+        </view>
+    </swiper-item>
+</swiper>

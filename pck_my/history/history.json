@@ -1,0 +1,8 @@
+{
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "building-card": "/components/base/building-card/building-card",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

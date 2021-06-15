@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "dialog": "/components/myStates/state-dialog/state-dialog",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

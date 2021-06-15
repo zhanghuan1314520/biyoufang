@@ -1,0 +1,11 @@
+<view class="empty-wrap root-class" wx:if="{{isReveal}}">
+    <view class="empty-inneer">
+        <view>
+            <image class="alter-icon custom-icon-class" src="{{imgIcon}}" wx:if="{{imgIcon}}"></image>
+        </view>
+        <view class="alter-text custom-text-class" wx:if="{{!slotFooter}}">
+            <text>{{tipsText}}</text>
+        </view>
+        <slot name="footer"></slot>
+    </view>
+</view>

@@ -1,0 +1,90 @@
+<view class="lottery" style="padding-top: {{navH}}px">
+    <nav-bar navBarTitle="{{title}}" showShare="{{false}}"></nav-bar>
+    <view class="building-info" wx:if="{{pageStatus!==-1}}">
+        <view class="building-image-box">
+            <view class="building-image-tip">即将摇号</view>
+            <image class="building-image" src="{{coverFileUrl||table.CoverImageUrl}}"></image>
+        </view>
+        <view class="building-name">{{table.BuildingName}}</view>
+        <view class="building-name" wx:if="{{table.BuildingNo}}">{{table.BuildingNo}}</view>
+        <view class="building-lottery">
+            <text class="building-lottery-word">摇号时间</text>
+        </view>
+        <view class="building-lottery-time">{{lotteryTime||table.LotteryTime}}</view>
+        <UserAuthorize authUserInfo bindproxySuccess="toggleToast" userInfo="{{userInfo}}">
+            <view class="notice-me">
+                <image class="ring" src="/resource/lottery/lpxq_icon_reminded@3x.png"></image>
+        摇号通知我
+      </view>
+        </UserAuthorize>
+    </view>
+    <view class="detail__panel lottery__table" style="margin-top: 0;" wx:if="{{table}}">
+        <view class="detail__panel-head">
+            <view class="detail__panel-title">本次预售登记情况</view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="data-table">
+                <view class="data-row row-head">
+                    <view class="data-cell cell-title"></view>
+                    <view class="data-cell">总数</view>
+                    <view class="data-cell" wx:if="{{cityInfo.VersionType===0}}">人才</view>
+                    <view class="data-cell">有房</view>
+                    <view class="data-cell">无房</view>
+                </view>
+                <view class="data-row">
+                    <view class="data-cell cell-title">房源套数</view>
+                    <view class="data-cell">{{table.HouseNumber?table.HouseNumber+'套':'--'}}</view>
+                    <view class="data-cell" wx:if="{{cityInfo.VersionType===0}}">
+            {{table.TalentHouseNumber?table.TalentHouseNumber+'套':'--'}}
+          </view>
+                    <view class="data-cell">{{table.HasHouseNumber?table.HasHouseNumber+'套':'--'}}</view>
+                    <view class="data-cell">{{table.NoHouseNumber?table.NoHouseNumber+'套':'--'}}</view>
+                </view>
+                <view class="data-row">
+                    <view class="data-cell cell-title">报名人数</view>
+                    <view class="data-cell">
+            {{table.RegistrationNumber?table.RegistrationNumber:'--'}}
+          </view>
+                    <view class="data-cell" wx:if="{{cityInfo.VersionType===0}}">
+            {{table.RegistrationTalentNumber?table.RegistrationTalentNumber:'--'}}
+          </view>
+                    <view class="data-cell">
+            {{table.RegistrationHasHouseNumber?table.RegistrationHasHouseNumber:'--'}}
+          </view>
+                    <view class="data-cell">
+            {{table.RegistrationNoHouseNumber?table.RegistrationNoHouseNumber:'--'}}
+          </view>
+                </view>
+                <view class="data-row">
+                    <view bindtap="gotoHelp" class="data-cell cell-title">摇中概率 <view class="help">?</view>
+                    </view>
+                    <view class="data-cell cell-orange">
+            {{table.AllProbability?table.AllProbability+'%':'--'}}
+          </view>
+                    <view class="data-cell cell-orange" wx:if="{{cityInfo.VersionType===0}}">
+            {{table.TalentHousePercent?table.TalentHousePercent+'%':'--'}}
+          </view>
+                    <view class="data-cell cell-orange">
+            {{table.HasHousePercent?table.HasHousePercent+'%':'--'}}
+          </view>
+                    <view class="data-cell cell-orange">
+            {{table.NoHousePercent?table.NoHousePercent+'%':'--'}}
+          </view>
+                </view>
+            </view>
+        </view>
+        <view class="warn {{isIpx?'warn-padding':''}}">信息仅供参考，请以政府部门登记备案为准，请谨慎核查。</view>
+    </view>
+</view>
+<view class="lottery-register" wx:if="{{maskVisibility}}">
+    <view class="lottery-register-bg-box">
+        <lottery-dialog bind:operate="operateSubscribe" id="lottery-dialog" userInfo="{{userInfo}}"></lottery-dialog>
+    </view>
+</view>
+<view bindtap="navigationPoster" class="save-btn" style="bottom:{{isIpx?94:64}}rpx">
+    <image class="save-icon" src="/resource/lottery/yh_icon_tym@3x.png"></image>
+    <view class="save-text-wrap">
+        <text class="save-text">保存本码
+快捷查询</text>
+    </view>
+</view>

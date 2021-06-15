@@ -1,0 +1,4 @@
+<view class="map" style="padding-top: {{navH}}px">
+    <nav-bar navBarTitle="地图找房"></nav-bar>
+    <map bindcallouttap="checkProjectDetail" bindregionchange="regionchange" id="map" latitude="{{lat}}" longitude="{{lng}}" markers="{{markers}}" scale="{{mapScale}}" showLocation="{{true}}" style="width: {{windowWidth}}px; height: {{windowHeight-navH}}px;"></map>
+</view>

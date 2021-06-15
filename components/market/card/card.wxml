@@ -1,0 +1,44 @@
+<view class="card">
+    <view class="card-title">{{cardInfo.ArticleCategoryName}}</view>
+    <view class="card-item-box" wx:if="{{type==='1'}}">
+        <view bindtap="cardOperate" class="card-item" data-i="{{index}}" wx:for="{{cardInfo.AdvertList}}" wx:key="index">
+            <view class="card-item-image-box">
+                <image class="card-item-image" mode="aspectFill" src="{{item.ImageUrl}}"></image>
+            </view>
+            <view class="card-item-word">
+                <image class="card-item-word-img filter" mode="aspectFill" src="{{item.ImageUrl}}"></image>
+                <view class="filter"></view>
+                <text class="item-word">{{item.Title}}</text>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{type==='2'}}">
+        <view class="card-item-box">
+            <view bindtap="cardOperate" class="card-item card-item-type2" data-i="{{index}}" wx:if="{{index<2}}" wx:for="{{cardInfo.AdvertList}}" wx:key="index">
+                <view class="card-item-image-box">
+                    <image class="card-item-image card-item-image-type2" mode="aspectFill" src="{{item.ImageUrl}}"></image>
+                </view>
+                <view class="card-item-word card-item-word-2">
+                    <image class="filter" mode="aspectFill" src="{{item.ImageUrl}}"></image>
+                    <view class="filter"></view>
+                    <text class="item-word item-word-2">{{item.Title}}</text>
+                </view>
+            </view>
+        </view>
+        <view bindtap="cardOperate" class="card2-footer" data-i="{{2}}" wx:if="{{cardInfo.AdvertList[2]}}">
+            <view class="footer-left-box">
+                <view class="footer-title">{{cardInfo.AdvertList[2].Title}}</view>
+                <view class="mechanism-info-box">
+                    <view>
+                        <image class="mechanism-image" mode="aspectFill" src="{{cardInfo.AdvertList[2].MediumLogoUrl}}"></image>
+                        <text class="mechanism-name">{{cardInfo.AdvertList[2].MediumName}}</text>
+                    </view>
+                    <view class="mechanism-name mechanism-time">{{cardInfo.AdvertList[2].PublishTime}}</view>
+                </view>
+            </view>
+            <view class="footer-right-box">
+                <image class="footer-right-image" mode="aspectFill" src="{{cardInfo.AdvertList[2].ImageUrl}}"></image>
+            </view>
+        </view>
+    </block>
+</view>

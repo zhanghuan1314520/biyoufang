@@ -1,0 +1,14 @@
+function formatPrice(priceText) {
+    if (priceText.indexOf('元/㎡') >= 0) {
+        var patternNum = getRegExp("[^0-9]", "ig");
+        var parrernExt = getRegExp("[0-9]", "ig");
+        var price = parseInt(priceText.replace(patternNum, ''));
+        if (price >= 10000) {
+            return (((price / 10000).toFixed(1) + priceText.replace(parrernExt, '')).replace('元', '万'))
+        }
+    };
+    return (priceText)
+};
+module.exports = ({
+    formatPrice: formatPrice,
+});

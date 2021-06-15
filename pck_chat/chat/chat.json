@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "authorize-dialog": "/components/authorize-dialog/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

@@ -1,0 +1,9 @@
+<view class="broker_list" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="我的置业顾问" showShare="{{false}}"></nav-bar>
+    <view class="list" wx:if="{{brokerList&&brokerList.length>0}}">
+        <broker WeixinAuthorized="{{userInfo.WeixinAuthorized}}" bind:getPageUserInfo="getUserInfo" info="{{item}}" isBrokerList="{{true}}" wx:for="{{brokerList}}" wx:key="index"></broker>
+    </view>
+    <view class="empty-wrap" wx:if="{{brokerList&&brokerList.length===0}}">
+        <image class="empty-img" src="/resource/null.png"></image>
+    </view>
+</view>

@@ -1,0 +1,62 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.45);
+    z-index: 999;
+    z-index: 100;
+}
+
+.modal .content-wrap {
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 50rpx 30rpx;
+    border-radius: 16rpx;
+    background-color: #fff;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.modal .content {
+    font-size: 30rpx;
+    color: #333;
+    text-align: center;
+    padding-bottom: 40rpx;
+}
+
+.modal .title {
+    font-size: 36rpx;
+    color: #333;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 30rpx;
+}
+
+.modal .btn-list {
+    display: flex;
+    justify-content: center;
+}
+
+.modal .btn-list .confirm-btn {
+    font-size: 32rpx;
+    color: #fff;
+    font-weight: 700;
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 150px;
+    text-align: center;
+    background: linear-gradient(270deg,#fcae51,#ffbc00);
+    border-radius: 8rpx;
+}

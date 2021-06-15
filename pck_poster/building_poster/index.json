@@ -1,0 +1,10 @@
+{
+    "navigationStyle": "default",
+    "navigationBarTitleText": "楼盘海报",
+    "usingComponents": {
+        "save-poster": "/pck_poster/components/save-poster/index",
+        "skeleton": "/components/base/skeleton/skeleton",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

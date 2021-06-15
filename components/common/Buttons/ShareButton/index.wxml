@@ -1,0 +1,4 @@
+<button class="share reset-btn root-class" openType="share">
+    <image class="icon_share" src="/resource/base/base_icon_share@3x.png"></image>
+    <text class="share__text">分享</text>
+</button>

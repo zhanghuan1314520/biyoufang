@@ -1,0 +1,29 @@
+<view class="card">
+    <view class="create-time">
+    {{newsInfo.CreateTime}}
+  </view>
+    <view class="audit-status">
+        <image class="audit-pass" src="/resource/kx_icon_pass@3x.png" wx:if="{{newsInfo.AuditStatus===1}}"></image>
+        <text class="status-text {{newsInfo.AuditStatus===0?'auditing':''}}" wx:else>{{newsInfo.AuditStatus===-1?'不通过':'待审核'}}</text>
+    </view>
+    <view class="news-title">
+    {{newsInfo.Title}}
+  </view>
+    <view class="content-text">{{newsInfo.Content}}</view>
+    <view class="content-imgs" wx:if="{{newsInfo.Images&&newsInfo.Images.length}}">
+        <view class="img-wrap" wx:for="{{newsInfo.Images}}" wx:key="key">
+            <image catch:tap="handlePreview" class="image-item" data-url="{{item}}" src="{{item}}"></image>
+        </view>
+    </view>
+    <view bindtap="showRemark" class="remark" data-remark="{{newsInfo.AuditMemo}}" wx:if="{{newsInfo.AuditStatus===-1&&newsInfo.AuditMemo}}">
+    未通过原因：{{newsInfo.AuditMemo}}
+  </view>
+    <view class="btn-list" wx:if="{{newsInfo.AuditStatus!==0}}">
+        <button bindtap="handleBtnClick" class="btn-common del-btn" data-type="delete">
+      删除
+    </button>
+        <button bindtap="handleBtnClick" class="btn-common alter-btn" data-type="modify" wx:if="{{newsInfo.AuditStatus===-1}}">
+      修改提交
+    </button>
+    </view>
+</view>

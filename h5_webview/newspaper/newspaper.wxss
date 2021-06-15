@@ -1,0 +1,55 @@
+.canvas__wrap {
+    transform: translateY(2000px);
+}
+
+.canvas {
+    width: 100%;
+}
+
+.paper__img-wrap {
+    font-size: 0;
+}
+
+.paper__img {
+    width: 100%;
+}
+
+.share__card {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    background: #4a4c5b;
+    transition: all .4s ease-in-out;
+    height: 115px;
+    z-index: 2;
+}
+
+.share__items {
+    justify-content: space-between;
+    height: 115px;
+}
+
+.share__item,.share__items {
+    position: relative;
+    display: flex;
+}
+
+.share__item {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.share__icon {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.share__text {
+    color: #f9f9f9;
+    font-size: 24rpx;
+    padding-top: 17rpx;
+    opacity: .8;
+}

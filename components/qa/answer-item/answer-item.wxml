@@ -1,0 +1,53 @@
+<view class="answer-item-wrapper">
+    <view class="answer-info">
+        <view bind:tap="operateAnswerItem" class="answer-info-title" data-type="goDetail">
+            <view class="user-info">
+                <image class="avator" mode="aspectFill" src="{{answerInfo.avatar}}"></image>
+                <view class="user-intro">
+                    <view class="user-name">
+                        <text>{{answerInfo.userName}}</text>
+                    </view>
+                    <view class="create-time">
+                        <text>{{answerInfo.createTime}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="answer-status">
+                <view catch:tap="showPops" class="ellipsis" data-type="delete" wx:if="{{!answerInfo.IsAdopted&&!answerInfo.IsSelected}}">
+                    <text>···</text>
+                    <view class="ellipsis-btn" wx:if="{{showPop}}">
+                        <view class="del-answer-dialog-ange"></view>
+                        <view class="select-list">
+                            <view catch:tap="deleteAnswerItem" class="select-item select-item-bord" data-status="1">
+                                <text>删除</text>
+                            </view>
+                            <view catch:tap="deleteAnswerItem" class="select-item" data-status="0">
+                                <text>取消</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="answer-info-content">
+            <view class="featured" wx:if="{{answerInfo.IsSelected}}">
+        精选
+      </view>
+            <view class="adoption" wx:if="{{answerInfo.IsAdopted}}">
+        采纳
+      </view>
+            <view catch:tap="operateAnswerItem" class="answer-content" data-type="goDetail">
+        {{answerInfo.Content}}
+      </view>
+            <view class="answer-card__img-list" wx:if="{{answerInfo.covers}}">
+                <image catch:tap="previewImage" class="answer-card__img-item {{'answer-card__img-item_mini'+answerInfo.imgSize}}" data-id="{{item.id}}" mode="aspectFill" src="{{item.imgSrc}}" wx:for="{{answerInfo.covers}}" wx:key="index"></image>
+            </view>
+        </view>
+        <view catch:tap="operateAnswerItem" class="answer-info-footer" data-type="goDetail">
+            <view class="question-info">{{answerInfo.QuestionContent}}</view>
+            <view class="arrow_right">
+                <image class="footer-right-o icon iconfont icon-jiantouyou"></image>
+            </view>
+        </view>
+    </view>
+</view>

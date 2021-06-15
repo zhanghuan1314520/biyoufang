@@ -1,0 +1,33 @@
+{
+    "desc": "关于本文件的更多信息，请参考文档 https://developers.weixin.qq.com/miniprogram/dev/framework/sitemap.html",
+    "rules": [
+        {
+            "action": "disallow",
+            "page": "pck_chat/chat/chat"
+        },
+        {
+            "action": "disallow",
+            "page": "pck_broker/post_moment/post_moment"
+        },
+        {
+            "action": "disallow",
+            "page": "ext_features/broker_registion/broker_registrion"
+        },
+        {
+            "action": "disallow",
+            "page": "pck_building/detail_comment/detail_comment"
+        },
+        {
+            "action": "disallow",
+            "page": "pck_building/detail_commentList/detail_commentList"
+        },
+        {
+            "action": "disallow",
+            "page": "pck_qa/qa_answer/qa_answer"
+        },
+        {
+            "action": "allow",
+            "page": "*"
+        }
+    ]
+}

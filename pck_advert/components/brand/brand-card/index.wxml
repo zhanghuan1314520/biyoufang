@@ -1,0 +1,18 @@
+<view bind:tap="goBrandDetail" class="brand-card" data-advert-id="{{brandInfo.Id}}" data-brand-id="{{brandInfo.BrandId}}">
+    <view class="brand-cover">
+        <image webp class="cover-img" mode="aspectFill" src="{{brandInfo.ImageUrl}}"></image>
+    </view>
+    <view class="brand-focus">
+        <button bindgetuserinfo="getUserInfo" catch:tap="{{userInfo.Authorized?'followBrand':'stopSkop'}}" class="reset-btn focus-btn {{brandInfo.IsFollow?'':'focused-btn'}}" data-index="{{index}}" openType="{{!userInfo.Authorized?'getUserInfo':''}}">
+            <image class="focus-icon" src="{{brandInfo.IsFollow?'/pck_advert/images/brand/ppg_icon_like@3x.png':'/pck_advert/images/brand/ppg_icon_unlike@3x.png'}}"></image>
+        </button>
+    </view>
+    <view class="brand-info">
+        <view class="brand-name">
+            <text>{{brandInfo.BrandName}}</text>
+        </view>
+        <view class="brand-des">
+            <text>{{brandInfo.Introduction}}</text>
+        </view>
+    </view>
+</view>

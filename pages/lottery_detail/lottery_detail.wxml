@@ -1,0 +1,69 @@
+<view class="lottery-detail" style="padding-top: {{navH}}px; background:{{result.isSuccess?'#FEEEA7':''}};">
+    <nav-bar bgColor="{{result?result.isSuccess?'#FF8F00':'#4A44F9':''}}" isTransparent="{{true}}" navBarTitle="必有房" showShare="{{false}}" showBackHome="{{true}}"></nav-bar>
+    <view wx:if="{{result}}">
+        <image class="success-image" src="{{bgIcons[1]}}" wx:if="{{result.isSuccess}}"></image>
+        <image class="loser-image" src="{{bgIcons[0]}}" wx:else></image>
+        <view class="card-info {{result.isSuccess?'card-info-success':''}}">
+            <view class="card-top-line "></view>
+            <view class="card-main">
+                <view class="building-name {{result.isSuccess?'success-border':''}}">{{result.ProjectName}}</view>
+                <view class="building-result">{{result.isSuccess?'恭喜您已中签':'很遗憾您未中签'}}</view>
+                <view class="building-user-name">{{result.BuyerName}}，您的摇号顺序号为</view>
+                <view class="building-register-success {{result.isSuccess?'':'register-fail'}}">{{result.LotteryNo}}</view>
+                <view class="building-success-info" wx:if="{{result.isSuccess}}">击败了<text class="rank__rate">{{result.rankRate}}%</text>的购房人，恭喜您成功上岸
+        </view>
+                <view class="building-success-info building-fail-info" wx:else>别灰心，还有无数好房等你摇</view>
+                <view class="building-info-box">
+                    <view class="result__data-item">
+                        <view class="result__data-title">本次房源数</view>
+                        <view class="result__data-content">
+              {{result.HouseNumber?result.HouseNumber:'暂无信息'}}
+              <text class="fs-22" wx:if="{{result.HouseNumber}}">套</text>
+                        </view>
+                    </view>
+                    <view class="result__data-item">
+                        <view class="result__data-title">登记人数</view>
+                        <view class="result__data-content">
+              {{result.RegistrationNumber}}
+              <text class="fs-22">人</text>
+                        </view>
+                    </view>
+                    <view class="result__data-item">
+                        <view class="result__data-title">综合中签率</view>
+                        <view class="result__data-content">
+              {{result.SuccessRate}}
+              <text class="fs-22">%</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="building-public-box">
+                    <view class="gl">
+                        <view class="gl-color"></view>
+                    </view>
+                    <view class="gl g2">
+                        <view class="gl-color"></view>
+                    </view>
+                    <view class="building-public {{result.isSuccess?'building-public__success':'building-public__fail'}}">
+                        <text class="building-public-text {{result.isSuccess?'success-color':''}}">数据来源于公证处</text>
+                    </view>
+                </view>
+                <view class="offcial-box">
+                    <view class="offcial-left">
+                        <image class="offcial-image" src="{{bgIcons[2]}}"></image>
+                        <view class="offcial-word">买新房，上必有房</view>
+                    </view>
+                    <view class="offcial-right">
+                        <button class="share-btn" openType="share">去分享</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="recommend" wx:if="{{buildingList&&buildingList.length>0}}">
+        <view class="building-list-title">为你推荐</view>
+        <view class="building-card" wx:for="{{buildingList}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="buildCardOperate" buildingCardInfo="{{item.info}}"></building-card>
+        </view>
+        <view class="is-reactom">已经到底啦～</view>
+    </view>
+</view>

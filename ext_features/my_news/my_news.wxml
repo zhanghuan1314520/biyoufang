@@ -1,0 +1,28 @@
+<view class="market" style="padding-top:{{navH}}px">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%);" isTransparent="{{true}}" navBarTitle="我的快讯" needBackBtn="{{true}}" showBackHome="{{true}}" showShare="{{false}}"></nav-bar>
+    <view class="float-top" style="top: {{navH}}px">
+        <tabs bindchange="handleTabsChange" tabsList="{{tabsList}}"></tabs>
+        <view class="into-building" wx:if="{{buildings.length}}">
+            <scroll-view scrollX class="scroll-wrap">
+                <view catch:tap="handleBuildingTap" class="building-item {{activeIndex===index?'active-tab':''}}" data-building-id="{{item.BuildingId}}" data-index="{{index}}" wx:for="{{buildings}}" wx:key="index">
+                    <text>{{item.BuildingName}}</text>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <block wx:for="{{news}}" wx:key="index">
+        <view class="new-item" wx:for="{{item}}" wx:for-item="newsItem" wx:key="newsIndex">
+            <newsCard binddelete="deleteNews" bindmodify="modifyNews" newsInfo="{{newsItem}}"></newsCard>
+        </view>
+    </block>
+    <view class="no-news" wx:if="{{!news.length}}">
+        <image class="img-none" src="{{lackImg}}"></image>
+        <view class="txt-none">您还没有上传过楼盘快讯</view>
+        <view class="txt-none">快去上传吧，积分多多！</view>
+        <view bindtap="goCommit" class="btn-commit">去上传</view>
+    </view>
+    <view catch:tap="goCommit" class="operate-btn" wx:if="{{news.length}}">
+        <image class="add-icon" src="/ext_features/image/registrion/wdkx_icon_add.png"></image>
+    发布新快讯
+  </view>
+</view>

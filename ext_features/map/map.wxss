@@ -1,0 +1,97 @@
+.map-legend {
+    position: fixed;
+    left: 0;
+    width: 145rpx;
+    height: auto;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 20rpx 16rpx 25rpx 19rpx;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.map-legend-item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.map-legend-item:not(:last-child) {
+    margin-bottom: 20rpx;
+}
+
+.legend-name {
+    flex: 1;
+    box-sizing: border-box;
+    padding-left: 15rpx;
+    line-height: 28rpx;
+    font-size: 18rpx;
+}
+
+.map-legend-item .legend-color {
+    width: 18rpx;
+    height: 18rpx;
+    border-radius: 4rpx;
+}
+
+.legend-item-1 .legend-color {
+    background: #219f56;
+}
+
+.legend-item-2 .legend-color {
+    background: #ff670f;
+}
+
+.legend-item-3 .legend-color {
+    background: #ff9102;
+}
+
+.legend-item-4 .legend-color {
+    background: #fe1010;
+}
+
+.legend-item-5 .legend-color {
+    background: #0091ff;
+}
+
+.legend-item-6 .legend-color {
+    background: #979797;
+}
+
+.legend-item-7 .legend-color {
+    background: #0091ff;
+}
+
+.legend-item-8 .legend-color {
+    background: #bea079;
+}
+
+.map-fliter-bar {
+    display: flex;
+}
+
+.map-fliter-item {
+    flex: 1;
+    background: #fff;
+}
+
+.map-fliter-wrap {
+    position: relative;
+    height: 40px;
+}
+
+.map-fliter-wrap view {
+    text-align: center;
+    font-size: 15px;
+    height: 100%;
+    line-height: 40px;
+}
+
+.map-fliter-wrap image {
+    position: absolute;
+    width: 16rpx;
+    height: 10rpx;
+    right: 45px;
+    top: 50%;
+    margin-top: -5rpx;
+}

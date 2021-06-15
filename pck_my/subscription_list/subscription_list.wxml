@@ -1,0 +1,39 @@
+<view class="subscription" style="padding-top: {{navH}}px;">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="我的摇号" showShare="{{false}}"></nav-bar>
+    <view class="building-list" wx:if="{{curTab==0||curTab==2}}">
+        <view class="building-item" wx:for="{{buildingList}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="operateBuildingCardInfo" buildingCardInfo="{{item.buildingInfo}}"></building-card>
+        </view>
+        <view class="data__empty" wx:if="{{buildingList&&buildingList.length===0}}">
+            <image class="data__empty-imgUrl" src="{{lackImg}}"></image>
+            <view>还没有心仪的楼盘？</view>
+            <view bindtap="checkBuilding">去看看有没有值得买的楼盘 ></view>
+        </view>
+        <view class="nomore" wx:if="{{buildingList.length>0&&conf[0].nomore}}">已经到底了~</view>
+    </view>
+    <view class="lottery-list" wx:if="{{curTab==1}}">
+        <view class="lottery-item" wx:for="{{lotteryCardList}}" wx:key="index">
+            <lottery-status-card bind:operateLotteryStatus="operateLotteryStatus" lotteryStatusInfo="{{item.info}}"></lottery-status-card>
+        </view>
+        <view class="data__empty" wx:if="{{lotteryCardList&&lotteryCardList.length===0}}">
+            <image class="data__empty-imgUrl" src="{{lackImg}}"></image>
+            <view>还没有心仪的楼盘？</view>
+            <view bindtap="checkBuilding">去看看有没有值得买的楼盘 ></view>
+        </view>
+        <view class="nomore" wx:if="{{lotteryCardList.length>0&&conf[0].nomore}}">已经到底了~</view>
+    </view>
+    <view class="pop-up" wx:if="{{showPop}}">
+        <view class="pop-up-main">
+            <view class="pop-up-head">取消{{curTab===0?'开盘':'加推'}}短信通知</view>
+            <view class="pop-up-text">
+                <text>确定取消</text>
+                <text class="pop-up-text_lite">{{selectNname}}</text>
+                <text>的{{curTab===0?'开盘':'加推'}}通知？</text>
+            </view>
+            <view class="pop-up-btn flex_space">
+                <view catchtap="checkNone" class="pop-up-btn_none">取消</view>
+                <view catchtap="checkYes" class="pop-up-btn_yes">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

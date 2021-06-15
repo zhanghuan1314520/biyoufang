@@ -1,0 +1,15 @@
+<view class="broker_list" style="padding-top: {{navH}}px;">
+    <nav-bar navBarTitle="置业顾问列表" showShare="{{false}}"></nav-bar>
+    <view class="broker-list" wx:if="{{brokerList&&brokerList.length}}">
+        <view class="broker-item" wx:for="{{brokerList}}" wx:key="index">
+            <broker-item bind:operateBrokerItemInfo="operateBrokerItemInfo" brokerItemInfo="{{item}}" chatSourceType="{{5}}" userInfo="{{userInfo}}"></broker-item>
+        </view>
+    </view>
+    <view bind:tap="toBrokerRegistion" class="setter-in">
+        <image class="setter-in-icon" src="/resource/gwcard_icon_join@3x.png"></image>
+        <text>置业顾问入驻</text>
+    </view>
+    <view class="empty-wrap" wx:if="{{brokerList&&brokerList.length===0}}">
+        <image class="empty-img" src="/resource/null.png"></image>
+    </view>
+</view>

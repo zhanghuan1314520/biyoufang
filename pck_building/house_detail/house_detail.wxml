@@ -1,0 +1,84 @@
+<view class="house__detail" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="户型详情" type="album"></nav-bar>
+    <view class="main">
+        <view class="poster" wx:if="{{curHouse}}">
+            <swiper bindanimationfinish="swiperChange" class="poster__swiper" current="{{posterIndex}}">
+                <swiper-item class="poster__item" wx:for="{{curHouse.ImageUrlList}}" wx:key="index">
+                    <image bind:tap="previewImage" class="coverImage" mode="aspectFit" src="{{curHouse.ImageUrlList[index]}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="poster__control" wx:if="{{curHouse.ImageUrlList.length>0}}">{{posterIndex+1}}/{{curHouse.ImageUrlList.length}}</view>
+        </view>
+        <view class="name">
+            <view class="name__text">{{curHouse.HouseTypeName}}<text class="isOnSale" wx:if="{{curHouse.IsOnSale}}">在售</text>
+            </view>
+        </view>
+        <view class="msg">
+            <view class="msg__col">
+                <view class="msg__item">
+                    <view class="msg__item-data">{{curHouse.SeveralRooms}}</view>
+                    <view class="msg__item-text">厅室</view>
+                </view>
+                <view class="msg__item">
+                    <view class="msg__item-data">{{curHouse.HouseArea?curHouse.HouseArea+'m²':'--'}}</view>
+                    <view class="msg__item-text">建面</view>
+                </view>
+                <view class="msg__item">
+                    <view class="msg__item-data">{{curHouse.Orientation||'--'}}</view>
+                    <view class="msg__item-text">朝向</view>
+                </view>
+            </view>
+            <view class="msg__col" wx:if="{{showPriceModule}}">
+                <view class="msg__item">
+                    <view class="msg__item-data">
+                        <text class="house__price-wrap" wx:if="{{curHouse.TotalPrice}}">约<text class="house__price price-orange">{{curHouse.TotalPrice}}</text>万</text>
+                        {{!curHouse.TotalPrice?'待定':''}}
+                    </view>
+                    <view class="msg__item-text">总价</view>
+                </view>
+                <view class="msg__item">
+                    <view class="msg__item-data">
+                        <text class="house__price-wrap" wx:if="{{curHouse.TotalPrice}}">
+                            <text class="house__price">{{curHouse.thirtyPercentPrice}}</text>万</text>
+                        {{!curHouse.TotalPrice?'--':''}}
+                    </view>
+                    <view class="msg__item-text">3成</view>
+                </view>
+                <view class="msg__item">
+                    <view class="msg__item-data">
+                        <text class="house__price-wrap" wx:if="{{curHouse.TotalPrice}}">
+                            <text class="house__price">{{curHouse.sixthPercentPrice}}</text>万</text>
+                        {{!curHouse.TotalPrice?'--':''}}
+                    </view>
+                    <view class="msg__item-text">6成</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="description module" wx:if="{{curHouse.Description}}">
+        <view class="module__title">解析</view>
+        <view class="module__content">
+           {{curHouse.Description}}
+        </view>
+    </view>
+    <view class="others module" wx:if="{{houseTypeList.length>1}}">
+        <view class="module__title">其他户型</view>
+        <view class="module__content">
+            <view class="apartment-list">
+                <scroll-view scrollX class="apartment-wrap">
+                    <view bindtap="changeHouse" class="apartment-item" data-index="{{index}}" wx:if="{{index!=curIndex}}" wx:for="{{houseTypeList}}" wx:key="index">
+                        <view class="apartment-status" wx:if="{{item.IsOnSale}}">在售</view>
+                        <image class="apartment-img" data-type="apartment" mode="aspectFill" src="{{item.ImageUrlList[0]}}"></image>
+                        <view class="apartment-content">
+                            <view class="apartment-rooms">{{item.SeveralRooms}}<text class="apartment-dot">{{item.HouseArea}}m²</text>
+                            </view>
+                            <view class="apartment-desc">
+                                <view class="apartment-price" wx:if="{{item.totalPrice>0&&item.IsOnSale}}">约<text class="apartment-price-num">{{item.totalPrice}}</text>万起</view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</view>

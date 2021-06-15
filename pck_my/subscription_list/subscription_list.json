@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "project-list": "/components/project_list/project_list",
+        "building-card": "/components/base/building-card/building-card",
+        "lottery-status-card": "/components/lottery/lottery-status-card/lottery-status-card",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

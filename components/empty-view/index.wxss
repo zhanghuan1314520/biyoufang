@@ -1,0 +1,22 @@
+.empty-wrap {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-40%);
+    text-align: center;
+}
+
+.alter-icon {
+    width: 252rpx;
+    height: 252rpx;
+}
+
+.alter-text {
+    color: #999;
+    font-size: 28rpx;
+    padding-top: 24rpx;
+}

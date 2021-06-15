@@ -1,0 +1,18 @@
+<view class="venue">
+    <view class="venue-left">
+        <view bind:tap="handTap" class="just-need" data-type="1" style="background-image: url('{{bgImg.cg1}}');">
+            <text class="category-name">刚需房</text>
+            <text class="category-des">总价≤300万</text>
+        </view>
+        <view bind:tap="handTap" class="improve" data-type="2" style="background-image: url('{{bgImg.cg2}}');">
+            <text class="category-name">改善房</text>
+            <text class="category-des">面积＞100㎡</text>
+        </view>
+    </view>
+    <view bind:tap="handTap" class="venue-right" data-type="3">
+        <view class="venue-con" style="background-image: url('{{bgImg.cg3}}');">
+            <text class="category-name">品牌馆</text>
+            <text class="category-des">品质好房安心购</text>
+        </view>
+    </view>
+</view>

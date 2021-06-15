@@ -1,0 +1,6 @@
+<view class="ad-mask" hidden="{{!visible}}">
+    <view catch:tap="checkAd" class="ad-wrap" wx:if="{{ad}}">
+        <image webp class="img" mode="aspectFill" src="{{ad.PosterImage}}"></image>
+        <view catch:tap="closeAd" class="ad-close">跳过</view>
+    </view>
+</view>

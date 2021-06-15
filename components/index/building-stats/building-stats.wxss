@@ -1,0 +1,27 @@
+.building-stats-wrapper {
+    display: inline-block;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.number-icon {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #fff;
+    font-weight: 700;
+    margin: 0 30rpx;
+}
+
+.district-name {
+    font-size: 24rpx;
+    color: #333;
+    border-top: 15rpx solid #fff;
+}

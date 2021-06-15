@@ -1,0 +1,7 @@
+<view class="into-building">
+    <scroll-view scrollX class="scroll-wrap">
+        <view catch:tap="handleBuildingTap" class="building-item {{item.IsMain?'is-main':''}} {{activeIndex===index?'active-tab':''}} {{lineShow&&activeIndex===index?'line':''}}" data-index="{{index}}" wx:for="{{buildings}}" wx:key="index">
+            <text>{{item.BuildingName}}</text>
+        </view>
+    </scroll-view>
+</view>

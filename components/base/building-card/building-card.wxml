@@ -1,0 +1,87 @@
+<view class="building-card-wrapper">
+    <view bind:tap="goDetailPage" class="building-info" data-type="goDetailPage">
+        <view class="cover">
+            <view class="building-status {{buildingCardInfo.hasSoldOut?'sold-out':''}}" wx:if="{{buildingCardInfo.buildingStatusText}}">
+                <text>{{buildingCardInfo.buildingStatusText}}</text>
+            </view>
+            <view class="view">
+                <image class="icon_view" lazyLoad="{{true}}" src="/resource/list_icon_viewed@3x.png"></image>
+                <text>{{buildingCardInfo.totalViewText}}</text>
+            </view>
+            <image webp class="cover__img" mode="aspectFill" src="{{buildingCardInfo.coverImageUrl}}"></image>
+        </view>
+        <view class="building-detail">
+            <view class="building-intro">
+                <view class="building-title">
+                    <view class="building-name">
+                        <text class="building-name__text">{{buildingCardInfo.buildingName}}<text class="building-other-name__text" wx:if="{{buildingCardInfo.otherName}}">{{'('+buildingCardInfo.otherName+')'}}</text>
+                        </text>
+                    </view>
+                    <view class="bulding-tip" wx:if="{{buildingCardInfo.buildingStatusTip}}">
+                        <text>{{buildingCardInfo.buildingStatusTip}}</text>
+                    </view>
+                </view>
+                <view class="building-stats">
+                    <view class="building-zone">
+                        <text>{{buildingCardInfo._districtName}}</text>
+                    </view>
+                    <text class="separate-line" wx:if="{{buildingCardInfo._districtName&&buildingCardInfo.buildingAreaText}}">|</text>
+                    <view class="building-area">
+                        <text>{{buildingCardInfo.buildingAreaText}}</text>
+                    </view>
+                </view>
+                <view class="building-price">
+                    <view class="total-price">
+                        <text>{{tools.formatePrice(buildingCardInfo.buildingTotalPrice)}}</text>
+                    </view>
+                    <view class="past" wx:if="{{buildingCardInfo.showPastText}}">
+                        <text>（参考价格）</text>
+                    </view>
+                    <view class="average-price" wx:if="{{buildingCardInfo.buildingAveragePrice}}">
+                        <text>{{buildingCardInfo.buildingAveragePrice}}</text>
+                    </view>
+                </view>
+                <view class="building-tags" wx:if="{{buildingCardInfo.buildingTypeText||buildingCardInfo.buildingTag&&buildingCardInfo.buildingTag.length}}">
+                    <view class="building-tag-list" wx:if="{{buildingCardInfo.buildingTag&&buildingCardInfo.buildingTag.length}}">
+                        <view class="building-type" wx:if="{{buildingCardInfo.buildingTypeText}}">
+                            <text>{{buildingCardInfo.buildingTypeText}}</text>
+                        </view>
+                        <view class="building-tag-item" wx:for="{{buildingCardInfo.buildingTag}}" wx:key="index">
+                            <text>{{item}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="register-info" wx:if="{{buildingCardInfo.VersionType===0}}">
+                <text class="register-info__text">{{buildingCardInfo.registerInfo}}</text>
+            </view>
+            <view class="verify-info" wx:if="{{buildingCardInfo.capitalVerification}}">
+                <image class="icon_verify" src="/resource/base/lpxq_icon_yan@3x.png"></image>
+                <text class="verify-info__text">{{buildingCardInfo.capitalVerification}}</text>
+            </view>
+            <view class="coupon-info" wx:if="{{buildingCardInfo.preferentialInfo}}">
+                <image class="icon_coupon" src="/resource/base/loupan_icon_hui@3x.png"></image>
+                <text class="coupon-info__text">{{buildingCardInfo.preferentialInfo}}</text>
+            </view>
+            <view class="subscribe-info" wx:if="{{buildingCardInfo.subscribeStatus}}">
+                <view class="phone-info">
+                    <view class="phone-info__label">
+                        <text>订阅手机号:</text>
+                    </view>
+                    <view class="phone-info__content">
+                        <text>{{buildingCardInfo.subscribePhone}}</text>
+                    </view>
+                </view>
+                <view catch:tap="goDetailPage" class="btn_subscribe" data-type="cancelSubscribe">
+                    <text>取消订阅</text>
+                </view>
+            </view>
+            <view class="follow-info" wx:if="{{buildingCardInfo.followStatus}}">
+                <view catch:tap="goDetailPage" class="btn_follow" data-type="followMe">
+                    <text>取消关注</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="tools" src="../../../utils/wxs/formatData.wxs" />

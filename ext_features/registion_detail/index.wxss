@@ -1,0 +1,153 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.container {
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container-inner {
+    background-color: #fff;
+    margin: 20rpx 30rpx 0;
+    padding-bottom: 30rpx;
+    box-shadow: 0 2rpx 18rpx 0 hsla(0,0%,83.5%,.5);
+    border-radius: 4rpx;
+}
+
+.float-top {
+    position: sticky;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.pdb-170 {
+    padding-bottom: 150rpx;
+}
+
+.audit-tips {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 55rpx;
+    border-bottom: 1px solid #eaeaea;
+    padding: 50rpx 0;
+}
+
+.audit-tips .audit-icon {
+    width: 110rpx;
+    height: 110rpx;
+    padding-bottom: 15rpx;
+}
+
+.audit-tips .audit-title {
+    font-size: 36rpx;
+    color: #333;
+    padding-bottom: 7rpx;
+    font-weight: 600;
+}
+
+.audit-tips .audit-remark {
+    font-size: 24rpx;
+    color: #333;
+}
+
+.content {
+    position: relative;
+    padding: 50rpx 60rpx 24rpx;
+}
+
+.content .pass-icon {
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    height: 118rpx;
+    width: 118rpx;
+}
+
+.content .group {
+    display: flex;
+    padding-bottom: 26rpx;
+}
+
+.content .group .group-label {
+    font-size: 28rpx;
+    color: #999;
+    width: 220rpx;
+}
+
+.content .group .group-value {
+    font-size: 28rpx;
+    color: #333;
+    flex: 1;
+}
+
+.content .group .group-value .picture {
+    width: 230rpx;
+    height: 230rpx;
+    border-radius: 4rpx;
+    border: 2rpx solid #f5f5f5;
+}
+
+.content .des-bd {
+    border-bottom: 1rpx solid #ededed;
+    margin-bottom: 32rpx;
+    padding-bottom: 34rpx;
+}
+
+.btn-list {
+    padding-left: 240rpx;
+    padding-top: 30rpx;
+    border-top: 1px solid #eaeaea;
+    margin: 0 30rpx;
+}
+
+.btn-list .btn-common,.btn-list .delete-btn,.btn-list .modify-btn {
+    width: 170rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 44rpx;
+    box-sizing: border-box;
+}
+
+.btn-list .delete-btn {
+    font-size: 30rpx;
+    color: #666;
+    border: 2rpx solid #d6d6d6;
+    margin-right: 30rpx;
+}
+
+.btn-list .modify-btn {
+    font-size: 30rpx;
+    color: #fe5e10;
+    border: 2rpx solid #fe5e10;
+    margin-right: 93rpx;
+}
+
+.operate-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32rpx;
+    color: #fff;
+    position: fixed;
+    bottom: 30rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 296rpx;
+    height: 90rpx;
+    background: linear-gradient(90deg,#ffb841,#ffac5f);
+    box-shadow: 0 2rpx 18rpx 0 rgba(186,93,15,.5);
+    border-radius: 45rpx;
+    opacity: .92;
+}
+
+.operate-btn .add-icon {
+    width: 46rpx;
+    height: 46rpx;
+    margin-right: 10rpx;
+}

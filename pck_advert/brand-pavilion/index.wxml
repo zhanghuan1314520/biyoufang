@@ -1,0 +1,12 @@
+<view class="container">
+    <view class="search">
+        <image class="search-icon" src="/resource/search_i.png"></image>
+        <input bindconfirm="searchBrand" bindinput="inputName" class="search-input" confirmType="search" placeholder="搜索想了解的品牌名称" placeholderClass="input-placeholder" type="text"></input>
+        <text bind:tap="searchBrand" class="search-text">搜索</text>
+    </view>
+    <view class="brandCard" data-index="{{index}}" wx:for="{{brandList}}" wx:key="index">
+        <brand-card brandInfo="{{item}}"></brand-card>
+    </view>
+    <view class="none-more" wx:if="{{brandList.length>2}}">我也是有底线的~</view>
+    <empty-view isReveal="{{!brandList.length}}" tipsText="暂无品牌"></empty-view>
+</view>

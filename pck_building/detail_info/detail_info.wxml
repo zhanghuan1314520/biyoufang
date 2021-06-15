@@ -1,0 +1,69 @@
+<view class="detail" style="padding-top: {{navH}}px;" wx:if="{{show}}">
+    <nav-bar navBarTitle="楼盘信息"></nav-bar>
+    <view class="basic" wx:if="{{section1}}">
+        <view class="name">{{section1.Title}}</view>
+        <view class="detail__panel-body">
+            <view class="detail__panel-cell cell-short" wx:for="{{section1.Items}}" wx:key="index">
+                <view class="detail__panel-cell-title">
+                    <text>{{item.FieldName}}</text>
+                </view>
+                <view class="detail__panel-cell-content">{{item.Content}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="detail__panel building" wx:if="{{section2}}">
+        <view class="detail__panel-head">
+            <view class="detail__panel-title detail__panel-title-s">{{section2.Title}}</view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="detail__panel-cell" wx:if="{{index+1<=section2.Items.length/2}}" wx:for="{{section2.Items}}" wx:key="index">
+                <view class="detail__panel-cell-column">
+                    <view class="detail__panel-cell-title">{{section2.Items[2*index].FieldName}}</view>
+                    <view class="detail__panel-cell-content">{{section2.Items[2*index].Content}}</view>
+                </view>
+                <view class="detail__panel-cell-column mgl32">
+                    <view class="detail__panel-cell-title">{{section2.Items[2*index+1].FieldName}}</view>
+                    <view class="detail__panel-cell-content">{{section2.Items[2*index+1].Content}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="detail__panel property" style="margin-top:0" wx:if="{{section3}}">
+        <view class="detail__panel-head">
+            <view class="detail__panel-title detail__panel-title-s">{{section3.Title}}</view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="detail__panel-cell cell-short" wx:for="{{section3.Items}}" wx:key="index">
+                <view class="detail__panel-cell-title">{{item.FieldName}}</view>
+                <view class="detail__panel-cell-content">{{item.Content}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="detail__panel property" style="margin-top:0" wx:if="{{section4}}">
+        <view class="detail__panel-head">
+            <view class="detail__panel-title detail__panel-title-s">{{section4.Title}}</view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="detail__panel-cell cell-short" wx:for="{{section4.Items}}" wx:key="index">
+                <view class="detail__panel-cell-title">{{item.FieldName}}</view>
+                <view class="detail__panel-cell-content">{{item.Content}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="detail__panel property" style="margin-top:0" wx:if="{{section5.Items}}">
+        <view class="detail__panel-head">
+            <view class="detail__panel-title detail__panel-title-s">{{section5.Title}}</view>
+        </view>
+        <view class="detail__panel-body content-area">
+            <view class="content {{unfoldFlag?'transition-height':''}}">
+                <text class="text">{{tools.textEllipsis(section5.Items||'',maxLength,splitFlag)}}</text>
+                <text bind:tap="handleUnfold" class="unfold-btn" wx:if="{{splitFlag&&section5.Items&&section5.Items.length>maxLength}}">展开</text>
+            </view>
+            <view class="unfolded-btn {{unfoldFlag?'unfolded-btn-show':''}}">
+                <text bind:tap="handleUnfoldBtn">收起</text>
+            </view>
+        </view>
+    </view>
+    <back-home wx:if="{{isShare==1}}"></back-home>
+</view>
+<wxs module="tools" src="../../utils/wxs/textEllipsis.wxs" />

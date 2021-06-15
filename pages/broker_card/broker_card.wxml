@@ -1,0 +1,190 @@
+<view class="broker_card">
+    <block wx:if="{{comingStatus===1}}">
+        <nav-bar isTransparent="{{true}}" showShare="{{false}}"></nav-bar>
+        <view class="customer" wx:if="{{ConsultantInfo}}">
+            <view class="customer__card-image-container">
+                <view class="customer-shade"></view>
+                <image bindtap="goEditPage" class="customer__card-name-handler" src="/resource/detail/broker_card_shear.png" wx:if="{{comingStatus==1}}"></image>
+                <image class="customer__card-image" mode="widthFix" src="{{ConsultantInfo.PersonalImageUrl}}"></image>
+            </view>
+            <view class="customer__card">
+                <view class="customer__card-wrap">
+                    <view class="flex_space customer__Tmain">
+                        <view class="flex_alicen">
+                            <view class="customer__Tmain-name">{{ConsultantInfo.Name}}</view>
+                            <view class="customer__Tmain-icon">
+                                <image src="/resource/message/consultant_icon@3x.png"></image>
+                                <text>置业顾问</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="callBroker" class="customer__card-phone">
+              {{ConsultantInfo.PhoneNumberText}}
+            </view>
+                    <view class="my-building-list">
+                        <view bindtap="goBuildingPage" class="customer__card-buildname" data-building-id="{{item.BuildingId}}" wx:if="{{index<6}}" wx:for="{{ConsultantInfo.Buildings}}" wx:key="index">
+                            <text>{{item.BuildingName}}</text> >
+              </view>
+                        <text class="my-ellipse" wx:if="{{ConsultantInfo.Buildings.length>6}}">...</text>
+                    </view>
+                </view>
+                <view class="card__handlers">
+                    <view class="card__handler">
+                        <image class="card__handler-icon" src="/resource/broker_card/gwcard_icon_sharecard@3x.png"></image>
+                        <view class="card__handler-name">转发名片</view>
+                        <button openType="share"></button>
+                    </view>
+                    <view bindtap="goCodePage" class="card__handler">
+                        <image class="card__handler-icon" src="/resource/broker_card/gwcard_icon_tkt@3x.png"></image>
+                        <view class="card__handler-name">拓客图</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <join-building-tab bindchange="changeSelectBuilding" id="buildingTab" sourceBuildings="{{ConsultantInfo.Buildings}}"></join-building-tab>
+        <view class="customer__card-cells">
+            <view class="customer__card-cell">
+                <view class="customer__card-cell-name">个人签名</view>
+                <view class="customer__card-cell-content content-wrap">
+            {{currentInfoDetail.Introduction}}
+          </view>
+            </view>
+            <view class="customer__card-cell">
+                <view class="customer__card-cell-name">微信号</view>
+                <view bindtap="copyWeChatNumber" class="customer__card-cell-content" data-content="{{currentInfoDetail.WechatNumber}}">
+            {{currentInfoDetail.WechatNumber}}
+          </view>
+            </view>
+            <view class="customer__card-cell">
+                <view class="customer__card-cell-name">工作证件</view>
+                <view bindtap="checkWorkPermit" class="customer__card-cell-link" data-url="{{currentInfoDetail.WorkPermitUrl}}">
+            点击查看
+          </view>
+            </view>
+            <view bindtap="checkAddress" class="customer__card-cell" data-address="{{currentInfoDetail.BuildingAddress}}" data-lat="{{currentInfoDetail.Latitude}}" data-lng="{{currentInfoDetail.Longitude}}" data-name="{{currentInfoDetail.BuildingName}}">
+                <view class="customer__card-cell-name">地址</view>
+                <view class="flex_space">
+                    <view class="customer__card-cell-content">
+              {{currentInfoDetail.BuildingAddress||'暂无信息'}}
+            </view>
+                    <image class="customer__card-cell-local" src="/resource/broker_card/gwcard_icon_location@3x.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="canvas" style="position: absolute;top: -1000px;">
+            <canvas canvasId="hiddenCanvas" style="width: 250px;height: 200px;"></canvas>
+        </view>
+    </block>
+    <block wx:if="{{comingStatus===0}}">
+        <view class="nav-bar" style="padding-top:{{navH}}px">
+            <nav-bar navBarTitle="置业顾问名片" showShare="{{false}}"></nav-bar>
+        </view>
+        <view class="broker-info_intro" wx:if="{{ConsultantInfo}}">
+            <view class="brokder-info__header">
+                <view class="brokder-info__header-box">
+                    <div class="broker-avator">
+                        <image catch:tap="previewImage" class="avator_icon" data-type="avator" mode="aspectFill" src="{{ConsultantInfo.PersonalImageUrl}}"></image>
+                    </div>
+                    <view class="broker-detail">
+                        <view class="broker-brief-detail">
+                            <view class="broker-name">{{ConsultantInfo.Name?ConsultantInfo.Name:''}}</view>
+                            <image class="icon_broker" src="/resource/detail/detail_icon_contact@3x.png"></image>
+                            <button class="broker-info_share" openType="share">
+                                <image class="broker-info_share-icon" src="/resource/broker_card/gwcard_icon_share_brown@3x.png"></image>
+                            </button>
+                        </view>
+                        <view class="broker-wx">
+                            <text class="broker-wx_label">微信号: </text>
+                            <text class="broker-wx_content">{{ConsultantInfo.WechatNumber}}</text>
+                            <text catch:tap="copyWeChatNumber" class="copy-wx">{{hasCopy?'已复制':'复制'}}</text>
+                        </view>
+                        <view class="broker-building">
+                            <view class="broker-building-box">
+                                <view class="building-list">
+                                    <view catch:tap="goBuildingPage" class="building-building_content" data-building-id="{{item.BuildingId}}" wx:if="{{index<4}}" wx:for="{{ConsultantInfo.Buildings}}" wx:key="index">
+                                        <text>{{item.BuildingName}}</text>
+                                        <image class="arrow_right" src="/resource/advance_gray@3x.png"></image>
+                                    </view>
+                                    <text class="ellipse" wx:if="{{ConsultantInfo.Buildings.length>4}}">...</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="broker-info_intro-cardImg">
+                    <image src="{{cardImg}}"></image>
+                </view>
+            </view>
+            <view class="broker-info__content">
+                <view class="broker-intro_text {{showAllBrokerIntro?'':'broker-intro_text_ellipsis'}}">
+              {{ConsultantInfo.Introduction}}
+            </view>
+                <view class="look-more" wx:if="{{brokerInfoFullHeight>brokerIntroHeight}}">
+                    <text bind:tap="lookMoreBrokerIntro" class="look-more__text">{{showAllBrokerIntro?'收起':'查看更多'}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="broker-intro_text_hidden" id="broker-intro_text_hidden" wx:if="{{ConsultantInfo&&ConsultantInfo.Introduction}}">
+          {{ConsultantInfo.Introduction}}
+        </view>
+        <view class="moments">
+            <view class="moments__header">
+                <text>{{userInfo&&userInfo.UnionId&&broker&&userInfo.UnionId===broker.UnionId?'我的动态':'他的动态'}}</text>
+            </view>
+            <view class="moments__list" wx:if="{{momentList&&momentList.length}}">
+                <view class="moment__item" wx:for="{{momentList}}" wx:key="index">
+                    <moment-item bind:userOperate="clickMomentItem" comptype="2" moments="{{item}}" userInfo="{{userInfo}}"></moment-item>
+                </view>
+            </view>
+            <view class="no-monent" wx:else>
+                <view class="no-moment-tip">
+                    <text>{{userInfo&&userInfo.UnionId&&userInfo.UnionId===broker.UnionId?'暂未分享过动态':'TA还未发表动态'}}</text>
+                </view>
+                <view class="btn-share-list">
+                    <view bind:tap="goPage" class="btn-share-item" data-type="goMoment" wx:if="{{userInfo&&userInfo.UnionId&&userInfo.UnionId===broker.UnionId}}">
+                        <text>去分享楼盘动态</text>
+                    </view>
+                    <view bind:tap="goPage" class="btn-share-item" data-type="goNews" wx:else>
+                        <text>去看看楼盘快讯</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btn_footer {{isIpx?'is-ipx':'no-ipx'}}" wx:if="{{userInfo&&ConsultantInfo&&userInfo.UnionId!==ConsultantInfo.UnionId}}">
+            <view class="btn_fav">
+                <view style="flex: 1;">
+                    <UserAuthorize authUserInfo bindproxySuccess="followBroker" recordParams="{{[ {type:'focus'} ]}}" userInfo="{{userInfo}}">
+                        <view class="btn_left">
+                            <block wx:if="{{ConsultantInfo&&ConsultantInfo.IsFollow}}">
+                                <image class="fav-icon" src="/resource/lpxq_icon_following@3x.png"></image>
+                                <view class="follow_tip">已关注</view>
+                            </block>
+                            <block wx:else>
+                                <image class="fav-icon" src="/resource/lpxq_icon_follow@3x.png"></image>
+                                <view class="follow_tip">关注</view>
+                            </block>
+                        </view>
+                    </UserAuthorize>
+                </view>
+            </view>
+            <view class="btn-list">
+                <UserAuthorize authPhoneNumber authUserInfo userInfo="{{userInfo}}">
+                    <view bindtap="{{userInfo&&userInfo.PhoneNumber&&userInfo.Authorized?'goChatPage':''}}" class="btn-item_left">
+                        <form class="form_submit">
+                            <button class="btn_submit" formType="submit"></button>
+                            <button class="btn_title">在线咨询</button>
+                            <view class="btn_sub-title">与置业顾问一对一沟通</view>
+                        </form>
+                    </view>
+                </UserAuthorize>
+                <view catch:tap="callBroker" class="btn-item_right">
+                    <form class="form_submit">
+                        <button class="btn_submit" formType="submit"></button>
+                        <button class="btn_title">电话咨询TA</button>
+                        <view class="btn_sub-title">隐藏真实号码</view>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

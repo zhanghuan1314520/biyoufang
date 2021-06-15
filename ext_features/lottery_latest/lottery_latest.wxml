@@ -1,0 +1,65 @@
+<view class="lottery_latest {{result.length?'lottery-bg':''}}" style="padding-top:{{navH}}px;">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="查摇号" showShare="{{false}}"></nav-bar>
+    </view>
+    <advert-banner isReady="{{canLoadBanner}}" status="{{'LotteryProjectsBanner'}}" swiperClass="swiper-wrap" wx:if="{{!result.length}}"></advert-banner>
+    <view class="my-lottery" wx:if="{{result.length}}">
+        <view class="my-lottery-left">
+            <view class="my-lottery-title">我的摇号</view>
+            <view class="my-lottery-tip">7天前的订阅，请在“我的-我的订阅“查看</view>
+        </view>
+        <image class="lottery-query-image1" src="{{bgIcons[0]}}"></image>
+    </view>
+    <view class="lottery-query" wx:if="{{result.length===0&&pageStatus!==-1}}">
+        <view class="lottery-query-left">
+            <view class="lottery-query__title">
+                <text>我的摇号</text>
+            </view>
+            <UserAuthorize authPhoneNumber authUserInfo userInfo="{{userInfo}}">
+                <view catchtap="openSubscribe" class="lottery-query__btn">
+                    <text>订阅摇号提醒</text>
+                </view>
+            </UserAuthorize>
+            <view class="lottery-query__tip">
+                <text class="">订阅后，您将第一时间知道顺序号</text>
+            </view>
+        </view>
+        <image class="lottery-query-image" src="{{bgIcons[0]}}"></image>
+    </view>
+    <view class="no-data flex_row" wx:if="{{result&&result.length===0&&list.length===0&&listFinished.length===0&&init}}">
+        <image class="img_no-data" src="{{imageRoot}}/images_wx/default_graph/null.png"></image>
+        <text class="no-data-text">最近无摇号的楼盘</text>
+    </view>
+    <view class="lottery__result-list" wx:if="{{result.length>0}}">
+        <view class="lottery__result-item" wx:for="{{result}}" wx:key="Id">
+            <lottery-status-card bind:operateLotteryStatus="lotteryCardOperate" lotteryStatusInfo="{{item.info}}"></lottery-status-card>
+        </view>
+        <UserAuthorize authPhoneNumber authUserInfo userInfo="{{userInfo}}">
+            <view catchtap="openSubscribe" class="lottery__info">
+                <image class="ring" src="/resource/detail/detail_icon_reminded@3x.png"></image>
+        继续订阅摇号提醒
+      </view>
+        </UserAuthorize>
+        <view class="recommend-list" wx:if="{{projectList}}">
+            <view class="building-card" wx:for="{{projectList}}" wx:key="index">
+                <building-card bind:operateBuildingCardInfo="buildCardOperate" buildingCardInfo="{{item.info}}"></building-card>
+            </view>
+        </view>
+    </view>
+    <back-home wx:if="{{isShare}}"></back-home>
+    <view class="lottery__list" wx:if="{{list.length>0||listFinished.length>0}}">
+        <view class="lottery-list-title" wx:if="{{list.length}}">即将摇号</view>
+        <view class="building-card" wx:for="{{list}}" wx:key="index">
+            <building-card bind:operatebuildiingItemInfo="operate" buildiingItemInfo="{{item.info}}" customStatusClass="status-bg2"></building-card>
+        </view>
+        <view class="lottery-list-title" wx:if="{{listFinished.length}}">已摇号</view>
+        <view class="building-card" wx:for="{{listFinished}}" wx:key="index">
+            <building-card bind:operatebuildiingItemInfo="operate" buildiingItemInfo="{{item.info}}" customStatusClass="status-bg1"></building-card>
+        </view>
+    </view>
+    <view class="lottery-register" wx:if="{{maskVisibility}}">
+        <view class="lottery-register-bg-box">
+            <lottery-dialog bind:operate="operateSubscribe" id="lottery-dialog" userInfo="{{userInfo}}"></lottery-dialog>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "article-card": "/components/index/article-card/article-card",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

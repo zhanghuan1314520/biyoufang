@@ -1,0 +1,38 @@
+<view class="container">
+    <nav-bar isTransparent="{{true}}" navBarTitle="如何加积分" showShare="{{false}}"></nav-bar>
+    <view class="head">
+        <view class="head-data flex_row" style="padding-top:{{navH}}px">
+            <view class="flex_col">
+                <view class="head-num head-num_bord">{{allScore}}</view>
+                <view class="head-text">当前积分</view>
+            </view>
+            <view class="flex_col">
+                <view class="head-num">+{{toDayScore}}</view>
+                <view class="head-text">今日积分</view>
+            </view>
+        </view>
+        <view class="head-title">
+      积分越高，用户发起聊天、拨打电话时，获得分配的几率越高。高增长置业顾问，还有机会由平台推荐上首页。
+    </view>
+    </view>
+    <view class="main flex1">
+        <view class="main-text">增长手段</view>
+        <view class="flex_space main-list" wx:for="{{conditionList}}" wx:key="index">
+            <view class="flex1">
+                <view class="main-title">
+                    <view class="m_title-expla">{{item.title}}</view>
+                    <view class="m_title-item">
+                        <text wx:for="{{item.case}}" wx:key="index">+<text class="m_title-stick">{{item.grades}}</text>{{item.explain}}</text>
+                    </view>
+                </view>
+                <view class="m_title-limited">{{item.text}}</view>
+            </view>
+            <view class="main-btn" wx:if="{{item.btn}}">
+                <text>去完成</text>
+                <form catchsubmit="formSubmit">
+                    <button class="btn_getUserInfo btn_reset" data-nav="{{item.nav}}" data-url="{{item.pageUrl}}" formType="{{!item.type?'submit':''}}" openType="{{item.type?item.type:''}}"></button>
+                </form>
+            </view>
+        </view>
+    </view>
+</view>

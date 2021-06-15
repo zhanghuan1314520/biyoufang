@@ -1,0 +1,13 @@
+<view catchtouchmove="noTouch" class="modal" wx:if="{{visibility}}">
+    <view class="content">
+        <view class="poster">
+            <image webp class="poster-img" mode="aspectFill" src="{{buildInfo.WelcomeImageUrl}}"></image>
+        </view>
+        <view class="poster-des" wx:if="{{buildInfo.ShowWelcomePaperWork}}">{{buildInfo.WelcomePaperWork||defaultPaperWork}}</view>
+        <view class="welcome">
+            <button bindgetphonenumber="authorizePhoneNumber" bindtap="closeModel" class="reset-btn welcome-btn" data-source="welcomeHome" openType="{{!userInfo.PhoneNumber&&needPhoneAuthorize?'getPhoneNumber':''}}">
+                {{btnText}}
+            </button>
+        </view>
+    </view>
+</view>

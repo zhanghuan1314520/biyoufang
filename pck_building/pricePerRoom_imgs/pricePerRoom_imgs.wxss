@@ -1,0 +1,15 @@
+.img__wrap,.swiper__item {
+    height: 100%;
+}
+
+.swiper-image {
+    width: 100%;
+}
+
+.save__img {
+    position: absolute;
+    width: 120rpx;
+    height: 120rpx;
+    right: 30rpx;
+    bottom: 60rpx;
+}

@@ -1,0 +1,175 @@
+<import src="./template.wxml"></import>
+<view class="index" style="padding-top:{{navH}}px">
+    <ad ad="{{topActivity}}" bind:checkAd="checkAd" bind:closead="closeAd" visible="{{adVisible}}" wx:if="{{!newGuideFlag}}"></ad>
+    <qaToast bindclose="closeQaToast" count="{{ansCount}}" wx:if="{{!adVisible&&ansVisible&&!newGuideFlag}}"></qaToast>
+    <view class="nav-bar">
+        <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" navBarTitle="{{title}}" needBackBtn="{{false}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="addtomymp__wrap" wx:if="{{!isAnnouncement&&isAddtomymp}}">
+        <view class="addtomymp">添加到我的小程序，下次访问更方便</view>
+        <text bindtap="closeAddtomymp" class="btn_close">关闭</text>
+    </view>
+    <view class="search-wrapper">
+        <view class="building-search">
+            <view bind:tap="goCitySelectPage" class="building-search-location">
+                <image class="icon_location" mode="aspectFill" src="/resource/base/base_icon_position@3x.png"></image>
+                <view class="city-info">
+                    <text class="city-name">{{cityInfo.cityName||'定位中...'}}</text>
+                    <image class="icon_down" mode="aspectFill" src="/resource/index/index_icon_down@3x.png"></image>
+                </view>
+            </view>
+            <view bind:tap="goSearchPage" class="building-search-input">
+                <image class="icon_search" mode="aspectFill" src="/resource/search_i.png"></image>
+                <view class="building-search-input__inner">
+                    <text>搜索想了解的楼盘</text>
+                </view>
+            </view>
+            <view class="building-search-share">
+                <button class="btn_reset building-search-share__btn" openType="share">
+                    <image class="icon_share" mode="aspectFill" src="/resource/base/base_icon_share@3x.png"></image>
+                </button>
+            </view>
+        </view>
+        <image catchtouchmove="noTouch" class="new-guide-1 new-guide-common" src="/resource/new_guide/Introduction_img_3@3x.png" wx:if="{{newGuideFlag}}"></image>
+    </view>
+    <view class="notice-wrap" style="top:{{navH+50}}px;" wx:if="{{isAnnouncement&&announcement}}">
+        <view class="announcement__wrap">
+            <view class="announcement">
+                <view class="announcement__text" style="transform:translateX(-{{textX}}px);transition:{{textDuration}}s linear">{{announcement}}</view>
+            </view>
+            <image bindtap="closeAnnouncement" class="announcement__icon" mode="aspectFill" src="/resource/tips_icon_close@2x.png"></image>
+        </view>
+    </view>
+    <template is="skeletonTem" data="{{skeletonInfo:skeletonInfo}}" wx:if="{{pageStatus===-1}}"></template>
+    <block wx:if="{{pageStatus===1}}">
+        <view class="swiper" wx:if="{{bannerList.length}}">
+            <advert-banner _bannerList="{{bannerList}}" browserPoint="{{true}}" id="swiperBanner" imageClass="slide-image" swiperClass="swiper-skeleton"></advert-banner>
+        </view>
+        <scroll-view scrollX="{{true}}" wx:if="{{_buildingStatsList&&_buildingStatsList.length>0}}">
+            <view class="building-stats-list">
+                <UserAuthorize authPhoneNumber bind:authPhoneNumber="authPhoneNumberSuccess" userInfo="{{userInfo}}" wx:for="{{_buildingStatsList}}" wx:key="index">
+                    <building-stats buildingInfo="{{item}}" wx:if="{{item.isExpired&&item.DistrictName}}"></building-stats>
+                </UserAuthorize>
+            </view>
+        </scroll-view>
+        <UserAuthorize authPhoneNumber bind:authPhoneNumber="authPhoneNumberSuccess" userInfo="{{userInfo}}" wx:if="{{statsNavList&&statsNavList.length}}">
+            <nouse-statistics statsNavList="{{statsNavList}}"></nouse-statistics>
+        </UserAuthorize>
+        <UserAuthorize authPhoneNumber bind:authPhoneNumber="authPhoneNumberSuccess" userInfo="{{userInfo}}">
+            <view class="menu-nav-list module-guide-container {{headlineArticles.length?'':'section-distance'}}" wx:if="{{moduleNavList&&moduleNavList.length}}">
+                <view class="menu-nav-item" wx:for="{{moduleNavList}}" wx:key="index">
+                    <form class="form_submit">
+                        <UserAuthorize authUserInfo="{{item.needAuthorization}}" bindproxySuccess="goModulePage" recordParams="{{[ {id:item.id} ]}}" userInfo="{{userInfo}}">
+                            <button class="btn_reset btn_submit">
+                                <view class="menu-nav-info">
+                                    <view class="menu-nav-icon {{'menu-nav-icon_'+item.iconSize}}">
+                                        <image class="icon_nav {{'icon_nav_'+item.iconSize}}" mode="aspectFill" src="{{moduleNavListIcons[item.iconSrc]}}"></image>
+                                    </view>
+                                    <view class="menu-nav-name">
+                                        <text>{{item.name}}</text>
+                                    </view>
+                                </view>
+                            </button>
+                        </UserAuthorize>
+                    </form>
+                </view>
+                <block wx:if="{{newGuideFlag}}">
+                    <image catchtouchmove="noTouch" class="new-guide-2 new-guide-common" src="/resource/new_guide/Introduction_img_dtzf@3x.png"></image>
+                    <image catchtouchmove="noTouch" class="new-guide-4 new-guide-common" src="/resource/new_guide/Introduction_img_cyh@3x.png"></image>
+                    <image catchtouchmove="noTouch" class="new-guide-5 new-guide-common" src="/resource/new_guide/Introduction_img_mfwd@3x.png"></image>
+                    <image catchtouchmove="noTouch" class="new-guide-6 new-guide-common" src="/resource/new_guide/Introduction_img_zgcx@3x.png"></image>
+                </block>
+            </view>
+        </UserAuthorize>
+        <view bindtap="toHouseMarket" class="list headRecommend" wx:if="{{headlineArticles.length>0}}">
+            <view class="headRecommend__inner">
+                <view class="headRecommend__left">
+                    <image class="headRecommend__icon" mode="aspectFill" src="/resource/home_img_headlinesnew@3x.png"></image>
+                </view>
+                <view class="headRecommend__line"></view>
+                <view class="headRecommend__right">
+                    <swiper autoplay="{{true}}" bindchange="headSwiperChange" circular="{{true}}" class="headRecommend__swiper" duration="{{800}}" interval="{{5000}}" vertical="{{true}}">
+                        <swiper-item catchtouchmove="catchTouchMove" class="headRecommend__item" wx:for="{{headlineArticles}}" wx:key="index">
+                            <view class="headRecommend__title">{{item.Title}}</view>
+                        </swiper-item>
+                    </swiper>
+                </view>
+            </view>
+        </view>
+        <venue-category wx:if="{{cityInfo.VersionType===0&&categoryBrand.length&&categoryBrand[0].Show&&categoryBrand[1].Show&&categoryBrand[2].Show}}"></venue-category>
+        <view class="building-card-info hot-building-info" wx:if="{{hotBuildingList&&hotBuildingList.length>0}}">
+            <view class="building-card-title">
+                <view class="building-card-title__tip">
+                    <text class="popularity-text">人气榜</text>
+                    <image class="popularity-icon" mode="aspectFit" src="/resource/index/home_icon_top@3x.png"></image>
+                </view>
+            </view>
+            <building-card buildingList="{{hotBuildingList}}" id="hotBuildingList"></building-card>
+        </view>
+        <view class="building-card-info hot-building-info" wx:if="{{rigidDemandBuildingList&&rigidDemandBuildingList.length&&cityInfo.VersionType!==0}}">
+            <view class="building-card-title">
+                <view class="building-card-title__tip">
+                    <text>刚需楼盘</text>
+                </view>
+            </view>
+            <building-card buildingList="{{rigidDemandBuildingList}}" id="rigidDemandBuildingList"></building-card>
+        </view>
+        <view class="building-card-info hot-building-info" wx:if="{{lowPriceBuildingList&&lowPriceBuildingList.length}}">
+            <view class="building-card-title">
+                <view class="building-card-title__tip">
+                    <text>低总价</text>
+                </view>
+            </view>
+            <building-card buildingList="{{lowPriceBuildingList}}" id="lowPriceBuildingList"></building-card>
+        </view>
+        <articleCategory list="{{acticleCategory}}" wx:if="{{acticleCategory.length}}"></articleCategory>
+        <view class="broker-info" wx:if="{{brokerList&&brokerList.length}}">
+            <view class="broker-info-title">
+                <text class="broker-info-title__text">优秀顾问</text>
+            </view>
+            <view class="broker-card-list" id="item_broker_record">
+                <view class="mgr-16" wx:for="{{brokerList}}" wx:key="index">
+                    <broker-card bind:operateBrokerCardInfo="operateBrokerCardInfo" brokerCardInfo="{{item}}" chatSourceType="{{1}}" userInfo="{{userInfo}}"></broker-card>
+                </view>
+            </view>
+        </view>
+        <view class="article-info" wx:if="{{articleList&&articleList.length>0&&!acticleCategory.length>0}}">
+            <view bind:tap="goMarketArticlePage" class="article-info-title">
+                <view class="article-info-title__tip">
+                    <text>热门文章</text>
+                </view>
+            </view>
+            <view class="article-info-list">
+                <view bind:tap="goArticleDetailPage" class="article-info-item" data-idx="{{index}}" id="item_article_record" wx:for="{{articleList}}" wx:key="index">
+                    <article-card articleCardInfo="{{item.articleInfo}}"></article-card>
+                </view>
+            </view>
+        </view>
+        <building-tab buildingTabFlag="{{buildingTabFlag}}" id="buildingTab" tabList="{{buildingCategoryTab}}" wx:if="{{buildingCategoryTab.length}}"></building-tab>
+        <view class="is-reactom" wx:if="{{buildingCategoryTab&&!buildingCategoryTab.length}}">
+      我也是有底线的~
+    </view>
+    </block>
+    <block wx:if="{{showLocationDialog}}">
+        <view class="location-dialog">
+            <view class="location-dialog__header">
+                <text>当前定位城市: {{cityInfo&&cityInfo.CityName}}</text>
+            </view>
+            <view class="location-dialog__body">
+                <text>是否切换到{{cityInfoInStorage&&cityInfoInStorage.CityName}}？</text>
+            </view>
+            <view class="location-dialog__footer">
+                <view bind:tap="clickLocationDialogBtn" class="location-btn_cancel" data-type="cancel">
+                    <text>取消</text>
+                </view>
+                <view bind:tap="clickLocationDialogBtn" class="location-btn_confirm" data-type="confirm">
+                    <text>确定</text>
+                </view>
+            </view>
+        </view>
+        <view class="location-mask"></view>
+    </block>
+    <view catchtouchmove="noTouch" class="new-guide" wx:if="{{newGuideFlag}}">
+        <image bindtap="closeNewGuide" class="new-guide-3 new-guide-common" src="/resource/new_guide/Introduction_btn_close@3x.png"></image>
+    </view>
+</view>

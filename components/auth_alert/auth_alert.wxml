@@ -1,0 +1,13 @@
+<cover-view class="mask" wx:if="{{visible}}">
+    <cover-view class="mask__message">
+        <cover-view class="message__content">您已拒绝了操作相册授权，若要保存图片请设置开启授权</cover-view>
+        <cover-view class="message__btns">
+            <cover-view class="message__btn">
+                <button bindtap="cancelAuth" class="message__button">取消</button>
+            </cover-view>
+            <cover-view class="message__btn">
+                <button class="message__button" openType="openSetting">去设置</button>
+            </cover-view>
+        </cover-view>
+    </cover-view>
+</cover-view>

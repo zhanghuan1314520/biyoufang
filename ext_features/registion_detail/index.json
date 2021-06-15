@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "tabs": "/components/tabs/index",
+        "join-building-tab": "/components/my/join-building-tab/index",
+        "empty-view": "/components/empty-view/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

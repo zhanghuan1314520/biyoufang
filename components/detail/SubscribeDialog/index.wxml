@@ -1,0 +1,11 @@
+<view catch:tap="closeModal">
+    <ModalBox wx:if="{{show}}">
+        <view catch:tap="noHandle" class="subscribe-remind">
+            <text>订阅楼盘，以免错过重要消息~
+我们将以短信通知您</text>
+            <button catch:tap="handleSubscribe" class="subscribe-btn btn_reset">
+        立即订阅
+      </button>
+        </view>
+    </ModalBox>
+</view>

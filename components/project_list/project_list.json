@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "project-list-item": "/components/project_list_item/project_list_item",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

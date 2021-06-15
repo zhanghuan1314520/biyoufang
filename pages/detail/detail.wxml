@@ -1,0 +1,465 @@
+<view class="detail" style="padding-top: {{navH}}px;">
+    <view class="nav-bar">
+        <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%)" isTransparent="{{true}}" multiShare="{{true}}" navBarTitle="楼盘详情" needBackBtn="{{!(fromBroker&&!isFromShareBroker)}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="count-down" wx:if="{{countDownList&&countDownList.length}}">
+        <swiper autoplay circular="{{true}}" class="count-down-swiper" interval="3000" vertical="{{true}}">
+            <swiper-item class="count-down-item" wx:for="{{countDownList}}" wx:key="index">
+                <view class="coun-down-info">
+                    <text class="coun-down-info-text">{{item.buildingNo}}</text>
+                    <text>{{item.description}}{{item.days>0?item.days+'天':''}}{{item.hours}}时{{item.minutes}}分{{item.seconds}}秒</text>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="detail__poster">
+        <view bind:tap="showMultiShare" class="btn_share">
+            <image class="icon_share" src="/resource/base/base_icon_share@3x.png"></image>
+        </view>
+        <view class="detail-pageviews" wx:if="{{playIconShow}}">
+            <view bind:tap="goDetailImgsPage" class="imgs-count" wx:if="{{project.BuildingPhotoAlbumCount}}">
+                <text class="imgs-num">{{currentSlideNumber}}/{{project.BuildingPhotoAlbumCount||0}}</text>
+            </view>
+            <view class="views-wrap" wx:if="{{project.totalViewNumber}}">
+                <image class="views-icon" src="/resource/list_icon_viewed@3x.png"></image>
+                <text class="views-count">{{project.totalViewNumber}}</text>
+            </view>
+        </view>
+        <swiper circular bindchange="swiperSlideChange">
+            <swiper-item class="video-wrap" wx:if="{{project.Video}}">
+                <video autoPauseIfNavigate autoPauseIfOpenNative enablePlayGesture showMuteBtn vslideGesture bindended="handleVideoPause" bindpause="handleVideoPause" bindplay="handleVideoPlay" class="detail__poster-image" controls="{{!playIconShow}}" id="buildingVideo" objectFit="fill" poster="{{project.Video.PhotoUrl}}" showCenterPlayBtn="{{false}}" src="{{project.Video.VideoUrl}}">
+                    <image catch:tap="handleClickPlay" class="play-icon" src="/resource/comment/lpxq_icon_video@3x.png" wx:if="{{playIconShow}}"></image>
+                </video>
+            </swiper-item>
+            <swiper-item catch:tap="swiperSlideTap" wx:for="{{project.BannerUrlList}}" wx:key="index">
+                <image webp class="detail__poster-image" mode="aspectFill" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="building-intro observe-item">
+        <building-intro bind:operateBuildingIntro="operateBuildingIntro" project="{{project}}" userInfo="{{userInfo}}"></building-intro>
+    </view>
+    <view class="module-nav" style="top: {{navH}}px">
+        <view id="moduleNav" wx:if="{{moduleNavList&&moduleNavList.length}}">
+            <module-nav bind:operateModuleNav="operateModuleNav" moduleNavList="{{moduleNavList}}"></module-nav>
+        </view>
+    </view>
+    <join-us longpageAdvertId="{{project.LongpageAdvertId}}" wx:if="{{project.BuildingId}}"></join-us>
+    <view id="current-open">
+        <building-open activeBuilding="{{activedProjectInfo}}" bind:toggleBuildTab="toggleProjectTab" building="{{project}}"></building-open>
+    </view>
+    <view class="base-info" id="building-intro" wx:if="{{project}}">
+        <view class="base-info-title">
+            <text>基础信息</text>
+        </view>
+        <view class="base-info-content">
+            <base-info project="{{project}}"></base-info>
+        </view>
+        <view bind:tap="goDetailInfoPage" class="base-info-footer">
+            <text>更多详情></text>
+        </view>
+    </view>
+    <view class="detail__panel detail__surroundings detail__news" id="building-news" wx:if="{{buildingNews}}">
+        <view bindtap="goDetailNewsListPage" class="detail__panel-head observe-item">
+            <view class="detail__panel-head-container">
+                <view class="detail__panel-title">楼盘快讯</view>
+                <view class="detail__panel-link">
+                    <text class="detail__panel-link__text">更多快讯</text>
+                    <image class="detail__cell-arrow" src="/resource/arrow_right.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="news-head">
+                <text class="news-title">{{buildingNews.Title}}</text>
+                <text class="news-time">{{buildingNews.time}}</text>
+            </view>
+            <view class="news-text">{{buildingNews.Content}}</view>
+        </view>
+    </view>
+    <view class="node-anchor" data-type="houseTypeList"></view>
+    <view class="detail__panel detail__surroundings detail__apartment observe-item" id="building-house-type" wx:if="{{houseTypeList&&houseTypeList.length>0}}">
+        <view class="detail__panel-head" style="padding:0 30rpx">
+            <view class="detail__panel-title">户型</view>
+            <view bindtap="goDetailHouseTypePage" class="detail__panel-link">
+                <text class="apartment-count">共{{houseTypeLen}}个</text>
+                <image class="detail__cell-arrow" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="apartment-list">
+                <scroll-view scrollX class="apartment-wrap">
+                    <view bindtap="goHouseDetailPage" class="apartment-item" data-id="{{item.Id}}" data-index="{{index}}" wx:for="{{houseTypeList}}" wx:key="index">
+                        <image webp class="apartment-img" data-type="apartment" data-url="{{item.ImageUrl}}" mode="aspectFill" src="{{item.ImageUrl}}"></image>
+                        <view class="apartment-content">
+                            <view class="apartment-rooms">
+                                <text>{{item.SeveralRooms}}</text>
+                                <text class="apartment-dot">{{item.HouseArea}}m²</text>
+                            </view>
+                            <view class="apartment-desc">
+                                <view class="apartment-price" wx:if="{{item.totalPrice>0&&item.IsOnSale}}">约
+                    <text class="apartment-price-num">{{item.totalPrice}}</text>万/套</view>
+                            </view>
+                            <view class="apartment-status">
+                                <view class="apartment-status-tag" wx:if="{{item.IsOnSale&&!item.IsSoldOut}}">在售</view>
+                                <view class="apartment-status-tag {{item.IsSoldOut?'apartment-status__empty':''}}" wx:elif="{{item.IsSoldOut}}">售罄</view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+    <view class="comment-info observe-item" id="building-comment">
+        <view bind:tap="{{buildingCommentInfo&&buildingCommentInfo.totalCount?'goCommentListPage':''}}" class="comment-info-title">
+            <view class="comment-title">
+                <text>楼盘点评</text>
+            </view>
+            <view class="more-comment" wx:if="{{buildingCommentInfo&&buildingCommentInfo.totalCount}}">
+                <text>还有{{buildingCommentInfo&&buildingCommentInfo.totalCount}}条评论 </text>
+                <image class="icon_arrow-right" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+        <view class="comment-info-content" wx:if="{{buildingCommentInfo&&buildingCommentInfo.buildingCommentList&&buildingCommentInfo.buildingCommentList.length}}">
+            <view class="comment-info-item" wx:for="{{buildingCommentInfo.buildingCommentList}}" wx:key="index">
+                <comment-card bind:operateCommentCardInfo="operateCommentCardInfo" commentCardInfo="{{item}}"></comment-card>
+            </view>
+        </view>
+        <view class="no-comment" wx:else>
+            <image class="icon_no-comment" src="{{imgsPathInfo&&imgsPathInfo.rootPath+'/images_wx/default_graph/detail_img_no_commt@3x.png'}}"></image>
+        </view>
+        <view class="comment-info-footer">
+            <UserAuthorize authUserInfo bindproxySuccess="addComment" userInfo="{{userInfo}}">
+                <view class="btn_go-comment">
+                    <image class="icon_comment" src="/resource/detail/detail_icon_review@3x.png"></image>
+                    <text>写评论</text>
+                </view>
+            </UserAuthorize>
+        </view>
+    </view>
+    <view class="node-anchor" data-type="recentlyProjectInfo"></view>
+    <view class="opening-info" id="recentlyOpened" wx:if="{{recentlyProjectInfo&&recentlyProjectInfo.totalCount&&project.VersionType===0}}">
+        <view bindtap="goDetailHistoryPage" class="openging-info-header">
+            <view class="opening-title">
+                <text>最近开盘</text>
+            </view>
+            <view class="look-more-openging" wx:if="{{recentlyProjectInfo.totalCount>1}}">
+                <text>已开盘{{recentlyProjectInfo.totalCount}}次</text>
+                <image class="icon_arrow-right" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+        <view class="openging-info-content">
+            <view class="opening-list">
+                <recently-opened recentList="{{recentlyProjectInfo.recentlyProjectList}}"></recently-opened>
+            </view>
+        </view>
+    </view>
+    <view class="node-anchor" data-type="buildingArticleInfo"></view>
+    <view class="article-info" id="buildingActicle" wx:if="{{buildingArticleInfo&&buildingArticleInfo.buildingArticles&&buildingArticleInfo.buildingArticles.length}}">
+        <view class="article-info-title">
+            <view class="article-title">
+                <text>楼盘文章</text>
+            </view>
+            <view bind:tap="goDetailArticleListPage" class="more-article">
+                <text>更多文章</text>
+                <image class="icon_arrow-right" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+        <view class="article-info-content">
+            <view class="article-info-item" data-idx="{{index}}" id="item_article_record" wx:for="{{buildingArticleInfo.buildingArticles}}" wx:key="index">
+                <article-card articleCardInfo="{{item.articleInfo}}" bind:operateArticleCardInfo="operateArticleCardInfo"></article-card>
+            </view>
+        </view>
+    </view>
+    <view class="detail__panel detail__surroundings detail__consulatant observe-item" id="building-broker" wx:if="{{!recommendBrokerList.IsBoundConsultant}}">
+        <view bindtap="goBrokerListPage" class="detail__panel-head">
+            <view class="detail__panel-title">置业顾问</view>
+            <view class="detail__cell-arrow-box" wx:if="{{brokerList&&brokerList.length>0}}">
+                <image class="detail__cell-arrow" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="broker__list" wx:if="{{brokerList&&brokerList.length}}">
+                <view bindtap="goBrokerCardPage" class="broker__item {{index!==0?'ml10':''}}" data-brokerid="{{item.Id}}" wx:if="{{index<3}}" wx:for="{{brokerList}}" wx:key="Id">
+                    <view class="broker__img-wrap">
+                        <image webp class="broker__img" mode="aspectFill" src="{{item.PersonalImageUrl||'/resource/agent_default@3x.png'}}"></image>
+                    </view>
+                    <view class="broker__name">{{item.Name}}</view>
+                    <view catch:tap="emptyFn">
+                        <UserAuthorize authPhoneNumber authUserInfo userInfo="{{userInfo}}">
+                            <button catchtap="goChat" class="broker__chat" data-broker-id="{{item.Id}}" data-id="{{item.UnionId}}" data-wxtype="chat" id="chat__btn-{{index}}">
+                                <image class="broker__chat-icon" src="/resource/base/base_icon_counsel@3x.png"></image>
+                                <text class="broker__chat-text">咨询</text>
+                            </button>
+                        </UserAuthorize>
+                    </view>
+                </view>
+            </view>
+            <view class="broker__none" wx:else>
+                <image class="broker__none-img" src="{{imgsPathInfo&&imgsPathInfo.rootPath+'/images_wx/default_graph/detail_img_no_broker@3x.png'}}"></image>
+                <view class="broker__none-text">还没有置业顾问入驻</view>
+            </view>
+        </view>
+    </view>
+    <view class="node-anchor" data-type="facilityCount"></view>
+    <view class="detail__panel detail__surroundings observe-item" id="building-surround" wx:if="{{project}}">
+        <view bindtap="goDetailSurroundingPage" class="detail__panel-head">
+            <view class="detail__panel-head-container">
+                <view class="detail__panel-title">周边配套</view>
+                <view class="detail__cell-arrow-box">
+                    <image class="detail__cell-arrow" src="/resource/arrow_right.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="detail__panel-body p0">
+            <view class="detail__map-switch-wrap">
+                <view bind:tap="checkSurrounding" class="map-switch-item" data-index="{{item.FacilityType}}" wx:for="{{facilityCount}}" wx:key="index">
+                    <view class="map-switch-item-text">{{item.name}}
+              <text class="map-switch-item-num">({{item.Count}})</text>
+                    </view>
+                </view>
+            </view>
+            <view bind:tap="goDetailSurroundingPage" class="map__img-wrap" wx:if="{{project.AddressImageUrl}}">
+                <view class="map__marker">{{project.BuildingName}}</view>
+                <image webp binderror="addressImageUrlError" class="map-img" src="{{project.AddressImageUrl}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="detail__panel detail__surroundings history__sale" wx:if="{{project.RateTrend.length==1&&project.HistoryProject}}">
+        <view class="detail__panel-head">
+            <view class="detail__panel-title">历史开盘</view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="history__sale-title-wrap">
+                <view class="history__sale-title">{{project.HistoryProject.ProjectName}}</view>
+            </view>
+            <view class="history__sale-basis">
+                <view class="basis__cell">
+                    <view class="basis__cell-left history__cell-left">开盘时间</view>
+                    <view class="basis__cell-right">{{project.HistoryProject.PreSaleTime||'--'}}</view>
+                </view>
+                <view class="basis__cell">
+                    <view class="basis__cell-left history__cell-left">户型面积</view>
+                    <view class="basis__cell-right">{{project.HistoryProject.HouseArea||'--'}}</view>
+                </view>
+                <view class="basis__cell">
+                    <view class="basis__cell-left history__cell-left">房源均价</view>
+                    <view class="basis__cell-right">{{project.HistoryProject.AveragePrice?project.HistoryProject.AveragePrice+'元/m²':'--'}}</view>
+                </view>
+            </view>
+            <view class="history__sale-data" wx:if="{{project.HistoryProject.HouseNumber}}">
+                <view class="history__sale-data-item">房源套数：{{project.HistoryProject.HouseNumber||'--'}}</view>
+                <view class="history__sale-data-item">登记：{{project.HistoryProject.RegistrationNumber?project.HistoryProject.RegistrationNumber+'人':'--'}}</view>
+                <view class="history__sale-data-item">综合中签率：{{project.HistoryProject.SuccessRate?project.HistoryProject.SuccessRate+'%':'--'}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="node-anchor" data-type="buildingsAround"></view>
+    <view class="building-around-title observe-item" id="building-around">
+        <view class="building-recommend">
+            <view class="building-recommend-tip">
+                <view class="attach-line"></view>
+                <text class="building-recommend-tip__text">推荐楼盘</text>
+                <view class="attach-line"></view>
+            </view>
+        </view>
+        <view class="building-around-nav-list">
+            <view bind:tap="toggleBuildingAroundsNav" class="building-around-nav-item" data-id="{{item.id}}" wx:for="{{buildingsAroundNavList}}" wx:key="index">
+                <view class="nav-name">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class="line" wx:if="{{item.isActived}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="building-card-list" wx:if="{{buildingsAroundList&&buildingsAroundList.length}}">
+        <view class="building-card-item" wx:for="{{buildingsAroundList}}" wx:key="index">
+            <building-card bind:operateBuildingCardInfo="operateBuildingCardInfo" buildingCardInfo="{{item.buildingInfo}}"></building-card>
+        </view>
+    </view>
+    <view class="no-around" wx:else>
+        <image class="empty-img" src="{{imgsPathInfo&&imgsPathInfo.rootPath+'/images_wx/default_graph/null.png'}}"></image>
+    </view>
+    <view class="page-bottom">
+        <text>我也是有底线的~</text>
+    </view>
+    <view class="upload-btn-container" wx:if="{{itsMe}}">
+        <view catch:tap="showUploadBuildingInfoDialog" class="mateial-upload">
+            <image alt="" class="upload-btn_img" src="/resource/detail/lpxq_icon_upload@3x.png"></image>
+            <text>上传资料</text>
+        </view>
+        <view catch:tap="goTop" class="back-top">
+            <image class="back-top__icon" src="/resource/detail/lpxq_icon_top@3x.png"></image>
+        </view>
+    </view>
+    <view catch:tap="goTop" class="back-top-normal" style="{{backTopFlag?'right: 0':'right: -40rpx'}}" wx:else>
+        <image class="back-top__icon" src="/resource/detail/lpxq_icon_backtotop@3x.png"></image>
+    </view>
+    <view class="btn_footer {{isIpx?'is-ipx':'no-ipx'}}">
+        <view class="icon_btn-list">
+            <block wx:if="{{bottomBtnInfo.left}}">
+                <view class="btn_group" wx:if="{{bottomBtnInfo.left.type==='follow'}}">
+                    <view style="flex: 1;">
+                        <UserAuthorize authUserInfo bindproxySuccess="goCommentListPage" userInfo="{{userInfo}}">
+                            <view class="btn_comment">
+                                <image class="icon_goComment" src="/resource/detail/detail_icon_msg@3x.png"></image>
+                                <text class="comments-num">{{buildingCommentInfo&&buildingCommentInfo.allTotalCount||0}}</text>
+                            </view>
+                        </UserAuthorize>
+                    </view>
+                    <view style="flex: 1;">
+                        <UserAuthorize authPhoneNumber authUserInfo bindproxySuccess="triggerFollow" userInfo="{{userInfo}}">
+                            <view class="btn_fav">
+                                <block wx:if="{{bottomBtnInfo.left.isFollow}}">
+                                    <image class="fav-icon" src="/resource/lpxq_icon_following@3x.png"></image>
+                                    <view class="follow_tip">已关注</view>
+                                </block>
+                                <block wx:else>
+                                    <image class="fav-icon" src="/resource/lpxq_icon_unlike@3x.png"></image>
+                                    <view class="follow_tip">关注</view>
+                                </block>
+                            </view>
+                        </UserAuthorize>
+                    </view>
+                </view>
+                <view class="broker-info" wx:if="{{bottomBtnInfo.left.type==='broker'}}">
+                    <view class="broker-avatar">
+                        <image class="avatar" mode="aspectFill" src="{{bottomBtnInfo.left.PersonalImageUrl}}"></image>
+                    </view>
+                    <view class="broker-detail">
+                        <view class="brokder-name">{{bottomBtnInfo.left.Name}}</view>
+                        <view class="broker-job">置业顾问</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="btn-list">
+            <view style="flex: 1; position: relative;" wx:if="{{bottomBtnInfo.center}}">
+                <UserAuthorize authPhoneNumber="{{bottomBtnInfo.center.type==='onlineChat'}}" authUserInfo="{{bottomBtnInfo.center.type==='onlineChat'}}" bindproxySuccess="clickCenterBtn" userInfo="{{userInfo}}">
+                    <view class="btn-item_left {{bottomBtnInfo.right?'':'btn-item_no-right'}}">
+                        <view class="form_submit">
+                            <button class="btn_submit" formType="submit"></button>
+                            <button class="btn_title">{{bottomBtnInfo.center.title}}</button>
+                            <view class="btn_sub-title">{{bottomBtnInfo.center.subTitle}}</view>
+                        </view>
+                    </view>
+                </UserAuthorize>
+            </view>
+            <view style="flex: 1; position: relative;" wx:if="{{bottomBtnInfo.right}}">
+                <UserAuthorize authPhoneNumber="{{bottomBtnInfo.right.type==='telephoneConsultation'}}" authUserInfo="{{bottomBtnInfo.right.type==='subscription'}}" bindproxySuccess="clickRightBtn" userInfo="{{userInfo}}">
+                    <view class="btn-item_right">
+                        <view class="form_submit">
+                            <button class="btn_submit" formType="submit"></button>
+                            <button class="btn_title {{bottomBtnInfo.right.subTitle?'':'btn_no-sub-title'}}">{{bottomBtnInfo.right.title}}</button>
+                            <view class="btn_sub-title" wx:if="{{bottomBtnInfo.right.subTitle}}">{{bottomBtnInfo.right.subTitle}}</view>
+                        </view>
+                    </view>
+                </UserAuthorize>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{showSubscribeDialog}}">
+        <view class="dialog-mask"></view>
+        <view class="subscirbe-dialog">
+            <view class="subscirbe-dialog-header">
+                <text>订阅提醒短信通知</text>
+            </view>
+            <view class="subscirbe-dialog-content">
+                <view class="phone" wx:if="{{!subscribeDialog.usingOtherPhone}}">
+                    <text class="phone__text">{{subscribeDialog&&subscribeDialog.phone}}</text>
+                    <text bind:tap="toggleSubscribePhoneType" class="phone_tip">使用其他手机号</text>
+                </view>
+                <input bindinput="getSubscribePhone" class="input_phone" focus="true" maxlength="{{11}}" placeholder="请输入手机号" type="number" wx:else></input>
+            </view>
+            <view class="subscirbe-dialog-footer">
+                <view class="btn-list">
+                    <view bind:tap="operateSubscribeDialog" class="btn-item btn_cancel" data-type="cancel">
+                        <text>取消</text>
+                    </view>
+                    <view bind:tap="operateSubscribeDialog" class="btn-item btn_confirm" data-type="confirm">
+                        <text>确定</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{showLotteryDialog}}">
+        <view class="dialog-mask"></view>
+        <view class="lottery-dialog">
+            <lottery-register-dialog bind:operate="operateSubscribe" userInfo="{{userInfo}}"></lottery-register-dialog>
+        </view>
+    </block>
+    <view class="popup-mask" wx:if="{{brokerMaskVisibility}}">
+        <view class="popup-subscribe">
+            <view class="popup-head" style="padding-left:0">
+                <view class="popup-title" style="text-align:center">为您分配置业顾问</view>
+            </view>
+            <view class="popup-body" style="padding-bottom:0">
+                <view class="broker__mask-wrap">
+                    <image class="broker__mask-avatar" mode="aspectFill" src="{{brokerConcat.PersonalImageUrl}}"></image>
+                    <view class="broker__mask-name">{{brokerConcat.Name}}</view>
+                </view>
+                <view class="broker__mask-tips">拨通后请说明来自必有房</view>
+            </view>
+            <view class="popup-footer">
+                <view class="popup-handler">
+                    <button bindtap="closeBrokerMask" class="popup-btn popup-btn-default">取消</button>
+                    <button bind:tap="callForBroker" class="popup-btn">确定</button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="popup-mask" hidden="{{!registerMaskVisible}}">
+        <view class="mask-register">
+            <view class="mask-head">
+                <view class="mask-title mask-title-center">选择登记的推盘楼栋</view>
+            </view>
+            <view class="mask-body">
+                <view bindtap="goRegister" class="mask-register-item" data-idx="{{item.idx}}" data-status="{{item.status}}" data-url="{{item.url}}" hoverClass="mask-register-item-hover" wx:for="{{registerLinkList}}" wx:key="index">
+          {{project.BuildingName}}{{item.BuildingNo}}{{item.averagePrice?'('+item.averagePrice+'元/m²)':''}}
+        </view>
+            </view>
+            <view bindtap="closeRegisterList" class="mask-footer">取消</view>
+        </view>
+    </view>
+    <view class="popup-mask" hidden="{{!lotteryMaskVisible}}">
+        <view class="mask-register">
+            <view class="mask-head">
+                <view class="mask-title mask-title-center">选择查询摇号结果的推盘楼栋</view>
+            </view>
+            <view class="mask-body">
+                <view bindtap="goSearchLotteryResult" class="mask-register-item" data-idx="{{item.idx}}" data-project-id="{{item.projectId}}" data-status="{{item.status}}" hoverClass="mask-register-item-hover" wx:for="{{lotteryResultList}}" wx:key="index">
+          {{project.BuildingName}}{{item.BuildingNo}}
+        </view>
+            </view>
+            <view bindtap="triggerLotteryMaskVisible" class="mask-footer">取消</view>
+        </view>
+    </view>
+    <view bind:tap="cancelShare" class="share_card_model" style="{{shareCardVisible?'':'visibility: hidden'}}">
+        <view class="share__card {{shareCardVisible?'share__card-show':''}}">
+            <view class="share__items">
+                <view class="share__item share__item-app">
+                    <button class="wx__btn-transparent" openType="share"></button>
+                    <image class="share__icon" src="/resource/tkt_icon_wechat@3x.png"></image>
+                    <view class="share__text">发送给朋友</view>
+                </view>
+                <view catch:tap="makePoster" class="share__item share__item-poster" wx:if="{{project.BuildingStatus!==2}}">
+                    <image class="share__icon" src="/resource/tkt_icon_pyq@3x.png"></image>
+                    <view class="share__text">分享海报</view>
+                </view>
+            </view>
+            <view bind:tap="cancelShare" class="share__cancel">取消</view>
+        </view>
+    </view>
+    <bottom-modal bindcloseModal="showUploadBuildingInfoDialog" visibility="{{uploadBuildingInfoDialog.showUploadBuildingInfoDialog}}">
+        <view class="upload-tab-list">
+            <view catch:tap="goUploadInfoPage" class="upload-tab-item" data-id="{{item.id}}" wx:for="{{uploadBuildingInfoDialog.uploadTabList}}" wx:key="index">
+                <image class="upload-tab-item-img" src="{{item.iconUrl}}"></image>
+                <text class="upload-tab-item-tip">{{item.title}}</text>
+            </view>
+        </view>
+    </bottom-modal>
+    <ReplyComment bind:replySuccess="handleReplySuccess" buildingId="{{project.BuildingId}}" commentId="{{replayCommentParams.commentId}}" commentType="{{replayCommentParams.commentType}}" id="ReplyComment" parentId="{{replayCommentParams.parentId}}" placeholder="{{replayCommentParams.placeholder}}" unionId="{{replayCommentParams.unionId}}" userInfo="{{userInfo}}"></ReplyComment>
+    <SubscribeDialog bindsubscribe="handleSubscribeRemind" wx:if="{{!project.SubscribedRecordId&&project.IsFollow&&userInfo&&!userInfo.PhoneNumber}}"></SubscribeDialog>
+    <SubscribeRemind bindcancel="handelSubscribeRemind" bindsuccess="handelSubscribeRemind" buildingId="{{project.BuildingId}}" dialogShow="{{subscribeRemind}}" userInfo="{{userInfo}}"></SubscribeRemind>
+</view>

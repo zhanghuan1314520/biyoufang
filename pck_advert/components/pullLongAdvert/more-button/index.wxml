@@ -1,0 +1,25 @@
+<view catchtouchmove="noTouch" class="modal" wx:if="{{_visibility}}">
+    <view animation="{{slideInOrOut}}" class="animation">
+        <view class="modal-content">
+            <view class="row">
+                <button catch:tap="handleTap" class="reset-btn common-btn" data-type="building">
+                    <image class="des-icon" src="{{icons['cly_icon_detail']}}"></image>
+                    <text>楼盘详情</text>
+                </button>
+            </view>
+            <button catch:tap="handleTap" class="reset-btn common-btn" data-type="consultant">
+                <image class="des-icon" src="{{icons['cly_icon_consultant']}}"></image>
+                <text>置业顾问</text>
+            </button>
+            <button class="reset-btn common-btn" data-type="shar" openType="share">
+                <image class="des-icon" src="{{icons['cly_icon_sharebuilding']}}"></image>
+                <text>分享楼盘</text>
+            </button>
+            <button catch:tap="handleTap" class="reset-btn common-btn" data-type="navigation">
+                <image class="des-icon" src="{{icons['cly_icon_navigation']}}"></image>
+                <text>位置导航</text>
+            </button>
+        </view>
+        <view bindtap="toggleVisibility" class="modal-btn">取消</view>
+    </view>
+</view>

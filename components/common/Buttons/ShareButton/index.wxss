@@ -1,0 +1,29 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.share {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 30rpx;
+    bottom: 97rpx;
+    width: 88rpx;
+    height: 88rpx;
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+    border-radius: 50%;
+    font-size: 22rpx;
+    color: #fff;
+    opacity: .92;
+}
+
+.share .icon_share {
+    width: 40rpx;
+    height: 40rpx;
+}

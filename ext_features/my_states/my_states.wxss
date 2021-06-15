@@ -1,0 +1,31 @@
+.no-news {
+    text-align: center;
+}
+
+.img-none {
+    width: 232rpx;
+    height: 188rpx;
+    padding-top: 201rpx;
+    padding-bottom: 83rpx;
+}
+
+.txt-none {
+    font-size: 24rpx;
+    color: #777;
+    line-height: 33rpx;
+}
+
+.btn-commit {
+    width: 400rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: linear-gradient(270deg,#fe5e10,#ff7603);
+    border-radius: 45rpx;
+    color: #fff;
+    margin: 47rpx auto 0;
+    font-size: 34rpx;
+}
+
+moment_item:last-child {
+    border: 0;
+}

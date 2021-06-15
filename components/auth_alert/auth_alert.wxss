@@ -1,0 +1,49 @@
+.mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+}
+
+.mask__message {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 650rpx;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 4px;
+}
+
+.message__content {
+    padding: 45rpx 60rpx;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333;
+    white-space: normal;
+}
+
+.message__btns {
+    overflow: hidden;
+    border-top: 1px solid #e8e8e8;
+}
+
+.message__btn {
+    float: left;
+    width: 50%;
+    height: 100rpx;
+}
+
+.message__btn:nth-child(1) {
+    box-sizing: border-box;
+    border-right: 1px solid #e8e8e8;
+}
+
+.message__btn button,.message__button {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}

@@ -1,0 +1,131 @@
+.lottery-status-card-wrapper {
+    width: 100%;
+}
+
+.lottery-status-info-header {
+    height: 76rpx;
+    border-bottom: 1px solid #ededed;
+}
+
+.lottery-status-info-header,.lottery-status-item {
+    display: flex;
+    align-items: center;
+}
+
+.lottery-status-item__label {
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #333;
+}
+
+.lottery-status-item__content {
+    margin-left: 10rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.lottery-status-item__content_result {
+    color: #fe5e10;
+}
+
+.lottery-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    font-size: 26rpx;
+    color: #999;
+}
+
+.lottery-status-info-body {
+    position: relative;
+    padding: 11rpx 0 30rpx;
+    border-bottom: 1px dotted #ededed;
+}
+
+.register-info-item {
+    display: flex;
+    align-items: center;
+    height: 60rpx;
+}
+
+.register-info-item__label {
+    width: 226rpx;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.register-info-item__content {
+    flex: 1;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.building-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.btn_fold {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 16rpx;
+    height: 34rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.icon_fold {
+    margin-left: 12rpx;
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.lottery-status-info-footer {
+    display: flex;
+    align-items: center;
+}
+
+.lottery-tip {
+    line-height: 60rpx;
+}
+
+.lottery-tip,.lottery-tip__label {
+    display: flex;
+}
+
+.lottery-tip__label {
+    align-items: center;
+    width: 226rpx;
+    font-size: 28rpx;
+    color: #9d5429;
+    height: 40rpx;
+}
+
+.icon_phone {
+    margin-right: 4rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.lottery-tip__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.receive-phone {
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.lottery-tip__text {
+    margin-top: 8rpx;
+    font-size: 22rpx;
+    color: #fe5e10;
+}

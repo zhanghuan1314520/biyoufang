@@ -1,0 +1,66 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+    text-align: left;
+}
+
+.container {
+    background-color: #f6f6f6;
+    min-height: 100vh;
+}
+
+.consultant {
+    border-top: 20rpx solid #f6f6f6;
+    padding: 0 30rpx;
+    background-color: #fff;
+}
+
+.consultant .consultant-info {
+    padding: 28rpx 0;
+    display: flex;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.consultant .consultant-info .avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-right: 34rpx;
+    background-color: #ccc;
+}
+
+.consultant .consultant-info .name {
+    color: #333;
+}
+
+.consultant .consultant-info .name view:first-child {
+    font-size: 32rpx;
+    padding-bottom: 25rpx;
+}
+
+.consultant .consultant-info .name view:last-child {
+    font-size: 24rpx;
+}
+
+.consultant .btn-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.consultant .btn-list .btn-item {
+    font-size: 24rpx;
+    color: #333;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 30rpx 0 30rpx 28rpx;
+}
+
+.consultant .btn-list .btn-item .btn-icon {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 23rpx;
+}

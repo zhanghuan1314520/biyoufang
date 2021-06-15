@@ -1,0 +1,6 @@
+<block wx:if="{{list&&list.length>0}}">
+    <project-list-item bindcancelsubscribe="cancelSubscribe" project="{{item}}" projectIndex="{{index+1}}" projectLength="{{list.length}}" projectSource="{{projectSource}}" wx:for="{{list}}" wx:key="item.ProjectId"></project-list-item>
+</block>
+<view class="empty-img-wrap" wx:if="{{(!list||list.length===0)&&needSite}}">
+    <image class="empty-img" src="/resource/null.png"></image>
+</view>

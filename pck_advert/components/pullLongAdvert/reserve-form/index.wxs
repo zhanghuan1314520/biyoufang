@@ -1,0 +1,13 @@
+var ciphertext = (function(text) {
+    if (!text) return;;
+    var strArr = text.split('');
+    for (var i = 0; i < text.length; ++i) {
+        if (i >= 3 && i <= 6) {
+            strArr[((nt_0 = (i), null == nt_0 ? undefined : 'number' === typeof nt_0 ? nt_0 : "" + nt_0))] = '*'
+        }
+    };
+    return (strArr.join(''))
+});
+module.exports = ({
+    ciphertext: ciphertext,
+});

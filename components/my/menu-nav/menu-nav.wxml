@@ -1,0 +1,31 @@
+<view class="menu-nav-wrapper">
+    <view class="menu-nav-list">
+        <view style="width: 25%;" wx:for="{{menuNavList}}" wx:key="index">
+            <UserAuthorize authPhoneNumber="{{item.needAuthorizationPhoneNumber}}" authUserInfo="{{item.needAuthorization}}" bindproxySuccess="operateMenuNavInfo" recordParams="{{[ {id:item.id,name:item.name} ]}}" userInfo="{{userInfo}}">
+                <view class="menu-nav-item">
+                    <button catch:tap="noop" class="btn_getUserInfo btn_reset" data-id="{{item.id}}" data-type="menuNavShare" openType="share" wx:if="{{item.needShare}}"></button>
+                    <button catch:tap="noop" class="btn_getUserInfo btn_reset" data-id="{{item.id}}" data-type="menuNavShare" openType="contact" wx:if="{{item.needContact}}"></button>
+                    <view class="menu-nav-icon" wx:if="{{item.type==='icon'}}">
+                        <image class="icon_nav" src="{{item.iconSrc}}"></image>
+                        <view class="red-dot" wx:if="{{item.redDot}}"></view>
+                        <block wx:elif="{{item.navTipIsArr&&item.navTip}}">
+                            <view class="menu-nav-icon__tip" style="top: {{-12+32*index}}rpx" wx:for="{{item.navTip}}" wx:key="index">
+                                <text>{{item}}</text>
+                            </view>
+                        </block>
+                        <view class="menu-nav-icon__tip" wx:elif="{{item.navTip}}">
+                            <text>{{item.navTip}}</text>
+                        </view>
+                    </view>
+                    <view class="menu-nav-title" wx:if="{{item.type==='text'}}">
+                        <text class="menu-nav-title__text">{{item.title}}</text>
+                        <text class="menu-nav-subtitle__text" wx:if="{{item.subTitle}}">{{item.subTitle}}</text>
+                    </view>
+                    <view class="menu-nav-name">
+                        <text class="menu-nav-name__text">{{item.name}}</text>
+                    </view>
+                </view>
+            </UserAuthorize>
+        </view>
+    </view>
+</view>

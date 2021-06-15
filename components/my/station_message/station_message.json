@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "state": "/components/myStates/moment_state/moment_state",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

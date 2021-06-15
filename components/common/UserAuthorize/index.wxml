@@ -1,0 +1,14 @@
+<block wx:if="{{authUserInfo&&userInfo&&!userInfo.Authorized}}">
+    <button bind:tap="getUserProfile" class="button-reset root-class common-btn" wx:if="{{canIUseGetUserProfile}}">
+        <slot></slot>
+    </button>
+    <button bindgetuserinfo="getUserInfo" class="button-reset root-class common-btn" openType="getUserInfo" wx:else>
+        <slot></slot>
+    </button>
+</block>
+<button bindgetphonenumber="getPhoneNumber" class="button-reset root-class common-btn" openType="getPhoneNumber" wx:elif="{{authPhoneNumber&&userInfo&&!userInfo.PhoneNumber}}">
+    <slot></slot>
+</button>
+<view bindtap="proxySuccess" class="button-reset root-class common-btn" wx:else>
+    <slot></slot>
+</view>

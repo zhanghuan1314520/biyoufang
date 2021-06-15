@@ -1,0 +1,20 @@
+<view class="my__fans" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="关注我的({{fansNumber}})" showShare="{{false}}"></nav-bar>
+    <view class="fans__list">
+        <view class="fans" wx:for="{{list}}" wx:key="index">
+            <view class="fans__info">
+                <view class="avatar__wrap">
+                    <image class="avatar" mode="aspectFill" src="{{item.AvatarUrl?item.AvatarUrl:'/resource/agent_default@3.png'}}"></image>
+                </view>
+                <view class="fans__content">
+                    <view class="fans__name">{{item.nickName?item.nickName:'游客'}}</view>
+                    <view class="time">{{item.time}}</view>
+                </view>
+            </view>
+            <view bindtap="goChat" class="fans__chat" data-unionid="{{item.UnionId}}" wx:if="{{item.UserSystem<=0}}">聊天</view>
+        </view>
+    </view>
+    <view class="data__empty" wx:if="{{list&&list.length===0}}">
+        <image class="data__empty-img" src="{{imageRoot}}/images_wx/default_graph/null.png"></image>
+    </view>
+</view>

@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "more-button": "/pck_advert/components/pullLongAdvert/more-button/index",
+        "nav-button": "/pck_advert/components/pullLongAdvert/nav-button/index",
+        "top-bar": "/pck_advert/components/pullLongAdvert/top-bar/index",
+        "reserve-form": "/pck_advert/components/pullLongAdvert/reserve-form/index",
+        "welcome-home": "/pck_advert/components/pullLongAdvert/welcome-home/index",
+        "skeleton": "/components/base/skeleton/skeleton",
+        "nav-bar": "/pck_advert/components/pullLongAdvert/nav_bar/nav_bar",
+        "live-play": "/pck_advert/components/pullLongAdvert/live-play/index",
+        "advert-video": "/pck_advert/components/pullLongAdvert/AdvertVideo/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

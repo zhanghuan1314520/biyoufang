@@ -1,0 +1,10 @@
+.empty-img-wrap {
+    padding: 60rpx 0;
+}
+
+.empty-img {
+    display: block;
+    width: 278rpx;
+    height: 311rpx;
+    margin: 0 auto;
+}

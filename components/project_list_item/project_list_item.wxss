@@ -1,0 +1,220 @@
+.list__item {
+    position: relative;
+    margin: 0 29rpx;
+    padding: 29rpx 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: all .2s;
+    border-bottom: 1px solid #ededed;
+}
+
+.list__item-noBorder {
+    border-bottom: none;
+}
+
+.list__item-image-wrap {
+    position: relative;
+    width: 192rpx;
+    height: 144rpx;
+    flex-shrink: 0;
+    background: #f1f1f1;
+    border-radius: 4rpx;
+    overflow: hidden;
+}
+
+.list__item-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 4rpx;
+}
+
+.list__item-content {
+    overflow: hidden;
+    position: relative;
+    margin-left: 23rpx;
+    flex: 1;
+}
+
+.list__item-content-noVerify {
+    min-height: 144rpx;
+}
+
+.list__item-name {
+    color: #333;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80%;
+}
+
+.list__item-district {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24rpx;
+    color: #777;
+}
+
+.list__item-price {
+    font-size: 20rpx;
+    line-height: 40rpx;
+}
+
+.list__item-num {
+    display: inline-block;
+    font-size: 24rpx;
+    color: #8a969e;
+    margin-right: 6rpx;
+    vertical-align: bottom;
+}
+
+.list__item-price .list__item-num:first-child {
+    font-size: 30rpx;
+    color: #fe5e10;
+}
+
+.list__item-noPrice {
+    font-size: 30rpx;
+}
+
+.list__item-tags {
+    font-size: 20rpx;
+    line-height: 30rpx;
+    min-height: 30rpx;
+}
+
+.list__tag {
+    display: inline-block;
+    color: #2c83ff;
+    background: #f3f8fb;
+    padding: 1rpx 5rpx;
+    font-size: 20rpx;
+    border-radius: 2rpx;
+    margin-right: 10rpx;
+}
+
+.tag-spec {
+    background: #2c83ff;
+    color: #f3f8fb;
+}
+
+.list__item-status {
+    position: relative;
+    font-size: 24rpx;
+    color: #777;
+}
+
+.list__item-sharp {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #ff6100;
+}
+
+.list__item-cell {
+    font-size: 24rpx;
+    line-height: 33rpx;
+    margin-top: 17rpx;
+    color: #777;
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.list__item-cell-text {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 14rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-grow: 0;
+    overflow: hidden;
+}
+
+.list__item-cell-icon {
+    height: 30rpx;
+    width: 30rpx;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.list__item-hover {
+    background: #f3f3f3;
+}
+
+.list__item-pageviews {
+    width: 100%;
+    height: 41rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: -webkit-linear-gradient(top,#35373d,rgba(73,70,66,0));
+    padding: 0rpx 11rpx 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.views-icon {
+    width: 20rpx;
+    height: 20rpx;
+}
+
+.views-count {
+    font-size: 20rpx;
+    color: #fff;
+    padding-left: 6rpx;
+}
+
+.item__isSubscribe {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 14rpx;
+    font-size: 22rpx;
+    color: #8a969e;
+}
+
+.subscribe__cancel {
+    color: #faac18;
+    font-size: 26rpx;
+    position: relative;
+    z-index: 2;
+}
+
+.flex-cont {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-item {
+    width: 0;
+    flex: 1;
+}
+
+.flex-none {
+    flex: none;
+}
+
+.list__item-noPrice {
+    font-size: 24rpx;
+    color: #fe5e10;
+}
+
+.list__item-tag {
+    font-size: 24rpx;
+}
+
+.formid__btn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: transparent;
+    z-index: 1;
+}

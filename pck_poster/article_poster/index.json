@@ -1,0 +1,9 @@
+{
+    "navigationStyle": "default",
+    "navigationBarTitleText": "文章海报",
+    "usingComponents": {
+        "skeleton": "/components/base/skeleton/skeleton",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

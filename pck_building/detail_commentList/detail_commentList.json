@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "comment-card": "/components/detail/comment-card/comment-card",
+        "ReplyComment": "/components/common/ReplyComment/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    },
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+}

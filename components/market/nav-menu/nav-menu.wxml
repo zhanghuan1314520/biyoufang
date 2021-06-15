@@ -1,0 +1,10 @@
+<view class="nav-menu-wrapper">
+    <view class="nav-menu-list {{true?'btm-line':''}}" wx:if="{{navMenuList.length}}">
+        <view bind:tap="toggleNavMenu" class="nav-menu-item {{item.isActived?'nav-menu-item_active':''}}" data-id="{{item.id}}" wx:for="{{navMenuList}}" wx:key="index">
+            <view class="nav-nemu-item__title {{item.isActived?'select-tab':''}}">
+                <text>{{item.title}}</text>
+                <view class="nav-nemu-item__new" wx:if="{{item.hasNewMessage}}"></view>
+            </view>
+        </view>
+    </view>
+</view>

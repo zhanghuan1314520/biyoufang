@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "auth-alert": "/components/auth_alert/auth_alert",
+        "consultant-buildings": "/components/my/consultant-buildings/index",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

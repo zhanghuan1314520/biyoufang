@@ -1,0 +1,13 @@
+<view class="detail" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="发表我的点评" showShare="{{false}}"></nav-bar>
+    <view class="tip">发表对{{'<'+buildingName+'>'}}的评价</view>
+    <view class="main__wrap">
+        <form bindsubmit="formSubmit">
+            <view class="text-area-wrap">
+                <textarea bindinput="typing" class="comment__area" maxlength="{{maxTextCount}}" name="comment" placeholder="请写下您的评论" placeholderStyle="" value="{{content}}"></textarea>
+                <button class="submit" disabled="{{uploading}}" formType="submit">发布</button>
+            </view>
+            <view class="text-count">{{currentTextCount}}/{{maxTextCount}}</view>
+        </form>
+    </view>
+</view>

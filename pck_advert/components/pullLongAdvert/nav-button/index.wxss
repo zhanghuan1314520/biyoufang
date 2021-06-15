@@ -1,0 +1,85 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.nav-wrap {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 130rpx;
+    background-color: #fff;
+    border-top: 1px solid #eaeaea;
+    z-index: 999;
+}
+
+.nav-wrap,.nav-wrap .btn-left {
+    display: flex;
+}
+
+.nav-wrap .btn-left {
+    width: 40%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.nav-wrap .btn-left .bottom-icon {
+    font-size: 22rpx;
+    color: #333;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.nav-wrap .btn-left .lpxq-icon {
+    width: 40rpx;
+    height: 40rpx;
+    padding-bottom: 11rpx;
+    margin: 0 auto;
+}
+
+.nav-wrap .btn-right {
+    width: 60%;
+}
+
+.nav-wrap .btn-right,.nav-wrap .btn-right .btn-common {
+    display: flex;
+    align-items: center;
+}
+
+.nav-wrap .btn-right .btn-common {
+    font-size: 28rpx;
+    color: #fff;
+    width: 200rpx;
+    height: 88rpx;
+    border-radius: 8rpx;
+    font-weight: 700;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.nav-wrap .btn-right .see-hourse {
+    background: linear-gradient(270deg,#fcae51,#ffbc00);
+    margin-right: 20rpx;
+}
+
+.nav-wrap .btn-right .online-contact {
+    background: linear-gradient(270deg,#fe5e10,#ff831c);
+}
+
+.nav-wrap .btn-right .booked {
+    background: #ffd59d;
+}
+
+.nav-wrap .btn-right .attach-mes {
+    font-size: 20rpx;
+    color: #fff;
+    font-weight: 400;
+    padding-top: 6rpx;
+}

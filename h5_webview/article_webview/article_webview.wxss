@@ -1,0 +1,104 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+canvas {
+    left: -999px;
+    top: -999px;
+    width: 750px;
+    height: 100px;
+}
+
+button,canvas {
+    position: absolute;
+}
+
+button {
+    background: transparent;
+    left: 0;
+    top: 0;
+    font-size: 28rpx;
+    width: 270rpx;
+    height: 70rpx;
+    color: transparent;
+}
+
+.broker-info-box {
+    width: 720rpx;
+    height: 93rpx;
+    background: #fff;
+    box-shadow: 0 -4px 8px 0 hsla(0,0%,87.1%,.5);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20rpx 0 10rpx;
+}
+
+.broker-info-box .broker-info {
+    height: 93rpx;
+    flex: 1;
+    text-align: left;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+}
+
+.broker-info-box .chat,.broker-info-box .watch-building {
+    width: 171rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #fe5e10;
+    border-radius: 4rpx;
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+}
+
+.broker-info-box .broker-image {
+    width: 60rpx;
+    height: 60rpx;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.broker-info-box .chat {
+    width: 198rpx;
+    background-color: #09c47a;
+    margin-right: 20rpx;
+}
+
+.is-ipx {
+    padding-bottom: 30rpx;
+}
+
+.no-ipx {
+    padding-bottom: 9rpx;
+}
+
+.btn-poster,.btn-share {
+    position: fixed;
+    right: 30rpx;
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+}
+
+.btn-poster .btn-icon,.btn-poster .btn-share_wrap,.btn-share .btn-icon,.btn-share .btn-share_wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-share {
+    bottom: 196rpx;
+}
+
+.btn-poster {
+    bottom: 314rpx;
+}

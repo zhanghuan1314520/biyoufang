@@ -1,0 +1,78 @@
+<view catchtap="goDetailPage" class="question-card-wrapper" wx:if="{{cardInfo}}">
+    <view class="question-card">
+        <view class="question-card__title">
+            <view class="question-card__title_tip">
+                <view class="question-mine" wx:if="{{questionCardInfo.IsMine}}">我</view>
+                <view class="question-status {{'question-status_'+questionCardInfo.questionStatusType}}">{{questionCardInfo.statusText}}</view>
+                <view class="qustion-tag-list" wx:if="{{questionCardInfo.typeTags&&questionCardInfo.typeTags.length}}">
+                    <view class="question-tag-item" wx:for="{{questionCardInfo.typeTags}}" wx:key="index">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="answer-num" wx:if="{{questionCardInfo.answerNumPos==='top'}}">
+                <text class="din-reqular">{{questionCardInfo.AnswerNumber}}</text>
+                <text>回答</text>
+            </view>
+            <view catch:tap="showPops" class="ellipsis" data-type="delete" wx:if="{{questionCardInfo.canDel}}">
+                <text>···</text>
+                <view class="ellipsis-btn" wx:if="{{showPop}}">
+                    <view class="del-answer-dialog-ange"></view>
+                    <view class="select-list">
+                        <view catch:tap="operateAnswerItem" class="select-item select-item-bord" data-status="1">
+                            <text>删除</text>
+                        </view>
+                        <view catch:tap="operateAnswerItem" class="select-item" data-status="0">
+                            <text>取消</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="question-card__main">
+            <view class="question-card__content {{textInfo.lineNumber>3&&!introducState?'fixed-height':''}}" style="height: {{introducState?textInfo.lineNumber*textInfo.lineHeight:textInfo.lineNumber>3?textInfo.maxShowLineNum*textInfo.lineHeight:textInfo.lineNumber*textInfo.lineHeight}}rpx">
+                <text id="content">{{questionCardInfo.Content}}</text>
+            </view>
+            <view catch:tap="expansionIntroduc" class="ppg-more" wx:if="{{textInfo.lineNumber>3}}">
+                <image class="ppg-more_icon {{introducState?'expansion':''}}" src="/resource/base/ppg_icon_more@3x.png"></image>
+            </view>
+            <view class="question-card__img-list" wx:if="{{questionCardInfo.covers&&questionCardInfo.covers.length}}">
+                <image catch:tap="previewImage" class="question-card__img-item {{questionCardInfo.covers.length>1?'':'question-card__img-item_medium'}}" data-id="{{item.id}}" mode="aspectFill" src="{{item.imgSrc}}" wx:for="{{questionCardInfo.covers}}" wx:key="index"></image>
+            </view>
+        </view>
+        <view class="question-card__footer">
+            <view class="user-info">
+                <image class="avator" mode="aspectFill" src="{{questionCardInfo.avatarUrl}}"></image>
+                <view class="user-name">
+                    <text>{{questionCardInfo.NickName}}</text>
+                </view>
+                <view class="create-time">
+                    <text>{{questionCardInfo.createTime}}</text>
+                </view>
+            </view>
+            <view class="btn-group">
+                <view class="answer-num answer-num_bottom" wx:if="{{questionCardInfo.answerNumPos==='bottom'}}">
+                    <text>{{questionCardInfo.AnswerNumber}}</text>
+                    <text>回答</text>
+                </view>
+                <view catchtap="noop" class="btn-list">
+                    <view class="btn-item" wx:if="{{questionCardInfo.questionStatus==='qaQuestion'}}">
+                        <UserAuthorize authUserInfo bindproxySuccess="goQuestionPage" recordParams="{{[ {type:'answerQa'} ]}}" userInfo="{{userInfo}}">
+                            <form class="form_submit">
+                                <button class="btn_submit btn_reset btn_answer">
+                                    <image class="question-pen" src="/resource/qa/qa_icon_ answer@3x.png" wx:if="{{!questionCardInfo.IsMine}}"></image>
+                    {{questionCardInfo.IsMine?'查看问答 >':'我要回答'}}
+                  </button>
+                            </form>
+                        </UserAuthorize>
+                    </view>
+                    <view class="btn-item" wx:if="{{questionCardInfo.questionStatus==='qaUserQuestion'}}">
+                        <form class="form_submit">
+                            <button catch:tap="goQuestionPage" class="btn_submit btn_reset btn_look" data-type="goDetail">
+                                <text>查看问答</text>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

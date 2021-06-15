@@ -1,0 +1,22 @@
+<view class="detail" style="padding-top:{{navH}}px">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="评论详情"></nav-bar>
+    </view>
+    <view class="comment-list">
+        <comment-detail bind:operateCommentCardInfo="operateCommentCardInfo" commentCardInfo="{{commonDetail}}" showBottom="{{false}}" userInfo="{{userInfo}}"></comment-detail>
+    </view>
+    <view class="line"></view>
+    <view class="replyList">
+        <view class="allReply flex_alicen">全部回复<text class="allReplyNum">{{commonDetail.Replies.length}}条</text>
+        </view>
+        <view class="replyList-list">
+            <view class="replyList-list-item comment-list" wx:for="{{commonDetail.Replies}}" wx:key="index">
+                <comment-detail bind:operateCommentCardInfo="operateCommentCardInfo" commentCardInfo="{{item}}" userInfo="{{userInfo}}"></comment-detail>
+            </view>
+        </view>
+    </view>
+    <ReplyComment bind:replySuccess="handleReplySuccess" buildingId="{{project.BuildingId}}" commentId="{{replayCommentParams.commentId}}" commentType="{{replayCommentParams.commentType}}" id="ReplyComment" parentId="{{replayCommentParams.parentId}}" placeholder="{{replayCommentParams.placeholder}}" unionId="{{replayCommentParams.unionId}}" userInfo="{{userInfo}}"></ReplyComment>
+    <view class="data__empty" wx:if="{{list.length===0&&!loading}}">
+        <image class="data__empty-img" src="/resource/null.png"></image>
+    </view>
+</view>

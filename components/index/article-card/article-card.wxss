@@ -1,0 +1,143 @@
+.form_submit {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn_reset {
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    background-color: transparent;
+}
+
+.article-card-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card-intro {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 82rpx;
+}
+
+.article-card-info_horizontal {
+    flex-direction: row;
+}
+
+.article-card-title {
+    display: flex;
+    max-height: 90rpx;
+}
+
+.article-card-title,.article-card-title__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 2;
+    box-orient: vertical;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.article-card-title__text {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 45rpx;
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #333;
+}
+
+.article-source {
+    align-items: flex-end;
+}
+
+.article-source,.source-info {
+    display: flex;
+    flex: 1;
+}
+
+.source-info,.source-logo {
+    align-items: center;
+}
+
+.source-logo {
+    display: flex;
+    margin-right: 10rpx;
+    border-radius: 50%;
+}
+
+.source-logo,.source-logo__img {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.source-name {
+    color: #666;
+}
+
+.article-time,.source-name {
+    display: flex;
+    align-items: center;
+    height: 40rpx;
+    font-size: 24rpx;
+}
+
+.article-time {
+    color: #999;
+}
+
+.article-card-cover_mini {
+    margin-left: 36rpx;
+    width: 218rpx;
+    height: 164rpx;
+    border-radius: 8rpx;
+}
+
+.article-card-cover_small {
+    display: flex;
+    margin-top: 24rpx;
+    margin-bottom: 20rpx;
+    width: 100%;
+    height: 154rpx;
+}
+
+.article-card-cover_default {
+    margin-bottom: 14rpx;
+    width: 100%;
+    height: 414rpx;
+    border-radius: 4rpx;
+}
+
+.article-cover_mini {
+    width: 218rpx;
+    height: 164rpx;
+    border-radius: 8rpx;
+    background-color: #ccc;
+}
+
+.article-cover_small {
+    flex: 1;
+    height: 154rpx;
+    border-radius: 4rpx;
+    background-color: #ccc;
+}
+
+.article-cover_default {
+    width: 100%;
+    height: 414rpx;
+    border-radius: 4rpx;
+    background-color: #ccc;
+}
+
+.ml10 {
+    margin-left: 10rpx;
+}
+
+.mt20 {
+    margin-top: 20rpx;
+}

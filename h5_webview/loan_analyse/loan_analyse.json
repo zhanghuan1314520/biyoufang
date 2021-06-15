@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "ec-canvas": "/h5_webview/ec-canvas/ec-canvas",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

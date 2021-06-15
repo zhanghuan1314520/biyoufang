@@ -1,0 +1,21 @@
+.article-info {
+    padding: 0 30rpx;
+    background-color: #fff;
+}
+
+.article-item {
+    padding-top: 40rpx;
+    padding-bottom: 30rpx;
+    border-bottom: 1px solid #ededed;
+}
+
+.no-more-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rpx;
+    margin-bottom: 96rpx;
+    height: 34rpx;
+    font-size: 24rpx;
+    color: #999;
+}

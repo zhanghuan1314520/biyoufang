@@ -1,0 +1,137 @@
+<view class="my-wrapper">
+    <nav-bar bgColor="{{psonge===2?'':'rgba(255,255,255,0)'}}" navBarTitle="我的" needBackBtn="{{false}}" showShare="{{false}}"></nav-bar>
+    <view class="{{psonge===2?'bdb-30':'cs-back'}}" style="padding-top:{{navH}}px">
+        <view class="ps-head-disabled flex_space" wx:if="{{memberInfo.ConsultantStatus===3}}">
+            <view>置业顾问身份已被禁用，如有疑问请联系客服。</view>
+            <view catchtap="checkService">联系客服</view>
+        </view>
+        <view class="ps" wx:if="{{psonge===2}}">
+            <view class="ps-head flex-cont">
+                <view class="ps-head-img">
+                    <image class="ps-head-img" lazyLoad="true" mode="aspectFill" src="{{memberInfo.AvatarUrl?memberInfo.AvatarUrl:userInfo.AvatarUrl?userInfo.AvatarUrl:'/resource/my/profile_icon_head@3x.png'}}"></image>
+                </view>
+                <view class="ps-name">
+                    <view>{{memberInfo.name?memberInfo.name:userInfo.NickName?userInfo.NickName:'游客'}}</view>
+                    <view class="ps-state" wx:if="{{userInfo.WeixinAuthorized}}">
+                        <image class="ps-state-img" lazyLoad="true" src="/resource/my/orduser_icon@3x.png"></image>
+                        <text>普通用户</text>
+                    </view>
+                </view>
+            </view>
+            <view class="ps-list">
+                <menu-nav catch:operateMenuNavInfo="operateMenuNavInfo" menuNavList="{{psHeadList}}" userInfo="{{userInfo}}"></menu-nav>
+            </view>
+        </view>
+        <view class="cs-main" wx:if="{{psonge===3}}">
+            <view class="cs-main_inner">
+                <view class="cs-header">
+                    <view class="avator">
+                        <image class="avator-icon" mode="aspectFill" src="{{memberInfo.PersonalImageUrl?memberInfo.PersonalImageUrl:userInfo.AvatarUrl?userInfo.AvatarUrl:'/resource/my/profile_icon_head@3x.png'}}"></image>
+                    </view>
+                    <view class="cs-info">
+                        <view class="cs-info_top">
+                            <view class="cs-name">{{memberInfo.Name}}</view>
+                            <view class="cs-logo">
+                                <image class="cs-logo_icon" src="/resource/message/consultant_icon@3x.png"></image>
+                  置业顾问
+                </view>
+                        </view>
+                        <view catch:tap="closeBottomModal" class="cs-info_bottom">
+                            <view class="cs-building-name" wx:if="{{memberInfo.Buildings[0]}}">
+                  {{memberInfo.Buildings[0].BuildingName}}
+                </view>
+                            <block wx:if="{{memberInfo.Buildings.length>1}}">
+                  等{{memberInfo.Buildings.length}}个楼盘
+                </block>
+                        </view>
+                    </view>
+                    <view catchtap="goEditPage" class="cs-h_modifier">
+                        <image src="/resource/my/profile_icon_edit@3x.png"></image>
+                        <text>修改</text>
+                    </view>
+                </view>
+                <view class="integral">
+                    <view class="integral_left">
+                        <view class="integral-number">{{memberInfo.Inregral}}</view>
+                        <view catch:tap="showIntegralDetail" class="integral-detail">
+                积分明细
+              </view>
+                    </view>
+                    <view class="integral_right">
+                        <view class="integral-rank">
+                排名第{{memberInfo.IntegralRanking}}
+              </view>
+                        <view class="integral-rank-des">
+                {{memberInfo.integralTitle}}
+              </view>
+                        <view class="invite-code">
+                            <text>邀请码：{{memberInfo.InviteCode}}</text>
+                            <text catchtap="copyWechat" class="copy-code">复制</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="cs-integrate">
+            今日
+            <text class="cs-i_color">+{{memberInfo.TodayIntegral}}</text>
+            积分越高，获取客户几率越高
+            <text catchtap="checkIntegral" class="cs-i_color"> 如何加积分</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="main flex1">
+        <view class="main-list" wx:if="{{psonge===3}}">
+            <view class="main-list-text">我的线索</view>
+            <view class="main-clew flex_space">
+                <view>
+                    <view class="main-clew-data">{{memberInfo.visitor[0]}}<text wx:if="{{memberInfo.visitor[1]}}">{{memberInfo.visitor[1]}}</text>
+                    </view>
+                    <view>楼盘访客</view>
+                </view>
+                <view>
+                    <view class="main-clew-data">{{memberInfo.shear[0]}}<text wx:if="{{memberInfo.shear[1]}}">{{memberInfo.shear[1]}}</text>
+                    </view>
+                    <view>分享带客</view>
+                </view>
+                <view>
+                    <view class="main-clew-data">{{memberInfo.chat[0]}}<text wx:if="{{memberInfo.chat[1]}}">{{memberInfo.chat[1]}}</text>
+                    </view>
+                    <view>和我聊天</view>
+                </view>
+                <view>
+                    <view class="main-clew-data">{{memberInfo.byPhone[0]}}<text wx:if="{{memberInfo.byPhone[1]}}">{{memberInfo.byPhone[1]}}</text>
+                    </view>
+                    <view>打我电话</view>
+                </view>
+            </view>
+        </view>
+        <view class="main-list" wx:if="{{psonge===2||psonge===3}}">
+            <view class="main-list-text">我的服务</view>
+            <view>
+                <menu-nav catch:operateMenuNavInfo="operateMenuNavInfo" menuNavList="{{psMyServe}}" userInfo="{{userInfo}}" wx:if="{{psonge===2}}"></menu-nav>
+                <menu-nav catch:operateMenuNavInfo="operateMenuNavInfo" catch:operateParent="handleChildEvent" menuNavList="{{csMyserve}}" userInfo="{{userInfo}}" wx:if="{{psonge===3}}"></menu-nav>
+            </view>
+        </view>
+        <view class="main-list" wx:if="{{psonge===2}}">
+            <view class="main-list-text">其他服务</view>
+            <view>
+                <menu-nav catch:operateMenuNavInfo="operateMenuNavInfo" menuNavList="{{psRestServe}}" userInfo="{{userInfo}}"></menu-nav>
+            </view>
+        </view>
+        <view class="main-list" wx:if="{{psonge===3}}">
+            <view class="main-list-text">营销工具</view>
+            <view>
+                <menu-nav catch:operateMenuNavInfo="operateMenuNavInfo" menuNavList="{{csMarketingTool}}" userInfo="{{userInfo}}"></menu-nav>
+            </view>
+        </view>
+        <view class="main-list" wx:if="{{psonge===3}}">
+            <view class="main-list-text">更多服务</view>
+            <view>
+                <menu-nav catch:operateMenuNavInfo="operateMenuNavInfo" menuNavList="{{csMoreServe}}" userInfo="{{userInfo}}"></menu-nav>
+            </view>
+        </view>
+    </view>
+</view>
+<bottom-modal bindcloseModal="closeBottomModal" visibility="{{bottomModalVisibility}}">
+    <consultant-buildings bindselect="handleChildEvent" buildings="{{memberInfo.Buildings}}"></consultant-buildings>
+</bottom-modal>

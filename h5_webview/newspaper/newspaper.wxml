@@ -1,0 +1,24 @@
+<view class="newspaper" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="楼市早报"></nav-bar>
+    <view class="paper" style="padding-bottom:115px">
+        <view class="paper__img-wrap" wx:if="{{paperFileUrl}}">
+            <image class="paper__img" mode="widthFix" src="{{paperFileUrl}}"></image>
+        </view>
+        <view class="canvas__wrap" wx:if="{{!paperFileUrl}}">
+            <canvas canvasId="canvas" class="canvas" style="height:{{canvasH}}px"></canvas>
+        </view>
+    </view>
+    <view class="share__card">
+        <view class="share__items">
+            <view class="share__item share__item-app">
+                <button class="wx__btn-transparent" openType="share"></button>
+                <image class="share__icon" src="/resource/tkt_icon_wechat@3x.png"></image>
+                <view class="share__text">发送给朋友</view>
+            </view>
+            <view bind:tap="savePoster" class="share__item share__item-poster">
+                <image class="share__icon" src="/resource/tkt_icon_pyq@3x.png"></image>
+                <view class="share__text">分享海报</view>
+            </view>
+        </view>
+    </view>
+</view>

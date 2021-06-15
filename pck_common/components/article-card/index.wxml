@@ -1,0 +1,17 @@
+<view bindtap="goDetail" class="article-card">
+    <view class="card-left">
+        <view class="title">
+            <text>{{newsInfo.Title}}</text>
+        </view>
+        <view class="info">
+            <view class="info-left">
+                <image class="avatar" mode="aspectFill" src="{{newsInfo.MediumLogoUrl}}"></image>
+                <text class="user-name">{{newsInfo.MediumName}}</text>
+            </view>
+            <text class="info-right">{{newsInfo.PublishTime}}</text>
+        </view>
+    </view>
+    <view class="card-right">
+        <image class="card-cover" mode="aspectFill" src="{{newsInfo.ImageUrl}}"></image>
+    </view>
+</view>

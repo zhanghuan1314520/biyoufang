@@ -1,0 +1,106 @@
+.search__bar-wrap {
+    position: relative;
+    height: 72rpx;
+    background: #fff;
+    border-radius: 8rpx;
+}
+
+.search__bar-icon {
+    position: absolute;
+    top: 22rpx;
+    left: 16rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.search-fake-bar,.search__bar-input {
+    display: block;
+    padding-left: 58rpx;
+    height: 72rpx;
+    font-size: 17px;
+}
+
+.search-fake-bar {
+    line-height: 72rpx;
+    color: #8e8e93;
+}
+
+.swiper {
+    position: relative;
+    height: 300rpx;
+    padding: 30rpx 30rpx 0;
+    z-index: 2;
+}
+
+.swiper .swiper-layout {
+    width: 100%;
+    height: 100%!important;
+}
+
+.swiper-image-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%!important;
+    border-radius: 8rpx;
+}
+
+.building__filter-wrap,.search-box {
+    position: sticky;
+    background: #fff;
+    z-index: 15;
+}
+
+.search-box {
+    position: fixed;
+    left: 0;
+    width: 750rpx;
+}
+
+.search-box-pos {
+    height: 50px;
+    position: sticky;
+    z-index: 4;
+}
+
+.list {
+    position: relative;
+}
+
+.list__master {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #414141;
+    opacity: .84;
+    z-index: 2;
+}
+
+.building-card {
+    padding: 30rpx;
+    border-bottom: 1px solid #ededed;
+}
+
+.empty {
+    margin: 78rpx 0 0;
+    text-align: center;
+}
+
+.empty image {
+    width: 252rpx;
+    height: 252rpx;
+}
+
+.empty-word {
+    font-size: 28rpx;
+    color: #ccc;
+    margin-top: 30rpx;
+}

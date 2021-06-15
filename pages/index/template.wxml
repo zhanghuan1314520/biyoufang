@@ -1,0 +1,43 @@
+<template name="skeletonTem">
+    <view class="swiper-skeleton">
+        <skeleton active="{{true}}" row="{{skeletonInfo.swiperSkeleton}}"></skeleton>
+    </view>
+    <view class="menu-nav-list-skeleton">
+        <view class="menu-nav-item-skeleton" wx:for="{{skeletonInfo.moduleList}}" wx:key="index">
+            <skeleton active avatar="{{true}}"></skeleton>
+            <skeleton row="{{skeletonInfo.moduleListSkeleton}}"></skeleton>
+        </view>
+    </view>
+    <view class="headlines-skeleton">
+        <view class="headlines-skeleton__left">
+            <skeleton active row="{{[ {width:'130rpx',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+        <view class="headlines-skeleton__right">
+            <skeleton active row="{{[ {width:'100%',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+    </view>
+    <view class="headlines-skeleton">
+        <view class="headlines-skeleton__left">
+            <skeleton active row="{{[ {width:'130rpx',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+        <view class="headlines-skeleton__right">
+            <skeleton active row="{{[ {width:'100%',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+    </view>
+    <view class="headlines-skeleton">
+        <view class="headlines-skeleton__left">
+            <skeleton active row="{{[ {width:'130rpx',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+        <view class="headlines-skeleton__right">
+            <skeleton active row="{{[ {width:'100%',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+    </view>
+    <view class="headlines-skeleton">
+        <view class="headlines-skeleton__left">
+            <skeleton active row="{{[ {width:'130rpx',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+        <view class="headlines-skeleton__right">
+            <skeleton active row="{{[ {width:'100%',height:' 40rpx'} ]}}"></skeleton>
+        </view>
+    </view>
+</template>

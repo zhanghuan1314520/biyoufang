@@ -1,0 +1,27 @@
+<view bind:tap="goDetailPage" class="building-wrap">
+    <view class="build-cover">
+        <image lazyLoad webp class="build-img" mode="aspectFill" src="{{building.buildingInfo.coverImageUrl}}"></image>
+    </view>
+    <view class="build-info">
+        <view class="build-name">
+            {{building.buildingInfo.buildingName}}
+        </view>
+        <view class="build-des">
+            <text>{{building.buildingInfo._districtName}}</text>
+        </view>
+        <view class="build-des">
+            <text>{{building.buildingInfo.buildingAreaText}}</text>
+        </view>
+        <view class="build-tag">
+            <view class="project-status">
+                {{building.buildingInfo.buildingStatusText}}
+            </view>
+            <view class="build-type" wx:if="{{building.buildingInfo.buildingTypeText}}">
+                {{building.buildingInfo.buildingTypeText}}
+            </view>
+            <view class="tag-item" wx:if="{{building.buildingInfo.subwayDistanceText}}">
+                {{building.buildingInfo.subwayDistanceText}}
+            </view>
+        </view>
+    </view>
+</view>

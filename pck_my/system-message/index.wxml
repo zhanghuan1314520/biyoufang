@@ -1,0 +1,29 @@
+<view class="container" style="padding-top:{{navH}}px">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%);" isTransparent="{{true}}" navBarTitle="{{type==='sub'?'订阅消息':'系统消息'}}" showShare="{{false}}"></nav-bar>
+    <view class="station__message">
+        <view class="bg"></view>
+        <view class="msg__list" wx:if="{{message}}">
+            <view class="msg__item" wx:for="{{message}}" wx:key="index">
+                <view class="msg__time-wrap" wx:if="{{item.time}}">
+                    <view class="msg__time">{{item.time}}</view>
+                </view>
+                <view bindtap="checkDetail" class="msg__card" data-index="{{index}}">
+                    <image class="msg__card_icon" src="{{type==='sub'?'/resource/message/news_icon_wddy.png':'/resource/message/news_icon_xtxx.png'}}"></image>
+                    <view class="msg__card_right">
+                        <view>
+                            <rich-text nodes="{{item.Content}}"></rich-text>
+                        </view>
+                        <view class="msg__handler" wx:if="{{item.BuildingId&&(item.MessageType<=5||item.MessageType>10&&item.MessageType<=13)}}">详情 >
+            </view>
+                    </view>
+                </view>
+            </view>
+            <view class="no-more" wx:if="{{!allowMore&&message.length>0}}">我也是有底线的~</view>
+        </view>
+        <view class="data__empty" wx:if="{{message&&message.length===0}}">
+            <image class="data__empty-img" src="{{bgIcons[0]}}"></image>
+            <view class="data__empty-tip">暂无通知</view>
+            <view bindtap="goBuildingPage" class="data__empty-go">去看看有没有值得买的楼盘 ></view>
+        </view>
+    </view>
+</view>

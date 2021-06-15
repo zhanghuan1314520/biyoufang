@@ -1,0 +1,108 @@
+<view class="qa-mine-wrapper" style="padding-top:{{navH*2}}rpx">
+    <view class="nav-bar">
+        <nav-bar navBarTitle="{{title}}" showBackHome="{{true}}" showShare="{{false}}"></nav-bar>
+    </view>
+    <view class="nav-menu">
+        <view class="nav-menu-list">
+            <view bind:tap="toggleNavMenu" class="nav-menu-item {{item.isActived?'nav-menu-item_active':''}}" data-id="{{item.id}}" wx:for="{{navMenuList}}" wx:key="index">
+                <view class="nav-nemu-item__title">
+                    <text>{{item.title}}</text>
+                </view>
+                <view class="line" wx:if="{{item.isActived}}"></view>
+            </view>
+        </view>
+    </view>
+    <block wx:if="{{navMenuList[0].isActived}}">
+        <view class="question" wx:if="{{pageStatus===1}}">
+            <view class="question-list">
+                <view class="question-item" wx:for="{{questionList}}" wx:key="index">
+                    <question-card bind:operateQuestionCardInfo="operateQuestionCardInfo" questionCardInfo="{{item}}"></question-card>
+                </view>
+                <view class="no-more" wx:if="{{!canLoadMore}}">没有更多了~</view>
+            </view>
+        </view>
+        <view class="no-question" wx:elif="{{pageStatus===0}}">
+            <view class="no-question-info">
+                <image class="icon_null" src="{{lackImg1}}"></image>
+                <text class="no-question__text">我们为你安排了百位专业人士待命</text>
+                <view class="no-question__text">只为解决你的买房难题</view>
+            </view>
+            <view class="no-question-footer" wx:if="{{quiztn}}">
+                <view class="btn_lookMore">
+                    <form class="form_submit">
+                        <button bind:tap="handleClickBtn" class="btn_submit btn_goQuestion" data-type="goQuestion" formType="submit">
+                            <text>去提问</text>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{navMenuList[1].isActived}}">
+        <view class="answer {{userInfo.UserType===1?'answer-padding':''}}" wx:if="{{pageStatus===1}}">
+            <view class="answer-list">
+                <view class="answer-item" wx:for="{{answerList}}" wx:key="index">
+                    <answer-item answerInfo="{{item}}" bind:operateAnswerItem="operateAnswerItem"></answer-item>
+                </view>
+                <view class="no-more" wx:if="{{!canLoadMore}}">没有更多了~</view>
+                <view class="answer-footer {{isIpx?'answer-footer-add':''}}" wx:if="{{userInfo.UserType===1}}">
+                    <view class="answer-btn-list">
+                        <view class="answer-btn-item">
+                            <form bind:submit="getFollowFormid" class="form_submit">
+                                <button bind:tap="handleClickBtn" class="btn_submit btn_subscribe" data-type="subscribeAnswer" formType="submit">
+                                    <image class="btn_subscribe-img" src="/resource/qa/qa_broker_white@3x.png"></image>
+                                    <text>订阅回答邀请</text>
+                                </button>
+                            </form>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="no-question no-answer" wx:if="{{pageStatus===0&&userInfo.UserType===0}}">
+            <view class="no-question-info">
+                <image class="icon_null" src="{{lackImg2}}"></image>
+                <text class="no-question__text">把你懂的买房知识</text>
+                <text class="no-question__text no-question__text2">告诉想知道的人吧</text>
+            </view>
+            <view class="no-question-footer">
+                <view class="btn_lookMore">
+                    <form bind:submit="getFollowFormid" class="form_submit">
+                        <button bind:tap="handleClickBtn" class="btn_submit btn_goAnswer" data-type="goAnswer" formType="submit">
+                            <text>去回答</text>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+        <view class="no-data" wx:if="{{pageStatus===0&&userInfo.UserType===1}}">
+            <view class="no-data-info">
+                <image class="icon_null" src="{{nullImg}}"></image>
+                <view class="no-data-tip">
+                    <text class="no-question__title">机会来喽</text>
+                    <view class="no-question__content">
+                        <view>百万用户的买房难题等你答</view>  被设为精选回答，奖励{{selectedIntergral||0}}积分</view>
+                </view>
+            </view>
+            <view class="no-data-footer">
+                <view class="btn-list">
+                    <view class="btn-item">
+                        <form bind:submit="getFollowFormid" class="form_submit">
+                            <button bind:tap="handleClickBtn" class="btn_submit btn_answer" data-type="goAnswer" formType="submit">
+                                <text>去回答</text>
+                            </button>
+                        </form>
+                    </view>
+                    <view class="btn-item">
+                        <form bind:submit="getFollowFormid" class="form_submit">
+                            <button bind:tap="handleClickBtn" class="btn_submit btn_subscribe {{answerList.length>0?'':'btn_subscribe-width'}}" data-type="subscribeAnswer" formType="submit">
+                                <image class="btn_subscribe-img" src="/resource/qa/qa_broker_white@3x.png"></image>
+                                <text>订阅回答邀请</text>
+                            </button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

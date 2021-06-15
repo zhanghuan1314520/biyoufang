@@ -1,0 +1,3 @@
+<view bindtap="backHome" class="btn-back-home {{ifAbsolute?'absolute':'fixed'}}">
+    <view class="text">返回首页</view>
+</view>

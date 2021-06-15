@@ -1,0 +1,46 @@
+.reset-btn {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    border-radius: 0;
+}
+
+.into-building {
+    padding: 0 30rpx;
+}
+
+.into-building-title {
+    padding: 18rpx 0 30rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.building-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.building-list .building-item {
+    width: 48%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    color: #333;
+    background-color: #f2f2f2;
+    text-align: center;
+    border-radius: 8rpx;
+    margin-bottom: 20rpx;
+    padding: 0 30rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.building-list .building-item-active {
+    background-color: #fda74d;
+    color: #fff;
+    font-weight: 500;
+}

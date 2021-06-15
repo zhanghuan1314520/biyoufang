@@ -1,0 +1,75 @@
+<view class="my__message" style="padding-top:{{navH}}px">
+    <nav-bar bgColor="linear-gradient(270deg,rgba(254,94,16,1) 0%,rgba(255,118,3,1) 100%);" isTransparent="{{true}}" navBarTitle="必有房消息" needBackBtn="{{false}}" showShare="{{false}}"></nav-bar>
+    <view class="message-remind" wx:if="{{showBulkSubscription!==0}}">
+        <text>设置顾问回复提醒，第一时间接收回复通知</text>
+        <view catch:tap="bulkSubscriptionMessage" class="remind-btn" wx:if="{{showBulkSubscription}}">
+            <image class="remind-icon" src="/resource/message/news_icon_xtxx_line@3x.png"></image>
+      回复提醒我
+    </view>
+        <view class="reminded" wx:else>
+            <image class="reminded-icon" src="/resource/message/news_icon_alerted@3x.png"></image>
+      已订阅提醒
+    </view>
+    </view>
+    <view class="message-list" wx:if="{{pageStatus!==-1}}">
+        <view bind:tap="goSystemMesPage" class="message-item" wx:if="{{systemMessage&&systemMessage.CreateTime}}">
+            <view class="user-avatar">
+                <image class="avatar" src="/resource/message/news_icon_xtxx.png"></image>
+            </view>
+            <view class="message-info">
+                <view class="message-info_top">
+                    <view class="message-name">
+                        <text>系统消息</text>
+                    </view>
+                    <text class="message-time">{{systemMessage.CreateTime}}</text>
+                </view>
+                <view class="message-info_bottom">
+                    <view class="message-info_bottom-sl">{{systemMessage.Content}}</view>
+                    <view class="unread-remind-number" wx:if="{{systemMessage.isHaveMsg}}"></view>
+                </view>
+            </view>
+        </view>
+        <view bind:tap="goSubMessagePage" class="message-item" wx:if="{{subMessage&&subMessage.CreateTime}}">
+            <view class="user-avatar">
+                <image class="avatar" src="/resource/message/news_icon_wddy.png"></image>
+            </view>
+            <view class="message-info">
+                <view class="message-info_top">
+                    <view class="message-name">
+                        <text>我的订阅</text>
+                    </view>
+                    <text class="message-time">{{subMessage.CreateTime}}</text>
+                </view>
+                <view class="message-info_bottom">
+                    <view class="message-info_bottom-sl">{{subMessage.Content}}</view>
+                    <view class="unread-remind-number" wx:if="{{subMessage.isHaveMsg}}"></view>
+                </view>
+            </view>
+        </view>
+        <view bind:tap="goChat" class="message-item" data-id="{{item.name}}" data-index="{{index}}" wx:if="{{concatList.length>0}}" wx:for="{{concatList}}" wx:key="index">
+            <view class="user-avatar">
+                <image class="avatar avatar_bg" mode="aspectFill" src="{{item.lastMessage.fromAccount===userInfo.UnionId?item._payload.targetAvatarUrl:item._payload.avatarUrl}}"></image>
+                <image class="broker-icon" src="/resource/message/consultant_icon@3x.png" wx:if="{{item.lastMessage.fromAccount===userInfo.UnionId?item._payload.targetBuildingName:item._payload.buildingName}}"></image>
+            </view>
+            <view class="message-info">
+                <view class="message-info_top">
+                    <view class="message-name">
+                        <text>{{item.lastMessage.fromAccount===userInfo.UnionId?item._payload.targetName:item._payload.userName}}</text>
+                        <view class="consultant-building" wx:if="{{item.lastMessage.fromAccount===userInfo.UnionId?item._payload.targetBuildingName:item._payload.buildingName}}">
+                {{item.lastMessage.fromAccount===userInfo.UnionId?item._payload.targetBuildingName:item._payload.buildingName}}
+              </view>
+                    </view>
+                    <text class="message-time">{{item.time}}</text>
+                </view>
+                <view class="message-info_bottom {{!item.lastMessage.msgExtra&&item.lastMessage.fromAccount!=userInfo.UnionId?'chat-dot':''}}">
+                    <text>{{item._payload.type==1?item._payload.content:'[图片]'}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="data__empty" wx:if="{{concatList.length===0&&pageStatus!==-1}}">
+        <image class="data__empty_img" src="{{bgIcons[0]}}"></image>
+        <view class="data__empty-tip">最近一周没有聊天消息</view>
+        <view bindtap="goBuildingPage" class="data__empty-go">去看看有没有值得买的楼盘 ></view>
+    </view>
+</view>

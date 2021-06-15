@@ -1,0 +1,50 @@
+<view class="feedback" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="意见反馈" type="album"></nav-bar>
+    <form bindsubmit="submit" class="form">
+        <view class="module">
+            <view class="module__title">
+                <text class="module__title-must">*</text>反馈类型<text class="module__title-sub">（请选择）</text>
+            </view>
+            <view class="module__content">
+                <view class="types">
+                    <view bind:tap="changeType" class="type {{type===index+1?'type-active':''}}" data-type="{{index+1}}" wx:for="{{typeList}}" wx:key="index">{{item}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="module">
+            <view class="module__content description__content">
+                <textarea bindinput="typing" class="description" maxlength="{{300}}" name="description" placeholder="请详细说明您遇到的问题，以便于我们快速解决~" placeholderStyle="color:#8A969E" value="{{description}}"></textarea>
+                <view class="description__limit">
+                    <text class="description__count">{{description.length}}/</text>{{maxDescription}}</view>
+            </view>
+        </view>
+        <view class="module">
+            <view class="module__title">相关图片
+                <text class="module__title-sub">（限{{maxImgCount}}张，每张小于1M）</text>
+            </view>
+            <view class="module__content imgs__wrap">
+                <view class="img__wrap" wx:for="{{imgList}}" wx:key="index">
+                    <view bindtap="deleteImg" class="img__delete" data-index="{{index}}">
+                        <view class="icon iconfont icon-guanbi"></view>
+                    </view>
+                    <image class="img" mode="aspectFill" src="{{item.imageUrl}}"></image>
+                </view>
+                <view bindtap="uploadImg" class="img__wrap" wx:if="{{imgList.length<3}}">
+                    <image class="img__icon" src="/resource/register_add.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="module">
+            <view class="module__title">联系方式</view>
+            <view class="module__content">
+                <view class="phone__wrap">
+                    <input bindinput="inputPhone" class="phone" name="phone" placeholder="请留下您的手机或邮箱，以便我们及时反馈处理结果~" placeholderStyle="color:#8A969E" type="number" value="{{phone}}"></input>
+                    <image bindtap="clearPhone" class="phone__cancel {{phone?'phone__cancel-show':''}}" src="/resource/Ad_close@3x.png"></image>
+                </view>
+            </view>
+        </view>
+        <button class="submit__btn" disabled="{{!type&&!description}}" formType="submit">提交</button>
+    </form>
+    <pop_up bind:popClick="popClick" pageData="{{popData}}" wx:if="{{showPop}}"></pop_up>
+    <canvas canvasId="canvas" class="canvas-position"></canvas>
+</view>

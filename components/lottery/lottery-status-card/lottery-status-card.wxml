@@ -1,0 +1,102 @@
+<view class="lottery-status-card-wrapper">
+    <view class="lottery-status-info">
+        <view bind:tap="operateLotteryStatus" class="lottery-status-info-header" wx:if="{{lotteryStatusInfo.lotteryStatus}}">
+            <view class="lottery-status">
+                <view class="lottery-status-item" wx:if="{{lotteryStatusInfo.lotteryStatus===1}}">
+                    <text class="lottery-status-item__label">摇号时间:</text>
+                    <text class="lottery-status-item__content">{{lotteryStatusInfo.lotteryTime}}</text>
+                </view>
+                <view class="lottery-status-item" wx:if="{{lotteryStatusInfo.lotteryStatus===2}}">
+                    <text class="lottery-status-item__label">摇号结果:</text>
+                    <text class="lottery-status-item__content lottery-status-item__content_result">{{lotteryStatusInfo.huseNumber&&lotteryStatusInfo.lotteryNo<=lotteryStatusInfo.huseNumber?'中签':'未中签'}}</text>
+                </view>
+                <view class="lottery-status-item" wx:if="{{lotteryStatusInfo.lotteryStatus===3}}">
+                    <text class="lottery-status-item__label">公证摇号顺序号:</text>
+                    <text class="lottery-status-item__content lottery-status-item__content_result">第{{lotteryStatusInfo.sequenceNo}}号</text>
+                </view>
+            </view>
+            <view class="lottery-btn">
+                <text wx:if="{{lotteryStatusInfo.lotteryStatus===1}}">查看登记情况</text>
+                <text wx:if="{{lotteryStatusInfo.lotteryStatus===2}}">查看顺序号</text>
+                <text wx:if="{{lotteryStatusInfo.lotteryStatus===3}}">查看详情</text>
+            </view>
+        </view>
+        <view class="lottery-status-info-body">
+            <view class="register-info-list">
+                <view class="register-info-item" wx:if="{{lotteryStatusInfo.lotteryStatus===1||lotteryStatusInfo.lotteryStatus===2}}">
+                    <view class="register-info-item__label">
+                        <text>摇号楼盘</text>
+                    </view>
+                    <view class="register-info-item__content building-name">
+                        <text>{{lotteryStatusInfo.projectName}}</text>
+                    </view>
+                </view>
+                <view class="register-info-item">
+                    <view class="register-info-item__label">
+                        <text>登记编号</text>
+                    </view>
+                    <view class="register-info-item__content">
+                        <text>{{lotteryStatusInfo.registrationNo}}</text>
+                    </view>
+                </view>
+                <block wx:if="{{lotteryStatusInfo.lotteryStatus===0}}">
+                    <view class="register-info-item">
+                        <view class="register-info-item__label">
+                            <text>登记人姓名</text>
+                        </view>
+                        <view class="register-info-item__content">
+                            <text>{{lotteryStatusInfo.registrationName}}</text>
+                        </view>
+                    </view>
+                    <view class="register-info-item">
+                        <view class="register-info-item__label">
+                            <text>接收手机号</text>
+                        </view>
+                        <view class="register-info-item__content">
+                            <text>{{lotteryStatusInfo.receiverPhone}}</text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:if="{{lotteryStatusInfo.lotteryerList&&lotteryStatusInfo.lotteryerList.length}}">
+                    <block wx:for="{{isFold?lotteryStatusInfo._lotteryerList:lotteryStatusInfo.lotteryerList}}" wx:key="index">
+                        <view class="register-info-item">
+                            <view class="register-info-item__label">
+                                <text>姓名</text>
+                            </view>
+                            <view class="register-info-item__content">
+                                <text>{{item.name}}</text>
+                            </view>
+                        </view>
+                        <view class="register-info-item">
+                            <view class="register-info-item__label">
+                                <text>登记证件号</text>
+                            </view>
+                            <view class="register-info-item__content">
+                                <text>{{item.id}}</text>
+                            </view>
+                        </view>
+                        <view bind:tap="toggleFold" class="btn_fold" wx:if="{{isFold&&lotteryStatusInfo.lotteryerList.length>1}}">
+                            <text>展开更多</text>
+                            <image class="icon_fold" src="/resource/base/base_icon_fold@3x.png"></image>
+                        </view>
+                    </block>
+                </block>
+            </view>
+        </view>
+        <view class="lottery-status-info-footer">
+            <view class="lottery-tip" wx:if="{{(lotteryStatusInfo.lotteryStatus===1||lotteryStatusInfo.lotteryStatus===2)&&lotteryStatusInfo.receiverPhone}}">
+                <view class="lottery-tip__label">
+                    <image class="icon_phone" src="/resource/base/base_icon_phone_receiver.png"></image>
+                    <text>接收手机号</text>
+                </view>
+                <view class="lottery-tip__content">
+                    <text class="receive-phone">{{lotteryStatusInfo.receiverPhone}}</text>
+                    <text class="lottery-tip__text" wx:if="{{lotteryStatusInfo.lotteryStatus===1}}">暂无摇号顺序号，有摇号结果，我们将及时通知你。</text>
+                </view>
+            </view>
+            <view class="lottery-tip" wx:elif="{{lotteryStatusInfo.lotteryStatus===0}}">
+                <text class="lottery-tip__text">暂无摇号信息，有摇号结果，我们将及时通知你。</text>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,3 @@
+<view class="register_webview">
+    <web-view src="{{url}}"></web-view>
+</view>

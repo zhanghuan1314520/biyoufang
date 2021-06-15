@@ -1,0 +1,14 @@
+<view class="market" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="我的动态" needBackBtn="{{true}}" showShare="{{false}}"></nav-bar>
+    <view class="no-news" wx:if="{{moments&&!moments.length}}">
+        <image class="img-none" src="{{nullImg}}"></image>
+        <view class="txt-none">您暂未分享楼盘动态</view>
+        <view bindtap="goCommit" class="btn-commit">去分享</view>
+    </view>
+    <view class="moments" wx:elif="{{moments!==null}}">
+        <moment_item bind:userOperate="userOperate" comptype="1" moments="{{item}}" wx:for="{{moments}}" wx:key="index"></moment_item>
+    </view>
+    <view class="dialog" wx:if="{{showDialog}}">
+        <dialog binddialogOperate="dialogOperate" content="{{dialogContent}}" type="1"></dialog>
+    </view>
+</view>

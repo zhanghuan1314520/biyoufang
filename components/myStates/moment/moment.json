@@ -1,0 +1,10 @@
+{
+    "component": true,
+    "usingComponents": {
+        "moment_item": "/components/myStates/moment_item/moment_item",
+        "dialog": "/components/myStates/state-dialog/state-dialog",
+        "load-more": "/components/load-more/index",
+        "nav-bar": "/components/nav_bar/nav_bar",
+        "UserAuthorize": "/components/common/UserAuthorize/index"
+    }
+}

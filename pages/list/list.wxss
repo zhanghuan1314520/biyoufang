@@ -1,0 +1,147 @@
+.search-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 11;
+    box-sizing: border-box;
+    padding: 22rpx 30rpx 30rpx;
+    background: #fff;
+    box-shadow: 0 1px 4px 0 hsla(0,0%,82.4%,.5);
+}
+
+.search-bar {
+    position: relative;
+    width: 690rpx;
+    height: 72rpx;
+    background: rgba(142,142,147,.12);
+    border-radius: 8rpx;
+}
+
+.search-bar__icon {
+    position: absolute;
+    left: 16rpx;
+    top: 22rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.search-bar__input,.search-fake-bar {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 72rpx;
+    padding-left: 58rpx;
+    padding-right: 30rpx;
+    font-size: 17px;
+}
+
+.search-fake-bar {
+    line-height: 72rpx;
+    color: #8e8e93;
+}
+
+.notice {
+    height: 310rpx;
+    background: linear-gradient(163deg,#ffd184,#ff831c);
+    padding-left: 42rpx;
+    margin: 30rpx 30rpx 0;
+    border-radius: 8rpx;
+}
+
+.notice,.notice-title {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.notice-title {
+    letter-spacing: 2rpx;
+    padding-top: 46rpx;
+    font-size: 50rpx;
+    font-weight: 500;
+    line-height: 70rpx;
+    font-family: PingFangSC-Medium,PingFang SC;
+    text-shadow: 0 2rpx 4rpx #ef4a23;
+}
+
+.notice-free .notice-title {
+    padding-top: 44rpx;
+}
+
+.notice-month {
+    position: relative;
+    z-index: 2;
+    font-size: 26rpx;
+    padding-top: 16rpx;
+}
+
+.notice-month .today {
+    box-sizing: border-box;
+    height: 17px;
+    line-height: 42rpx;
+    font-size: 30rpx;
+    color: #fe6011;
+    padding: 0 8rpx;
+    background: #fff;
+    margin: 0 10rpx;
+    border-radius: 4rpx;
+}
+
+.notice-count {
+    position: relative;
+    z-index: 2;
+    font-size: 26rpx;
+    padding-top: 0;
+}
+
+.notice-free .notice-count {
+    max-width: 380rpx;
+}
+
+.count {
+    position: relative;
+    z-index: 2;
+    color: #ffcc9c;
+    font-size: 39rpx;
+}
+
+.notice-free .count {
+    font-size: 18px;
+    color: #fff;
+    margin: 0 5rpx;
+}
+
+.notice-bg {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    height: 310rpx;
+    width: 314rpx;
+}
+
+.show-share {
+    font-size: 24rpx;
+    font-family: PingFang-SC-Regular,PingFang-SC;
+    font-weight: 400;
+    color: #fe5e10;
+    line-height: 33rpx;
+    background: #fff9e2;
+    height: 70rpx;
+    line-height: 70rpx;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.close {
+    font-size: 20rpx;
+    color: #fe5e10;
+}
+
+.advert-banner {
+    padding: 30rpx 30rpx 0;
+}

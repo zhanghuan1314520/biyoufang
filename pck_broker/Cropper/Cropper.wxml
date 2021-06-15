@@ -1,0 +1,7 @@
+<view class="container" style="">
+    <image-cropper bindimageload="loadimage" bindload="cropperload" bindtapcut="clickcut" disable_height="{{true}}" disable_rotate="{{true}}" disable_width="{{true}}" height="{{height}}" id="image-cropper" imgSrc="{{src}}" limit_move="{{true}}" width="{{width}}"></image-cropper>
+    <view class="handlers">
+        <view bindtap="cancel" class="handler">取消</view>
+        <view bindtap="confirm" class="handler confirm">确定</view>
+    </view>
+</view>

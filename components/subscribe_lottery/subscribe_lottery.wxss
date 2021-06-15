@@ -1,0 +1,115 @@
+.popup-mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(65,65,65,.84);
+    z-index: 20;
+}
+
+.popup-panel,.popup-subscribe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 650rpx;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 8rpx;
+}
+
+.popup-head {
+    height: 137rpx;
+    border-bottom: 1px solid #ededed;
+    box-sizing: border-box;
+    padding-left: 30rpx;
+    padding-top: 50rpx;
+}
+
+.popup-title {
+    height: 53rpx;
+    line-height: 53rpx;
+    font-size: 19px;
+    color: #333;
+}
+
+.popup-title-center {
+    text-align: center;
+    font-weight: 700;
+    color: #333;
+}
+
+.popup-body {
+    box-sizing: border-box;
+    padding: 45rpx 30rpx;
+}
+
+.popup-footer {
+    box-sizing: border-box;
+    padding: 40rpx 55rpx 70rpx;
+}
+
+.popup-handler {
+    display: flex;
+}
+
+.popup-handler .popup-btn {
+    display: block;
+    width: 240rpx;
+    height: 76rpx;
+    line-height: 76rpx;
+    color: #fff;
+    font-size: 17px;
+    background: linear-gradient(270deg,#fe5e10,#ff7603);
+    border-radius: 8rpx;
+}
+
+.popup-handler .popup-btn-default {
+    color: #fe630e;
+    background: #ffe9d6;
+}
+
+.popup-body {
+    padding: 34rpx 54rpx 0;
+}
+
+.popup-title {
+    color: #333;
+    font-weight: 700;
+}
+
+.submask__item-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22rpx;
+}
+
+.submask__title {
+    color: #333;
+    font-size: 34rpx;
+    padding-bottom: 21rpx;
+    line-height: 48rpx;
+}
+
+.popup-body .btn-other {
+    font-size: 28rpx;
+    line-height: 40rpx;
+    text-align: center;
+    color: #4b70c4;
+    background: transparent;
+    text-decoration: underline;
+    margin: 0;
+    padding: 0 0 0 30rpx;
+}
+
+.popup-body .phone,.popup-body .submask__input {
+    background: #f9f9f9;
+    font-size: #333333;
+    padding: 14rpx 20rpx;
+    border-radius: 4rpx;
+}
+
+.popup-body .phone,.popup-body .phone-input {
+    flex: 1;
+}

@@ -1,0 +1,31 @@
+<view class="article__list-wrap">
+    <view class="article__list {{home?'':''}}">
+        <view>
+            <view class="article__item-wrap" wx:for="{{list}}" wx:key="index">
+                <view bind:tap="checkArticle" class="article__item observe-item" data-idx="{{item.idx}}">
+                    <view class="article__item-left">
+                        <view class="title ellipsis-multi {{item.CoverStyle!=1?'no-padding-right':''}}">{{item.Title}}</view>
+                        <image webp class="poster__big" mode="aspectFill" src="{{item.CoverFileUrl}}" wx:if="{{item.CoverStyle==2}}"></image>
+                        <view class="poster__list {{item.Covers.length>=3?'poster__list-third':''}}" wx:if="{{item.CoverStyle==3}}">
+                            <image webp class="poster__list-item" lazyLoad="true" mode="aspectFill" src="{{img}}" wx:for="{{item.Covers}}" wx:for-item="img" wx:key="imgs"></image>
+                        </view>
+                        <view class="article__info {{item.CoverStyle==1?'padding-right':''}}">
+                            <view class="media">
+                                <image webp class="media__icon" lazyLoad="true" mode="aspectFill" src="{{item.LogoUrl}}" wx:if="{{item.LogoUrl}}"></image>
+                                <text class="media__text">{{item.MediumName}}</text>
+                            </view>
+                            <view class="time">{{item.PublishTime}}</view>
+                        </view>
+                    </view>
+                    <view class="article__item-right" wx:if="{{item.CoverStyle==1}}">
+                        <image webp class="poster" lazyLoad="true" mode="aspectFill" src="{{item.CoverFileUrl}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <load-more id="loadMore" loadFlag="{{!loadAll}}" noMoreFlag="{{loadAll}}" screenShow="{{list.length}}"></load-more>
+        <view class="data__empty" wx:if="{{list.length<1&&hasInit}}">
+            <image class="data__empty-img" src="{{imageRoot}}/images_wx/default_graph/null.png"></image>
+        </view>
+    </view>
+</view>

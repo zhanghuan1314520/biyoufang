@@ -1,0 +1,10 @@
+<view bind:tap="navPage" class="building-stats-wrapper">
+    <view class="wrapper">
+        <view class="number-icon" style="background: {{buildingInfo.iconBg}};">
+            <text>{{buildingInfo.DistrictName==='更多'?'更多':buildingInfo.Number}}</text>
+        </view>
+        <view class="district-name">
+            <text>{{buildingInfo.DistrictName==='更多'?'更多楼盘':buildingInfo.DistrictName}}</text>
+        </view>
+    </view>
+</view>

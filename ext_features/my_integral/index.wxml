@@ -1,0 +1,32 @@
+<view class="container">
+    <view class="top-bar">
+        <nav-bar isTransparent="{{true}}" navBarTitle="积分明细" showShare="{{false}}"></nav-bar>
+        <view class="total-integral">
+            <view class="integral">{{totalIntegral}}</view>
+            <view>总积分</view>
+        </view>
+    </view>
+    <view class="integral-wrap">
+        <scroll-view scrollY bindscrolltolower="scrolltolower" style="height: calc(100vh - 370rpx)">
+            <view class="integral-item" wx:for="{{list}}" wx:key="index">
+                <view class="integral-item-left">
+                    <view class="name">
+              {{formate.IntegralSourceType(item.SourceType)}}{{item.Remark?'('+item.Remark+')':''}}
+            </view>
+                    <view class="time">{{item.CreateTime}}</view>
+                    <view class="building" wx:if="{{item.BuildingName}}">
+              来自楼盘：{{item.BuildingName}}
+            </view>
+                </view>
+                <view class="integral-item-right">
+                    <view class="integral-type">
+              {{item.IntegralType?'-':'+'}}{{item.Integral}}
+            </view>
+                    <view class="integral-over">{{item.Balance}}</view>
+                </view>
+            </view>
+            <load-more loadFlag="{{pageData.canLoadMore}}" noMoreFlag="{{!pageData.canLoadMore}}" screenShow="{{list.length}}"></load-more>
+        </scroll-view>
+    </view>
+</view>
+<wxs module="formate" src="../../app.wxs" />

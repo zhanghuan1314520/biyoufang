@@ -1,0 +1,78 @@
+<view class="chat {{isIpx?'ipx-fix':''}}" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="{{title}}" showShare="{{false}}"></nav-bar>
+    <view bindtap="toggleChatHandler" class="container" data-type="0" style="min-height:{{contentH}}px">
+        <view class="broker" style="top:{{navH}}px" wx:if="{{chatInfo.isBroker}}">
+            <view class="broker__card">
+                <view class="broker__card_box">
+                    <view class="broker__info {{brokerCardStatus?'':'broker__info-hidden'}}" style="background-image:url(/pck_chat/images/chat/gwcard_bj@3x.png)">
+                        <view bindtap="toggleFocus" class="focus {{chatInfo.IsFollow?'hasFocused':''}}">{{chatInfo.IsFollow?'已关注':'+关注'}}</view>
+                        <view class="img-wrap">
+                            <image class="img" mode="aspectFill" src="{{chatInfo.PersonalImageUrl||'/resource/agent_default@3x.png'}}"></image>
+                        </view>
+                        <view class="info">
+                            <view class="name">{{chatInfo.Name}}
+            <image class="icon_broker" src="/resource/detail/detail_icon_contact@3x.png"></image>
+                            </view>
+                            <text class="building-tag">{{chatInfo.BuildingName}}</text>
+                            <view class="intro">{{chatInfo.Introduction}}</view>
+                        </view>
+                    </view>
+                    <view class="handler">
+                        <view bindtap="callBroker" class="handler-item" style="border-right:1rpx solid #F3E3C3">
+                            <image class="handler-icon" src="/resource/base/base_icon_phone@3x.png"></image>
+                            <view class="handler-name">电话咨询</view>
+                        </view>
+                        <view bindtap="copyWechat" class="handler-item">
+                            <image class="handler-icon" src="/resource/base/base_icon_wechat@3x.png"></image>
+                            <view class="handler-name">微信联系</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="broker__handler-trigger">
+                    <text bindtap="toggleBrokerStatus" class="broker__handler-trigger-text">{{brokerCardStatus?'收起':'展开'}}</text>
+                    <image bindtap="toggleBrokerStatus" class="broler__handler-trigger-icon {{brokerCardStatus?'':'broler__handler-trigger-icon-on'}}" src="/pck_chat/images/chat/chat_icon_packup@3x.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="chat__tip" wx:if="{{chatInfo.isBroker}}">必有房郑重承诺，对置业顾问隐藏您的真实号码，请放心咨询交流</view>
+        <view class="chat__list" wx:if="{{messageList&&messageList.length>0}}">
+            <view class="chat__item {{item.toAccount===chatInfo.UnionId?'chat__send':'chat__reception'}}" wx:for="{{messageList}}" wx:key="index">
+                <view class="chat__time" wx:if="{{messageList[index]._payLoad.time!==messageList[index-1]._payLoad.time}}">{{item._payLoad.time}}</view>
+                <view class="chat__info">
+                    <image class="chat__avatar" mode="aspectFill" src="{{item._payLoad.avatarUrl||'/resource/agent_default@3x.png'}}"></image>
+                    <view class="chat__msg chat__content" wx:if="{{item.bizType==='TEXT'}}">{{item._payLoad.content}}
+          <image class="chat__loading" src="/pck_chat/images/chat/loading.gif" wx:if="{{item.loading}}"></image>
+                    </view>
+                    <view class="chat__content" wx:if="{{item.bizType==='IMAGE'}}">
+                        <image binderror="imgLoadError" bindtap="checkImage" class="chat__image" data-index="index" data-url="{{item._payLoad.content||''}}" mode="widthFix" src="{{item._payLoad.content||'/pck_chat/images/chat/chat_icon_nopic@3x.png'}}"></image>
+                        <image class="chat__loading" src="/pck_chat/images/chat/loading.gif" wx:if="{{item.loading}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="chat__handler {{chatHandlerStatus===1?'up':''}}" style="bottom:{{keyBoardH}}px;duration:{{keyBoardDuration}}s">
+        <view class="chat__input-wrap" style="padding-bottom:{{isIpx?20:0}}rpx">
+            <view catchtap="toggleChatHandler" class="chat__common" data-type="2">常用语</view>
+            <input adjustPosition="{{false}}" bindblur="onBlur" bindconfirm="sendMessage" bindfocus="onFocus" bindinput="inputing" bindkeyboardheightchange="borderHeightChange" class="chat__input" confirmType="send" cursorSpacing="10" placeholder="在此输入聊天内容" placeholderStyle="color: #ccc" value="{{inputContent}}"></input>
+            <image catchtap="toggleChatHandler" class="chat__more-btn" data-type="1" src="/pck_chat/images/chat/chat_icon_unfold@3x.png"></image>
+            <image catchtap="sendMessage" class="chat__send-btn {{inputContent?'':'chat__send-btn-disable'}}" src="/pck_chat/images/chat/chat_icon_send@3x.png"></image>
+        </view>
+        <scroll-view class="chat__handler-more {{chatHandlerStatus?chatHandlerStatus==1?'photo-up':'common-up':''}}" scrollY="{{true}}">
+            <view class="handler__more-items" wx:if="{{chatHandlerStatus==1}}">
+                <view bindtap="chooseImageFromAlbum" class="handler__more-item">
+                    <image class="handler__more-icon" src="/pck_chat/images/chat/ico2.png"></image>
+                    <view class="handler__more-text">相册</view>
+                </view>
+                <view bindtap="chooseImageFromCamera" class="handler__more-item">
+                    <image class="handler__more-icon" src="/pck_chat/images/chat/ico1.png"></image>
+                    <view class="handler__more-text">拍摄</view>
+                </view>
+            </view>
+            <view class="handler__more-commons" wx:if="{{chatHandlerStatus==2}}">
+                <view bindtap="sendCommonMsg" class="common" data-index="{{index}}" wx:for="{{commonList}}" wx:key="index">{{item}}</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<authorize-dialog bind:authorize="authorizeUserInfo" visibility="{{userInfo&&!userInfo.Authorized}}"></authorize-dialog>

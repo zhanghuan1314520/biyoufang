@@ -1,0 +1,53 @@
+<view class="detail__pricePerHouse" style="padding-top:{{navH}}px">
+    <nav-bar navBarTitle="{{info.BuildingName||'房源详情'}}" type="album"></nav-bar>
+    <back-home wx:if="{{isShare}}"></back-home>
+    <view class="house__info">
+        <view class="house__name">{{info.HouseNo}} {{info.UnitNo}} {{info.RoomName||''}}</view>
+        <image class="qrcode" src="{{info.BuildingQrcodeUrl}}"></image>
+        <view class="info__item">
+            <view class="info__item-left">建面：</view>
+            <view class="info__item-right">{{info.Acreage?info.Acreage+'m²':'--'}}</view>
+        </view>
+        <view class="info__item">
+            <view class="info__item-left">套内面积：</view>
+            <view class="info__item-right">{{info.DwellingArea?info.DwellingArea+'m²':'--'}}</view>
+        </view>
+        <view class="info__item">
+            <view class="info__item-left">得房率：</view>
+            <view class="info__item-right">{{info.GainHouseRatio?info.GainHouseRatio+'%':'--'}}</view>
+        </view>
+        <view class="info__item">
+            <view class="info__item-left">毛坯价格：</view>
+            <view class="info__item-right">{{info.BlankUnitPrice?info.BlankUnitPrice+'元/m²':'--'}}</view>
+        </view>
+        <view class="info__item">
+            <view class="info__item-left">装修价格：</view>
+            <view class="info__item-right">{{info.DecorationPrice?info.DecorationPrice+'元/m²':'--'}}</view>
+        </view>
+        <view class="info__item bb">
+            <view class="info__item-left">总价：</view>
+            <view class="info__item-right">{{info.TotalPrice?info.TotalPrice+'万':'--'}}</view>
+        </view>
+        <view class="info__price" wx:if="{{info.TotalPrice}}">
+            <view class="info__price-item">首付3成<text class="info__price-price">{{info.perLoan.thirty.downPayment}}万</text> | 月供{{info.perLoan.thirty.installment}}<text class="info__price-desc">（商贷30年,利率4.9%,每月等额还款）</text>
+            </view>
+            <view class="info__price-item">首付6成<text class="info__price-price">{{info.perLoan.sixty.downPayment}}万</text> | 月供{{info.perLoan.sixty.installment}}<text class="info__price-desc">（商贷30年,利率4.9%,每月等额还款）</text>
+            </view>
+        </view>
+    </view>
+    <view class="detail__panel detail__consulatant" wx:if="{{recommendBrokerList&&recommendBrokerList.ConsultantList.length>0}}">
+        <view bindtap="checkBrokers" class="detail__panel-head">
+            <view class="detail__panel-title">咨询此房源相关问题</view>
+            <view class="detail__cell-arrow-box" wx:if="{{recommendBrokerList.ConsultantList.length>0}}">
+                <image class="detail__cell-arrow" src="/resource/arrow_right.png"></image>
+            </view>
+        </view>
+        <view class="detail__panel-body">
+            <view class="broker-list">
+                <view class="broker-item {{index!==2?'mr10':''}}" wx:for="{{recommendBrokerList.ConsultantList}}" wx:key="index">
+                    <broker-card bind:operateBrokerCardInfo="operateBrokerCardInfo" brokerCardInfo="{{item}}" userInfo="{{userInfo}}"></broker-card>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
